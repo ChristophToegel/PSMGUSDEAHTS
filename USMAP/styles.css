@@ -1,0 +1,73 @@
+*{
+    padding: 0;
+    margin: 0;
+    /*border: 1px solid #000;*/
+    font-family: "Helvetica", sans-serif;
+}
+
+body{
+    background: #fff;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    margin: auto;
+    border-bottom: 2px #000 solid;
+    padding-bottom: 5px;
+    text-align: center;
+    margin-top: 0.5em;
+    font-size: 75px;
+}
+
+#interact{
+    position: relative;
+}
+
+#mapsvg{
+    display: block;
+    margin: 0 auto;
+    width: 75%;
+}
+
+#timeline{
+    margin: 0 auto;
+    text-align: center;
+    width: 90%;
+}
+
+.button{
+    background-color: #FFF;
+    border: rgb(241,241,241);
+}
+
+.clearState{
+    fill: #f0f0f5;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.tooltip{
+    border: 5px solid #000; 
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+.line {
+  fill: none;
+  stroke: #f44336;
+  stroke-width: 3px;
+  shape-rendering: crispEdges;
+}
+
+.area {
+    fill: lightsteelblue;
+    stroke-width: 0;
+}
