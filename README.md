@@ -1,2 +1,2 @@
-# PSMGUSDEAHTS
-US Map of Police Officer Deahts
+# PSMGUSDEATHS
+US Map of Police Officer Deaths
