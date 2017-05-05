@@ -1,0 +1,42 @@
+Ideen:
+
+
+
+DATEN:
+
+csv kürzen -> Hunde raus / nicht-Staaten raus 
+
+Kategorien passen ?
+
+linie im Graph
+
+
+
+
+^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v^v
+LAYOUT:
+
+Checkboxen in Dropdown für Kategorien
+Slider mit Graph über Anzahl der Tode in diesem Jahr (wie excel)
+		Mouseover graph
+
+Legende
+		
+Staaten per Klickk auswählbar (Rahmen)
+	Sidebar
+		ausgewählter Staat mit 
+					Name
+					Todesfälle in diesem Jahr
+					Gesamtfällebisher
+					Anteil an allen Fällen bisher 
+					Anteil an allen Fällen in diesem Jahr
+				
+			Texas
+
+			1917
+			58 (5%)
+
+			Gesamt
+			500 (25%)
+
+					Tortendiagramm mit Kategorien bisher
