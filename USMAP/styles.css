@@ -1,73 +1,134 @@
-*{
+* {
     padding: 0;
     margin: 0;
-    /*border: 1px solid #000;*/
+    /*border: 1px solid #FFF; */
     font-family: "Helvetica", sans-serif;
+    color: #FFF;
 }
 
-body{
-    background: #fff;
+body {
+    background: #2F4F4F;
     background-repeat: no-repeat;
 }
 
 h1 {
-    margin: auto;
-    border-bottom: 2px #000 solid;
-    padding-bottom: 5px;
     text-align: center;
     margin-top: 0.5em;
     font-size: 75px;
 }
 
-#interact{
+#slidemenu {
     position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
-#mapsvg{
+#content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#mapsvg {
     display: block;
     margin: 0 auto;
     width: 75%;
 }
 
-#timeline{
+#timeline {
     margin: 0 auto;
     text-align: center;
     width: 90%;
 }
 
-.button{
-    background-color: #FFF;
-    border: rgb(241,241,241);
+.button {
+    background-color: darkslategray;
+    border: rgb(241, 241, 241);
 }
 
-.clearState{
+.clearState {
     fill: #f0f0f5;
     stroke: #000;
     stroke-width: 1;
 }
 
-.tooltip{
-    border: 5px solid #000; 
+.tooltip {
+    border: 5px solid #000;
 }
 
 .overlay {
-  fill: none;
-  pointer-events: all;
+    fill: none;
+    pointer-events: all;
 }
 
-.focus circle {
-  fill: none;
-  stroke: steelblue;
+.focus line {
+    fill: none;
+    stroke: black;
+}
+
+.timeGraph {
+    display: block;
+    margin: auto;
+    width: 90%;
 }
 
 .line {
-  fill: none;
-  stroke: #f44336;
-  stroke-width: 3px;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+    shape-rendering: crispEdges;
 }
 
 .area {
-    fill: lightsteelblue;
+    fill: tomato;
     stroke-width: 0;
+}
+
+
+.activator {
+    margin: auto;
+    border: black solid 1px;
+    border-top: none;
+    border-radius: 5%;
+}
+
+.menu {
+    text-align: center;
+    background-size: 90% 90%;
+    height: 300px;
+    display: none;
+    position: relative;
+    z-index: 100;
+    display: none;
+    height: 100px;
+    width: 100%;
+}
+
+.checkboxes{
+    margin: auto;
+    display: inline-block;
+}
+
+.checkboxes > label{
+    float: left;
+    margin: 0, 15px;
+    padding: 30px;
+}
+
+.pull {
+    margin: auto;
+    text-align: center;
+    display: block;
+    position: relative;
+    width: 150px;
+    height: 20px;
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    color: whitesmoke;
+    background: rgba(204, 0, 0, 0.5);
+    text-decoration: none;
+    -moz-border-bottom-left-radius: 5px;
+    -moz-border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
 }

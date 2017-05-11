@@ -10,44 +10,79 @@
 </head>
 
 <body>
-    <h1>Todesfälle von Polizisten in den USA</h1>
-    <div id="map">
-    </div>
-    <div id="timeline">
-        <h3>Timeline</h3>
-        <button onclick="startTime()" id="btplay" class="button">Play</button>
-        <button onclick="stopTime()" id="btstop" class="button">Stop</button>
-        <input id="timeslider" type="range" min="1791" max="2016" value="1791" step="1" onchange="timechanged(true)" />
-        <span id="year">0</span>
-    </div>
-    <!--
-    <label>
-        <div class="icheckbox disabled">
-            <input type="checkbox" name="quux[1]" disabled>
+    <h1>Police Deaths</h1>
+    <div id="slidemenu">
+        <div class="menu">
+            <div class="checkboxes">
+                <label>
+                    <div class="icheckbox disabled master">
+                        <input type="checkbox" name="quux[1]" disabled>
+                    </div>
+                    MasterFoo1
+                </label>
+
+                <label>
+                    <div class="icheckbox disabled">
+                        <input type="checkbox" name="quux[1]" disabled>
+                    </div>
+                    Foo2
+                </label>
+
+                <label>
+                    <div class="icheckbox disabled">
+                        <input type="checkbox" name="quux[1]" disabled>
+                    </div>
+                    Foo3
+                </label>
+
+                <label>
+                    <div class="icheckbox disabled">
+                        <input type="checkbox" name="quux[1]" disabled>
+                    </div>
+                    Foo4
+                </label>
+
+                <label>
+                    <div class="icheckbox disabled">
+                        <input type="checkbox" name="quux[1]" disabled>
+                    </div>
+                    Foo5
+                </label>
+            </div>
+
+
+
+
         </div>
-        Foo
-    </label>
 
-    <label for="baz[1]">Bar</label>
-    <div class="iradio checked">
-        <input type="radio" name="quux[2]" id="baz[1]" checked>
+        <p class="activator">
+            <div class="pull">OPEN</div>
+        </p>
     </div>
 
-    <label for="baz[2]">Bar</label>
-    <div class="iradio">
-        <input type="radio" name="quux[2]" id="baz[2]">
-    </div>
-    -->
-    
-    <div id="graph">
-        
+    <div id="content">
+        <div id="map">
+        </div>
+        <div id="timeline">
+            <h3>Timeline</h3>
+            <button onclick="startTime()" id="btplay" class="button">Play</button>
+            <button onclick="stopTime()" id="btstop" class="button">Stop</button>
+            <input id="timeslider" type="range" min="1791" max="2016" value="1791" step="1" onchange="timechanged(true)" />
+            <span id="year">0</span>
+        </div>
+
+
+        <div id="graph">
+        </div>
+
     </div>
 
     <script src="./lib/d3/d3.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="lib/icheck/icheck.js"></script>
     <script src="test.js"></script>
+    <script src="slide.js"></script>
     <script>
         $(document).ready(function () {
             $('input').iCheck({
