@@ -63,13 +63,13 @@
     <div id="content">
         <div id="map">
         </div>
-        <div id="timeline">
+        <!--<div id="timeline">
             <h3>Timeline</h3>
             <button onclick="startTime()" id="btplay" class="button">Play</button>
             <button onclick="stopTime()" id="btstop" class="button">Stop</button>
             <input id="timeslider" type="range" min="1791" max="2016" value="1791" step="1" onchange="timechanged(true)" />
             <span id="year">0</span>
-        </div>
+        </div>-->
 
 
         <div id="graph">
@@ -81,8 +81,16 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="lib/icheck/icheck.js"></script>
-    <script src="test.js"></script>
+    <!--<script src="test.js"></script>-->
     <script src="slide.js"></script>
+    <script src="map.js"></script>
+    <script src="timeline.js"></script>
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script> main = new d3.main();
+            main.init();
+    </script>
+    
     <script>
         $(document).ready(function () {
             $('input').iCheck({
