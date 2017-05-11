@@ -14,7 +14,7 @@ d3.timeline = function() {
     
     function drawTimeGraph() {
     var sumDeaths = {};
-    d3.csv("clean_data.csv", function (csv) {
+    d3.csv("data/clean_data.csv", function (csv) {
         csv.forEach(function (i) {
             sumDeaths[i.year] = (sumDeaths[i.year] || 0) + 1;
 

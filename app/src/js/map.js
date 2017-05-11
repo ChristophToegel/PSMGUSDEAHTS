@@ -20,7 +20,7 @@ d3.map = function() {
     var path = d3.geoPath()
 
     //loads the jsonlist with ids und Statenames
-    d3.tsv("us-state-names.tsv", function (statenames) {
+    d3.tsv("data/us-state-names.tsv", function (statenames) {
         //loads the jsonlist with states and their contour
         d3.json("https://d3js.org/us-10m.v1.json", function (error, json) {
             if (error) throw error;
@@ -66,7 +66,7 @@ function testDataSelection(curyear) {
     console.log(curyear);
     var sumStates = {};
 
-    d3.csv("clean_data.csv", function (csv) {
+    d3.csv("data/clean_data.csv", function (csv) {
         csv = csv.filter(function (row) {
                 return row['year'] <= curyear;
             })
