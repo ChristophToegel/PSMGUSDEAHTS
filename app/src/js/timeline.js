@@ -2,13 +2,14 @@
 /* global EventPublisher */
 
 var d3 = d3 || {};
-d3.timeline = function() {
+d3.timeline = function(displaymap) {
   "use strict";
 
   var that ={};
 
   function initTimeline() {
     console.log("init Timeline");
+    console.log(displaymap);
     drawTimeGraph();
   }
     
@@ -136,11 +137,10 @@ d3.timeline = function() {
                 i = bisectDate(transform, x0, 1),
                 d0 = transform[i - 1],
                 d1 = transform[i],
-                d = x0 - d0.name > d1.name - x0 ? d1 : d0,
-                slider = document.querySelector("#timeslider");
-
+                d = x0 - d0.name > d1.name - x0 ? d1 : d0;
+            //d.name=year
+            displaymap(d.name);
             console.log(d.name);
-            slider.value = d.name;
         }
 
 
