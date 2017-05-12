@@ -68,7 +68,7 @@ h1 {
 .timeGraph {
     display: block;
     margin: auto;
-    width: 90%;
+    width: 100%;
 }
 
 .line {
