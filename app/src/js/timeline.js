@@ -1,20 +1,18 @@
 /* eslint-env browser  */
-/* global EventPublisher */
 
 var d3 = d3 || {};
-d3.timeline = function(displaymap) {
+d3.timeline = function(displaymap,data) {
   "use strict";
 
-  var that ={};
+  var that ={},transform;
 
   function initTimeline() {
     console.log("init Timeline");
-    console.log(displaymap);
     drawTimeGraph();
   }
     
     function drawTimeGraph() {
-    var sumDeaths = {};
+    /*var sumDeaths = {};
     d3.csv("data/clean_data.csv", function (csv) {
         csv.forEach(function (i) {
             sumDeaths[i.year] = (sumDeaths[i.year] || 0) + 1;
@@ -28,7 +26,9 @@ d3.timeline = function(displaymap) {
             };
             transform.push(year);
         }
-
+    */
+   transform=data.getdataTimeline();
+        console.log(data.getdataTimeline());
         var bisectDate = d3.bisector(function (d) {
             return d.name;
         }).left;
@@ -129,7 +129,8 @@ d3.timeline = function(displaymap) {
             })
             .on("mousemove", mousemove)
             .on("click", mouseclick);
-
+//test 
+    //}
 
 
         function mouseclick() {
@@ -159,7 +160,7 @@ d3.timeline = function(displaymap) {
 
         }
 
-    });
+    //});
 }
 
   that.initTimeline = initTimeline;
