@@ -88,8 +88,6 @@ d3.map = function (data) {
     function ChoroplethColor(curyear) {
         var transform = data.getMapData(curyear);
         clearMapColor();
-<<<<<<< Updated upstream
-=======
 
         //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
         d3.selection.prototype.moveToFront = function () {
@@ -107,8 +105,6 @@ d3.map = function (data) {
             });
         };
 
-
->>>>>>> Stashed changes
         var tooltip = d3.select("body")
             .append("div")
             .style("position", "absolute")
