@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <link href="src/styles/styles.css" type=text/css rel="stylesheet" />
-    <link href="src/lib/icheck/skins/flat/red.css" rel="stylesheet">
+    <link href="src/lib/icheck/skins/flat/red.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" />
     <title>Todesfälle v0.1</title>
-    <!--<link rel="stylesheet" href="demo.css">-->
 </head>
 
 <body>
@@ -14,11 +14,12 @@
     <div id="slidemenu">
 
         <div class="menu">
+
             <div class="checkboxes">
 
-                <div id="Accidents">
-                    <label>
-                        <div class="icheckbox disabled master Accidents" id="Accidents_master">
+                <div id="Accidents" class="master_cat">
+                    <label class="master_label">
+                        <div class="icheckbox disabled master accidents" id="Accidents_master">
                             <input type="checkbox" name="quux[1]" disabled>
                         </div>
                         Accidents
@@ -98,8 +99,8 @@
                     </label>
                 </div>
 
-                <div id="Natural_causes">
-                    <label>
+                <div id="Natural_causes" class="master_cat">
+                    <label class="master_label">
                         <div class="icheckbox disabled master Natural_causes" id="Natural_causes_master">
                             <input type="checkbox" name="quux[1]" disabled>
                         </div>
@@ -168,8 +169,8 @@
                     </label>
                 </div>
 
-                <div id="Suspect_known">
-                    <label>
+                <div id="Suspect_known" class="master_cat">
+                    <label class="master_label">
                         <div class="icheckbox disabled master Suspect_known" id="Suspect_known_master">
                             <input type="checkbox" name="quux[1]" disabled>
                         </div>
@@ -226,8 +227,8 @@
                     </label>
                 </div>
 
-                <div id="Illness">
-                    <label>
+                <div id="Illness" class="master_cat">
+                    <label class="master_label">
                         <div class="icheckbox disabled master Illness" id="Illness_master">
                             <input type="checkbox" name="quux[1]" disabled>
                         </div>
@@ -260,9 +261,9 @@
                     </label>
                 </div>
 
-                <div id="Others">
-                    <label>
-                        <div class="icheckbox disabled master Others">
+                <div id="Suspect_known" class="master_cat">
+                    <label class="master_label">
+                        <div class="icheckbox disabled master Suspect_known" id="Others_master">
                             <input type="checkbox" name="quux[1]" disabled>
                         </div>
                         Others
@@ -279,6 +280,7 @@
 
 
     <div id="content">
+        <div id="year_selection">1791-<span>????</span></div>
         <div id="map">
         </div>
         <!--<div id="timeline">

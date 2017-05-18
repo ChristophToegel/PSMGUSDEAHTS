@@ -35,9 +35,7 @@ d3.map = function (data) {
                     .enter().append("path")
                     .attr("d", path)
                     //mit css klasse machen?
-                    .style("fill", "#f0f0f5")
-                    .style("stroke", "#000")
-                    .style("stroke-width", "1")
+                    .classed("clearState", true)
                     //join via id the statecode 
                     .attr("id", function (state) {
                         var statename;
@@ -102,17 +100,27 @@ d3.map = function (data) {
             var stateEl = d3.select(selector);
             if (stateEl != null) {
                 //console.log(stateEl)
-                stateEl.style("fill", state.color).on("mouseover", function () {
-                    return tooltip.style("visibility", "visible");
-                }).on("mousemove", function () {
-                    return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-                }).on("mouseout", function () {
-                    return tooltip.style("visibility", "hidden").text(state.name);
+                stateEl.style("fill", state.color)
+                    .on("mouseover", function () {
+                        return tooltip.style("visibility", "visible");
+                    }).on("mousemove", function () {
+                        return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                    }).on("mouseout", function () {
+                        return tooltip.style("visibility", "hidden").text(state.name);
+                    }).on("click", function (event) {
+                        console.log(state);
+                        stateEl.classed("selectedState", !stateEl.classed("selectedState"));
                 });
+
             } else {
                 console.log("unknown SateName: " + key);
             }
         });
+    }
+    
+    function returnSelectedStates(){
+        var selectedStates = document.querySelector(".map>.SelectedState").map()
+        return 
     }
 
     that.ChoroplethColor = ChoroplethColor;

@@ -141,6 +141,7 @@ d3.timeline = function(displaymap,data) {
                 d = x0 - d0.name > d1.name - x0 ? d1 : d0;
             //d.name=year
             displaymap(d.name);
+            updateDateInfo(d.name);
             console.log(d.name);
         }
 
@@ -162,6 +163,11 @@ d3.timeline = function(displaymap,data) {
 
     //});
 }
+    function updateDateInfo(date) {
+       let yearInfoEl = document.querySelector("#year_selection span");
+        
+        yearInfoEl.innerHTML = date;
+    }
 
   that.initTimeline = initTimeline;
   return that;

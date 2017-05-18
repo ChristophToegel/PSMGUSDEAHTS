@@ -13,13 +13,11 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 0.5em;
     font-size: 75px;
 }
 
 #slidemenu {
     position: relative;
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
 #content {
@@ -40,6 +38,19 @@ h1 {
     width: 90%;
 }
 
+#year_selection {
+    font-family: 'Droid Serif', serif;
+    font-weight: bold;
+    font-size: 5em;
+    text-align: right;
+    position: absolute;
+    right: 3%;
+}
+
+#year_selection span {
+    font: inherit;
+}
+
 .button {
     background-color: darkslategray;
     border: rgb(241, 241, 241);
@@ -49,6 +60,11 @@ h1 {
     fill: #f0f0f5;
     stroke: #000;
     stroke-width: 1;
+}
+
+.selectedState {
+    stroke: #000;
+    stroke-width: 3;
 }
 
 .tooltip {
@@ -83,7 +99,6 @@ h1 {
     stroke-width: 0;
 }
 
-
 .activator {
     margin: auto;
     border: black solid 1px;
@@ -92,26 +107,34 @@ h1 {
 }
 
 .menu {
-    text-align: center;
-    background-size: 90% 90%;
-    height: 300px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-bottom: 4px solid rgba(204, 0, 0, 0.5);
+    border-top: 4px solid rgba(204, 0, 0, 0.5);
+    overflow: auto;
+    margin: auto;
     display: none;
     position: relative;
     z-index: 100;
     display: none;
-    height: 100px;
     width: 100%;
 }
 
-.checkboxes{
-    margin: auto;
-    display: inline-block;
+.checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.checkboxes > label{
+.checkboxes div {
+    font-size: 15px;
+    text-align: center;
+}
+
+.master_label {
+    font-size: 25px;
+}
+
+.master_cat {
     float: left;
-    margin: 0, 15px;
-    padding: 30px;
 }
 
 .pull {
