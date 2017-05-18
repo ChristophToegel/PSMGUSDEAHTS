@@ -6,33 +6,46 @@ d3.map = function (data) {
 
     var that = {};
 
+// http://bl.ocks.org/rveciana/a2a1c21ca1c71cd3ec116cc911e5fce9
     function initMap() {
         console.log("init Map");
         //svg in index erstellen lassen!
-        var width = 600,
+        var width = 960,
             height = 600;
 
+        
+        //test coordinates
+        var projection = d3.geoAlbersUsa().translate([width/2, height/2])
+				   .scale(1000);
+        var path = d3.geoPath()
+            .projection(projection);
+        
+        //var path = d3.geoPath()
         var svg = d3.select("#map")
             .append("svg")
             .attr("height", height)
             .attr("width", width)
             .attr("id", "mapsvg")
-
-        var path = d3.geoPath()
-
+        
+        
         //loads the jsonlist with ids und Statenames
         d3.tsv("data/us-state-names.tsv", function (statenames) {
             //loads the jsonlist with states and their contour
-            //d3.json("https://d3js.org/us-10m.v1.json", function (error, json) {
             //ohne internet!!
-            d3.json("data/us-state1.json", function (error, json) {
+            //https://gist.github.com/shawnbot/e6a857780ec2fe6002f7
+            d3.json("data/us-state.json", function (error, json) {
+                console.log(json);
+                var states=topojson.feature(json, json.objects.states).features
                 if (error) throw error;
                 //appends the contours to the svg
+                
                 svg.append("g")
                     .attr("class", "states")
                     .selectAll("path")
-                    .data(topojson.feature(json, json.objects.states).features)
-                    .enter().append("path")
+                    .data(states)
+                // test projection
+                    .enter()
+                    .append("path")
                     .attr("d", path)
                     //mit css klasse machen?
                     .classed("clearState", true)
@@ -48,6 +61,7 @@ d3.map = function (data) {
                     });
                 //map is ready
                 onMapReady();
+                testCoordinates(svg,projection);
             });
         });
 
@@ -56,7 +70,9 @@ d3.map = function (data) {
     function onMapReady() {
         console.log("map is ready");
         //timeline jetzt aktivieren?!
-
+        //ChoroplethColor("1790");
+        //testCoordinates();
+        
     }
 
     //removes the color for every state
@@ -72,7 +88,6 @@ d3.map = function (data) {
     function ChoroplethColor(curyear) {
         var transform = data.getMapData(curyear);
         clearMapColor();
-
         var tooltip = d3.select("body")
             .append("div")
             .style("position", "absolute")
@@ -121,6 +136,18 @@ d3.map = function (data) {
     function returnSelectedStates(){
         var selectedStates = document.querySelector(".map>.SelectedState").map()
         return 
+    }
+    
+    function testCoordinates(svg,projection){
+        var loc=[-87.6356208,41.5022297];
+        console.log("test data!");
+        svg.selectAll("circle")
+		.data(loc).enter()
+		.append("circle")
+		.attr("cx", function (d) { return projection(loc)[0]; })
+		.attr("cy", function (d) { return projection(loc)[1]; })
+		.attr("r", "8px")
+		.attr("fill", "red")
     }
 
     that.ChoroplethColor = ChoroplethColor;
