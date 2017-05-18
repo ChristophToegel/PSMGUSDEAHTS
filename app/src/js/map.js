@@ -58,7 +58,8 @@ d3.map = function (data) {
                             }
                         }
                         return statename;
-                    });
+                    })
+
                 //map is ready
                 onMapReady();
                 testCoordinates(svg,projection);
@@ -77,7 +78,7 @@ d3.map = function (data) {
 
     //removes the color for every state
     function clearMapColor() {
-        let states = document.querySelectorAll("path");
+        let states = document.querySelectorAll("map>path");
         states.forEach(function (state) {
             state.removeAttribute("style");
             state.classList.add("clearState");
@@ -88,6 +89,27 @@ d3.map = function (data) {
     function ChoroplethColor(curyear) {
         var transform = data.getMapData(curyear);
         clearMapColor();
+<<<<<<< Updated upstream
+=======
+
+        //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
+        d3.selection.prototype.moveToFront = function () {
+            return this.each(function () {
+                this.parentNode.appendChild(this);
+            });
+        };
+
+        d3.selection.prototype.moveToBack = function () {
+            return this.each(function () {
+                var firstChild = this.parentNode.firstChild;
+                if (firstChild) {
+                    this.parentNode.insertBefore(this, firstChild);
+                }
+            });
+        };
+
+
+>>>>>>> Stashed changes
         var tooltip = d3.select("body")
             .append("div")
             .style("position", "absolute")
@@ -123,19 +145,30 @@ d3.map = function (data) {
                     }).on("mouseout", function () {
                         return tooltip.style("visibility", "hidden").text(state.name);
                     }).on("click", function (event) {
-                        console.log(state);
-                        stateEl.classed("selectedState", !stateEl.classed("selectedState"));
-                });
+                        if(!stateEl.classed("selectedState")){
+                        stateEl.classed("selectedState", true);
+                        stateEl.moveToFront();
+                        }else{
+                        stateEl.classed("selectedState", false);
+                        stateEl.moveToBack();    
+                        }
+
+                        //Testlog
+                        returnSelectedStates();
+                    });
 
             } else {
                 console.log("unknown SateName: " + key);
             }
         });
     }
-    
-    function returnSelectedStates(){
-        var selectedStates = document.querySelector(".map>.SelectedState").map()
-        return 
+
+    function returnSelectedStates() {
+        console.log($(".map>.selectedState"));
+        var selectedStates = $(".selectedState").map(function () {
+            return $(this).attr("id");
+        }).toArray();
+        return selectedStates;
     }
     
     function testCoordinates(svg,projection){
@@ -150,6 +183,7 @@ d3.map = function (data) {
 		.attr("fill", "red")
     }
 
+    that.returnSelectedStates = returnSelectedStates;
     that.ChoroplethColor = ChoroplethColor;
     that.initMap = initMap;
     return that;

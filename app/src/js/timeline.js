@@ -1,33 +1,35 @@
 /* eslint-env browser  */
 
 var d3 = d3 || {};
-d3.timeline = function(displaymap,data) {
-  "use strict";
+d3.timeline = function (displaymap, data) {
+    "use strict";
 
-  var that ={},transform;
+    var that = {},
+        transform;
 
-  function initTimeline() {
-    console.log("init Timeline");
-    drawTimeGraph();
-  }
-    
+    function initTimeline() {
+        console.log("init Timeline");
+        drawTimeGraph();
+    }
+
+
     function drawTimeGraph() {
-    /*var sumDeaths = {};
-    d3.csv("data/clean_data.csv", function (csv) {
-        csv.forEach(function (i) {
-            sumDeaths[i.year] = (sumDeaths[i.year] || 0) + 1;
+        /*var sumDeaths = {};
+        d3.csv("data/clean_data.csv", function (csv) {
+            csv.forEach(function (i) {
+                sumDeaths[i.year] = (sumDeaths[i.year] || 0) + 1;
 
-        });
-        var transform = [];
-        for (var year in sumDeaths) {
-            var year = {
-                name: year,
-                value: sumDeaths[year]
-            };
-            transform.push(year);
-        }
-    */
-   transform=data.getdataTimeline();
+            });
+            var transform = [];
+            for (var year in sumDeaths) {
+                var year = {
+                    name: year,
+                    value: sumDeaths[year]
+                };
+                transform.push(year);
+            }
+        */
+        transform = data.getdataTimeline();
         console.log(data.getdataTimeline());
         var bisectDate = d3.bisector(function (d) {
             return d.name;
@@ -129,8 +131,8 @@ d3.timeline = function(displaymap,data) {
             })
             .on("mousemove", mousemove)
             .on("click", mouseclick);
-//test 
-    //}
+        //test 
+        //}
 
 
         function mouseclick() {
@@ -140,6 +142,23 @@ d3.timeline = function(displaymap,data) {
                 d1 = transform[i],
                 d = x0 - d0.name > d1.name - x0 ? d1 : d0;
             //d.name=year
+
+            var area2 = d3.area()
+                .x(function (d) {
+                    return x(d.name);
+                })
+                .y0(height)
+                .y1(function (d) {
+                    return y(d.value);
+                });
+
+            d3.select(".area2").remove();
+
+            svg2.append("path")
+                .datum(transform.slice(0, i))
+                .attr("class", "area2")
+                .attr("d", area2);
+
             displaymap(d.name);
             updateDateInfo(d.name);
             console.log(d.name);
@@ -161,14 +180,33 @@ d3.timeline = function(displaymap,data) {
 
         }
 
-    //});
-}
-    function updateDateInfo(date) {
-       let yearInfoEl = document.querySelector("#year_selection span");
-        
-        yearInfoEl.innerHTML = date;
+        //});
     }
 
-  that.initTimeline = initTimeline;
-  return that;
+    function updateDateInfo(date) {
+        let $yearInfoEl = $("#year_selection span");
+
+        // Test für passende Schriftart 
+        if (date < 1889) {
+            $yearInfoEl.css("font-family","Calligraffitti, cursive");
+            //$yearInfoEl.setAttribute("font-size-adjust",0.5);
+            console.log("sehr alt")
+        } else if (date < 1989) {
+            $yearInfoEl.css("font-family","Space Mono, monospace");
+            //$yearInfoEl.setAttribute("font-size-adjust",0.5);
+            console.log("alt")
+        } else {
+            $yearInfoEl.css("font-family","Droid Serif, serif");
+            //$yearInfoEl.setAttribute("font-size-adjust",0.5);
+            console.log("neu")
+        }
+        
+        
+        $yearInfoEl.fadeOut(200, function(){
+            $(this).text(date).fadeIn(200);
+        })
+    }
+
+    that.initTimeline = initTimeline;
+    return that;
 };

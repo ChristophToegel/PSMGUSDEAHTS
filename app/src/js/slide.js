@@ -19,11 +19,15 @@ $(document).ready(function () {
 
     $(document).on("click", ".icheckbox", function () {
         console.log($("div").not(".master").not(".master_cat"));
+        getCheckedCats();
+    });
+    
+    function getCheckedCats() {
         var dic = $("input[type=checkbox]:checked").map(function () {
             return $(this).parent().parent().attr("id");
         }).toArray();
 
         console.log(dic);
-    });
+    }
 
 });

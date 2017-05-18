@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #2F4F4F;
+    background: #474545;
     background-repeat: no-repeat;
 }
 
@@ -39,12 +39,13 @@ h1 {
 }
 
 #year_selection {
-    font-family: 'Droid Serif', serif;
+    font-family: 'Calligraffitti', cursive;
     font-weight: bold;
     font-size: 5em;
-    text-align: right;
+    text-align: left;
     position: absolute;
-    right: 3%;
+    left: 73%;
+    bottom: 85%;
 }
 
 #year_selection span {
@@ -59,12 +60,15 @@ h1 {
 .clearState {
     fill: #f0f0f5;
     stroke: #000;
-    stroke-width: 1;
+    stroke-width: 2px;
 }
 
 .selectedState {
-    stroke: #000;
-    stroke-width: 3;
+    stroke:  #66c2ff;
+    stroke-width: 5px;
+    z-index: -1;
+    position: relative;
+    stroke-dasharray: 5,5
 }
 
 .tooltip {
@@ -79,6 +83,7 @@ h1 {
 .focus line {
     fill: none;
     stroke: black;
+    color: white;
 }
 
 .timeGraph {
@@ -89,13 +94,18 @@ h1 {
 
 .line {
     fill: none;
-    stroke: red;
+    stroke: black;
     stroke-width: 3px;
     shape-rendering: crispEdges;
 }
 
 .area {
-    fill: tomato;
+    fill: #ff1919;
+    stroke-width: 0;
+}
+
+.area2 {
+    fill: #ff4d4d;
     stroke-width: 0;
 }
 
@@ -114,7 +124,7 @@ h1 {
     margin: auto;
     display: none;
     position: relative;
-    z-index: 100;
+    z-index: 5;
     display: none;
     width: 100%;
 }
@@ -144,7 +154,7 @@ h1 {
     position: relative;
     width: 150px;
     height: 20px;
-    font-family: arial, sans-serif;
+    font-family: "arial", sans-serif;
     font-size: 14px;
     color: whitesmoke;
     background: rgba(204, 0, 0, 0.5);
