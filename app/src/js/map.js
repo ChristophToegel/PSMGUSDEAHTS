@@ -38,12 +38,11 @@ d3.map = function (data) {
                 var states=topojson.feature(json, json.objects.states).features
                 if (error) throw error;
                 //appends the contours to the svg
-                
+                console.log(json);
                 svg.append("g")
                     .attr("class", "states")
                     .selectAll("path")
                     .data(states)
-                // test projection
                     .enter()
                     .append("path")
                     .attr("d", path)
@@ -53,7 +52,7 @@ d3.map = function (data) {
                     .attr("id", function (state) {
                         var statename;
                         for (var i = 0; i < statenames.length; i++) {
-                            if (statenames[i].id === state.id) {
+                            if (statenames[i].id == state.id) {
                                 statename = statenames[i].code;
                             }
                         }
@@ -71,7 +70,7 @@ d3.map = function (data) {
     function onMapReady() {
         console.log("map is ready");
         //timeline jetzt aktivieren?!
-        //ChoroplethColor("1790");
+        ChoroplethColor("1790");
         //testCoordinates();
         
     }
@@ -136,7 +135,7 @@ d3.map = function (data) {
             selector = selector.replace(" ", "");
             var stateEl = d3.select(selector);
             if (stateEl != null) {
-                //console.log(stateEl)
+                //console.log(stateEl);
                 stateEl.style("fill", state.color)
                     .on("mouseover", function () {
                         return tooltip.style("visibility", "visible");
