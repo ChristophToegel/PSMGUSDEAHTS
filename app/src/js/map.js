@@ -106,8 +106,6 @@ d3.map = function (data) {
             });
         };
 
-
-
         var tooltip = d3.select("body")
             .append("div")
             .style("position", "absolute")
