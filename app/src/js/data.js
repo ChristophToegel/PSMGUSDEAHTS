@@ -18,6 +18,7 @@ d3.data = function (datainitialised) {
             //Callback --> map and timeline
             datainitialised();
         });
+        getMapDrawData();
     }
 
     //data for the map
@@ -94,6 +95,11 @@ d3.data = function (datainitialised) {
         return transform;
     }
     
+    
+    function getMapDrawData(){
+    }
+    
+    that.getMapDrawData = getMapDrawData;
     that.getdataTimeline = getdataTimeline;
     that.getInfoBoxData = getInfoBoxData;
     that.getMapData = getMapData;

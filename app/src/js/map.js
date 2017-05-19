@@ -6,6 +6,9 @@ d3.map = function (data) {
 
     var that = {};
 
+    function displaymap(data){
+        console.log(data);
+    }
 // http://bl.ocks.org/rveciana/a2a1c21ca1c71cd3ec116cc911e5fce9
     function initMap() {
         console.log("init Map");
@@ -16,7 +19,7 @@ d3.map = function (data) {
         
         //test coordinates
         var projection = d3.geoAlbersUsa().translate([width/2, height/2])
-				   .scale(1000);
+				   .scale(1300);
         var path = d3.geoPath()
             .projection(projection);
         
@@ -27,18 +30,19 @@ d3.map = function (data) {
             .attr("width", width)
             .attr("id", "mapsvg")
         
-        
+        //var states=data.getMapDrawData(displaymap);
+        //console.log(states);
         //loads the jsonlist with ids und Statenames
         d3.tsv("data/us-state-names.tsv", function (statenames) {
             //loads the jsonlist with states and their contour
             //ohne internet!!
             //https://gist.github.com/shawnbot/e6a857780ec2fe6002f7
             d3.json("data/us-state.json", function (error, json) {
-                console.log(json);
+                //console.log(json);
                 var states=topojson.feature(json, json.objects.states).features
                 if (error) throw error;
                 //appends the contours to the svg
-                console.log(json);
+                //console.log(json);
                 svg.append("g")
                     .attr("class", "states")
                     .selectAll("path")
@@ -49,7 +53,7 @@ d3.map = function (data) {
                     //mit css klasse machen?
                     .classed("clearState", true)
                     //join via id the statecode 
-                    .attr("id", function (state) {
+                    .attr("id",function (state) {
                         var statename;
                         for (var i = 0; i < statenames.length; i++) {
                             if (statenames[i].id == state.id) {
@@ -58,6 +62,7 @@ d3.map = function (data) {
                         }
                         return statename;
                     })
+                    
 
                 //map is ready
                 onMapReady();
@@ -66,7 +71,7 @@ d3.map = function (data) {
         });
 
     }
-
+    
     function onMapReady() {
         console.log("map is ready");
         //timeline jetzt aktivieren?!
@@ -178,7 +183,7 @@ d3.map = function (data) {
 		.attr("r", "8px")
 		.attr("fill", "red")
     }
-
+    
     that.returnSelectedStates = returnSelectedStates;
     that.ChoroplethColor = ChoroplethColor;
     that.initMap = initMap;
