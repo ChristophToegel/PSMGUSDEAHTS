@@ -39,6 +39,7 @@ th, td {
 
 #slidemenu {
     position: relative;
+    
 }
 
 #content {
@@ -65,8 +66,9 @@ th, td {
     font-size: 5em;
     text-align: left;
     position: absolute;
-    left: 73%;
+    left: 70%;
     bottom: 85%;
+    white-space: nowrap;
 }
 
 #year_selection span {
@@ -82,6 +84,7 @@ th, td {
     fill: #f0f0f5;
     stroke: #000;
     stroke-width: 2px;
+     
 }
 
 .selectedState {

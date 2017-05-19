@@ -196,7 +196,7 @@ d3.timeline = function (displaymap, data) {
             //$yearInfoEl.setAttribute("font-size-adjust",0.5);
             console.log("alt")
         } else {
-            $yearInfoEl.css("font-family","Droid Serif, serif");
+            $yearInfoEl.css("font-family","Orbitron, sans-serif");
             //$yearInfoEl.setAttribute("font-size-adjust",0.5);
             console.log("neu")
         }
