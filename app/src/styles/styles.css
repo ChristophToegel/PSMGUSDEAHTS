@@ -79,12 +79,14 @@ th, td {
 }
 
 .clearState {
-    fill: #f0f0f5;
+    fill: #ffe6e6;
     stroke: #000;
     stroke-width: 2px;
+    
 }
 
 .selectedState {
+
     stroke:  #66c2ff;
     stroke-width: 5px;
     z-index: -1;
@@ -194,5 +196,7 @@ th, td {
     top: 390px;
     right: -300px;
     margin: 10px;
+    stroke: #000;
+    stroke-width: 2px;
     
 }
