@@ -320,7 +320,7 @@
 <td>1337</td>
 </tr>
 <tr>
-<td>Natural Causes</td>
+<td>Natural causes</td>
 <td>1337</td>
 </tr>
 <tr>
@@ -336,6 +336,9 @@
 <td>1337</td>
 </tr>
 </table>
+    <div id="chart"></div>
+    <script src="d3.v4.min.js"></script>
+    
 
     <script src="src/lib/d3/d3.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
@@ -349,6 +352,46 @@
     <script src="src/js/timeline.js"></script>
     <script src="src/js/data.js"></script>
     <script src="src/js/main.js"></script>
+    <script src="src/js/piechart.js"></script>
+    <!--pie chart-->
+    <script> 
+      (function(d3) {
+        'use strict';
+        var dataset = [
+          { label: 'Accidents', count: 40 },
+          { label: 'Natural causes', count: 20 },
+          { label: 'Suspect Known', count: 15 },
+          { label: 'Illness', count: 20 },
+          { label: 'Other causes', count: 5 }
+        ];
+        var width = 240;
+        var height = 270;
+        var radius = Math.min(width, height) / 2;
+        var color = d3.scaleOrdinal(d3.schemeCategory20);
+        var svg = d3.select('#chart')
+          .append('svg')
+          .attr('width', width)
+          .attr('height', height)
+          .append('g')
+          .attr('transform', 'translate(' + (width / 2) +
+            ',' + (height / 2) + ')');
+        var arc = d3.arc()
+          .innerRadius(0)
+          .outerRadius(radius);
+        var pie = d3.pie()
+          .value(function(d) { return d.count; })
+          .sort(null);
+        var path = svg.selectAll('path')
+          .data(pie(dataset))
+          .enter()
+          .append('path')
+          .attr('d', arc)
+          .attr('fill', function(d) {
+            return color(d.data.label);
+          });
+      })(window.d3);
+    </script>
+    
     <script>
         main = new d3.main();
         main.init();
@@ -362,6 +405,8 @@
             });
         });
     </script>
+
+    
     
      
 </body>

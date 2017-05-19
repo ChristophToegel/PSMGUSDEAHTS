@@ -186,3 +186,13 @@ th, td {
     border-bottom-right-radius: 5px;
     cursor: pointer;
 }
+
+#chart {
+
+    float:right;
+    position: relative;
+    top: 390px;
+    right: -300px;
+    margin: 10px;
+    
+}
