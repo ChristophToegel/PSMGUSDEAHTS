@@ -1,83 +1,58 @@
 /* eslint-env browser  */
 
 var d3 = d3 || {};
-d3.map = function (data) {
+d3.map = function (data, stateSelected) {
     "use strict";
 
-    var that = {};
+    var that = {},
+        path, svg, projection;
 
-    function displaymap(data){
+    function displaymap(data) {
         console.log(data);
     }
-// http://bl.ocks.org/rveciana/a2a1c21ca1c71cd3ec116cc911e5fce9
+    // http://bl.ocks.org/rveciana/a2a1c21ca1c71cd3ec116cc911e5fce9
     function initMap() {
         console.log("init Map");
         //svg in index erstellen lassen!
         var width = 960,
             height = 600;
 
-        
+
         //test coordinates
-        var projection = d3.geoAlbersUsa().translate([width/2, height/2])
-				   .scale(1300);
-        var path = d3.geoPath()
+        projection = d3.geoAlbersUsa().translate([width / 2, height / 2])
+            .scale(1300);
+        path = d3.geoPath()
             .projection(projection);
-        
-        //var path = d3.geoPath()
-        var svg = d3.select("#map")
+
+        svg = d3.select("#map")
             .append("svg")
             .attr("height", height)
             .attr("width", width)
             .attr("id", "mapsvg")
-        
-        //var states=data.getMapDrawData(displaymap);
-        //console.log(states);
-        //loads the jsonlist with ids und Statenames
-        d3.tsv("data/us-state-names.tsv", function (statenames) {
-            //loads the jsonlist with states and their contour
-            //ohne internet!!
-            //https://gist.github.com/shawnbot/e6a857780ec2fe6002f7
-            d3.json("data/us-state.json", function (error, json) {
-                //console.log(json);
-                var states=topojson.feature(json, json.objects.states).features
-                if (error) throw error;
-                //appends the contours to the svg
-                //console.log(json);
-                svg.append("g")
-                    .attr("class", "states")
-                    .selectAll("path")
-                    .data(states)
-                    .enter()
-                    .append("path")
-                    .attr("d", path)
-                    //mit css klasse machen?
-                    .classed("clearState", true)
-                    //join via id the statecode 
-                    .attr("id",function (state) {
-                        var statename;
-                        for (var i = 0; i < statenames.length; i++) {
-                            if (statenames[i].id == state.id) {
-                                statename = statenames[i].code;
-                            }
-                        }
-                        return statename;
-                    })
-                    
 
-                //map is ready
-                onMapReady();
-                testCoordinates(svg,projection);
-            });
-        });
-
+        data.getMapDrawData(mapdatareceived);
     }
-    
+
+    function mapdatareceived(states) {
+        svg.append("g")
+            .attr("class", "states")
+            .selectAll("path")
+            .data(states)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .classed("clearState", true)
+            .attr("id", function (i) {
+                return i.statename
+            })
+    }
+
     function onMapReady() {
         console.log("map is ready");
         //timeline jetzt aktivieren?!
         ChoroplethColor("1790");
-        //testCoordinates();
-        
+        //only for test issue
+        //data.getMapPointData(pointsready);
     }
 
     //removes the color for every state
@@ -91,6 +66,9 @@ d3.map = function (data) {
 
     //transformes data from Object to array(Objects) calculates the color and colors the states
     function ChoroplethColor(curyear) {
+        //drwas the points
+        data.getMapPointData(pointsready, curyear);
+
         var transform = data.getMapData(curyear);
         clearMapColor();
 
@@ -130,7 +108,9 @@ d3.map = function (data) {
                 return d.value;
             })
     ]);
-
+        //liste aller zZ ausgewählten Staaten
+        //TODO soll auch für Staaten funktionieren, welche keine toten haben!!
+        var selectedStates = [];
         transform.forEach(function (state) {
             state.color = color(state.value);
             //console.log(color(state.value));
@@ -147,22 +127,40 @@ d3.map = function (data) {
                     }).on("mouseout", function () {
                         return tooltip.style("visibility", "hidden").text(state.name);
                     }).on("click", function (event) {
-                        if(!stateEl.classed("selectedState")){
-                        stateEl.classed("selectedState", true);
-                        stateEl.moveToFront();
-                        }else{
-                        stateEl.classed("selectedState", false);
-                        stateEl.moveToBack();    
+                        if (!stateEl.classed("selectedState")) {
+                            stateEl.classed("selectedState", true);
+                            stateEl.moveToFront();
+                            //TODO test if selection works
+                            selectedStates.push(stateEl["_groups"][0][0].id);
+                            
+                        } else {
+                            //TODO test if remove works
+                            selectedStates = removeState(stateEl["_groups"][0][0].id, selectedStates);
+                            
+                            stateEl.classed("selectedState", false);
+                            stateEl.moveToBack();
                         }
 
+                        //callback for main.js
+                        stateSelected(selectedStates);
+                    
                         //Testlog
-                        returnSelectedStates();
+                        //returnSelectedStates();
                     });
 
             } else {
                 console.log("unknown SateName: " + key);
             }
         });
+    }
+
+    function removeState(state, stateslist) {
+        var newList = [];
+        for (var i = 0; i < stateslist.length; i++) {
+            if (stateslist[i] !== state) newList.push(stateslist[i]);
+        }
+        return newList;
+
     }
 
     function returnSelectedStates() {
@@ -172,19 +170,35 @@ d3.map = function (data) {
         }).toArray();
         return selectedStates;
     }
-    
-    function testCoordinates(svg,projection){
-        var loc=[-87.6356208,41.5022297];
-        console.log("test data!");
-        svg.selectAll("circle")
-		.data(loc).enter()
-		.append("circle")
-		.attr("cx", function (d) { return projection(loc)[0]; })
-		.attr("cy", function (d) { return projection(loc)[1]; })
-		.attr("r", "8px")
-		.attr("fill", "red")
+
+    //Callback for points
+    function pointsready(data) {
+        //console.log(data);
+        //points ready to draw
+        svg.selectAll(".places").remove();
+        svg.append("g")
+            .attr("class", "places")
+            .selectAll("circle")
+            .data(data).enter()
+            .append("circle")
+            .attr("cx", function (d) {
+                if (projection([d.lng, d.lat]) != null) {
+                    return projection([d.lng, d.lat])[0];
+                } else {
+                    return 0;
+                }
+            })
+            .attr("cy", function (d) {
+                if (projection([d.lng, d.lat]) != null) {
+                    return projection([d.lng, d.lat])[1];
+                } else { //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");console.log(d);
+                    return 0;
+                }
+            })
+            .attr("r", "2px")
+            .attr("fill", "green")
     }
-    
+
     that.returnSelectedStates = returnSelectedStates;
     that.ChoroplethColor = ChoroplethColor;
     that.initMap = initMap;
