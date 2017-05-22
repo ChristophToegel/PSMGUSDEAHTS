@@ -42,8 +42,13 @@ d3.timeline = function (displaymap, data) {
                 left: 100
             },
             width = 1500 - margin.left - margin.right,
-            height = 270 - margin.top - margin.bottom;
+            height = 210 - margin.top - margin.bottom;
 
+        /*
+        var brush = d3.brushX()
+            .extent([[0, 0], [width, height]])
+            .on("brush end", brushed);
+            */
         var x = d3.scaleLinear().range([0, width]);
         var y = d3.scaleLinear().range([height, 0]);
 
@@ -188,21 +193,21 @@ d3.timeline = function (displaymap, data) {
 
         // Test für passende Schriftart 
         if (date < 1889) {
-            $yearInfoEl.css("font-family","Calligraffitti, cursive");
+            $yearInfoEl.css("font-family", "Calligraffitti, cursive");
             //$yearInfoEl.setAttribute("font-size-adjust",0.5);
             console.log("sehr alt")
         } else if (date < 1989) {
-            $yearInfoEl.css("font-family","Space Mono, monospace");
+            $yearInfoEl.css("font-family", "Space Mono, monospace");
             //$yearInfoEl.setAttribute("font-size-adjust",0.5);
             console.log("alt")
         } else {
-            $yearInfoEl.css("font-family","Orbitron, sans-serif");
+            $yearInfoEl.css("font-family", "Orbitron, sans-serif");
             //$yearInfoEl.setAttribute("font-size-adjust",0.5);
             console.log("neu")
         }
-        
-        
-        $yearInfoEl.fadeOut(200, function(){
+
+
+        $yearInfoEl.fadeOut(200, function () {
             $(this).text(date).fadeIn(200);
         })
     }

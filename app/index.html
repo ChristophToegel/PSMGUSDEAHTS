@@ -6,10 +6,13 @@
     <link href="src/styles/styles.css" type=text/css rel="stylesheet" />
     <link href="src/lib/icheck/skins/flat/red.css" rel="stylesheet" />
     <!--FONTS-->
-    <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" /> <!-- nouse-->
-    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Space+Mono" rel="stylesheet"> <!--Old-->
-    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet"> <!--very old -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" />
+    <!-- nouse-->
+    <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Space+Mono" rel="stylesheet">
+    <!--Old-->
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Fredericka+the+Great|Nixie+One|Orbitron|Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <!--very old -->
     <title>Todesfälle v0.1</title>
 </head>
 
@@ -22,16 +25,16 @@
             <div class="checkboxes">
 
                 <div id="Accidents" class="master_cat">
-                    <label class="master_label">
+                    <label class="master_label" for="Accidents_master">
                         <div class="icheckbox disabled master accidents" id="Accidents_master">
-                            <input type="checkbox" name="quux[1]" disabled>
+                            <input type="checkbox" name="quux[1]" disabled >
                         </div>
                         Accidents
                     </label>
 
-                    <label>
-                        <div class="icheckbox disabled Accidents" id="Gunfire(Accident)">
-                            <input type="checkbox" name="quux[1]" disabled>
+                    <label for="Gunfire(Accident)">
+                        <div class="icheckbox disabled Accidents" >
+                            <input type="checkbox" name="quux[1]" disabled id="Gunfire(Accident)">
                         </div>
                         Gunfire(Accident)
                     </label>
@@ -281,7 +284,7 @@
             <div class="pull">OPEN</div>
         </p>
     </div>
-    
+
 
 
 
@@ -302,50 +305,50 @@
         </div>
 
     </div>
-    
-<table id="infobox">
-<tr>
-<td colspan="2">State Name</td>
-</tr>
-<tr>
-<td style="font-weight: bold;" colspan="2">Texas</td>
-</tr>
-<tr>
-</tr>
-<tr>
-<th>Death Cause</th>
-<th>Total Number</th>
-</tr>
-<tr>
-<td>Accidents</td>
-<td>1337</td>
-</tr>
-<tr>
-<td>Natural causes</td>
-<td>1337</td>
-</tr>
-<tr>
-<td>Suspect known</td>
-<td>1337</td>
-</tr>
-<tr>
-<td>Illness</td>
-<td>1337</td>
-</tr>
-<tr>
-<td>Other causes</td>
-<td>1337</td>
-</tr>
-</table>
+
+    <table id="infobox">
+        <tr>
+            <td colspan="2">State Name</td>
+        </tr>
+        <tr>
+            <td style="font-weight: bold;" colspan="2">Texas</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <th>Death Cause</th>
+            <th>Total Number</th>
+        </tr>
+        <tr>
+            <td>Accidents</td>
+            <td>1337</td>
+        </tr>
+        <tr>
+            <td>Natural causes</td>
+            <td>1337</td>
+        </tr>
+        <tr>
+            <td>Suspect known</td>
+            <td>1337</td>
+        </tr>
+        <tr>
+            <td>Illness</td>
+            <td>1337</td>
+        </tr>
+        <tr>
+            <td>Other causes</td>
+            <td>1337</td>
+        </tr>
+    </table>
     <div id="chart"></div>
     <script src="d3.v4.min.js"></script>
-    
+
 
     <script src="src/lib/d3/d3.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
-    
+
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    
+
     <script src="src/lib/icheck/icheck.js"></script>
     <!--<script src="test.js"></script>-->
     <script src="src/js/slide.js"></script>
@@ -355,45 +358,62 @@
     <script src="src/js/main.js"></script>
     <script src="src/js/piechart.js"></script>
     <!--pie chart-->
-    <script> 
-      (function(d3) {
-        'use strict';
-        var dataset = [
-          { label: 'Accidents', count: 40 },
-          { label: 'Natural causes', count: 20 },
-          { label: 'Suspect Known', count: 15 },
-          { label: 'Illness', count: 20 },
-          { label: 'Other causes', count: 5 }
+    <script>
+        (function (d3) {
+            'use strict';
+            var dataset = [
+                {
+                    label: 'Accidents',
+                    count: 40
+                },
+                {
+                    label: 'Natural causes',
+                    count: 20
+                },
+                {
+                    label: 'Suspect Known',
+                    count: 15
+                },
+                {
+                    label: 'Illness',
+                    count: 20
+                },
+                {
+                    label: 'Other causes',
+                    count: 5
+                }
         ];
-        var width = 240;
-        var height = 270;
-        var radius = Math.min(width, height) / 2;
-        var color = d3.scaleOrdinal()
-            .range(["rgb(255, 77, 77)","rgb(255, 102, 102)","rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)","rgb(255, 230, 230)"]);
-        var svg = d3.select('#chart')
-          .append('svg')
-          .attr('width', width)
-          .attr('height', height)
-          .append('g')
-          .attr('transform', 'translate(' + (width / 2) +
-            ',' + (height / 2) + ')');
-        var arc = d3.arc()
-          .innerRadius(0)
-          .outerRadius(radius);
-        var pie = d3.pie()
-          .value(function(d) { return d.count; })
-          .sort(null);
-        var path = svg.selectAll('path')
-          .data(pie(dataset))
-          .enter()
-          .append('path')
-          .attr('d', arc)
-          .attr('fill', function(d) {
-            return color(d.data.label);
-          });
-      })(window.d3);
+            var width = 240;
+            var height = 270;
+            var radius = Math.min(width, height) / 2;
+            var color = d3.scaleOrdinal()
+                .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
+            var svg = d3.select('#chart')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height)
+                .append('g')
+                .attr('transform', 'translate(' + (width / 2) +
+                    ',' + (height / 2) + ')');
+            var arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius);
+            var pie = d3.pie()
+                .value(function (d) {
+                    return d.count;
+                })
+                .sort(null);
+            var path = svg.selectAll('path')
+                .data(pie(dataset))
+                .enter()
+                .append('path')
+                .attr('d', arc)
+                .attr('fill', function (d) {
+                    return color(d.data.label);
+                });
+        })(window.d3);
     </script>
-    
+
     <script>
         main = new d3.main();
         main.init();
@@ -408,9 +428,9 @@
         });
     </script>
 
-    
-    
-     
+
+
+
 </body>
 
 </html>

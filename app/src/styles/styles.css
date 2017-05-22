@@ -9,6 +9,7 @@
 body {
     background: #474545;
     background-repeat: no-repeat;
+    color: #ffe6e6;
 }
 
 h1 {
@@ -16,10 +17,10 @@ h1 {
     font-size: 75px;
 }
 
-table { 
-    width:350px;
-    border:1px solid black;
-    float:right;
+table {
+    width: 350px;
+    border: 1px solid black;
+    float: right;
     position: relative;
     top: 150px;
     right: 25px;
@@ -27,7 +28,8 @@ table {
     background-color: white;
 }
 
-th, td {
+th,
+td {
     color: black;
     line-height: 20px;
     text-align: left;
@@ -39,7 +41,6 @@ th, td {
 
 #slidemenu {
     position: relative;
-    
 }
 
 #content {
@@ -52,6 +53,10 @@ th, td {
     display: block;
     margin: 0 auto;
     width: 95%;
+}
+
+#graph {
+    padding-top: 55px;
 }
 
 #timeline {
@@ -84,15 +89,13 @@ th, td {
     fill: #f0f0f5;
     stroke: #000;
     stroke-width: 2px;
-     
 }
 
 .selectedState {
-    stroke:  #66c2ff;
-    stroke-width: 5px;
-    z-index: -1;
+    stroke: #66c2ff;
+    stroke-width: 4px;
     position: relative;
-    stroke-dasharray: 5,5
+    stroke-dasharray: 5, 5
 }
 
 .tooltip {
@@ -133,6 +136,8 @@ th, td {
     stroke-width: 0;
 }
 
+
+/*Dropdownmenu */
 .activator {
     margin: auto;
     border: black solid 1px;
@@ -155,20 +160,30 @@ th, td {
 
 .checkboxes {
     display: grid;
+    margin: 0px auto;
+    width: 89.5%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 .checkboxes div {
     font-size: 15px;
-    text-align: center;
+    text-align: left;
+}
+
+.checkboxes label *{
+    display: inline-block;
+}
+
+.checkboxes label{
+    display: block;
+    padding-right: 2px;
+    margin: 2px 0px;
+    
 }
 
 .master_label {
     font-size: 25px;
-}
-
-.master_cat {
-    float: left;
+    
 }
 
 .pull {
@@ -191,11 +206,9 @@ th, td {
 }
 
 #chart {
-
-    float:right;
+    float: right;
     position: relative;
     top: 390px;
     right: -300px;
     margin: 10px;
-    
 }
