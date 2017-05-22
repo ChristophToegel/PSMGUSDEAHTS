@@ -5,7 +5,7 @@ d3.main = function () {
     "use strict";
 
     var that = {},
-        map, data;
+        map, data,infobox;
 
     function init() {
         console.log("init main");
@@ -18,15 +18,23 @@ d3.main = function () {
     function datainitialised() {
         var timeline = new d3.timeline(yearSelected, data);
         timeline.initTimeline();
-        map = new d3.map(data);
+        map = new d3.map(data,stateSelected);
         map.initMap();
+        infobox = new d3.infobox(data);
+        infobox.init();
     }
     
     //year wurde von timeline ausgewählt
-    function yearSelected(curyear) {
-        map.ChoroplethColor(curyear);
+    function yearSelected(year) {
+        map.ChoroplethColor(year);
     }
-
+    
+    //staat wurde geclicked
+    function stateSelected(states){
+        infobox.changeData(states);
+        
+    }
+    
     that.init = init;
     return that;
 };

@@ -30,7 +30,7 @@ d3.timeline = function (displaymap, data) {
             }
         */
         transform = data.getdataTimeline();
-        console.log(data.getdataTimeline());
+        //console.log(data.getdataTimeline());
         var bisectDate = d3.bisector(function (d) {
             return d.name;
         }).left;

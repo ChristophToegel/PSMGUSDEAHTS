@@ -86,12 +86,14 @@ td {
 }
 
 .clearState {
-    fill: #f0f0f5;
+    fill: #ffe6e6;
     stroke: #000;
     stroke-width: 2px;
+    
 }
 
 .selectedState {
+
     stroke: #66c2ff;
     stroke-width: 4px;
     position: relative;
@@ -211,4 +213,7 @@ td {
     top: 390px;
     right: -300px;
     margin: 10px;
+    stroke: #000;
+    stroke-width: 1px;
+
 }
