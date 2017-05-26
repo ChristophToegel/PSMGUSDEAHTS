@@ -190,7 +190,7 @@ d3.data = function (datainitialised) {
     difPlaces=transformObjectToArray(difPlaces);
     //console.log(difPlaces);
         
-        d3.csv("data/testCoordinates.csv", function (coordinates) {
+        d3.csv("data/latlngFordept_name.csv", function (coordinates) {
             //daten können abgefragt werden!
             //console.log("coordinates ready:"+year);
             //console.log(coordinates);
