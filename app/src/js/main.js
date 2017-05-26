@@ -22,6 +22,8 @@ d3.main = function () {
         map.initMap();
         infobox = new d3.infobox(data);
         infobox.init();
+        var menu = new d3.menu(filterSelected);
+        menu.init();
     }
     
     //year wurde von timeline ausgewählt
@@ -33,6 +35,10 @@ d3.main = function () {
     function stateSelected(states){
         infobox.changeData(states);
         
+    }
+    
+    function filterSelected(filters){
+        console.log(filters);
     }
     
     that.init = init;
