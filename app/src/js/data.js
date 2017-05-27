@@ -8,7 +8,7 @@ d3.data = function (datainitialised) {
     "use strict";
 
     var that = {},
-        rawdata, intitialised = false;
+        rawdata;
 
     function initData() {
         d3.csv("data/clean_data.csv", function (csv) {
@@ -22,113 +22,82 @@ d3.data = function (datainitialised) {
         });
         
     }
-    
-    function filterData(year, filters){
-        if (filters == undefined) {
-            var stateYear = rawdata.filter(function (row) {
-                return row['year'] <= year;
+    //year is never undefined?!
+    function filterData(year, filters,state){
+        var filtered;
+        if (filters == undefined && state!=undefined) {
+            filtered = rawdata.filter(function (row) {
+                return row['year'] <= year & row['state'] == state;
             });
-        } else {
-            var stateYear = rawdata.filter(function (row) {
+        } else if (state==undefined && filters!=undefined) {
+            filtered = rawdata.filter(function (row) {
                 return row['year'] <= year & filters.indexOf(row['cause_short']) > -1;
             });
+            
+        } else if(state==undefined && filters == undefined){
+            filtered = rawdata.filter(function (row) {
+                return row['year'] <= year;
+            });
         }
-        return stateYear;
+        return filtered;
     }
 
     //data for the map
     //for every state the number of deaths
     function getMapData(year, filters) {
-        /*if (filters == undefined) {
-            var stateYear = rawdata.filter(function (row) {
-                return row['year'] <= year;
-            });
-        } else {
-            var stateYear = rawdata.filter(function (row) {
-                return row['year'] <= year & filters.indexOf(row['cause_short']) > -1;
-            });
-        }*/
-        var stateYear= filterData(year,filters);
-        var sumStates = sumState(stateYear);
+        var stateYear= filterData(year,filters,undefined);
+        var sumStates = sumData(stateYear,"state");
         //--> { NY: 4,  US: 3,  SC: 1,  NC: 1,  KY: 1, …}
         return transformObjectToArray(sumStates)
     }
 
-    function sumState(data) {
-        var sumData = {};
-        data.forEach(function (i) {
-            sumData[i.state] = (sumData[i.state] || 0) + 1;
-        });
-        return sumData;
-    }
 
     //data for the Infobox
     //for every cause the num of deaths
     function getInfoBoxData(year, state) {
-        if (state == undefined) {
-            var yearCause = rawdata.filter(function (row) {
-                return row['year'] <= year;
-            });
-        } else {
-            var yearCause = rawdata.filter(function (row) {
-                return row['year'] <= year & row['state'] == state;
-            });
-        }
+        var yearCause=filterData(year,undefined,state);
         //alle in detailkategorien
-        var cause = sumCause(yearCause);
-        cause=transformObjectToArray(cause);
-        console.log(cause);
-        //cause in oberkategorien aufteilen
+        var causeDetail = sumData(yearCause, "cause_short");
+        causeDetail=transformObjectToArray(causeDetail);
+        //TODO fest einteilen
         var naturalCauses=["Fall","Drowned","Structure collapse","Fire","Animal related","Weather/Natural disaster","Esposure","Heat exhaustion","Explosion","Asphyxiation"];
         var accidents=["Gunfire(Accident)","Struck by streetcar","Struck by train","Train accident","Electrocuted","Boating accident","Bicycle accident","Struck by vehicle","Automobile accident","Motorcycle accident","Training accident","Aircraft accident"];
         var suspectknown=["Gunfire","Stabbed","Assault","Bomb","Poisoned","Vehicle pursuit","Vehicular assault","Terrorist attack"];
         //TODO detail for others herausfinden
-        //TODO oberkategorie Array mit String dann automatisch mit mainCategory["natural"]!!
         var others=[""];
-        var mainCategory = {natural:0,accidents:0,suspectknown:0};
+        var mainArray={natural:naturalCauses,accidents: accidents,suspectknown: suspectknown};
+        var sumCategory={};
         var total=0;
-        cause.forEach(function (i) {
-            //console.log(i.name);
-            if(naturalCauses.indexOf(i.name) > -1){
-                mainCategory.natural += i.value;
-            }
-            if(accidents.indexOf(i.name) > -1){
-                mainCategory.accidents += i.value;
-            }
-            if(suspectknown.indexOf(i.name) > -1){
-                mainCategory.suspectknown += i.value;
-            }
-            if(others.indexOf(i.name) > -1){
-                mainCategory.others += i.value;
+        causeDetail.forEach(function (i) {
+            for (var category in mainArray){
+               if(mainArray[category].indexOf(i.name) > -1){
+                sumCategory[category] = (sumCategory[category] || 0) + i.value;
+                } 
             }
             total+=i.value;
         });
         
-        mainCategory=transformObjectToArray(mainCategory);
+        sumCategory=transformObjectToArray(sumCategory);
         //TODO 3.Array welche daten werden noch gebraucht?!
-        var response=[mainCategory,cause,{total:total}];
-        //console.log(response);
+        var response=[sumCategory,causeDetail,{total:total}];
+        console.log(response);
         //Array 0 mit Hauptkategorien Array 1 mit detailkat.
         return response;
-    }
-
-    function sumCause(data) {
-        var sumCause = {};
-        data.forEach(function (i) {
-            sumCause[i.cause_short] = (sumCause[i.cause_short] || 0) + 1;
-        });
-        return sumCause;
     }
 
     //data for timelineGraph
     //for every year the number of deaths
     function getdataTimeline() {
-        var sumStates = {};
-        var stateYear = rawdata;
-        stateYear.forEach(function (i) {
-            sumStates[i.year] = (sumStates[i.year] || 0) + 1;
-        });
+        var sumStates= sumData(rawdata,"year");
         return transformObjectToArray(sumStates);
+    }
+    
+    function sumData(data, column){
+        var sumObject = {};
+        data.forEach(function (i) {
+            sumObject[i[column]] = (sumObject[i[column]] || 0) + 1;
+        });
+        return sumObject
     }
 
     function transformObjectToArray(object) {
@@ -142,15 +111,6 @@ d3.data = function (datainitialised) {
         }
         return transform;
     }
-    
-    function sumPlaces(data) {
-        var sumPlaces = {};
-        data.forEach(function (i) {
-            sumPlaces[i.dept_name] = (sumPlaces[i.dept_name] || 0) + 1;
-        });
-        return sumPlaces;
-    }
-
 
     function getMapDrawData(callback) {
         d3.tsv("data/us-state-names.tsv", function (statenames) {
@@ -180,13 +140,8 @@ d3.data = function (datainitialised) {
     //function lat/lng und anzahl der getöteten personen
     function getMapPointData(callback,year,causeArray) {
     //TODO performance verbessern: Daten vorher joinen?
-    if(year==undefined){
-        year=1990;
-    }
-
-    var filtered = filterData(year,causeArray);
-    //console.log(filtered.length);
-    var difPlaces=sumPlaces(filtered);
+    var filtered = filterData(year,causeArray,undefined);
+    var difPlaces=sumData(filtered, "dept_name");
     difPlaces=transformObjectToArray(difPlaces);
     //console.log(difPlaces);
         
