@@ -57,16 +57,32 @@ td {
 
 #graph {
     padding-top: 55px;
-}
-
-#timeline {
     margin: 0 auto;
-    text-align: center;
-    width: 90%;
+    width: 100%;
 }
 
+
+/*brush*/
+.brush {
+  fill: lightgray;
+  fill-opacity: .75;
+  shape-rendering: crispEdges;
+}
+
+circle {
+  fill-opacity: 0.2;
+  transition: fill-opacity 250ms linear;
+}
+
+circle.active {
+  stroke: #f00;
+}
+
+
+
+/* brush */
 #year_selection {
-    font-family: 'Calligraffitti', cursive;
+    font-family: 'Fredericka the Great', cursive;
     font-weight: bold;
     font-size: 5em;
     text-align: left;

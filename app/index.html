@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <link href="src/styles/styles.css" type=text/css rel="stylesheet" />
-    <link href="src/lib/icheck/skins/flat/red.css" rel="stylesheet" />
+    <link href="src/lib/icheck/skins/square/red.css" rel="stylesheet">
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" />
-    <!-- nouse-->
     <link href="https://fonts.googleapis.com/css?family=Calligraffitti|Space+Mono" rel="stylesheet">
-    <!--Old-->
-    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Fredericka+the+Great|Nixie+One|Orbitron|Press+Start+2P" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Fredericka+the+Great|Abel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-    <!--very old -->
+    <!--FONTS END -->
     <title>Todesfälle v0.1</title>
 </head>
 
@@ -27,14 +25,14 @@
                 <div id="Accidents" class="master_cat">
                     <label class="master_label" for="Accidents_master">
                         <div class="icheckbox disabled master accidents" id="Accidents_master">
-                            <input type="checkbox" name="quux[1]" disabled >
+                            <input type="checkbox" name="quux[1]" disabled class="master_input" id="Accidents_master_input">
                         </div>
                         Accidents
                     </label>
 
                     <label for="Gunfire(Accident)">
-                        <div class="icheckbox disabled Accidents" >
-                            <input type="checkbox" name="quux[1]" disabled id="Gunfire(Accident)">
+                        <div class="icheckbox disabled Accidents" id="Gunfire(Accident)">
+                            <input type="checkbox" name="quux[1]" disabled class="input_cat" >
                         </div>
                         Gunfire(Accident)
                     </label>
@@ -109,7 +107,7 @@
                 <div id="Natural_causes" class="master_cat">
                     <label class="master_label">
                         <div class="icheckbox disabled master Natural_causes" id="Natural_causes_master">
-                            <input type="checkbox" name="quux[1]" disabled>
+                            <input type="checkbox" name="quux[1]" class="master_input" disabled >
                         </div>
                         Natural causes
                     </label>
@@ -179,7 +177,7 @@
                 <div id="Suspect_known" class="master_cat">
                     <label class="master_label">
                         <div class="icheckbox disabled master Suspect_known" id="Suspect_known_master">
-                            <input type="checkbox" name="quux[1]" disabled>
+                            <input type="checkbox" name="quux[1]" class="master_input" disabled>
                         </div>
                         Suspect known
                     </label>
@@ -237,7 +235,7 @@
                 <div id="Illness" class="master_cat">
                     <label class="master_label">
                         <div class="icheckbox disabled master Illness" id="Illness_master">
-                            <input type="checkbox" name="quux[1]" disabled>
+                            <input type="checkbox" name="quux[1]" class="master_input" disabled>
                         </div>
                         Illness
                     </label>
@@ -271,7 +269,7 @@
                 <div id="Suspect_known" class="master_cat">
                     <label class="master_label">
                         <div class="icheckbox disabled master Suspect_known" id="Others_master">
-                            <input type="checkbox" name="quux[1]" disabled>
+                            <input type="checkbox" name="quux[1]" class="master_input" disabled>
                         </div>
                         Others
                     </label>
@@ -289,7 +287,7 @@
 
 
     <div id="content">
-        <div class="very_old" id="year_selection">1791 - <span>????</span></div>
+        <div class="very_old" id="year_selection"><span id="yearSel1">1791</span> - <span id="yearSel2">????</span></div>
         <div id="map">
         </div>
         <!--<div id="timeline">
@@ -341,9 +339,10 @@
         </tr>
     </table>
     <div id="chart"></div>
+
+
+    <!-- Scripts -->
     <script src="d3.v4.min.js"></script>
-
-
     <script src="src/lib/d3/d3.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
 
@@ -358,7 +357,9 @@
     <script src="src/js/data.js"></script>
     <script src="src/js/main.js"></script>
     <script src="src/js/piechart.js"></script>
-    <!--pie chart-->
+    <!--pie chart TODO in andere .js-->
+   
+    
     <script>
         (function (d3) {
             'use strict';
@@ -420,14 +421,7 @@
         main.init();
     </script>
 
-    <script>
-        $(document).ready(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_flat-red',
-                radioClass: 'iradio_flat-red'
-            });
-        });
-    </script>
+    
 
 
 
