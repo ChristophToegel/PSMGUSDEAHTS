@@ -41,17 +41,14 @@ d3.timeline = function (yearSelected, data) {
                 bottom: 30,
                 left: 100
             },
-            width = 1500 - margin.left - margin.right,
+            width = 1300 - margin.left - margin.right,
             height = 210 - margin.top - margin.bottom;
 
-        /*
-        var brush = d3.brushX()
-            .extent([[0, 0], [width, height]])
-            .on("brush end", brushed);
-            */
+
         var x = d3.scaleLinear().range([0, width]);
         var y = d3.scaleLinear().range([height, 0]);
 
+        
         var valueline = d3.line()
             .x(function (d) {
                 return x(d.name);
@@ -60,6 +57,7 @@ d3.timeline = function (yearSelected, data) {
                 return y(d.value);
             });
 
+        //Add TimeGraph to graphsvg
         var svg2 = d3.select("#graph")
             .append("svg")
             .attr("class", "timeGraph")
@@ -81,7 +79,6 @@ d3.timeline = function (yearSelected, data) {
             .attr("d", valueline);
 
 
-
         // Add the X Axis
         svg2.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -92,10 +89,37 @@ d3.timeline = function (yearSelected, data) {
         //  .call(d3.axisLeft(y));
 
 
+        //Adding brush --extent defines area, -5 to cover whole graph
+        //http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c
+        var brushScale = d3.scaleLinear().domain([0,width]).range([1792,2016]);
+        
+        var brush = d3.brushX()
+            .extent([[0, -5], [width, height]])
+            .on("brush", brushed);
+
+        
+        //transform brush to graph-area and not svg-area
+        d3.select(".timeGraph")
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .attr("class", "brush")
+            .call(brush)
+            .call(brush.move, x.range());
+
+
+        function brushed() {
+            var selection = d3.event.selection;
+            let date = [parseInt(brushScale(selection[0])),parseInt(brushScale(selection[1]))];
+            updateDateInfo(date);
+                
+
+        }
+
+
+        // Area of the graph under line
         var area = d3.area()
             .x(function (d) {
                 return x(d.name);
-                console.log(d.name);
             })
             .y0(height)
             .y1(function (d) {
@@ -108,36 +132,40 @@ d3.timeline = function (yearSelected, data) {
             .attr("class", "area")
             .attr("d", area);
 
-        //Marker
-        var focus = svg2.append("g")
-            .attr("class", "focus")
-            .style("display", "none");
+        //Marker wieder aktivieren
+        /* var focus = svg2.append("g")
+             .attr("class", "focus")
+             .style("display", "none");
 
-        focus.append("line")
-            .attr("y1", 0)
-            .attr("y2", height)
-
-
-        focus.append("text")
-            .attr("x", 9)
-            .attr("dy", ".35em");
+         focus.append("line")
+             .attr("y1", 0)
+             .attr("y2", height)
 
 
+         focus.append("text")
+             .attr("x", 9)
+             .attr("dy", ".35em");
+
+         */
         //Graphfläche
         svg2.append("rect")
             .attr("class", "overlay")
             .attr("width", width)
             .attr("height", height)
-            .on("mouseover", function () {
+            /*.on("mouseover", function () {
                 focus.style("display", null);
             })
             .on("mouseout", function () {
                 focus.style("display", "none");
             })
-            .on("mousemove", mousemove)
-            .on("click", mouseclick);
-        //test 
-        //}
+            
+            //Marker wieder aktivieren
+            //.on("mousemove", mousemove)
+            //.on("click", mouseclick);
+            */
+
+
+
 
 
         function mouseclick() {
@@ -158,14 +186,17 @@ d3.timeline = function (yearSelected, data) {
                 });
 
             d3.select(".area2").remove();
-
-            svg2.append("path")
+            //slection marker wieder aktiviere
+            /*svg2.append("path")
                 .datum(transform.slice(0, i))
                 .attr("class", "area2")
                 .attr("d", area2);
+
+*/
             yearSelected(d.name);
             updateDateInfo(d.name);
             //console.log(d.name);
+    
         }
 
         function mousemove() {
@@ -187,26 +218,31 @@ d3.timeline = function (yearSelected, data) {
     }
 
     function updateDateInfo(date) {
-        let $yearInfoEl = $("#year_selection span");
+        let $yearInfoEl1 = $("#yearSel1");
+        let $yearInfoEl2 = $("#yearSel2");
 
         // Test für passende Schriftart 
-        if (date < 1889) {
+        /*
+        if (date < 1849) {
+            $yearInfoEl.css("font-family", "'Fredericka the Great', cursive");
+        } else if (date < 1889) {
             $yearInfoEl.css("font-family", "Calligraffitti, cursive");
-            //$yearInfoEl.setAttribute("font-size-adjust",0.5);
-            console.log("sehr alt")
         } else if (date < 1989) {
             $yearInfoEl.css("font-family", "Space Mono, monospace");
             //$yearInfoEl.setAttribute("font-size-adjust",0.5);
-            console.log("alt")
         } else {
-            $yearInfoEl.css("font-family", "Orbitron, sans-serif");
+            $yearInfoEl.css("font-family", "Abel, sans-serif");
             //$yearInfoEl.setAttribute("font-size-adjust",0.5);
-            console.log("neu")
+
         }
+        */
 
-
-        $yearInfoEl.fadeOut(200, function () {
-            $(this).text(date).fadeIn(200);
+        $yearInfoEl1.fadeOut(0, function () {
+            $(this).text(date[0]).fadeIn(0);
+        })
+        
+        $yearInfoEl2.fadeOut(0, function () {
+            $(this).text(date[1]).fadeIn(0);
         })
     }
     
