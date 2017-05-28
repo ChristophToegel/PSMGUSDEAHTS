@@ -1,7 +1,7 @@
 /* eslint-env browser  */
 
 var d3 = d3 || {};
-d3.timeline = function (displaymap, data) {
+d3.timeline = function (yearSelected, data) {
     "use strict";
 
     var that = {},
@@ -163,12 +163,10 @@ d3.timeline = function (displaymap, data) {
                 .datum(transform.slice(0, i))
                 .attr("class", "area2")
                 .attr("d", area2);
-
-            displaymap(d.name);
+            yearSelected(d.name);
             updateDateInfo(d.name);
-            console.log(d.name);
+            //console.log(d.name);
         }
-
 
         function mousemove() {
             var x0 = x.invert(d3.mouse(this)[0]),
@@ -211,7 +209,7 @@ d3.timeline = function (displaymap, data) {
             $(this).text(date).fadeIn(200);
         })
     }
-
+    
     that.initTimeline = initTimeline;
     return that;
 };

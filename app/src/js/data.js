@@ -24,17 +24,21 @@ d3.data = function (datainitialised) {
     }
     //year is never undefined?!
     function filterData(year, filters,state){
+        //wenn kein filter dann filter.length=0
+        console.log(year,filters,state);
         var filtered;
+        //console.log(filters.length===0);
         if (filters == undefined && state!=undefined) {
             filtered = rawdata.filter(function (row) {
                 return row['year'] <= year & row['state'] == state;
             });
-        } else if (state==undefined && filters!=undefined) {
+        } else if (state==undefined && filters.length>0 ) {
             filtered = rawdata.filter(function (row) {
                 return row['year'] <= year & filters.indexOf(row['cause_short']) > -1;
             });
             
-        } else if(state==undefined && filters == undefined){
+            //oder
+        } else if(state==undefined && filters.length===0){
             filtered = rawdata.filter(function (row) {
                 return row['year'] <= year;
             });

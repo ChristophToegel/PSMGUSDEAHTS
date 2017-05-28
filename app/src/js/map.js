@@ -50,7 +50,7 @@ d3.map = function (data, stateSelected) {
     function onMapReady() {
         console.log("map is ready");
         //timeline jetzt aktivieren?!
-        ChoroplethColor("1790");
+        //ChoroplethColor("1790");
         //only for test issue
         //data.getMapPointData(pointsready);
     }
@@ -65,14 +65,16 @@ d3.map = function (data, stateSelected) {
     }
 
     //transformes data from Object to array(Objects) calculates the color and colors the states
-    function ChoroplethColor(curyear) {
+    function ChoroplethColor(transform) {
         //drwas the points
-        data.getMapPointData(pointsready, curyear);
+        
+        //TODO muss über main modul gemacht werden!!!
+        //data.getMapPointData(pointsready, curyear);
 
-        var transform = data.getMapData(curyear);
+        //var transform = data.getMapData(curyear);
         clearMapColor();
-
-
+        //console.log(transform);
+        
         //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
         d3.selection.prototype.moveToFront = function () {
             return this.each(function () {

@@ -66,19 +66,23 @@ d3.menu = function (callback) {
 
     $(document).on("click", ".icheckbox", function () {
         //console.log($("div").not(".master").not(".master_cat"));
-        getCheckedCats();
+        console.log("click auf filters");
+        callback(getCheckedCats());
     });
     
     }
     
+    //fail wird bei jedem click aufgerufen.
     function getCheckedCats() {
         var dic = $("input[type=checkbox]:checked").map(function () {
             return $(this).parent().parent().attr("id");
         }).toArray();
-        callback(dic);
-        //console.log(dic);
+        //console.log("getCheckedCats() wird aufgerufen!");
+        return dic;
+        console.log(dic);
     }
     
+    that.getCheckedCats=getCheckedCats;
     that.init = init;
     return that;
 };
