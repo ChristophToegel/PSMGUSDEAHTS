@@ -1,7 +1,7 @@
 /* eslint-env browser  */
 
-var d3 = d3 || {};
-d3.infobox = function (data) {
+var Index = Index || {};
+Index.infobox = function (data) {
     "use strict";
 
     var that = {};

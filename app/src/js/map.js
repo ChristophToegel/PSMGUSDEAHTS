@@ -1,15 +1,12 @@
 /* eslint-env browser  */
 
-var d3 = d3 || {};
-d3.map = function (mapisready, stateSelected) {
+var Index = Index || {};
+Index.map = function (mapisready, stateSelected) {
     "use strict";
 
     var that = {},
         path, svg, projection;
 
-    //function displaymap(data) {
-    //    console.log(data);
-    //}
     // http://bl.ocks.org/rveciana/a2a1c21ca1c71cd3ec116cc911e5fce9
     function initMap() {
         console.log("init Map");
@@ -29,9 +26,6 @@ d3.map = function (mapisready, stateSelected) {
             .attr("height", height)
             .attr("width", width)
             .attr("id", "mapsvg")
-        
-        //holt sich Mapdaten
-        //data.getMapDrawData(mapdatareceived);
     }
     
 
@@ -49,7 +43,7 @@ d3.map = function (mapisready, stateSelected) {
             })
         console.log("map is ready");
         mapisready();
-        //callback für main map is ready!?!
+        //callback für main
     }
 
     //removes the color for every state
@@ -138,9 +132,6 @@ d3.map = function (mapisready, stateSelected) {
 
                         //callback for main.js
                         stateSelected(selectedStates);
-                    
-                        //Testlog
-                        //returnSelectedStates();
                     });
 
             } else {
@@ -168,7 +159,7 @@ d3.map = function (mapisready, stateSelected) {
 
     //Callback for points
     function pointsready(data) {
-        //console.log(data);
+        console.log(data);
         //points ready to draw
         svg.selectAll(".places").remove();
         svg.append("g")
@@ -194,6 +185,7 @@ d3.map = function (mapisready, stateSelected) {
             .attr("fill", "green")
     }
     
+    that.pointsready=pointsready;
     that.mapdatareceived=mapdatareceived;
     that.returnSelectedStates = returnSelectedStates;
     that.ChoroplethColor = ChoroplethColor;

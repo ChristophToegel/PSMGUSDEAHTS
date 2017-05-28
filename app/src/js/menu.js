@@ -1,8 +1,8 @@
 
 /* eslint-env browser  */
 
-var d3 = d3 || {};
-d3.menu = function (callback) {
+var Index = Index || {};
+Index.menu = function (callback) {
     "use strict";
 
     var that = {};

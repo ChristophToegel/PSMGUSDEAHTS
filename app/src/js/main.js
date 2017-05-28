@@ -1,7 +1,9 @@
 /* eslint-env browser  */
 
-var d3 = d3 || {};
-d3.main = function () {
+//var d3 = d3 || {};
+var Index = Index || {};
+//d3.main = function () {
+Index = (function () {
     "use strict";
 
     var that = {},
@@ -11,27 +13,26 @@ d3.main = function () {
     function init() {
         console.log("init main");
         //daten einlesen
-        data = new d3.data(datainitialised);
+        data = new Index.data(datainitialised);
         data.initData();
+        menu = new Index.menu(filterSelected);
+        map = new Index.map(mapisready,stateSelected);
+        //TODO infobox bekommt aus daten übergeben und nicht data.
+        infobox = new Index.infobox(data);
+        timeline = new Index.timeline(yearSelected);
     }
     
     // Daten würden eingelesen
     function datainitialised() {
-        console.log("data ready");
-        menu = new d3.menu(filterSelected);
         menu.init();
-        map = new d3.map(mapisready,stateSelected);
+        console.log("data ready");
         map.initMap(data.getMapDrawData(map.mapdatareceived));
-        //timeline = new d3.timeline(yearSelected, data);
-        //timeline.initTimeline();
-        infobox = new d3.infobox(data);
         infobox.init();
         
     }
     
     function mapisready(){
         //jetzt timeline aktivieren
-        timeline = new d3.timeline(yearSelected);
         timeline.drawTimeGraph(data.getdataTimeline());
     }
     
@@ -53,12 +54,13 @@ d3.main = function () {
     }
     
     function updateMap(year, filters){
-        console.log("aktuell ausgewählt: "+year+" "+filters);
         var selectedData=data.getMapData(year,filters);
         console.log(selectedData);
         map.ChoroplethColor(selectedData);
+        //for coordinates performance?!
+        data.getMapPointData(map.pointsready,year,filters);
     }
-    
+    init();
     that.init = init;
     return that;
-};
+}());

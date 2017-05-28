@@ -1,7 +1,7 @@
 /* eslint-env browser  */
 
-var d3 = d3 || {};
-d3.timeline = function (yearSelected) {
+var Index = Index || {};
+Index.timeline = function (yearSelected) {
     //TODO: data in main und data.getdataTimeline() übergeben
     "use strict";
 
