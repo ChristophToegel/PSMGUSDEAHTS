@@ -1,15 +1,15 @@
 /* eslint-env browser  */
 
 var d3 = d3 || {};
-d3.map = function (data, stateSelected) {
+d3.map = function (mapisready, stateSelected) {
     "use strict";
 
     var that = {},
         path, svg, projection;
 
-    function displaymap(data) {
-        console.log(data);
-    }
+    //function displaymap(data) {
+    //    console.log(data);
+    //}
     // http://bl.ocks.org/rveciana/a2a1c21ca1c71cd3ec116cc911e5fce9
     function initMap() {
         console.log("init Map");
@@ -18,7 +18,7 @@ d3.map = function (data, stateSelected) {
             height = 600;
 
 
-        //test coordinates
+        //set projection for mapping coordinates
         projection = d3.geoAlbersUsa().translate([width / 2, height / 2])
             .scale(1300);
         path = d3.geoPath()
@@ -29,9 +29,11 @@ d3.map = function (data, stateSelected) {
             .attr("height", height)
             .attr("width", width)
             .attr("id", "mapsvg")
-
-        data.getMapDrawData(mapdatareceived);
+        
+        //holt sich Mapdaten
+        //data.getMapDrawData(mapdatareceived);
     }
+    
 
     function mapdatareceived(states) {
         svg.append("g")
@@ -45,14 +47,9 @@ d3.map = function (data, stateSelected) {
             .attr("id", function (i) {
                 return i.statename
             })
-    }
-
-    function onMapReady() {
         console.log("map is ready");
-        //timeline jetzt aktivieren?!
-        //ChoroplethColor("1790");
-        //only for test issue
-        //data.getMapPointData(pointsready);
+        mapisready();
+        //callback für main map is ready!?!
     }
 
     //removes the color for every state
@@ -65,15 +62,11 @@ d3.map = function (data, stateSelected) {
     }
 
     //transformes data from Object to array(Objects) calculates the color and colors the states
-    function ChoroplethColor(transform) {
+    function ChoroplethColor(data) {
         //drwas the points
-        
         //TODO muss über main modul gemacht werden!!!
         //data.getMapPointData(pointsready, curyear);
-
-        //var transform = data.getMapData(curyear);
         clearMapColor();
-        //console.log(transform);
         
         //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
         d3.selection.prototype.moveToFront = function () {
@@ -103,17 +96,17 @@ d3.map = function (data, stateSelected) {
        
 
         color.domain([
-                d3.min(transform, function (d) {
+                d3.min(data, function (d) {
                 return d.value;
             }),
-                d3.max(transform, function (d) {
+                d3.max(data, function (d) {
                 return d.value;
             })
     ]);
         //liste aller zZ ausgewählten Staaten
         //TODO soll auch für Staaten funktionieren, welche keine toten haben!!
         var selectedStates = [];
-        transform.forEach(function (state) {
+        data.forEach(function (state) {
             state.color = color(state.value);
             //console.log(color(state.value));
             var selector = "#" + state.name;
@@ -200,7 +193,8 @@ d3.map = function (data, stateSelected) {
             .attr("r", "2px")
             .attr("fill", "green")
     }
-
+    
+    that.mapdatareceived=mapdatareceived;
     that.returnSelectedStates = returnSelectedStates;
     that.ChoroplethColor = ChoroplethColor;
     that.initMap = initMap;

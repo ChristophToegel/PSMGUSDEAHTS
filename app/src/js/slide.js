@@ -73,7 +73,7 @@ $(document).ready(function () {
         var dic = $("input[type=checkbox]:checked").map(function () {
             return $(this).parent().parent().attr("id");
         }).toArray();
-
+        console.log(dic);
     }
 
 });

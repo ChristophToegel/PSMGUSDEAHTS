@@ -1,39 +1,4 @@
-/*
-$(document).ready(function () {
-    $(".pull").click(function () {
-        $(".menu").slideToggle("fast");
-    });
 
-
-    $(document).on("click", ".icheckbox", function () {
-        $(this).iCheck("toggle");
-    });
-
-
-    $(".icheckbox.master").on("ifUnchecked", function (event) {
-        $(this).parent().parent().find(".icheckbox").iCheck("uncheck");
-    });
-
-    $(".icheckbox.master").on("ifChecked", function (event) {
-        $(this).parent().parent().find(".icheckbox").iCheck("check");
-    });
-
-    $(document).on("click", ".icheckbox", function () {
-        console.log($("div").not(".master").not(".master_cat"));
-        getCheckedCats();
-    });
-    
-    function getCheckedCats() {
-        var dic = $("input[type=checkbox]:checked").map(function () {
-            return $(this).parent().parent().attr("id");
-        }).toArray();
-
-        console.log(dic);
-    }
-
-});
-
-*/
 /* eslint-env browser  */
 
 var d3 = d3 || {};
@@ -45,41 +10,54 @@ d3.menu = function (callback) {
     function init() {
         console.log("init menu");
         //daten einlesen
+    }
         
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square-red',
+        radioClass: 'iradio_square-red',
+    });
+
     $(".pull").click(function () {
         $(".menu").slideToggle("fast");
     });
-
 
     $(document).on("click", ".icheckbox", function () {
         $(this).iCheck("toggle");
     });
 
 
-    $(".icheckbox.master").on("ifUnchecked", function (event) {
-        $(this).parent().parent().find(".icheckbox").iCheck("uncheck");
+    //Angepasst von https://stackoverflow.com/questions/17820080/function-select-all-and-icheck
+    var checkAll = $('.master_input');
+    var checkboxes = $('input').not(".master_input");
+
+    console.log($("#Accidents_master_input").parent().parent().parent().siblings());
+
+
+    checkAll.on('ifChecked ifUnchecked', function (event) {
+        if (event.type == 'ifChecked') {
+            $(this).parent().parent().parent().siblings().iCheck('check');
+        } else {
+            $(this).parent().parent().parent().siblings().iCheck('uncheck');
+        }
     });
 
-    $(".icheckbox.master").on("ifChecked", function (event) {
-        $(this).parent().parent().find(".icheckbox").iCheck("check");
-    });
-
-    $(document).on("click", ".icheckbox", function () {
-        //console.log($("div").not(".master").not(".master_cat"));
-        console.log("click auf filters");
+    checkboxes.on('ifChanged', function (event) {
+        if ($(this).parent().parent().parent().siblings(".master_label").siblings().find("input").filter(':checked').length == $(this).parent().parent().parent().siblings(".master_label").siblings().find("input").length) {
+            $(this).parent().parent().parent().siblings(".master_label").iCheck("check");
+        } else {
+            $(this).parent().parent().parent().siblings(".master_label").iCheck('uncheck');   
+        }
+        checkAll.iCheck('update');
+        //callback für main
         callback(getCheckedCats());
     });
     
-    }
-    
-    //fail wird bei jedem click aufgerufen.
     function getCheckedCats() {
         var dic = $("input[type=checkbox]:checked").map(function () {
             return $(this).parent().parent().attr("id");
         }).toArray();
-        //console.log("getCheckedCats() wird aufgerufen!");
+        //console.log(dic);
         return dic;
-        console.log(dic);
     }
     
     that.getCheckedCats=getCheckedCats;

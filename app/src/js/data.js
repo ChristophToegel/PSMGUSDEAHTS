@@ -14,10 +14,10 @@ d3.data = function (datainitialised) {
         d3.csv("data/clean_data.csv", function (csv) {
             //daten können abgefragt werden!
             rawdata = csv;
-            console.log("data ready");
             //Callback --> map and timeline
+            //console.log(rawdata);
             datainitialised();
-            
+
             //getInfoBoxData(1890, " TX");
         });
         
@@ -30,17 +30,17 @@ d3.data = function (datainitialised) {
         //console.log(filters.length===0);
         if (filters == undefined && state!=undefined) {
             filtered = rawdata.filter(function (row) {
-                return row['year'] <= year & row['state'] == state;
+                return row['year'] <= year[1] & row['year'] >= year[0] & row['state'] == state;
             });
         } else if (state==undefined && filters.length>0 ) {
             filtered = rawdata.filter(function (row) {
-                return row['year'] <= year & filters.indexOf(row['cause_short']) > -1;
+                return row['year'] <= year[1] & row['year'] >= year[0] & filters.indexOf(row['cause_short']) > -1;
             });
             
             //oder
         } else if(state==undefined && filters.length===0){
             filtered = rawdata.filter(function (row) {
-                return row['year'] <= year;
+                return row['year'] <= year[1] & row['year'] >= year[0];
             });
         }
         return filtered;

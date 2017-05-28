@@ -17,20 +17,27 @@ d3.main = function () {
     
     // Daten würden eingelesen
     function datainitialised() {
-        timeline = new d3.timeline(yearSelected, data);
-        timeline.initTimeline();
-        map = new d3.map(data,stateSelected);
-        map.initMap();
-        infobox = new d3.infobox(data);
-        infobox.init();
+        console.log("data ready");
         menu = new d3.menu(filterSelected);
         menu.init();
+        map = new d3.map(mapisready,stateSelected);
+        map.initMap(data.getMapDrawData(map.mapdatareceived));
+        //timeline = new d3.timeline(yearSelected, data);
+        //timeline.initTimeline();
+        infobox = new d3.infobox(data);
+        infobox.init();
+        
+    }
+    
+    function mapisready(){
+        //jetzt timeline aktivieren
+        timeline = new d3.timeline(yearSelected);
+        timeline.drawTimeGraph(data.getdataTimeline());
     }
     
     //year wurde von timeline ausgewählt
     function yearSelected(curyear) {
         year=curyear;
-        console.log("year will map updaten");
         updateMap(year, menu.getCheckedCats());
     }
     
@@ -41,7 +48,6 @@ d3.main = function () {
     
     function filterSelected(filters){
         //var year=timeline.getYear(); alternative?!
-        console.log("filter will map updaten");
         updateMap(year,filters);
         //console.log(filters);
     }
