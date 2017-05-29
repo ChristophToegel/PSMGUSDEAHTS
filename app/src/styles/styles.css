@@ -82,19 +82,16 @@ circle.active {
 
 /* brush */
 #year_selection {
-    font-family: 'Fredericka the Great', cursive;
+    font-family: 'BenchNine', sans-serif;
     font-weight: bold;
-    font-size: 5em;
+    font-size: 4em;
     text-align: left;
     position: absolute;
-    left: 70%;
+    left: 73%;
     bottom: 85%;
     white-space: nowrap;
 }
 
-#year_selection span {
-    font: inherit;
-}
 
 .button {
     background-color: darkslategray;
