@@ -3,8 +3,8 @@
 //Selects the proper Data from csv and Counts the Deaths for every stats(stored via Object)
 //http://stackoverflow.com/questions/10615290/select-data-from-a-csv-before-loading-it-with-javascript-d3-library
 
-var d3 = d3 || {};
-d3.data = function (datainitialised) {
+var Index = Index || {};
+Index.data = function (datainitialised) {
     "use strict";
 
     var that = {},
@@ -14,29 +14,31 @@ d3.data = function (datainitialised) {
         d3.csv("data/clean_data.csv", function (csv) {
             //daten können abgefragt werden!
             rawdata = csv;
-            console.log("data ready");
             //Callback --> map and timeline
+            //console.log(rawdata);
             datainitialised();
-            
-            //getInfoBoxData(1890, " TX");
+
+            //getInfoBoxData([1890,1920], " TX");
         });
         
     }
     //year is never undefined?!
     function filterData(year, filters,state){
+        //wenn kein filter dann filter.length=0
+        console.log(year,filters,state);
         var filtered;
         if (filters == undefined && state!=undefined) {
             filtered = rawdata.filter(function (row) {
-                return row['year'] <= year & row['state'] == state;
+                return row['year'] <= year[1] & row['year'] >= year[0] & row['state'] == state;
             });
-        } else if (state==undefined && filters!=undefined) {
+        } else if (state==undefined && filters.length>0 ) {
             filtered = rawdata.filter(function (row) {
-                return row['year'] <= year & filters.indexOf(row['cause_short']) > -1;
+                return row['year'] <= year[1] & row['year'] >= year[0] & filters.indexOf(row['cause_short']) > -1;
             });
             
-        } else if(state==undefined && filters == undefined){
+        } else if(state==undefined && filters.length===0){
             filtered = rawdata.filter(function (row) {
-                return row['year'] <= year;
+                return row['year'] <= year[1] & row['year'] >= year[0];
             });
         }
         return filtered;
@@ -139,7 +141,7 @@ d3.data = function (datainitialised) {
 
     //function lat/lng und anzahl der getöteten personen
     function getMapPointData(callback,year,causeArray) {
-    //TODO performance verbessern: Daten vorher joinen?
+    //TODO performance verbessern: Daten vorher joinen
     var filtered = filterData(year,causeArray,undefined);
     var difPlaces=sumData(filtered, "dept_name");
     difPlaces=transformObjectToArray(difPlaces);

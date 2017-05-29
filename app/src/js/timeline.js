@@ -1,36 +1,14 @@
 /* eslint-env browser  */
 
-var d3 = d3 || {};
-d3.timeline = function (displaymap, data) {
+var Index = Index || {};
+Index.timeline = function (yearSelected) {
+    //TODO: data in main und data.getdataTimeline() übergeben
     "use strict";
 
-    var that = {},
-        transform;
+    var that = {};
 
-    function initTimeline() {
+    function drawTimeGraph(timelineData) {
         console.log("init Timeline");
-        drawTimeGraph();
-    }
-
-
-    function drawTimeGraph() {
-        /*var sumDeaths = {};
-        d3.csv("data/clean_data.csv", function (csv) {
-            csv.forEach(function (i) {
-                sumDeaths[i.year] = (sumDeaths[i.year] || 0) + 1;
-
-            });
-            var transform = [];
-            for (var year in sumDeaths) {
-                var year = {
-                    name: year,
-                    value: sumDeaths[year]
-                };
-                transform.push(year);
-            }
-        */
-        transform = data.getdataTimeline();
-        //console.log(data.getdataTimeline());
         var bisectDate = d3.bisector(function (d) {
             return d.name;
         }).left;
@@ -66,15 +44,15 @@ d3.timeline = function (displaymap, data) {
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        x.domain(d3.extent(transform, function (d) {
+        x.domain(d3.extent(timelineData, function (d) {
             return d.name;
         }));
-        y.domain([0, d3.max(transform, function (d) {
+        y.domain([0, d3.max(timelineData, function (d) {
             return d.value;
         })]);
 
         svg2.append("path")
-            .data([transform])
+            .data([timelineData])
             .attr("class", "line")
             .attr("d", valueline);
 
@@ -112,6 +90,9 @@ d3.timeline = function (displaymap, data) {
             let date = [parseInt(brushScale(selection[0])), parseInt(brushScale(selection[1]))];
             updateDateInfo(date);
 
+            //callback für main
+            yearSelected(date);
+
 
         }
 
@@ -128,7 +109,7 @@ d3.timeline = function (displaymap, data) {
 
 
         svg2.append("path")
-            .datum(transform)
+            .datum(timelineData)
             .attr("class", "area")
             .attr("d", area);
 
@@ -171,8 +152,8 @@ d3.timeline = function (displaymap, data) {
         function mouseclick() {
             var x0 = x.invert(d3.mouse(this)[0]),
                 i = bisectDate(transform, x0, 1),
-                d0 = transform[i - 1],
-                d1 = transform[i],
+                d0 = timelineData[i - 1],
+                d1 = timelineData[i],
                 d = x0 - d0.name > d1.name - x0 ? d1 : d0;
             //d.name=year
 
@@ -192,18 +173,17 @@ d3.timeline = function (displaymap, data) {
                 .attr("class", "area2")
                 .attr("d", area2);
 
-            */
-            displaymap(d.name);
+*/          //never called?
+            //yearSelected(d.name);
             updateDateInfo(d.name);
 
         }
 
-
         function mousemove() {
             var x0 = x.invert(d3.mouse(this)[0]),
-                i = bisectDate(transform, x0, 1),
-                d0 = transform[i - 1],
-                d1 = transform[i],
+                i = bisectDate(timelineData, x0, 1),
+                d0 = timelineData[i - 1],
+                d1 = timelineData[i],
                 d = x0 - d0.name > d1.name - x0 ? d1 : d0;
             //console.log("x0 " + x0 + "; i " + i + "; d0 " + d0 + "; d1 " + d1 + "; d " + d);
             //focus.attr("transform", "translate(" + x(d.name) + "," + y(d.value) + ")");
@@ -277,7 +257,7 @@ d3.timeline = function (displaymap, data) {
         })
         */
     }
-
-    that.initTimeline = initTimeline;
+    
+    that.drawTimeGraph = drawTimeGraph;
     return that;
 };

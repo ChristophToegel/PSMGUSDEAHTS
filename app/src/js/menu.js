@@ -1,7 +1,8 @@
+
 /* eslint-env browser  */
 
-var d3 = d3 || {};
-d3.menu = function (callback) {
+var Index = Index || {};
+Index.menu = function (callback) {
     "use strict";
 
     var that = {};
@@ -23,6 +24,9 @@ d3.menu = function (callback) {
         });
 
 
+
+
+
         //Angepasst von https://stackoverflow.com/questions/17820080/function-select-all-and-icheck
         var checkAll = $('.master_input');
         var checkboxes = $('input').not(".master_input");
@@ -42,10 +46,14 @@ d3.menu = function (callback) {
             if ($(this).parent().parent().parent().siblings(".master_label").siblings().find("input").filter(':checked').length == $(this).parent().parent().parent().siblings(".master_label").siblings().find("input").length) {
                 $(this).parent().parent().parent().siblings(".master_label").iCheck("check");
             } else {
-                $(this).parent().parent().parent().siblings(".master_label").iCheck('uncheck');
+                $(this).parent().parent().parent().siblings(".master_label").iCheck('uncheck');   
             }
             checkAll.iCheck('update');
-        });
+        //callback für main
+        callback(getCheckedCats());
+    });
+
+        
 
         /* Alt, ohne "all Checked"
         $(document).on("click", ".icheckbox", function () {
@@ -73,14 +81,18 @@ d3.menu = function (callback) {
         */
     };
 
+
+    //Angepasst von https://stackoverflow.com/questions/17820080/function-select-all-and-icheck
+    
+    
     function getCheckedCats() {
         var dic = $("input[type=checkbox]:checked").map(function () {
             return $(this).parent().parent().attr("id");
         }).toArray();
-
+        return dic;
     }
-
-    that.getCheckedCats = getCheckedCats;
+    
+    that.getCheckedCats=getCheckedCats;
     that.init = init;
     return that;
 
