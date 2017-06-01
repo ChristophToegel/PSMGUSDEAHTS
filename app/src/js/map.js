@@ -159,7 +159,6 @@ Index.map = function (mapisready, stateSelected) {
 
     //Callback for points
     function pointsready(data) {
-        console.log(data);
         //points ready to draw
         svg.selectAll(".places").remove();
         svg.append("g")

@@ -157,16 +157,7 @@ Index.timeline = function (yearSelected) {
                 d = x0 - d0.name > d1.name - x0 ? d1 : d0;
             //d.name=year
 
-            var area2 = d3.area()
-                .x(function (d) {
-                    return x(d.name);
-                })
-                .y0(height)
-                .y1(function (d) {
-                    return y(d.value);
-                });
-
-            d3.select(".area2").remove();
+            
             //slection marker wieder aktiviere
             /*svg2.append("path")
                 .datum(transform.slice(0, i))

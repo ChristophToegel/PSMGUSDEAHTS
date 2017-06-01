@@ -55,7 +55,6 @@ Index = (function () {
     
     function updateMap(year, filters){
         var selectedData=data.getMapData(year,filters);
-        console.log(selectedData);
         map.ChoroplethColor(selectedData);
         //for coordinates performance?!
         data.getMapPointData(map.pointsready,year,filters);

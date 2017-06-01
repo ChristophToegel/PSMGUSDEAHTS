@@ -25,7 +25,6 @@ Index.data = function (datainitialised) {
     //year is never undefined?!
     function filterData(year, filters,state){
         //wenn kein filter dann filter.length=0
-        console.log(year,filters,state);
         var filtered;
         if (filters == undefined && state!=undefined) {
             filtered = rawdata.filter(function (row) {

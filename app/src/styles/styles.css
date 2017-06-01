@@ -63,24 +63,25 @@ td {
 
 
 /*brush*/
+
 .brush {
-  fill: lightgray;
-  fill-opacity: .75;
-  shape-rendering: crispEdges;
+    fill: lightgray;
+    fill-opacity: .75;
+    shape-rendering: crispEdges;
 }
 
 circle {
-  fill-opacity: 0.2;
-  transition: fill-opacity 250ms linear;
+    fill-opacity: 0.2;
+    transition: fill-opacity 250ms linear;
 }
 
 circle.active {
-  stroke: #f00;
+    stroke: #f00;
 }
 
 
-
 /* brush */
+
 #year_selection {
     font-family: 'BenchNine', sans-serif;
     font-weight: bold;
@@ -88,10 +89,9 @@ circle.active {
     text-align: left;
     position: absolute;
     left: 73%;
-    bottom: 85%;
+    bottom: 82%;
     white-space: nowrap;
 }
-
 
 .button {
     background-color: darkslategray;
@@ -102,11 +102,9 @@ circle.active {
     fill: #ffe6e6;
     stroke: #000;
     stroke-width: 2px;
-    
 }
 
 .selectedState {
-
     stroke: #66c2ff;
     stroke-width: 4px;
     position: relative;
@@ -153,12 +151,6 @@ circle.active {
 
 
 /*Dropdownmenu */
-.activator {
-    margin: auto;
-    border: black solid 1px;
-    border-top: none;
-    border-radius: 5%;
-}
 
 .menu {
     background-color: rgba(0, 0, 0, 0.7);
@@ -166,59 +158,88 @@ circle.active {
     border-top: 4px solid rgba(204, 0, 0, 0.5);
     overflow: auto;
     margin: auto;
-    display: none;
     position: relative;
     z-index: 5;
-    display: none;
     width: 100%;
 }
 
-.checkboxes {
+#master_cats_menu {
+    margin: auto;
     display: grid;
-    margin: 0px auto;
-    width: 89.5%;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+    margin-bottom: 3px;
 }
 
-.checkboxes div {
-    font-size: 15px;
-    text-align: left;
+#master_cats_menu label * {
+    display: inline-block
 }
 
-.checkboxes label *{
-    display: inline-block;
-}
-
-.checkboxes label{
+#master_cats_menu label {
     display: block;
-    padding-right: 2px;
-    margin: 2px 0px;
-    
 }
 
 .master_label {
     font-size: 25px;
-    
+}
+.master_label div {
+    margin-right: 2%; 
 }
 
-.pull {
-    margin: auto;
-    text-align: center;
-    display: block;
-    position: relative;
-    width: 150px;
-    height: 20px;
-    font-family: "arial", sans-serif;
-    font-size: 14px;
-    color: whitesmoke;
-    background: rgba(204, 0, 0, 0.5);
-    text-decoration: none;
-    -moz-border-bottom-left-radius: 5px;
-    -moz-border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    cursor: pointer;
+.master_label.active {
+    /*border-bottom: 2px white solid;*/
+    text-decoration: underline;
+    text-underline-position: below;
+    -moz-text-decoration-color: white;
+    text-decoration-color: white;
 }
+
+
+/*ENDE OBERKATEGORIEN */
+
+#checkboxes {
+    width: 5*1300px;
+    margin-top: 2px;
+    transform: translate3d(0, 0, 0);
+    transition: transform .5s ease-in-out;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+#checkboxes label * {
+    display: inline-block;
+}
+
+#checkboxes label {
+    display: inline-block;
+    margin: 2px 0px;
+}
+
+#checkboxes > div {
+    display: inline-block;
+    overflow: hidden;
+    width: 1300px;
+}
+
+.sub_cat {
+    width: 100%;
+}
+
+#checkboxes div label {
+    font-size: 15px;
+    text-align: left;
+    display: inline-block;
+}
+
+#wrapper {
+    margin: auto;
+    width: 1300px;
+    overflow: hidden;
+    border-top: 2px white solid;
+}
+
+
+/* ENDE KATEGORIEN*/
 
 #chart {
     float: right;
@@ -228,5 +249,4 @@ circle.active {
     margin: 10px;
     stroke: #000;
     stroke-width: 1px;
-
 }
