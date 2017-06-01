@@ -318,5 +318,63 @@ function testChoroplethColor(data) {
         }
     });
     console.log(transform);
+    
+    //piechart
+    <script>
+        (function (d3) {
+            'use strict';
+            var dataset = [
+                {
+                    label: 'Accidents',
+                    count: 40
+                },
+                {
+                    label: 'Natural causes',
+                    count: 20
+                },
+                {
+                    label: 'Suspect Known',
+                    count: 15
+                },
+                {
+                    label: 'Illness',
+                    count: 20
+                },
+                {
+                    label: 'Other causes',
+                    count: 5
+                }
+        ];
+            var width = 240;
+            var height = 270;
+            var radius = Math.min(width, height) / 2;
+            var color = d3.scaleOrdinal()
+                .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
+            var svg = d3.select('#chart')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height)
+                .append('g')
+                .attr('transform', 'translate(' + (width / 2) +
+                    ',' + (height / 2) + ')');
+            var arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius);
+            var pie = d3.pie()
+                .value(function (d) {
+                    return d.count;
+                })
+                .sort(null);
+            var path = svg.selectAll('path')
+                .data(pie(dataset))
+                .enter()
+                .append('path')
+                .attr('d', arc)
+                .attr('fill', function (d) {
+                    return color(d.data.label);
+                });
+        })(window.d3);
+    </script>
+
 }
 initmap();
