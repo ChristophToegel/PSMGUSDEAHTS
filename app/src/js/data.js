@@ -64,6 +64,9 @@ Index.data = function (datainitialised) {
         var naturalCauses=["Fall","Drowned","Structure collapse","Fire","Animal related","Weather/Natural disaster","Esposure","Heat exhaustion","Explosion","Asphyxiation"];
         var accidents=["Gunfire(Accident)","Struck by streetcar","Struck by train","Train accident","Electrocuted","Boating accident","Bicycle accident","Struck by vehicle","Automobile accident","Motorcycle accident","Training accident","Aircraft accident"];
         var suspectknown=["Gunfire","Stabbed","Assault","Bomb","Poisoned","Vehicle pursuit","Vehicular assault","Terrorist attack"];
+        var illness=
+        ["Duty related illness","Heart Attack","Exposure to toxins",
+        "9/11 related illness"];
         //TODO detail for others herausfinden
         var others=[""];
         var mainArray={natural:naturalCauses,accidents: accidents,suspectknown: suspectknown};
