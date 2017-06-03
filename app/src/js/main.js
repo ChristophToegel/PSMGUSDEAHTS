@@ -43,14 +43,14 @@ Index = (function () {
     }
     
     //staat wurde geclicked
-    function stateSelected(states){
-        infobox.changeData(states);
+    function stateSelected(state){
+        //TODO hier daten holen!
+        infobox.changeData(state);
     }
     
     function filterSelected(filters){
         //var year=timeline.getYear(); alternative?!
         updateMap(year,filters);
-        //console.log(filters);
     }
     
     function updateMap(year, filters){

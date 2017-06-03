@@ -4,33 +4,45 @@ var Index = Index || {};
 Index.map = function (mapisready, stateSelected) {
     "use strict";
 
+    const width = 1260,
+          height=700;
     var that = {},
-        path, svg, projection;
+        path, svg, projection,zoom,g,selectedState;
 
-    // http://bl.ocks.org/rveciana/a2a1c21ca1c71cd3ec116cc911e5fce9
+    // zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
     function initMap() {
         console.log("init Map");
         //svg in index erstellen lassen!
-        var width = 960,
-            height = 600;
-
+        
+        zoom = d3.zoom()
+        .scaleExtent([1, 8])
+        .on("zoom", zoomed);
 
         //set projection for mapping coordinates
-        projection = d3.geoAlbersUsa().translate([width / 2, height / 2])
+        projection = d3.geoAlbersUsa().translate([(width / 2), height / 2])
             .scale(1300);
+
         path = d3.geoPath()
             .projection(projection);
 
         svg = d3.select("#map")
             .append("svg")
             .attr("height", height)
-            .attr("width", width)
+            .attr("width", width)  
             .attr("id", "mapsvg")
     }
     
+    //zooming
+    function zoomed() {
+        svg.selectAll("circle").attr("transform", d3.event.transform);
+        //console.log("zoom transform: ", d3.event.transform);
+        g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
+        // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
+        g.attr("transform", d3.event.transform); // updated for d3 v4
+    }
 
     function mapdatareceived(states) {
-        svg.append("g")
+        g=svg.append("g")
             .attr("class", "states")
             .selectAll("path")
             .data(states)
@@ -41,10 +53,49 @@ Index.map = function (mapisready, stateSelected) {
             .attr("id", function (i) {
                 return i.statename
             })
+            .on("click", clickedState);
         console.log("map is ready");
         mapisready();
         //callback für main
     }
+    
+    function clickedState(event){
+        console.log(event);
+        //TODO fix staat nur 1mal zoombar, punkte nicht clickbar 
+        if(selectedState!=event.statename){
+            zoomIn(event);
+            //callback für main 1 staat ausgewählt
+            stateSelected(event.statename);
+        }else{
+            zoomOut([]);
+            //callback für main kein staat ausgewählt
+            stateSelected();
+        }
+        selectedState=event.statename;
+        
+    }
+    
+    function zoomIn(event){
+        var bounds = path.bounds(event),
+    //breite und höhe des staates
+      dy = bounds[1][0] - bounds[0][0],
+      dx = bounds[1][1] - bounds[0][1],
+    //mittelpunkt
+      x = (bounds[0][0] + bounds[1][0]) / 2,
+      y = (bounds[0][1] + bounds[1][1]) / 2,
+      scale = Math.max(1, Math.min(8, 0.9 / Math.max(dx / height, dy / width))),
+      translate = [(width / 2 - scale * x), height / 2 - scale * y];
+        //console.log(translate);
+        //console.log(scale);
+    svg.transition().duration(750)
+        .call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) );        
+    }
+    
+    function zoomOut() {
+        svg.transition()
+        .duration(750)
+        .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
+}
 
     //removes the color for every state
     function clearMapColor() {
@@ -115,7 +166,10 @@ Index.map = function (mapisready, stateSelected) {
                         return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
                     }).on("mouseout", function () {
                         return tooltip.style("visibility", "hidden").text(state.name);
-                    }).on("click", function (event) {
+                    })
+                
+                    /*.on("click", function (event) {
+                    
                         if (!stateEl.classed("selectedState")) {
                             stateEl.classed("selectedState", true);
                             stateEl.moveToFront();
@@ -133,6 +187,7 @@ Index.map = function (mapisready, stateSelected) {
                         //callback for main.js
                         stateSelected(selectedStates);
                     });
+                    */
 
             } else {
                 console.log("unknown SateName: " + key);

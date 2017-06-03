@@ -125,7 +125,7 @@ Index.menu = function (callback) {
         return dic;
     }
 
-    //that.getCheckedCats = getCheckedCats;
+    that.getCheckedCats = getCheckedCats;
     that.init = init;
     return that;
 
