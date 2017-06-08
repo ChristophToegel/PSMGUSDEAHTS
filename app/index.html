@@ -309,7 +309,7 @@
             <td colspan="2">State Name</td>
         </tr>
         <tr>
-            <td style="font-weight: bold;" colspan="2">Texas</td>
+            <td style="font-weight: bold;" colspan="2" id=State_Name></td>
         </tr>
         <tr>
         </tr>
@@ -319,23 +319,23 @@
         </tr>
         <tr>
             <td>Accidents</td>
-            <td>1337</td>
+            <td id=Accidents_Number></td>
         </tr>
         <tr>
             <td>Natural causes</td>
-            <td>1337</td>
+            <td id=Natural_Causes></td>
         </tr>
         <tr>
             <td>Suspect known</td>
-            <td>1337</td>
+            <td id=Suspect_Known></td>
         </tr>
         <tr>
             <td>Illness</td>
-            <td>1337</td>
+            <td id=Illness></td>
         </tr>
         <tr>
             <td>Other causes</td>
-            <td>1337</td>
+            <td id=Other_Causes></td>
         </tr>
     </table>
     <div id="chart"></div>
@@ -367,7 +367,7 @@
             var dataset = [
                 {
                     label: 'Accidents',
-                    count: 40
+                    count: 400
                 },
                 {
                     label: 'Natural causes',
@@ -375,7 +375,7 @@
                 },
                 {
                     label: 'Suspect Known',
-                    count: 15
+                    count: 150
                 },
                 {
                     label: 'Illness',
@@ -383,7 +383,7 @@
                 },
                 {
                     label: 'Other causes',
-                    count: 5
+                    count: 512
                 }
         ];
             var width = 240;
@@ -399,7 +399,7 @@
                 .attr('transform', 'translate(' + (width / 2) +
                     ',' + (height / 2) + ')');
             var arc = d3.arc()
-                .innerRadius(0)
+                .innerRadius(80)
                 .outerRadius(radius);
             var pie = d3.pie()
                 .value(function (d) {
@@ -416,6 +416,8 @@
                 });
         })(window.d3);
     </script>
+    
+    
 
 </body>
 

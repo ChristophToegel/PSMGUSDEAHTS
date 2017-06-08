@@ -8,11 +8,11 @@ d3.piechart = function (d3) {
     var dataset = [
         {
             label: 'Abulia',
-            count: 10
+            count: 1000
         },
         {
             label: 'Betelgeuse',
-            count: 20
+            count: 2234
         },
         {
             label: 'Cantaloupe',
@@ -20,7 +20,7 @@ d3.piechart = function (d3) {
         },
         {
             label: 'Dijkstra',
-            count: 40
+            count: 40213
         }
         ];
     var width = 360;
