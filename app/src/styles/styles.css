@@ -225,6 +225,7 @@ circle.active {
     float: right;
     position: relative;
     top: 30px;
+    left: -20px;
 
 }
 
@@ -249,14 +250,18 @@ table {
     right: 25px;
     margin: 10px;
     background-color: white;
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 #chart {
     float: right;
     position: relative;
-    top: 440px;
+    top: 380px;
     right: -290px;
     margin: 10px;
     stroke: #000;
     stroke-width: 1px;
 }
+
+

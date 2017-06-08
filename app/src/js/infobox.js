@@ -13,6 +13,7 @@ Index.infobox = function (data) {
     }
     
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
+    //getInfoboxData illness and others missing?
     function changeData(stateslist){
         console.log("Auswahländerung: "+stateslist);
   
