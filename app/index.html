@@ -303,7 +303,8 @@
         </div>
 
     </div>
-
+    
+    <div id="rightContent">
     <table id="infobox">
         <tr>
             <td colspan="2">State Name</td>
@@ -337,8 +338,12 @@
             <td>Other causes</td>
             <td id=Other_Causes></td>
         </tr>
+        <tr>
+            <td>Total</td>
+            <td id=Total_Number></td>
+        </tr>
     </table>
-    <div id="chart"></div>
+    
 
 
     <!-- Scripts -->
@@ -360,32 +365,33 @@
     <script src="src/js/odometer.min.js"></script>
     <!--pie chart TODO in andere .js-->
 
-
+    <div id=chart>
     <script>
         (function (d3) {
             'use strict';
             var dataset = [
-                {
-                    label: 'Accidents',
-                    count: 400
-                },
-                {
-                    label: 'Natural causes',
-                    count: 20
-                },
-                {
-                    label: 'Suspect Known',
-                    count: 150
-                },
-                {
-                    label: 'Illness',
-                    count: 20
-                },
-                {
-                    label: 'Other causes',
-                    count: 512
-                }
+        {
+            label: 'Accidents',
+            count: 100
+        },
+        {
+            label: 'Natural Causes',
+            count: 200
+        },
+        {
+            label: 'Suspect Known',
+            count: 1000
+        },
+        {
+            label: 'Illness',
+            count: 50
+        },
+        {
+            label: 'Others',
+            count: 10
+        }
         ];
+    
             var width = 240;
             var height = 270;
             var radius = Math.min(width, height) / 2;
@@ -416,6 +422,8 @@
                 });
         })(window.d3);
     </script>
+    </div>
+    </div>
     
     
 

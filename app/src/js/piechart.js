@@ -1,53 +1,69 @@
 /* eslint-env browser  */
 
-var d3 = d3 || {};
-d3.piechart = function (d3) {
-    //https://github.com/zeroviscosity/d3-js-step-by-step/blob/master/step-1-a-basic-pie-chart.html
 
-    'use strict';
-    var dataset = [
+   var Index = Index || {};
+Index.chart = function (data) {
+    "use strict";
+
+
+    
+    
+    function init() {
+        console.log("init chart");
+        
+    }
+    
+    //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
+    function changeData(stateslist){
+        console.log("Auswahländerung: "+stateslist);
+  
+
+        var stateName = document.getElementById('State_Name');
+        stateName.innerHTML= stateslist
+        console.log(stateName);
+        var number = data.getInfoBoxData([1780,1990], " "+stateslist);
+        var numberOfAccidents = data.accidents
+        var accidentsNumber = document.getElementById('Accidents_Number');
+        accidentsNumber.innerHTML=number[0][2].value
+        var naturalCausesNumber = document.getElementById('Natural_Causes');
+        naturalCausesNumber.innerHTML=number[0][1].value
+        var suspectKnownNumber = document.getElementById('Suspect_Known');
+        suspectKnownNumber.innerHTML=number[0][0].value
+        var illnessNumber = document.getElementById('Illness');
+        illnessNumber.innerHTML=number[2].total
+        var otherCausesNumber = document.getElementById('Other_Causes');
+        otherCausesNumber.innerHTML=number[0][1].total
+        var totalNumber = document.getElementById('Total_Number');
+        totalNumber.innerHTML = number[2].total
+        console.log(number);
+ 
+
+    }
+     var dataset = [
         {
-            label: 'Abulia',
-            count: 1000
+            label: 'Accidents',
+            count: changeData.accidentsNumber
         },
         {
-            label: 'Betelgeuse',
-            count: 2234
+            label: 'Natural Causes',
+            count: changeData.naturalCausesNumber
         },
         {
-            label: 'Cantaloupe',
-            count: 30
+            label: 'Suspect Known',
+            count: changeData.suspectknown
         },
         {
-            label: 'Dijkstra',
-            count: 40213
+            label: 'Illness',
+            count: changeData.illnessNumber
+        },
+        {
+            label: 'Others',
+            count: changeData.otherCausesNumber
         }
         ];
-    var width = 360;
-    var height = 360;
-    var radius = Math.min(width, height) / 2;
-    var color = d3.scaleOrdinal(d3.schemeCategory20b);
-    var svg = d3.select('#chart')
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height)
-        .append('g')
-        .attr('transform', 'translate(' + (width / 2) +
-            ',' + (height / 2) + ')');
-    var arc = d3.arc()
-        .innerRadius(0)
-        .outerRadius(radius);
-    var pie = d3.pie()
-        .value(function (d) {
-            return d.count;
-        })
-        .sort(null);
-    var path = svg.selectAll('path')
-        .data(pie(dataset))
-        .enter()
-        .append('path')
-        .attr('d', arc)
-        .attr('fill', function (d) {
-            return color(d.data.label);
-        });
+    
+    that.changeData=changeData;
+    that.init = init;
+    that.dataset = dataset;
+    return that;
 };
