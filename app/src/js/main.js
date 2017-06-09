@@ -45,7 +45,8 @@ Index = (function () {
     //staat wurde geclicked
     function stateSelected(state){
         //TODO hier daten holen!
-        infobox.changeData(state);
+        let boxdata=data.getInfoBoxData(year,state);
+        infobox.changeData(state,boxdata);
     }
     
     function filterSelected(filters){

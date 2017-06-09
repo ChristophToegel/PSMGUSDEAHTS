@@ -5,18 +5,18 @@ Index.map = function (mapisready, stateSelected) {
     "use strict";
 
     const width = 1260,
-          height=700;
+        height = 700;
     var that = {},
-        path, svg, projection,zoom,g,selectedState;
+        path, svg, projection, zoom, g, selectedState;
 
     // zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
     function initMap() {
         console.log("init Map");
         //svg in index erstellen lassen!
-        
+
         zoom = d3.zoom()
-        .scaleExtent([1, 8])
-        .on("zoom", zoomed);
+            .scaleExtent([1, 8])
+            .on("zoom", zoomed);
 
         //set projection for mapping coordinates
         projection = d3.geoAlbersUsa().translate([(width / 2), height / 2])
@@ -28,10 +28,10 @@ Index.map = function (mapisready, stateSelected) {
         svg = d3.select("#map")
             .append("svg")
             .attr("height", height)
-            .attr("width", width)  
+            .attr("width", width)
             .attr("id", "mapsvg")
     }
-    
+
     //zooming
     function zoomed() {
         svg.selectAll("circle").attr("transform", d3.event.transform);
@@ -42,7 +42,7 @@ Index.map = function (mapisready, stateSelected) {
     }
 
     function mapdatareceived(states) {
-        g=svg.append("g")
+        g = svg.append("g")
             .attr("class", "states")
             .selectAll("path")
             .data(states)
@@ -53,49 +53,53 @@ Index.map = function (mapisready, stateSelected) {
             .attr("id", function (i) {
                 return i.statename
             })
-            .on("click", clickedState);
+            .on("click", clickedState)
+        //.on('mousemove', function(d) {console.log(d);});
         console.log("map is ready");
         mapisready();
         //callback für main
     }
-    
-    function clickedState(event){
+
+    function clickedState(event) {
         console.log(event);
         //TODO fix staat nur 1mal zoombar, punkte nicht clickbar 
-        if(selectedState!=event.statename){
+        if (selectedState != event.statename) {
             zoomIn(event);
             //callback für main 1 staat ausgewählt
             stateSelected(event.statename);
-        }else{
+            selectedState = event.statename;
+        } else {
             zoomOut([]);
             //callback für main kein staat ausgewählt
             stateSelected();
+            //nicht schön!
+            selectedState = " ";
         }
-        selectedState=event.statename;
-        
+        //selectedState = event.statename;
+
     }
-    
-    function zoomIn(event){
+
+    function zoomIn(event) {
         var bounds = path.bounds(event),
-    //breite und höhe des staates
-      dy = bounds[1][0] - bounds[0][0],
-      dx = bounds[1][1] - bounds[0][1],
-    //mittelpunkt
-      x = (bounds[0][0] + bounds[1][0]) / 2,
-      y = (bounds[0][1] + bounds[1][1]) / 2,
-      scale = Math.max(1, Math.min(8, 0.9 / Math.max(dx / height, dy / width))),
-      translate = [(width / 2 - scale * x), height / 2 - scale * y];
+            //breite und höhe des staates
+            dy = bounds[1][0] - bounds[0][0],
+            dx = bounds[1][1] - bounds[0][1],
+            //mittelpunkt
+            x = (bounds[0][0] + bounds[1][0]) / 2,
+            y = (bounds[0][1] + bounds[1][1]) / 2,
+            scale = Math.max(1, Math.min(8, 0.9 / Math.max(dx / height, dy / width))),
+            translate = [(width / 2 - scale * x), height / 2 - scale * y];
         //console.log(translate);
         //console.log(scale);
-    svg.transition().duration(750)
-        .call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) );        
+        svg.transition().duration(750)
+            .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
     }
-    
+
     function zoomOut() {
         svg.transition()
-        .duration(750)
-        .call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
-}
+            .duration(750)
+            .call(zoom.transform, d3.zoomIdentity); // updated for d3 v4
+    }
 
     //removes the color for every state
     function clearMapColor() {
@@ -112,7 +116,7 @@ Index.map = function (mapisready, stateSelected) {
         //TODO muss über main modul gemacht werden!!!
         //data.getMapPointData(pointsready, curyear);
         clearMapColor();
-        
+
         //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
         d3.selection.prototype.moveToFront = function () {
             return this.each(function () {
@@ -138,7 +142,7 @@ Index.map = function (mapisready, stateSelected) {
         var color = d3.scaleQuantile()
             .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)",
                      "rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
-       
+
 
         color.domain([
                 d3.min(data, function (d) {
@@ -160,34 +164,37 @@ Index.map = function (mapisready, stateSelected) {
             if (stateEl != null) {
                 //console.log(stateEl);
                 stateEl.style("fill", state.color)
-                    .on("mouseover", function () {
-                        return tooltip.style("visibility", "visible");
-                    }).on("mousemove", function () {
-                        return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
-                    }).on("mouseout", function () {
-                        return tooltip.style("visibility", "hidden").text(state.name);
-                    })
-                
-                    /*.on("click", function (event) {
-                    
-                        if (!stateEl.classed("selectedState")) {
-                            stateEl.classed("selectedState", true);
-                            stateEl.moveToFront();
-                            //TODO test if selection works
-                            selectedStates.push(stateEl["_groups"][0][0].id);
-                            
-                        } else {
-                            //TODO test if remove works
-                            selectedStates = removeState(stateEl["_groups"][0][0].id, selectedStates);
-                            
-                            stateEl.classed("selectedState", false);
-                            stateEl.moveToBack();
-                        }
+                /*.on("mouseover", function () {
+                    return tooltip.style("visibility", "visible");
+                })
+                .on("mousemove", function () {
+                    return tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX + 10) + "px");
+                })
+                .on("mouseout", function () {
+                    return tooltip.style("visibility", "hidden").text(state.name);
+                })
+                */
 
-                        //callback for main.js
-                        stateSelected(selectedStates);
-                    });
-                    */
+                /*.on("click", function (event) {
+                    
+                    if (!stateEl.classed("selectedState")) {
+                        stateEl.classed("selectedState", true);
+                        stateEl.moveToFront();
+                        //TODO test if selection works
+                        selectedStates.push(stateEl["_groups"][0][0].id);
+                        
+                    } else {
+                        //TODO test if remove works
+                        selectedStates = removeState(stateEl["_groups"][0][0].id, selectedStates);
+                        
+                        stateEl.classed("selectedState", false);
+                        stateEl.moveToBack();
+                    }
+
+                    //callback for main.js
+                    stateSelected(selectedStates);
+                });
+                */
 
             } else {
                 console.log("unknown SateName: " + key);
@@ -211,9 +218,18 @@ Index.map = function (mapisready, stateSelected) {
         }).toArray();
         return selectedStates;
     }
+    
+    function createtooltip(){
+        return d3.select("#content").append("div")	
+        .attr("class", "tooltip")				
+        .style("opacity", 0);
+    }
 
     //Callback for points
     function pointsready(data) {
+        //test div tooltip
+        var tooltip =createtooltip();
+
         //points ready to draw
         svg.selectAll(".places").remove();
         svg.append("g")
@@ -237,10 +253,25 @@ Index.map = function (mapisready, stateSelected) {
             })
             .attr("r", "2px")
             .attr("fill", "green")
+            .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("Test <br/>"+d.name)
+                    .style("left", (d3.event.clientX) + "px")
+                    .style("top", (d3.event.clientY)-150 + "px");
+            //console.log(d);
+            //console.log(d3.event);
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
     }
-    
-    that.pointsready=pointsready;
-    that.mapdatareceived=mapdatareceived;
+
+    that.pointsready = pointsready;
+    that.mapdatareceived = mapdatareceived;
     that.returnSelectedStates = returnSelectedStates;
     that.ChoroplethColor = ChoroplethColor;
     that.initMap = initMap;

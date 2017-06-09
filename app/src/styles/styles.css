@@ -252,3 +252,8 @@ circle.active {
     stroke: #000;
     stroke-width: 1px;
 }
+
+div.tooltip{
+    position:absolute;
+    background-color: coral;
+}
