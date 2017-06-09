@@ -11,26 +11,12 @@ Index.infobox = function () {
         console.log("init infobox");
 
     }
-<<<<<<< HEAD
-    
-    //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
-    //getInfoboxData illness and others missing?
-    function changeData(stateslist){
-        console.log("Auswahländerung: "+stateslist);
-  
-=======
->>>>>>> origin/master
 
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
         //console.log("Auswahländerung: "+stateslist);
         boxData=data;
         var stateName = document.getElementById('State_Name');
-<<<<<<< HEAD
-        stateName.innerHTML= stateslist
-        console.log(stateName);
-        var number = data.getInfoBoxData([1780,2016], " "+stateslist);
-=======
         stateName.innerHTML = state;
         //console.log(state);
         var number = data; //data.getInfoBoxData([1780,1990], " TX");
@@ -40,7 +26,6 @@ Index.infobox = function () {
         }
         createArc(data[0]);
         /*
->>>>>>> origin/master
         var numberOfAccidents = data.accidents
         var accidentsNumber = document.getElementById('Accidents_Number');
         accidentsNumber.innerHTML=number[0][2].value

@@ -61,7 +61,7 @@ Index.map = function (mapisready, stateSelected) {
     }
 
     function clickedState(event) {
-        console.log(event);
+        //console.log(event);
         //TODO fix staat nur 1mal zoombar, punkte nicht clickbar 
         if (selectedState != event.statename) {
             zoomIn(event);
