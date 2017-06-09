@@ -25,17 +25,18 @@ Index.data = function (datainitialised) {
     //year is never undefined?!
     function filterData(year, filters,state){
         //wenn kein filter dann filter.length=0
+        //console.log(year,filters,state);
         var filtered;
         if (filters == undefined && state!=undefined) {
             filtered = rawdata.filter(function (row) {
                 return row['year'] <= year[1] & row['year'] >= year[0] & row['state'] == state;
             });
-        } else if (state==undefined && filters.length>0 ) {
+        } else if (state==undefined && (filters!=undefined && filters.length>0) ) {
             filtered = rawdata.filter(function (row) {
                 return row['year'] <= year[1] & row['year'] >= year[0] & filters.indexOf(row['cause_short']) > -1;
             });
             
-        } else if(state==undefined && filters.length===0){
+        } else if(state==undefined && (filters==undefined  || filters.length===0)){
             filtered = rawdata.filter(function (row) {
                 return row['year'] <= year[1] & row['year'] >= year[0];
             });
@@ -56,6 +57,9 @@ Index.data = function (datainitialised) {
     //data for the Infobox
     //for every cause the num of deaths
     function getInfoBoxData(year, state) {
+        //TODO remove!!!
+        if(state!=undefined)state=" "+state;
+        
         var yearCause=filterData(year,undefined,state);
         //alle in detailkategorien
         var causeDetail = sumData(yearCause, "cause_short");
@@ -69,7 +73,7 @@ Index.data = function (datainitialised) {
         "9/11 related illness"];
         //TODO detail for others herausfinden
         var others=[""];
-        var mainArray={natural:naturalCauses,accidents: accidents,suspectknown: suspectknown};
+        var mainArray={natural:naturalCauses,accidents: accidents,suspectknown: suspectknown,illness:illness};
         var sumCategory={};
         var total=0;
         causeDetail.forEach(function (i) {
@@ -84,7 +88,7 @@ Index.data = function (datainitialised) {
         sumCategory=transformObjectToArray(sumCategory);
         //TODO 3.Array welche daten werden noch gebraucht?!
         var response=[sumCategory,causeDetail,{total:total}];
-        console.log(response);
+        //console.log(response);
         //Array 0 mit Hauptkategorien Array 1 mit detailkat.
         return response;
     }
@@ -160,6 +164,8 @@ Index.data = function (datainitialised) {
                         if (coordinates[i].dept_name == place.name) {
                             place.lat = coordinates[i].lat;
                             place.lng = coordinates[i].lng;
+                            // Array description for hover
+                            //place.info = place.info.push(place.)
                         }
                     }
             });

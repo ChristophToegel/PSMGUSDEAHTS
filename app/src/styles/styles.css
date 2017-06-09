@@ -264,4 +264,11 @@ table {
     stroke-width: 1px;
 }
 
+<<<<<<< HEAD
 
+=======
+div.tooltip{
+    position:absolute;
+    background-color: coral;
+}
+>>>>>>> origin/master

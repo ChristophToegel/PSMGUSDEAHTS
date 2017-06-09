@@ -318,23 +318,23 @@
         </tr>
         <tr>
             <td>Accidents</td>
-            <td id=Accidents_Number></td>
+            <td id=accidents></td>
         </tr>
         <tr>
             <td>Natural causes</td>
-            <td id=Natural_Causes></td>
+            <td id=natural></td>
         </tr>
         <tr>
             <td>Suspect known</td>
-            <td id=Suspect_Known></td>
+            <td id=suspectknown></td>
         </tr>
         <tr>
             <td>Illness</td>
-            <td id=Illness></td>
+            <td id=illness></td>
         </tr>
         <tr>
             <td>Other causes</td>
-            <td id=Other_Causes></td>
+            <td id=others></td>
         </tr>
         <tr>
             <td>Total</td>
@@ -350,6 +350,8 @@
     <!--<script src="d3.v4.min.js"></script>-->
     <script src="src/lib/d3/d3.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
+    
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
@@ -361,12 +363,13 @@
     <script src="src/js/infobox.js"></script>
     <script src="src/js/data.js"></script>
     <script src="src/js/main.js"></script>
-    <script src="src/js/piechart.js"></script>
+    <!--<script src="src/js/piechart.js"></script>-->
     <script src="src/js/odometer.min.js"></script>
     <!--pie chart TODO in andere .js-->
 
     <div id=chart>
     <script>
+        /*
         (function (d3) {
             'use strict';
             var dataset = [
@@ -420,10 +423,11 @@
                 .attr('fill', function (d) {
                     return color(d.data.label);
                 });
-        })(window.d3);
+        })(window.d3);*/
     </script>
     </div>
     </div>
+    
     
     
 
