@@ -232,7 +232,7 @@ Index.map = function (mapisready, stateSelected) {
         var tooltip = createtooltip();
         console.log(data);
         //test dif color for value
-        var color = d3.scaleLinear().range(['rgb(0, 150, 0)','rgb(0, 250, 0)']);
+        var color = d3.scaleLinear().range(['rgb(102, 0, 0)','rgb(102, 0, 0)']);
             //.range(["rgb(0, 0, 204)", "rgb(0, 204, 0)", "rgb(204, 0, 0)","rgb(0,0,0)"]);
         color.domain([
                 d3.min(data, function (d) {
@@ -268,12 +268,12 @@ Index.map = function (mapisready, stateSelected) {
                     return 0;
                 }
             })
-            .attr("r", "2px")
+            .attr("r", "2.5px")
             .attr("fill", function (d) { if(d.value==max)return"rgb(250, 250, 250)" ; return color(d.value);})
             .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
-                    .style("opacity", .9);
+                    .style("opacity", 0.3);
                 tooltip.html(d.name + " <br/>" + d.value)
                     .style("left",  d3.event.pageX + "px")
                     .style("top",  d3.event.pageY-172 + "px");
