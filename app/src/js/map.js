@@ -4,7 +4,7 @@ var Index = Index || {};
 Index.map = function (mapisready, stateSelected) {
     "use strict";
 
-    const width = 1260,
+    const width = 1060,
         height = 700;
     var that = {},
         path, svg, projection, zoom, g, selectedState;
@@ -12,10 +12,11 @@ Index.map = function (mapisready, stateSelected) {
     // zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
     function initMap() {
         console.log("init Map");
-        //svg in index erstellen lassen!
 
+        //svg in index erstellen lassen!
+        //enable map zoom
         zoom = d3.zoom()
-            .scaleExtent([1, 8])
+            .scaleExtent([1, 10])
             .on("zoom", zoomed);
 
         //set projection for mapping coordinates
@@ -34,13 +35,14 @@ Index.map = function (mapisready, stateSelected) {
 
     //zooming
     function zoomed() {
+        //verschiebt Coordinaten
         svg.selectAll("circle").attr("transform", d3.event.transform);
-        //console.log("zoom transform: ", d3.event.transform);
+        //verschiebt map
         g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
-        // g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); // not in d3 v4
         g.attr("transform", d3.event.transform); // updated for d3 v4
     }
 
+    //zeichnet die Staaten
     function mapdatareceived(states) {
         g = svg.append("g")
             .attr("class", "states")
@@ -54,15 +56,12 @@ Index.map = function (mapisready, stateSelected) {
                 return i.statename
             })
             .on("click", clickedState)
-        //.on('mousemove', function(d) {console.log(d);});
-        console.log("map is ready");
+        //callback für main wenn map fertig gezeichnet(-->Dateneintragen möglich)
         mapisready();
-        //callback für main
     }
 
     function clickedState(event) {
-        //console.log(event);
-        //TODO fix staat nur 1mal zoombar, punkte nicht clickbar 
+        //TODO Coordinates not clickable 
         if (selectedState != event.statename) {
             zoomIn(event);
             //callback für main 1 staat ausgewählt
@@ -201,39 +200,57 @@ Index.map = function (mapisready, stateSelected) {
             }
         });
     }
+    /*
+        function removeState(state, stateslist) {
+            var newList = [];
+            for (var i = 0; i < stateslist.length; i++) {
+                if (stateslist[i] !== state) newList.push(stateslist[i]);
+            }
+            return newList;
 
-    function removeState(state, stateslist) {
-        var newList = [];
-        for (var i = 0; i < stateslist.length; i++) {
-            if (stateslist[i] !== state) newList.push(stateslist[i]);
         }
-        return newList;
+     
+        function returnSelectedStates() {
+            console.log($(".map>.selectedState"));
+            var selectedStates = $(".selectedState").map(function () {
+                return $(this).attr("id");
+            }).toArray();
+            return selectedStates;
+        }
+        */
 
-    }
 
-    function returnSelectedStates() {
-        console.log($(".map>.selectedState"));
-        var selectedStates = $(".selectedState").map(function () {
-            return $(this).attr("id");
-        }).toArray();
-        return selectedStates;
-    }
-    
-    function createtooltip(){
-        return d3.select("#content").append("div")	
-        .attr("class", "tooltip")				
-        .style("opacity", 0);
+    function createtooltip() {
+        return d3.select("#content").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
     }
 
     //Callback for points
     function pointsready(data) {
         //test div tooltip
-        var tooltip =createtooltip();
-
+        var tooltip = createtooltip();
+        console.log(data);
+        //test dif color for value
+        var color = d3.scaleLinear().range(['rgb(0, 150, 0)','rgb(0, 250, 0)']);
+            //.range(["rgb(0, 0, 204)", "rgb(0, 204, 0)", "rgb(204, 0, 0)","rgb(0,0,0)"]);
+        color.domain([
+                d3.min(data, function (d) {
+                return d.value;
+            }),
+                d3.max(data, function (d) {
+                return d.value;
+            })
+        ]);
+        //viele 0-10 wenige über 100!
+        var max=d3.max(data, function (d) {return d.value; });
+        console.log(max);
         //points ready to draw
         svg.selectAll(".places").remove();
         svg.append("g")
             .attr("class", "places")
+            //not clickabel besprechen??!?!
+            //.style("pointer-events", "none")
             .selectAll("circle")
             .data(data).enter()
             .append("circle")
@@ -252,27 +269,27 @@ Index.map = function (mapisready, stateSelected) {
                 }
             })
             .attr("r", "2px")
-            .attr("fill", "green")
+            .attr("fill", function (d) { if(d.value==max)return"rgb(250, 250, 250)" ; return color(d.value);})
             .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("Test <br/>"+d.name)
-                    .style("left", (d3.event.clientX) + "px")
-                    .style("top", (d3.event.clientY)-150 + "px");
-            //console.log(d);
-            //console.log(d3.event);
+                tooltip.html(d.name + " <br/>" + d.value)
+                    .style("left",  d3.event.pageX + "px")
+                    .style("top",  d3.event.pageY-172 + "px");
+                //console.log(d);
             })
             .on("mouseout", function (d) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
             });
+        
     }
 
     that.pointsready = pointsready;
     that.mapdatareceived = mapdatareceived;
-    that.returnSelectedStates = returnSelectedStates;
+    // that.returnSelectedStates = returnSelectedStates;
     that.ChoroplethColor = ChoroplethColor;
     that.initMap = initMap;
     return that;
