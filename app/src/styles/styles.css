@@ -81,8 +81,8 @@ circle.active {
 
 .clearState {
     fill: #ffe6e6;
-    stroke: #000;
-    stroke-width: 2px;
+    stroke: grey;
+    stroke-width: 1px;
 }
 
 .selectedState {

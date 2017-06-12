@@ -249,6 +249,7 @@ Index.timeline = function (yearSelected) {
         */
     }
     
+  
     that.drawTimeGraph = drawTimeGraph;
     return that;
 };
