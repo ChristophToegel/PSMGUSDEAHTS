@@ -86,10 +86,11 @@ circle.active {
 }
 
 .selectedState {
-    stroke: #66c2ff;
+    /*stroke: #66c2ff;
     stroke-width: 4px;
     position: relative;
-    stroke-dasharray: 5, 5
+    stroke-dasharray: 5, 5*/
+    stroke-width: 1.5px !important;
 }
 
 .tooltip {
@@ -252,6 +253,10 @@ table {
     background-color: white;
     border-collapse: collapse;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 #chart {
