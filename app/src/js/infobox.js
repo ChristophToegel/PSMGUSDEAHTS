@@ -4,7 +4,7 @@ var Index = Index || {};
 Index.infobox = function () {
     "use strict";
 
-    var that = {},boxData;
+    var that = {},boxData,svg, dataset;
 
 
     function init() {
@@ -25,6 +25,7 @@ Index.infobox = function () {
             element.innerHTML = data[0][i].value;
         }
         createArc(data[0]);
+        
         /*
         var numberOfAccidents = data.accidents
         var accidentsNumber = document.getElementById('Accidents_Number');
@@ -45,15 +46,32 @@ Index.infobox = function () {
 
     function createArc(data) {
         //console.log(data);
-        var dataset = data;
-        var width = 240;
-        var height = 270;
+        dataset = data;
+        var width = 440;
+        var height = 470;
         var radius = Math.min(width, height) / 2;
         var color = d3.scaleOrdinal()
             .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
         //removes the existing arc
         d3.select('#chart').select("svg").remove();
-        var svg = d3.select('#chart')
+        //d3.select('#chart2').select("svg2").remove();
+            
+
+         var pie = d3.pie()
+            .value(function (d) {
+                return d.value;
+            })
+            .sort(null);
+        
+        var outerArc = d3.arc()
+            .innerRadius(radius-80)
+            .outerRadius(radius-40);
+
+        var labelArc = d3.arc()
+            .outerRadius(radius - 40)
+            .innerRadius(radius - 40);
+
+        svg = d3.select('#chart')
             .append('svg')
             .attr('width', width)
             .attr('height', height)
@@ -62,18 +80,8 @@ Index.infobox = function () {
                 ',' + (height / 2) + ')');
 
         var arc = d3.arc()
-            .innerRadius(80)
-            .outerRadius(radius);
-
-        var labelArc = d3.arc()
-            .outerRadius(radius - 40)
-            .innerRadius(radius - 40);
-
-        var pie = d3.pie()
-            .value(function (d) {
-                return d.value;
-            })
-            .sort(null);
+            .innerRadius(radius-180)
+            .outerRadius(radius-120);
       
         var path = svg.selectAll('path')
             .append("g")
@@ -99,10 +107,44 @@ Index.infobox = function () {
                 return d.data.name;
             });
     }
+    
+    
+
 
     function detailDataRequested(event){
         console.log(event.data.name);
         //console.log(boxData[1]);
+        var color = d3.scaleOrdinal()
+            .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
+        
+        var width = 340;
+        var height = 370;
+        var radius = Math.min(width, height) / 2;
+        
+        var outerArc = d3.arc()
+            .innerRadius(radius-80)
+            .outerRadius(radius-40);
+
+        var labelArc = d3.arc()
+            .outerRadius(radius)
+            .innerRadius(radius-80);
+
+        var pie = d3.pie()
+            .value(function (d) {
+                return d.value;
+            })
+            .sort(null);
+        
+        var pathtwo = svg.append("g").selectAll('path')
+            .append("g")
+            .data(pie(dataset))
+            .enter()
+            .append('path')
+            .attr('d', outerArc)
+            .attr('fill', function (d) {
+                return color(d.data.name);
+            })
+            .on("click", detailDataRequested);
     }
     
     that.changeData = changeData;
