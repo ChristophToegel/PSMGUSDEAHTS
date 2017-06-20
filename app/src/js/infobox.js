@@ -48,7 +48,7 @@ Index.infobox = function () {
         //console.log(data);
         dataset = data;
         var width = 440;
-        var height = 470;
+        var height = 440;
         var radius = Math.min(width, height) / 2;
         var color = d3.scaleOrdinal()
             .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
@@ -112,22 +112,24 @@ Index.infobox = function () {
 
 
     function detailDataRequested(event){
+        d3.select('#chart').select("svg").remove();
+
         console.log(event.data.name);
         //console.log(boxData[1]);
         var color = d3.scaleOrdinal()
             .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
         
-        var width = 340;
-        var height = 370;
+        var width = 440;
+        var height = 440;
         var radius = Math.min(width, height) / 2;
         
         var outerArc = d3.arc()
-            .innerRadius(radius-80)
-            .outerRadius(radius-40);
+            .innerRadius(radius-120)
+            .outerRadius(radius-70);
 
         var labelArc = d3.arc()
-            .outerRadius(radius)
-            .innerRadius(radius-80);
+            .outerRadius(radius-50)
+            .innerRadius(radius-70);
 
         var pie = d3.pie()
             .value(function (d) {
@@ -145,6 +147,18 @@ Index.infobox = function () {
                 return color(d.data.name);
             })
             .on("click", detailDataRequested);
+        
+        svg.selectAll('text')
+            .append("g")
+            .data(pie(dataset))
+            .enter()
+            .append("text")
+            .attr("transform", function (d) {
+                return "translate(" + labelArc.centroid(d) + ")";
+            })
+            .text(function (d) {
+                return d.data.name;
+            });
     }
     
     that.changeData = changeData;
