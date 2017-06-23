@@ -16,7 +16,7 @@ Index.map = function (mapisready, stateSelected) {
         //svg in index erstellen lassen!
         //enable map zoom
         zoom = d3.zoom()
-            .scaleExtent([1, 10])
+            .scaleExtent([1, 1000])
             .on("zoom", zoomed);
 
         //set projection for mapping coordinates
@@ -167,7 +167,7 @@ Index.map = function (mapisready, stateSelected) {
         var tooltip = createtooltip();
         //console.log(data);
         //test dif color for value
-        var color = d3.scaleLinear().range(['rgb(0, 150, 0)', 'rgb(0, 250, 0)']);
+        var color = d3.scaleQuantile().range(['rgb(0, 250, 0)','rgb(0, 200, 0)','rgb(0, 150, 0)','rgb(0, 100, 0)','rgb(0, 0, 0)']);
         //.range(["rgb(0, 0, 204)", "rgb(0, 204, 0)", "rgb(204, 0, 0)","rgb(0,0,0)"]);
         color.domain([
                 d3.min(data, function (d) {
@@ -186,8 +186,7 @@ Index.map = function (mapisready, stateSelected) {
         svg.selectAll(".places").remove();
         svg.append("g")
             .attr("class", "places")
-            //not clickabel besprechen??!?!
-            //.style("pointer-events", "none")
+            //.attr("class", "notclickabel") points remove funktionerte dann nicht 
             .selectAll("circle")
             .data(data).enter()
             .append("circle")
@@ -223,6 +222,7 @@ Index.map = function (mapisready, stateSelected) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
+            //TODO tooltip löschen
             })
             .on("click", pointClicked);
     }

@@ -1,0 +1,37 @@
+cause_short,id
+Gunfire,01
+Stabbed,02
+Assault,03
+Fall,04
+Drowned,05
+Structure collapse,06
+Fire,07
+Gunfire (Accidental),08
+Animal related,09
+Duty related illness,10
+Heart attack,11
+Weather/Natural disaster,12
+Accidental,13
+Exposure,14
+Heat exhaustion,15
+Struck by streetcar,16
+Struck by train,17
+Bomb,18
+Poisoned,19
+Train accident,20
+Explosion,21
+Electrocuted,22
+Boating accident,23
+Bicycle accident,24
+Struck by vehicle,25
+Automobile accident,26
+Exposure to toxins,27
+Unidentified,28
+Motorcycle accident,29
+Vehicle pursuit,30
+Vehicular assault,31
+Training accident,32
+Aircraft accident,33
+Terrorist attack,34
+9/11 related illness,35
+Asphyxiation,36

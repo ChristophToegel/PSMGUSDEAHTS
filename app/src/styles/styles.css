@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #474545;
+    background: #fff;
     background-repeat: no-repeat;
     color: #ffe6e6;
 }
@@ -143,6 +143,10 @@ circle.active {
     position: relative;
     z-index: 5;
     width: 100%;
+}
+
+.notclickabel{
+    pointer-events:none;
 }
 
 #master_cats_menu {
