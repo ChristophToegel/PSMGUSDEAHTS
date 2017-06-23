@@ -167,7 +167,7 @@ Index.map = function (mapisready, stateSelected) {
         var tooltip = createtooltip();
         //console.log(data);
         //test dif color for value
-        var color = d3.scaleQuantile().range(['rgb(0, 250, 0)','rgb(0, 200, 0)','rgb(0, 150, 0)','rgb(0, 100, 0)','rgb(0, 0, 0)']);
+        var color = d3.scaleQuantile().range(['rgb(0, 100, 0)','rgb(0, 150, 0)','rgb(0, 175, 0)','rgb(0, 200, 0)','rgb(0, 250, 0)']);
         //.range(["rgb(0, 0, 204)", "rgb(0, 204, 0)", "rgb(204, 0, 0)","rgb(0,0,0)"]);
         color.domain([
                 d3.min(data, function (d) {
@@ -183,6 +183,7 @@ Index.map = function (mapisready, stateSelected) {
         });
         console.log(max);
         //points ready to draw
+        //TODO update funktion https://d3js.org/
         svg.selectAll(".places").remove();
         svg.append("g")
             .attr("class", "places")

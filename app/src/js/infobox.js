@@ -14,16 +14,7 @@ Index.infobox = function () {
 
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
-        //console.log("Auswahländerung: "+stateslist);
         boxData=data;
-        var stateName = document.getElementById('State_Name');
-        stateName.innerHTML = state;
-        //console.log(state);
-        var number = data; //data.getInfoBoxData([1780,1990], " TX");
-        for (var i = 0; i < data[0].length; i++) {
-            let element = document.getElementById(data[0][i].name);
-            element.innerHTML = data[0][i].value;
-        }
         createArc(data);
         
         /*
