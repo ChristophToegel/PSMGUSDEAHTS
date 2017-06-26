@@ -305,53 +305,15 @@
     </div>
     
     <div id="rightContent">
-    <table class="table-fill" id="infobox">
-        <thead>
-<tr>
-<th class="text-left">State</th>
-<th class="text-left" id=State_Name></th>
-</tr>
-</thead>
-        <tr>
-            <th>Death Cause</th>
-            <th>Total Number</th>
-        </tr>
-        <tr>
-            <td>Accidents</td>
-            <td id=accidents></td>
-        </tr>
-        <tr>
-            <td>Natural causes</td>
-            <td id=natural></td>
-        </tr>
-        <tr>
-            <td>Suspect known</td>
-            <td id=suspectknown></td>
-        </tr>
-        <tr>
-            <td>Illness</td>
-            <td id=illness></td>
-        </tr>
-        <tr>
-            <td>Other causes</td>
-            <td id=others></td>
-        </tr>
-        <tr>
-            <td>Total</td>
-            <td id=Total_Number></td>
-        </tr>
-    </table>
+        <p></p>
+        <div id=chart></div>
         
-
-
-
+    </div>
+</body>
 
     <!-- Scripts -->
-    <!--<script src="d3.v4.min.js"></script>-->
     <script src="src/lib/d3/d3.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
-    
-
 
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
@@ -365,72 +327,5 @@
     <script src="src/js/main.js"></script>
     <!--<script src="src/js/piechart.js"></script>-->
     <script src="src/js/odometer.min.js"></script>
-    <!--pie chart TODO in andere .js-->
-
-    <div id=chart>
-    <script>
-        /*
-        (function (d3) {
-            'use strict';
-            var dataset = [
-        {
-            label: 'Accidents',
-            count: 100
-        },
-        {
-            label: 'Natural Causes',
-            count: 200
-        },
-        {
-            label: 'Suspect Known',
-            count: 1000
-        },
-        {
-            label: 'Illness',
-            count: 50
-        },
-        {
-            label: 'Others',
-            count: 10
-        }
-        ];
-    
-            var width = 240;
-            var height = 270;
-            var radius = Math.min(width, height) / 2;
-            var color = d3.scaleOrdinal()
-                .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
-            var svg = d3.select('#chart')
-                .append('svg')
-                .attr('width', width)
-                .attr('height', height)
-                .append('g')
-                .attr('transform', 'translate(' + (width / 2) +
-                    ',' + (height / 2) + ')');
-            var arc = d3.arc()
-                .innerRadius(80)
-                .outerRadius(radius);
-            var pie = d3.pie()
-                .value(function (d) {
-                    return d.count;
-                })
-                .sort(null);
-            var path = svg.selectAll('path')
-                .data(pie(dataset))
-                .enter()
-                .append('path')
-                .attr('d', arc)
-                .attr('fill', function (d) {
-                    return color(d.data.label);
-                });
-        })(window.d3);*/
-    </script>
-    </div>
-    </div>
-    
-    
-    
-
-</body>
 
 </html>

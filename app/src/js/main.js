@@ -34,6 +34,9 @@ Index = (function () {
     function mapisready(){
         //jetzt timeline aktivieren
         timeline.drawTimeGraph(data.getdataTimeline());
+        //piechart alle staaten
+        let boxdata=data.getInfoBoxData(year,undefined);
+        infobox.changeData(undefined,boxdata);
     }
     
     //year wurde von timeline ausgewählt
@@ -44,7 +47,6 @@ Index = (function () {
     
     //staat wurde geclicked
     function stateSelected(state){
-        //TODO hier daten holen!
         let boxdata=data.getInfoBoxData(year,state);
         infobox.changeData(state,boxdata);
     }
@@ -57,9 +59,9 @@ Index = (function () {
     function updateMap(year, filters){
         var selectedData=data.getMapData(year,filters);
         map.ChoroplethColor(selectedData);
-        //for coordinates performance?!
         data.getMapPointData(map.pointsready,year,filters);
     }
+    
     init();
     that.init = init;
     return that;

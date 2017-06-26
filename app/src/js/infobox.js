@@ -3,90 +3,77 @@
 var Index = Index || {};
 Index.infobox = function () {
     "use strict";
-
-    var that = {},boxData;
+    
+    const width = 440,
+        height = 440,
+          thickness=50,
+          color = d3.scaleOrdinal()
+                .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
+    var that = {},svg;
 
 
     function init() {
         console.log("init infobox");
-
+        createSvg();
+        
     }
 
+    function createSvg(){
+        svg = d3.select('#chart')
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height);
+    }
+    
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
-        //console.log("Auswahländerung: "+stateslist);
-        boxData=data;
-        var stateName = document.getElementById('State_Name');
-        stateName.innerHTML = state;
-        //console.log(state);
-        var number = data; //data.getInfoBoxData([1780,1990], " TX");
-        for (var i = 0; i < data[0].length; i++) {
-            let element = document.getElementById(data[0][i].name);
-            element.innerHTML = data[0][i].value;
-        }
-        createArc(data[0]);
-        /*
-        var numberOfAccidents = data.accidents
-        var accidentsNumber = document.getElementById('Accidents_Number');
-        accidentsNumber.innerHTML=number[0][2].value
-        var naturalCausesNumber = document.getElementById('Natural_Causes');
-        naturalCausesNumber.innerHTML=number[0][1].value
-        var suspectKnownNumber = document.getElementById('Suspect_Known');
-        suspectKnownNumber.innerHTML=number[0][0].value
-        var illnessNumber = document.getElementById('Illness');
-        illnessNumber.innerHTML=number[2].total
-        var otherCausesNumber = document.getElementById('Other_Causes');
-        otherCausesNumber.innerHTML=number[0][1].total
-        var totalNumber = document.getElementById('Total_Number');
-        totalNumber.innerHTML = number[2].total
-        console.log(number);
-        */
+        createArc(data);
     }
 
     function createArc(data) {
-        //console.log(data);
-        var dataset = data;
-        var width = 240;
-        var height = 270;
         var radius = Math.min(width, height) / 2;
-        var color = d3.scaleOrdinal()
-            .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
         //removes the existing arc
-        d3.select('#chart').select("svg").remove();
-        var svg = d3.select('#chart')
-            .append('svg')
-            .attr('width', width)
-            .attr('height', height)
-            .append('g')
-            .attr('transform', 'translate(' + (width / 2) +
-                ',' + (height / 2) + ')');
-
-        var arc = d3.arc()
-            .innerRadius(80)
-            .outerRadius(radius);
-
-        var labelArc = d3.arc()
-            .outerRadius(radius - 40)
-            .innerRadius(radius - 40);
-
-        var pie = d3.pie()
+        d3.select('#chart').selectAll("g").remove();            
+       
+         var pie = d3.pie()
             .value(function (d) {
                 return d.value;
             })
             .sort(null);
+
+        var innerchart= svg.append('g')
+            .attr('transform', 'translate(' + (width / 2) +
+              ',' + (height / 2) + ')');
+
+        var arc = d3.arc()
+            .innerRadius(width-7*thickness)
+            .outerRadius(width-6*thickness);
       
-        var path = svg.selectAll('path')
+        var path = innerchart.selectAll('path')
             .append("g")
-            .data(pie(dataset))
+            .data(pie(data))
             .enter()
             .append('path')
             .attr('d', arc)
             .attr('fill', function (d) {
                 return color(d.data.name);
             })
+            .on("mouseover", function (d) {
+                let el=d3.select(this);
+                el.classed("pieselected",true);
+                markPie(el);
+            })
+            .on("mouseout", function (d) {
+               let el=d3.select(this);
+                el.classed("pieselected",false);
+            })
             .on("click", detailDataRequested);
         
-      //add textLabel
+      /*//add textLabel 
+       var labelArc = d3.arc()
+            .outerRadius(radius-50)
+            .innerRadius(radius-70);
+            
         svg.selectAll('text')
             .append("g")
             .data(pie(dataset))
@@ -98,11 +85,69 @@ Index.infobox = function () {
             .text(function (d) {
                 return d.data.name;
             });
+            */
+    }
+    
+    //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
+    function markPie(el) {
+        //el._groups[0][0].classList.add("selectedState");
+        d3.selection.prototype.moveToFront = function () {
+            return this.each(function () {
+                this.parentNode.appendChild(this);
+            });
+        };
+        el.moveToFront()
+    }
+    
+    function createTextClicked(name, value){
+        svg.select(".text").remove();
+        var textfield= svg.append('g').classed("text",true)
+            .attr('transform', 'translate(' + (width / 2) +
+              ',' + (height / 2) + ')');
+        textfield.append('text').html(name+" <br/> "+value);
     }
 
+
     function detailDataRequested(event){
-        console.log(event.data.name);
-        //console.log(boxData[1]);
+        createTextClicked(event.data.name,event.data.value);
+        
+        var data =event.data.array;
+        var radius = Math.min(width, height) / 2;
+        
+        var outerArc = d3.arc()
+            .innerRadius(width-6*thickness)
+            .outerRadius(width-5*thickness);
+
+        var pie = d3.pie()
+            .value(function (d) {
+                return d.value;
+            })
+            .sort(null);
+        
+        svg.select(".secondarc").remove();
+        var outerchart= svg.append('g').classed("secondarc",true)
+            .attr('transform', 'translate(' + (width / 2) +
+              ',' + (height / 2) + ')');
+        
+        var path = outerchart.selectAll('path')
+            .append("g")
+            .data(pie(data))
+            .enter()
+            .append('path')
+            .attr('d', outerArc)
+            .attr('fill', function (d) {
+                return color(d.data.name);
+            })
+            .on("mouseover", function (d) {
+                let el=d3.select(this);
+                el.classed("pieselected",true);
+                markPie(el);
+            })
+            .on("mouseout", function (d) {
+               let el=d3.select(this);
+                el.classed("pieselected",false);
+            })
+        
     }
     
     that.changeData = changeData;
