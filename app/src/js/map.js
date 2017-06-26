@@ -85,6 +85,7 @@ Index.map = function (mapisready, stateSelected) {
     function markState(name) {
         var el = d3.select("#" + name);
         el._groups[0][0].classList.add("selectedState");
+        //check if this works el.classed("selectedState",true)
         d3.selection.prototype.moveToFront = function () {
             return this.each(function () {
                 this.parentNode.appendChild(this);
@@ -105,6 +106,9 @@ Index.map = function (mapisready, stateSelected) {
             translate = [(width / 2 - scale * x), height / 2 - scale * y];
         svg.transition().duration(750)
             .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
+        console.log("zoomin")
+        svg.selectAll(".places").classed("notclickabel",false)
+        //svg.selectAll(".states").classed("notclickabel",true)
     }
 
     function zoomOut() {
@@ -112,6 +116,8 @@ Index.map = function (mapisready, stateSelected) {
         svg.transition()
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
+        svg.selectAll(".places").classed("notclickabel",true)
+        svg.selectAll(".states").classed("notclickabel",false)
     }
 
     //removes the color for every state
@@ -142,7 +148,7 @@ Index.map = function (mapisready, stateSelected) {
         //liste aller zZ ausgewählten Staaten
         data.forEach(function (state) {
             state.color = color(state.value);
-            //console.log(color(state.value));
+            var tooltip = createtooltip();
             var selector = "#" + state.name;
             selector = selector.replace(" ", "");
             var stateEl = d3.select(selector);
@@ -151,7 +157,24 @@ Index.map = function (mapisready, stateSelected) {
             } else {
                 console.log("unknown SateName: " + key);
             }
+            /*
+            stateEl.on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html(d.statename)
+                    .style("left", d3.event.pageX + "px")
+                    .style("top", d3.event.pageY - 172 + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            //TODO tooltip löschen
+            })
+            */
         });
+        
     }
 
     function createtooltip() {
@@ -167,8 +190,7 @@ Index.map = function (mapisready, stateSelected) {
         var tooltip = createtooltip();
         //console.log(data);
         //test dif color for value
-        var color = d3.scaleQuantile().range(['rgb(0, 100, 0)','rgb(0, 150, 0)','rgb(0, 175, 0)','rgb(0, 200, 0)','rgb(0, 250, 0)']);
-        //.range(["rgb(0, 0, 204)", "rgb(0, 204, 0)", "rgb(204, 0, 0)","rgb(0,0,0)"]);
+        var color = d3.scaleQuantize().range(["rgb(0, 0, 255)", "rgb(255, 0, 0)", "rgb(0, 255, 0"]);
         color.domain([
                 d3.min(data, function (d) {
                 return d.value.length;
@@ -183,16 +205,35 @@ Index.map = function (mapisready, stateSelected) {
         });
         console.log(max);
         //points ready to draw
-        //TODO update funktion https://d3js.org/
-        svg.selectAll(".places").remove();
+        svg.select(".places").remove();
+        
+        //TODO update funktion https://d3js.org/ nachfragen!
+        /*
+        //update places
+        if(d3.select(".places").empty()){
+            var places=svg.append("g")
+            .attr("class", "places")
+            .selectAll("circle")
+            .data(data).enter();
+            
+        }else
+        //update
+        {
+            var places = d3.select(".places")
+            .selectAll("circle")
+            .data(data)
+        }
+        */
+        
+        //https://stackoverflow.com/questions/29624745/d3-insert-vs-append-in-context-of-creating-nodes-on-mousemove performance update
         svg.append("g")
             .attr("class", "places")
-            //.attr("class", "notclickabel") points remove funktionerte dann nicht 
+            .classed("notclickabel",true) 
             .selectAll("circle")
             .data(data).enter()
-            .append("circle")
+            //places
+            .insert("circle")
             .attr("cx", function (d) {
-                //console.log(d);
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[0];
                 } else {
@@ -226,6 +267,7 @@ Index.map = function (mapisready, stateSelected) {
             //TODO tooltip löschen
             })
             .on("click", pointClicked);
+        
     }
 
     function pointClicked(data) {

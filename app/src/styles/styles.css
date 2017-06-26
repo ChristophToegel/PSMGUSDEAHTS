@@ -93,8 +93,17 @@ circle.active {
     stroke-width: 1.5px !important;
 }
 
+.pieselected{
+    stroke: #000000;
+    stroke-width: 6px;
+}
+
 .tooltip {
-    border: 5px solid #000;
+    position: absolute;
+    color: black;
+    border: 1px solid #000;
+    padding: 3px;
+    background-color:snow;
 }
 
 .overlay {
@@ -224,7 +233,6 @@ circle.active {
     border-top: 2px white solid;
 }
 
-
 /* ENDE KATEGORIEN*/
 #rightContent {
     float: right;
@@ -234,8 +242,7 @@ circle.active {
 
 }
 
-
-
+/*
 th,
 td {
     color: black;
@@ -258,6 +265,7 @@ table {
     border-collapse: collapse;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
+*/
 
 .hidden {
     visibility: hidden;
@@ -272,12 +280,3 @@ table {
     stroke: lightgray;
     stroke-width: 1px;
 }
-
-
-
-
-div.tooltip{
-    position:absolute;
-    background-color: coral;
-}
-
