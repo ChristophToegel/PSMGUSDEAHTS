@@ -82,15 +82,19 @@ circle.active {
 .clearState {
     fill: #ffe6e6;
     stroke: grey;
-    stroke-width: 1px;
+    stroke-width: 1px; 
 }
 
 .selectedState {
-    /*stroke: #66c2ff;
-    stroke-width: 4px;
-    position: relative;
-    stroke-dasharray: 5, 5*/
     stroke-width: 1.5px !important;
+}
+
+.zoomed {
+    stroke-width: 0.20px
+}
+
+.hoverState{
+    stroke-width: 2.5px; !important;
 }
 
 .pieselected{
