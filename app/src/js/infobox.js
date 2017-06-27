@@ -60,12 +60,13 @@ Index.infobox = function () {
             })
             .on("mouseover", function (d) {
                 let el=d3.select(this);
-                el.classed("pieselected",true);
-                markPie(el);
+                let percentage=parseFloat((d.endAngle - d.startAngle)/(2*Math.PI)*100).toFixed(2) +" %"
+                createTextCenter(d.data.value,d.data.name,percentage);
+                el.classed("piehover",true);
             })
             .on("mouseout", function (d) {
                let el=d3.select(this);
-                el.classed("pieselected",false);
+                el.classed("piehover",false);
             })
             .on("click", detailDataRequested);
         
@@ -90,7 +91,6 @@ Index.infobox = function () {
     
     //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
     function markPie(el) {
-        //el._groups[0][0].classList.add("selectedState");
         d3.selection.prototype.moveToFront = function () {
             return this.each(function () {
                 this.parentNode.appendChild(this);
@@ -99,24 +99,40 @@ Index.infobox = function () {
         el.moveToFront()
     }
     
-    function createTextClicked(name, value){
+    function createTextCenter(name, value, percentage){
         svg.select(".text").remove();
+        //TODO startposition des Textfeldes über g bestimmen!!
         var textfield= svg.append('g').classed("text",true)
-            .attr('transform', 'translate(' + (width / 2) +
-              ',' + (height / 2) + ')');
-        textfield.append('text').html(name+" <br/> "+value);
+            .attr('transform', 'translate(185, 200 )');
+        
+        textfield.append("text").selectAll("text").data([name,value,percentage])
+                        .enter()
+                        .append("tspan")
+                        .text(function (d) {
+                        return d;
+                        })
+                        .attr("x",function (d,i) {
+                            return 0;
+                            })
+                        .attr("y",function (d,i) {
+                            return i*20;
+                            });
     }
 
 
     function detailDataRequested(event){
-        createTextClicked(event.data.name,event.data.value);
+        let el=d3.select(this);
+        var mainpercentage=parseFloat((event.endAngle - event.startAngle)/(2*Math.PI)).toFixed(4);
+        markPie(el);
+        d3.selectAll(".pieselected").classed("pieselected",false)
+        el.classed("pieselected",true);
         
         var data =event.data.array;
         var radius = Math.min(width, height) / 2;
         
         var outerArc = d3.arc()
-            .innerRadius(width-6*thickness)
-            .outerRadius(width-5*thickness);
+            .innerRadius(width-6*thickness+2)
+            .outerRadius(width-5*thickness+2);
 
         var pie = d3.pie()
             .value(function (d) {
@@ -140,12 +156,18 @@ Index.infobox = function () {
             })
             .on("mouseover", function (d) {
                 let el=d3.select(this);
-                el.classed("pieselected",true);
-                markPie(el);
+                el.classed("piehover",true);
+                let percentage=parseFloat((d.endAngle - d.startAngle)/(2*Math.PI)*mainpercentage*100).toFixed(2) +" %"
+                createTextCenter(d.data.value,d.data.name,percentage);
             })
             .on("mouseout", function (d) {
                let el=d3.select(this);
-                el.classed("pieselected",false);
+                el.classed("piehover",false);
+            })
+            .on("click", function(d){
+                let el=d3.select(this);
+                el.classed("pieselected",true);
+                markPie(el);
             })
         
     }
