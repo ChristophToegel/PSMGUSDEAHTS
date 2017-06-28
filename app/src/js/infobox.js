@@ -27,13 +27,15 @@ Index.infobox = function () {
     
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
+        d3.select('#chart').selectAll("g").remove(); 
         createArc(data);
+        createTextLeftCorner(state);
     }
 
     function createArc(data) {
         var radius = Math.min(width, height) / 2;
         //removes the existing arc
-        d3.select('#chart').selectAll("g").remove();            
+        //d3.select('#chart').selectAll("g").remove();            
        
          var pie = d3.pie()
             .value(function (d) {
@@ -68,7 +70,15 @@ Index.infobox = function () {
                let el=d3.select(this);
                 el.classed("piehover",false);
             })
-            .on("click", detailDataRequested);
+            .on("click", detailDataRequested)
+            .transition()
+            .ease(d3.easeLinear)
+            .duration(200)
+            .attrTween("d", function(d){
+                d.innerRadius=0;
+                var i= d3.interpolate({startAngle:0, endAngle:0},d);
+                return function(t){return arc(i(t));};
+            });
         
       /*//add textLabel 
        var labelArc = d3.arc()
@@ -118,11 +128,53 @@ Index.infobox = function () {
                             return i*20;
                             });
     }
+    
+    function createTextRightCorner(name, percentage){
+        svg.select(".textselected").remove();
+        //TODO startposition des Textfeldes über g bestimmen!!
+        var textfield= svg.append('g').classed("textselected",true)
+            .attr('transform', 'translate(335, 20 )');
+        
+        textfield.append("text").selectAll("text").data([name,percentage])
+                        .enter()
+                        .append("tspan")
+                        .text(function (d) {
+                        return d;
+                        })
+                        .attr("x",function (d,i) {
+                            return 0;
+                            })
+                        .attr("y",function (d,i) {
+                            return i*20;
+                            });
+    }
+    
+    function createTextLeftCorner(state){
+        svg.select(".textstate").remove();
+        //TODO startposition des Textfeldes über g bestimmen!!
+        var textfield= svg.append('g').classed("textstate",true)
+            .attr('transform', 'translate(50, 20 )');
+        
+        textfield.append("text").selectAll("text").data([state])
+                        .enter()
+                        .append("tspan")
+                        .text(function (d) {
+                        return d;
+                        })
+                        .attr("x",function (d,i) {
+                            return 0;
+                            })
+                        .attr("y",function (d,i) {
+                            return i*20;
+                            });
+    }
 
 
     function detailDataRequested(event){
         let el=d3.select(this);
+        console.log(event);
         var mainpercentage=parseFloat((event.endAngle - event.startAngle)/(2*Math.PI)).toFixed(4);
+        createTextRightCorner(event.data.name,mainpercentage*100+"%");
         markPie(el);
         d3.selectAll(".pieselected").classed("pieselected",false)
         el.classed("pieselected",true);
@@ -130,6 +182,7 @@ Index.infobox = function () {
         var data =event.data.array;
         var radius = Math.min(width, height) / 2;
         
+        // arc
         var outerArc = d3.arc()
             .innerRadius(width-6*thickness+2)
             .outerRadius(width-5*thickness+2);
@@ -164,12 +217,30 @@ Index.infobox = function () {
                let el=d3.select(this);
                 el.classed("piehover",false);
             })
-            .on("click", function(d){
-                let el=d3.select(this);
-                el.classed("pieselected",true);
-                markPie(el);
-            })
+            //.on("click", function(d){
+            //    let el=d3.select(this);
+            //    el.classed("pieselected",true);
+            //    markPie(el);
+            //})
+            .transition()
+            .ease(d3.easeLinear)
+            .duration(200)
+            .attrTween("d", function(d){
+                d.innerRadius=0;
+                var i= d3.interpolate({startAngle:0, endAngle:0},d);
+                return function(t){return outerArc(i(t));};
+            });
         
+    }
+    
+    //muss arc bekommen 
+    function pieAnimation(d){
+        //var arc = d3.arc()
+        //    .innerRadius(width-6*thickness+2)
+        //    .outerRadius(width-5*thickness+2);
+        d.innerRadius=0;
+        var i= d3.interpolate({startAngle:0, endAngle:0},d);
+        return function(t){return arc(i(t));};
     }
     
     that.changeData = changeData;
