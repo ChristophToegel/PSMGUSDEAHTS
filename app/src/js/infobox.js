@@ -3,9 +3,10 @@
 var Index = Index || {};
 Index.infobox = function () {
     "use strict";
+    console.log($("#chart").width());
     
-    const width = 440,
-        height = 440,
+    const width = $("#chart").width(),
+        height = width,
           thickness=50,
           color = d3.scaleOrdinal()
                 .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
@@ -42,12 +43,12 @@ Index.infobox = function () {
             .sort(null);
 
         var innerchart= svg.append('g')
-            .attr('transform', 'translate(' + (width / 2) +
+            .attr('transform', 'translate(' + (width / 2)  +
               ',' + (height / 2) + ')');
 
         var arc = d3.arc()
-            .innerRadius(width-7*thickness)
-            .outerRadius(width-6*thickness);
+            .innerRadius(width-8*thickness)
+            .outerRadius(width-7*thickness);
       
         var path = innerchart.selectAll('path')
             .append("g")
@@ -115,8 +116,8 @@ Index.infobox = function () {
         var radius = Math.min(width, height) / 2;
         
         var outerArc = d3.arc()
-            .innerRadius(width-6*thickness)
-            .outerRadius(width-5*thickness);
+            .innerRadius(width-7*thickness)
+            .outerRadius(width-6*thickness);
 
         var pie = d3.pie()
             .value(function (d) {
@@ -126,7 +127,7 @@ Index.infobox = function () {
         
         svg.select(".secondarc").remove();
         var outerchart= svg.append('g').classed("secondarc",true)
-            .attr('transform', 'translate(' + (width / 2) +
+            .attr('transform', 'translate(' + (width /2) +
               ',' + (height / 2) + ')');
         
         var path = outerchart.selectAll('path')

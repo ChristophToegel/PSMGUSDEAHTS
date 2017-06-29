@@ -17,9 +17,9 @@ Index.timeline = function (yearSelected) {
                 top: 30,
                 right: 40,
                 bottom: 30,
-                left: 100
+                left: 30
             },
-            width = 1300 - margin.left - margin.right,
+            width = $("#map").width()-margin.left-margin.right,
             height = 210 - margin.top - margin.bottom;
 
 

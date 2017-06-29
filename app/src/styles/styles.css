@@ -1,7 +1,7 @@
 * {
     padding: 0;
     margin: 0;
-    /*border: 1px solid #FFF; */
+    /*border: 1px solid #000;*/ 
     font-family: "Helvetica", sans-serif;
     color: #FFF;
 }
@@ -25,7 +25,9 @@ h1 {
 #content {
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 73%;
+    padding-right: 1%;
+    margin-top: 0;
 }
 
 #mapsvg {
@@ -34,6 +36,8 @@ h1 {
     /*width: 95%;*/
     float: left;
     margin:10px;
+    border-radius: 25px;
+    border: 1px solid rgba(0,0,0,0);
 }
 
 #graph {
@@ -62,17 +66,6 @@ circle.active {
 
 
 /* brush */
-
-#year_selection {
-    font-family: 'BenchNine', sans-serif;
-    font-weight: bold;
-    font-size: 4em;
-    text-align: left;
-    position: absolute;
-    left: 73%;
-    bottom: 82%;
-    white-space: nowrap;
-}
 
 .button {
     background-color: darkslategray;
@@ -143,15 +136,12 @@ circle.active {
 
 /*Dropdownmenu */
 
-.menu {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-bottom: 4px solid rgba(204, 0, 0, 0.5);
-    border-top: 4px solid rgba(204, 0, 0, 0.5);
+#menu {
     overflow: auto;
     margin: auto;
     position: relative;
     z-index: 5;
-    width: 100%;
+    width: 98%;
 }
 
 .notclickabel{
@@ -234,49 +224,103 @@ circle.active {
 }
 
 /* ENDE KATEGORIEN*/
+
+#menu, #deathInfoBox, #year_selection{
+        border-radius: 25px;
+        border: solid 6px #cccccc;
+        background: grey;
+}
+
+#contentContainer{
+    width: 100%;
+    height: 100%;
+}
+
 #rightContent {
     float: right;
-    position: relative;
-    top: 30px;
-    left: -20px;
+    width: 29%;
+    margin-top: 1%;
 
 }
 
-/*
-th,
-td {
-    color: black;
-    line-height: 20px;
-    text-align: left;
-    padding-right: 40px;
-    padding-left: 5px;
-    padding-top: 5px;
-    border: 1px solid black;
+#deathInfoBox {
+    width: 93%;
+    height: 250px;
+    overflow: scroll;
+    display: block;
+    color: white;
+    
 }
-table {
-    width: 350px;
-    border: 1px solid black;
-    float: right;
-    position: relative;
-    top: 150px;
-    right: 25px;
-    margin: 10px;
-    background-color: white;
-    border-collapse: collapse;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+.deathInfoHeading{
+    color: white;
+    text-align: center;
+    font-size: 1.4em;
+    margin-top: 0px;
 }
-*/
+
+.deathNumber{
+    text-align: center;
+    color: #f2f2f2;
+    font-size: 1em;
+}
+
+
+#deathInfoEntries{
+    text-align: center;
+}
+
+.deathInfoEntry{
+    border-top: 6px solid #cccccc;
+    padding-right: 12px;
+    padding-left: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-family: 'BenchNine', sans-serif;
+    font-size: 1.1em;
+}
+
+.deathEntryVictim{
+    text-align: center;
+    font-size: 1.2em;
+    white-space: normal;
+    color: white;
+    
+}
+
+.deathEntryEOW{
+    white-space: normal;
+    color: #f2f2f2;
+    
+    
+}
+
+.deathEntryCause{
+    white-space: normal;
+    text-align: center;
+    color: #f2f2f2;
+    
+}
+
+#year_selection {
+    font-family: 'BenchNine', sans-serif;
+    font-weight: bold;
+    width: 93%;
+    font-size: 4em;
+    white-space: nowrap;
+    text-align: center;
+    margin-bottom: 3%; 
+}
 
 .hidden {
     visibility: hidden;
 }
 
 #chart {
-    float: right;
-    position: relative;
-    top: 80px;
-    right: -25px;
-    margin: 10px;
+    margin-right: 30%;
+    width: 93%;
+    display: block;
     stroke: lightgray;
     stroke-width: 1px;
 }
+

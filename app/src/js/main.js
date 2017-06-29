@@ -7,7 +7,7 @@ Index = (function () {
     "use strict";
 
     var that = {},
-        map, data,infobox, menu,timeline,
+        map, data,infobox, menu,timeline, deathInfo,
         year;//oder mit getYear immer aus timeline.js abfragen
 
     function init() {
@@ -20,6 +20,7 @@ Index = (function () {
         //TODO infobox bekommt aus daten übergeben und nicht data.
         infobox = new Index.infobox(data);
         timeline = new Index.timeline(yearSelected);
+        
     }
     
     // Daten würden eingelesen
@@ -37,6 +38,7 @@ Index = (function () {
         //piechart alle staaten
         let boxdata=data.getInfoBoxData(year,undefined);
         infobox.changeData(undefined,boxdata);
+        
     }
     
     //year wurde von timeline ausgewählt

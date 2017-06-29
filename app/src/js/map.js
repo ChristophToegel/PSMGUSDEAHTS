@@ -4,10 +4,11 @@ var Index = Index || {};
 Index.map = function (mapisready, stateSelected) {
     "use strict";
 
-    const width = 1060,
+    const width = 1000,
         height = 700;
     var that = {},
         path, svg, projection, zoom, g, selectedState;
+
 
     // zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
     function initMap() {
@@ -56,7 +57,7 @@ Index.map = function (mapisready, stateSelected) {
                 return i.statename
             })
             .on("click", clickedState)
-        //callback für main wenn map fertig gezeichnet(-->Dateneintragen möglich)
+            //callback für main wenn map fertig gezeichnet(-->Dateneintragen möglich)
         mapisready();
     }
 
@@ -74,7 +75,7 @@ Index.map = function (mapisready, stateSelected) {
             zoomOut();
             let state = document.getElementById(event.statename);
             state.classList.remove("selectedState")
-            //callback für main kein staat ausgewählt
+                //callback für main kein staat ausgewählt
             stateSelected();
             //nicht schön!
             selectedState = " ";
@@ -107,8 +108,8 @@ Index.map = function (mapisready, stateSelected) {
         svg.transition().duration(750)
             .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
         console.log("zoomin")
-        svg.selectAll(".places").classed("notclickabel",false)
-        //svg.selectAll(".states").classed("notclickabel",true)
+        svg.selectAll(".places").classed("notclickabel", false)
+            //svg.selectAll(".states").classed("notclickabel",true)
     }
 
     function zoomOut() {
@@ -116,8 +117,8 @@ Index.map = function (mapisready, stateSelected) {
         svg.transition()
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
-        svg.selectAll(".places").classed("notclickabel",true)
-        svg.selectAll(".states").classed("notclickabel",false)
+        svg.selectAll(".places").classed("notclickabel", true)
+        svg.selectAll(".states").classed("notclickabel", false)
     }
 
     //removes the color for every state
@@ -174,7 +175,7 @@ Index.map = function (mapisready, stateSelected) {
             })
             */
         });
-        
+
     }
 
     function createtooltip() {
@@ -207,7 +208,7 @@ Index.map = function (mapisready, stateSelected) {
         console.log(max);
         //points ready to draw
         svg.select(".places").remove();
-        
+
         //TODO update funktion https://d3js.org/ nachfragen!
         /*
         //update places
@@ -225,11 +226,11 @@ Index.map = function (mapisready, stateSelected) {
             .data(data)
         }
         */
-        
+
         //https://stackoverflow.com/questions/29624745/d3-insert-vs-append-in-context-of-creating-nodes-on-mousemove performance update
         svg.append("g")
             .attr("class", "places")
-            .classed("notclickabel",true) 
+            .classed("notclickabel", true)
             .selectAll("circle")
             .data(data).enter()
             //places
@@ -250,7 +251,7 @@ Index.map = function (mapisready, stateSelected) {
                 }
             })
 
-            .attr("r", "2px")
+        .attr("r", "2px")
             .attr("fill", function (d) {
                 return color(d.value.length);
             })
@@ -266,20 +267,59 @@ Index.map = function (mapisready, stateSelected) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            //TODO tooltip löschen
+                //TODO tooltip löschen
             })
             .on("click", pointClicked);
-        
+
     }
 
     function pointClicked(data) {
-        var text = data.name;
+        console.log(data);
+        var deathInfoBox = d3.select("#deathInfoBox");
+        deathInfoBox.selectAll("*").remove();
+
+        deathInfoBox.append("p")
+            .text(data.name)
+            .attr("class", "deathInfoHeading")
+        deathInfoBox
+            .append("p").text(function () {
+                if (data.value.length == 1) {
+                    return "1 Death"
+                } else {
+                    return data.value.length + " Deaths"
+                }
+            }).attr("class","deathNumber");
+        deathInfoBox.append("div")
+            .attr("id", "deathInfoEntries");
+
+        let entry = d3.select("#deathInfoEntries").selectAll("div").data(data.value).enter().append("div").attr("class", "deathInfoEntry");
+        entry.append("p")
+            .text(function (d) {
+                return d.person;
+            })
+            .attr("class", "deathEntryVictim");
+        entry.append("p")
+            .text(function (d) {
+                return d.eow;
+            })
+            .attr("class", "deathEntryEOW");
+        entry.append("p")
+            .text(function (d) {
+                return d.cause_short;
+            })
+            .attr("class", "deathEntryCause");
+
+
+
+
+        /*  
         for (var i = 0; i < data.value.length; i++) {
             text = text + "<br/> Name: " + data.value[i].person + "Datum: " + data.value[i].eow + " Cause: " + data.value[i].cause_short
         }
-        let element = document.querySelector("#rightContent p");
+        
         element.innerHTML = text;
         element.classList.remove("hidden");
+        */
     }
 
     that.pointsready = pointsready;
