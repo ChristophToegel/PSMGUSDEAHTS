@@ -75,20 +75,32 @@ circle.active {
 .clearState {
     fill: #ffe6e6;
     stroke: grey;
-    stroke-width: 1px;
+    stroke-width: 1px; 
+}
+
+.text{
+    stroke:none;
 }
 
 .selectedState {
-    /*stroke: #66c2ff;
-    stroke-width: 4px;
-    position: relative;
-    stroke-dasharray: 5, 5*/
     stroke-width: 1.5px !important;
+}
+
+.zoomed {
+    stroke-width: 0.20px
+}
+
+.hoverState{
+    stroke-width: 2.5px; !important;
 }
 
 .pieselected{
     stroke: #000000;
-    stroke-width: 6px;
+    stroke-width: 3px;
+}
+
+.piehover{
+    opacity: 0.8;
 }
 
 .tooltip {

@@ -39,7 +39,7 @@ Index.map = function (mapisready, stateSelected) {
         //verschiebt Coordinaten
         svg.selectAll("circle").attr("transform", d3.event.transform);
         //verschiebt map
-        g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
+        //g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
         g.attr("transform", d3.event.transform);
     }
 
@@ -70,23 +70,24 @@ Index.map = function (mapisready, stateSelected) {
             //callback für main 1 staat ausgewählt
             stateSelected(event.statename);
             selectedState = event.statename;
-            markState(event.statename);
+            let state=d3.select(this);
+            state.classed("selectedState",true);
+            markState(state);
+            
         } else {
             zoomOut();
-            let state = document.getElementById(event.statename);
-            state.classList.remove("selectedState")
-                //callback für main kein staat ausgewählt
+
+            let state=d3.select("#"+event.statename);
+            state.classed("selectedState",false);
+            //callback für main kein staat ausgewählt
             stateSelected();
             //nicht schön!
-            selectedState = " ";
+            selectedState = undefined;
         }
     }
 
     //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
-    function markState(name) {
-        var el = d3.select("#" + name);
-        el._groups[0][0].classList.add("selectedState");
-        //check if this works el.classed("selectedState",true)
+    function markState(el) {
         d3.selection.prototype.moveToFront = function () {
             return this.each(function () {
                 this.parentNode.appendChild(this);
@@ -107,9 +108,10 @@ Index.map = function (mapisready, stateSelected) {
             translate = [(width / 2 - scale * x), height / 2 - scale * y];
         svg.transition().duration(750)
             .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
-        console.log("zoomin")
-        svg.selectAll(".places").classed("notclickabel", false)
-            //svg.selectAll(".states").classed("notclickabel",true)
+
+        svg.selectAll(".places").classed("notclickabel",false)
+        g.classed("zoomed",true);
+
     }
 
     function zoomOut() {
@@ -117,8 +119,9 @@ Index.map = function (mapisready, stateSelected) {
         svg.transition()
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
-        svg.selectAll(".places").classed("notclickabel", true)
-        svg.selectAll(".states").classed("notclickabel", false)
+
+        svg.selectAll(".places").classed("notclickabel",true)
+        g.classed("zoomed",false);
     }
 
     //removes the color for every state
@@ -151,29 +154,21 @@ Index.map = function (mapisready, stateSelected) {
             state.color = color(state.value);
             var tooltip = createtooltip();
             var selector = "#" + state.name;
-            selector = selector.replace(" ", "");
+            //selector = selector.replace(" ", "");
             var stateEl = d3.select(selector);
             if (stateEl != null) {
                 stateEl.style("fill", state.color)
             } else {
                 console.log("unknown SateName: " + key);
             }
-            /*
             stateEl.on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html(d.statename)
-                    .style("left", d3.event.pageX + "px")
-                    .style("top", d3.event.pageY - 172 + "px");
+                let el=d3.select(this);
+                stateEl.classed("hoverState",true);
+                markState(el);
             })
             .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            //TODO tooltip löschen
+                stateEl.classed("hoverState",false);
             })
-            */
         });
 
     }
