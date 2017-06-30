@@ -238,7 +238,7 @@ circle.active {
 /* ENDE KATEGORIEN*/
 
 #menu, #deathInfoBox, #year_selection{
-        border-radius: 25px;
+        border-radius: 15px; 
         border: solid 6px #cccccc;
         background: grey;
 }

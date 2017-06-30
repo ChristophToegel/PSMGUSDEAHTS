@@ -7,7 +7,7 @@ Index.infobox = function () {
     
     const width = $("#chart").width(),
         height = width,
-          thickness=50,
+          thickness=40,
           color = d3.scaleOrdinal()
                 .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
     var that = {},svg;
@@ -49,8 +49,8 @@ Index.infobox = function () {
               ',' + (height / 2) + ')');
 
         var arc = d3.arc()
-            .innerRadius(width-8*thickness)
-            .outerRadius(width-7*thickness);
+            .innerRadius(width-7*thickness)
+            .outerRadius(width-8*thickness);
       
         var path = innerchart.selectAll('path')
             .append("g")
@@ -186,8 +186,8 @@ Index.infobox = function () {
         // arc
         var outerArc = d3.arc()
 
-            .innerRadius(width-6*thickness+2)
-            .outerRadius(width-5*thickness+2);
+            .innerRadius(width-7*thickness+2)
+            .outerRadius(width-6*thickness+2);
 
         var pie = d3.pie()
             .value(function (d) {
