@@ -50,7 +50,8 @@ Index.infobox = function () {
 
         var arc = d3.arc()
             .innerRadius(width-7*thickness)
-            .outerRadius(width-8*thickness);
+            .outerRadius(width-6*thickness);
+
       
         var path = innerchart.selectAll('path')
             .append("g")

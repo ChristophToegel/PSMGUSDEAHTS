@@ -76,7 +76,6 @@ Index.data = function (datainitialised) {
             {name: "others", array: others}
         ];
         
-        
         mainArray.forEach(function (element) {
             //console.log(element)
             var total=0;
