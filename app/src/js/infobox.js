@@ -49,8 +49,8 @@ Index.infobox = function () {
               ',' + (height / 2) + ')');
 
         var arc = d3.arc()
-            .innerRadius(width-8*thickness)
-            .outerRadius(width-7*thickness);
+            .innerRadius(width-7*thickness)
+            .outerRadius(width-6*thickness);
       
         var path = innerchart.selectAll('path')
             .append("g")

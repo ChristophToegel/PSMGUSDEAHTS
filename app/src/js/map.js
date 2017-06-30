@@ -115,7 +115,7 @@ Index.map = function (mapisready, stateSelected) {
     }
 
     function zoomOut() {
-        document.querySelector("#rightContent p").classList.add("hidden");
+        //document.querySelector("#rightContent p").classList.add("hidden");
         svg.transition()
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
@@ -187,7 +187,7 @@ Index.map = function (mapisready, stateSelected) {
         //console.log(data);
         //test dif color for value
 
-        var color = d3.scaleQuantize().range(["rgb(0, 0, 255)", "rgb(255, 0, 0)", "rgb(0, 255, 0"]);
+        var color = d3.scaleQuantize().range(["rgb(0, 0, 255)", "rgb(0, 0, 0)", "rgb(0, 255, 0","rgb(255,255,255)"]);
         color.domain([
                 d3.min(data, function (d) {
                 return d.value.length;
@@ -196,11 +196,7 @@ Index.map = function (mapisready, stateSelected) {
                 return d.value.length;
             })
         ]);
-        //viele 0-10 wenige über 100!
-        var max = d3.max(data, function (d) {
-            return d.value.length;
-        });
-        console.log(max);
+        
         //points ready to draw
         svg.select(".places").remove();
 
@@ -246,7 +242,7 @@ Index.map = function (mapisready, stateSelected) {
                 }
             })
 
-        .attr("r", "2px")
+            .attr("r", "2px")
             .attr("fill", function (d) {
                 return color(d.value.length);
             })
@@ -268,6 +264,7 @@ Index.map = function (mapisready, stateSelected) {
 
     }
 
+    //raus?
     function pointClicked(data) {
         console.log(data);
         var deathInfoBox = d3.select("#deathInfoBox");
