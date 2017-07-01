@@ -1,5 +1,7 @@
 /* eslint-env browser  */
 
+// points: https://stackoverflow.com/questions/29624745/d3-insert-vs-append-in-context-of-creating-nodes-on-mousemove
+// zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
 var Index = Index || {};
 Index.map = function (mapisready, stateSelected) {
     "use strict";
@@ -10,7 +12,6 @@ Index.map = function (mapisready, stateSelected) {
         path, svg, projection, zoom, g, selectedState;
 
 
-    // zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
     function initMap() {
         console.log("init Map");
 
@@ -64,7 +65,6 @@ Index.map = function (mapisready, stateSelected) {
 
 
     function clickedState(event) {
-        //TODO Coordinates not clickable 
         if (selectedState != event.statename) {
             zoomIn(event);
             //callback für main 1 staat ausgewählt
@@ -76,12 +76,10 @@ Index.map = function (mapisready, stateSelected) {
             
         } else {
             zoomOut();
-
             let state=d3.select("#"+event.statename);
             state.classed("selectedState",false);
             //callback für main kein staat ausgewählt
             stateSelected();
-            //nicht schön!
             selectedState = undefined;
         }
     }
@@ -110,12 +108,16 @@ Index.map = function (mapisready, stateSelected) {
             .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
 
         svg.selectAll(".places").classed("notclickabel",false)
+        //Todo border soll mit zoom verknüpf sein/via css
         g.classed("zoomed",true);
+        //Infobox nur bei zoom?
+        document.querySelector("#deathInfoBox").classList.remove("hidden");
 
     }
 
     function zoomOut() {
-        //document.querySelector("#rightContent p").classList.add("hidden");
+        //Infobox nur bei zoom?
+        document.querySelector("#deathInfoBox").classList.add("hidden");
         svg.transition()
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
@@ -152,10 +154,7 @@ Index.map = function (mapisready, stateSelected) {
         //liste aller zZ ausgewählten Staaten
         data.forEach(function (state) {
             state.color = color(state.value);
-            var tooltip = createtooltip();
-            var selector = "#" + state.name;
-            //selector = selector.replace(" ", "");
-            var stateEl = d3.select(selector);
+            var stateEl = d3.select("#" + state.name);
             if (stateEl != null) {
                 stateEl.style("fill", state.color)
             } else {
@@ -173,20 +172,24 @@ Index.map = function (mapisready, stateSelected) {
 
     }
 
-    function createtooltip() {
-        return d3.select("#content").append("div")
-            .attr("class", "tooltip")
-            .style("opacity", 0);
+    //
+    function createtooltip(data) {
+        if(d3.select(".tooltip").empty()){
+            var tooltip=d3.select("#content").append("div").attr("class", "tooltip")
+            .selectAll("div")
+            .data([data]).enter().append("div")
+        }
+        else
+        {
+           var tooltip=d3.selectAll(".tooltip")
+            .data([data])
+        }
+        return tooltip;
     }
 
     //Callback for points
     function pointsready(data) {
-        //test div tooltip
-        console.log(data);
-        var tooltip = createtooltip();
-        //console.log(data);
-        //test dif color for value
-
+        //TODO color anpassen: https://bl.ocks.org/pstuffa/d5934843ee3a7d2cc8406de64e6e4ea5 ??
         var color = d3.scaleQuantize().range(["rgb(0, 0, 255)", "rgb(0, 0, 0)", "rgb(0, 255, 0","rgb(255,255,255)"]);
         color.domain([
                 d3.min(data, function (d) {
@@ -196,18 +199,14 @@ Index.map = function (mapisready, stateSelected) {
                 return d.value.length;
             })
         ]);
-        
-        //points ready to draw
-        svg.select(".places").remove();
 
-        //TODO update funktion https://d3js.org/ nachfragen!
-        /*
-        //update places
+        //wenn noch keine points vorhanden sind elementstruktur erstellen
         if(d3.select(".places").empty()){
             var places=svg.append("g")
             .attr("class", "places")
+            .classed("notclickabel", true)
             .selectAll("circle")
-            .data(data).enter();
+            .data(data).enter().insert("circle");
             
         }else
         //update
@@ -216,17 +215,17 @@ Index.map = function (mapisready, stateSelected) {
             .selectAll("circle")
             .data(data)
         }
-        */
-
-        //https://stackoverflow.com/questions/29624745/d3-insert-vs-append-in-context-of-creating-nodes-on-mousemove performance update
-        svg.append("g")
-            .attr("class", "places")
-            .classed("notclickabel", true)
-            .selectAll("circle")
-            .data(data).enter()
-            //places
-            .insert("circle")
-            .attr("cx", function (d) {
+        
+        addpointAttributes(places,color);
+        //wenn weniger dann löschen
+        places.exit().remove();
+        //wenn mehr dann hinzufügen
+        places=places.enter().insert("circle")
+        addpointAttributes(places,color);
+    }
+    
+    function addpointAttributes(places,color){
+        places.attr("cx", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[0];
                 } else {
@@ -241,12 +240,12 @@ Index.map = function (mapisready, stateSelected) {
                     return 0;
                 }
             })
-
             .attr("r", "2px")
             .attr("fill", function (d) {
                 return color(d.value.length);
             })
             .on("mouseover", function (d) {
+                var tooltip = createtooltip(d);
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -255,18 +254,17 @@ Index.map = function (mapisready, stateSelected) {
                     .style("top", d3.event.pageY - 172 + "px");
             })
             .on("mouseout", function (d) {
+                var tooltip = d3.selectAll(".tooltip");
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-                //TODO tooltip löschen
             })
             .on("click", pointClicked);
-
     }
-
-    //raus?
+    
+    //auslagern?
     function pointClicked(data) {
-        console.log(data);
+        //TODOno remove update
         var deathInfoBox = d3.select("#deathInfoBox");
         deathInfoBox.selectAll("*").remove();
 
@@ -300,18 +298,6 @@ Index.map = function (mapisready, stateSelected) {
                 return d.cause_short;
             })
             .attr("class", "deathEntryCause");
-
-
-
-
-        /*  
-        for (var i = 0; i < data.value.length; i++) {
-            text = text + "<br/> Name: " + data.value[i].person + "Datum: " + data.value[i].eow + " Cause: " + data.value[i].cause_short
-        }
-        
-        element.innerHTML = text;
-        element.classList.remove("hidden");
-        */
     }
 
     that.pointsready = pointsready;
