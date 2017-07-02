@@ -246,6 +246,11 @@ Index.infobox = function () {
         return function(t){return arc(i(t));};
     }
     
+    //
+    //
+    //
+    /* d3.selectAll(.selected).data() //alle ausgewählten Elemente
+    */
     that.changeData = changeData;
     that.init = init;
     return that;
