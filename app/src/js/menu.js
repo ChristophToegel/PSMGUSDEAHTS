@@ -58,6 +58,7 @@ Index.menu = function (filterSelected) {
             .enter()
             .append('path')
             .attr('d', arc)
+            //.classed("pieselected",true)
             .attr('fill', function (d) {
                 return color(d.data.name);
             })
@@ -71,7 +72,7 @@ Index.menu = function (filterSelected) {
                let el=d3.select(this);
                 el.classed("piehover",false);
             })
-            .on("click", detailDataRequested)
+            .on("click", showSecondArc)
             .transition()
             .ease(d3.easeLinear)
             .duration(200)
@@ -80,6 +81,9 @@ Index.menu = function (filterSelected) {
                 var i= d3.interpolate({startAngle:0, endAngle:0},d);
                 return function(t){return arc(i(t));};
             });
+        
+        //draw all unterkat charts
+            detailDataRequested(data);
         
       /*//add textLabel 
        var labelArc = d3.arc()
@@ -98,6 +102,26 @@ Index.menu = function (filterSelected) {
                 return d.data.name;
             });
             */
+    }
+    
+    function showSecondArc(d){
+        //console.log(d);
+        var tog=d3.selectAll('g[visibility = visible]');
+        //element schon ausgewählt
+        if(tog.data().length != 0){
+            //gleiches element
+            if(tog.data()[0].name==d.data.name){
+                console.log("gleich --> hide")
+                d3.selectAll("."+d.data.name).attr("visibility","hidden");
+            }else{
+                //unterschiedlich
+                d3.selectAll("."+tog.data()[0].name).attr("visibility","hidden");
+                d3.selectAll("."+d.data.name).attr("visibility","visible")
+            }
+        }else{
+        //nichts ausgewählt
+        d3.selectAll("."+d.data.name).attr("visibility","visible");
+        }
     }
     
     //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
@@ -172,8 +196,15 @@ Index.menu = function (filterSelected) {
 
 
     function detailDataRequested(event){
+        /*
         let el=d3.select(this);
-        console.log(event);
+        if(el.classed("pieselected")){
+                el.classed("pieselected",false);
+                //Todo zweiten Arc löschen
+        }else{
+            el.classed("pieselected",true);
+            markPie(el);
+        //console.log(event);
         var mainpercentage=parseFloat((event.endAngle - event.startAngle)/(2*Math.PI)).toFixed(4);
         createTextRightCorner(event.data.name,mainpercentage*100+"%");
         markPie(el);
@@ -181,11 +212,19 @@ Index.menu = function (filterSelected) {
         el.classed("pieselected",true);
         
         var data =event.data.array;
+        */
+        var data=event;
+        //für jede oberkategorie eigenen chart zeichnen!
+        
         var radius = Math.min(width, height) / 2;
+        
+        var outerchart= svg.append('g').attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')').classed("secondarc",true).selectAll('g').data(event).enter().append('g').attr("class",function (d) {
+            return (d.name);
+        }).attr("visibility","hidden");
+        
         
         // arc
         var outerArc = d3.arc()
-
             .innerRadius(width-6*thickness+2)
             .outerRadius(width-5*thickness+2);
 
@@ -195,14 +234,15 @@ Index.menu = function (filterSelected) {
             })
             .sort(null);
         
-        svg.select(".secondarc").remove();
-        var outerchart= svg.append('g').classed("secondarc",true)
-            .attr('transform', 'translate(' + (width /2) +
-              ',' + (height / 2) + ')');
+        //var outerchart= svg.append('g').classed("secondarc",true)
+          //  .attr('transform', 'translate(' + (width /2) +
+          //    ',' + (height / 2) + ')')
+            //.append('g').classed(event.name,true);
         
         var path = outerchart.selectAll('path')
-            .append("g")
-            .data(pie(data))
+            //.data(pie(data))
+            .data(function(d) { 
+                return pie(d.array);})
             .enter()
             .append('path')
             .attr('d', outerArc)
@@ -231,7 +271,8 @@ Index.menu = function (filterSelected) {
                 markPie(el);
                 selectionChanged();
             })
-            .transition()
+        
+            /*.transition()
             .ease(d3.easeLinear)
             .duration(200)
             .attrTween("d", function(d){
@@ -239,6 +280,10 @@ Index.menu = function (filterSelected) {
                 var i= d3.interpolate({startAngle:0, endAngle:0},d);
                 return function(t){return outerArc(i(t));};
             });
+            */
+            selectionChanged();
+        //}
+        
         
     }
     
@@ -259,10 +304,12 @@ Index.menu = function (filterSelected) {
     
     function selectionChanged(){
         //array mit ID der ausgewählten kategorien!!
-        var filters=[];
-        var fil=d3.selectAll(".pieselected");
-        console.log(fil.data());
-        console.log(fil.data().length);
+        var filters=d3.selectAll(".pieselected");
+        console.log(filters.data());
+        console.log(filters.data().length);
+        for(var i=0;i<filters.data().length;i++){
+            
+        }
         //callback für main
        filterSelected(filters);
     }

@@ -69,11 +69,11 @@ Index.data = function (datainitialised) {
         var suspectknown =["01", "02", "03", "18", "19", "30", "31", "34"];
         
         var mainArray = [
-            {name: "natural", array: naturalCauses},
-            {name: "accidents", array: accidents},
-            {name: "suspectknown", array: suspectknown},
-            {name: "illness", array: illness},
-            {name: "others", array: others}
+            {name: "natural", array: naturalCauses, id: naturalCauses},
+            {name: "accidents", array: accidents, id: accidents},
+            {name: "suspectknown", array: suspectknown, id: suspectknown},
+            {name: "illness", array: illness, id: illness},
+            {name: "others", array: others, id: others}
         ];
         
         mainArray.forEach(function (element) {
