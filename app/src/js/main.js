@@ -56,15 +56,14 @@ Index = (function () {
     }
     
     function filterSelected(filters){
-        console.log(filters);
+        //console.log(filters);
         //var year=timeline.getYear(); alternative?!
-        //updateMap(year,filters);
+        updateMap(year,filters);
     }
     
     function updateMap(year, filters){
         var selectedData=data.getMapData(year,filters);
-        map.ChoroplethColor(selectedData);
-        data.getMapPointData(map.pointsready,year,filters);
+        map.ChoroplethColor(selectedData); data.getMapPointData(map.pointsready,year,filters);
     }
     
     init();

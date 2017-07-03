@@ -36,9 +36,7 @@ Index.menu = function (filterSelected) {
     function createArc(data) {
         //console.log(data);
         
-        var radius = Math.min(width, height) / 2;
-        //removes the existing arc
-        //d3.select('#chart').selectAll("g").remove();            
+        var radius = Math.min(width, height) / 2;            
        
          var pie = d3.pie()
             .value(function (d) {
@@ -292,7 +290,7 @@ Index.menu = function (filterSelected) {
         var filters=d3.selectAll(".pieselected").data();
         //13 is missing others?
         for(var i=0;i<filters.length;i++){
-            ids.push(filters[i].data.name);
+            ids.push(filters[i].data.id);
         }
         return ids;
     }

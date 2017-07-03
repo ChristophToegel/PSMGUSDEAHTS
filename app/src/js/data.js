@@ -37,7 +37,7 @@ Index.data = function (datainitialised) {
             });
         } else if (state == undefined && (filters != undefined && filters.length > 0)) {
             filtered = rawdata.filter(function (row) {
-                return row['year'] <= year[1] & row['year'] >= year[0] & filters.indexOf(row['cause_short']) > -1;
+                return row['year'] <= year[1] & row['year'] >= year[0] & filters.indexOf(row['id']) > -1;
             });
 
         } else if (state == undefined && (filters == undefined || filters.length === 0)) {
