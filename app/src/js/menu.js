@@ -34,6 +34,8 @@ Index.menu = function (filterSelected) {
     }
 
     function createArc(data) {
+        //console.log(data);
+        
         var radius = Math.min(width, height) / 2;
         //removes the existing arc
         //d3.select('#chart').selectAll("g").remove();            
@@ -104,6 +106,7 @@ Index.menu = function (filterSelected) {
             */
     }
     
+    //clickLogic
     function showSecondArc(d){
         //console.log(d);
         var tog=d3.selectAll('g[visibility = visible]');
@@ -111,16 +114,16 @@ Index.menu = function (filterSelected) {
         if(tog.data().length != 0){
             //gleiches element
             if(tog.data()[0].name==d.data.name){
-                console.log("gleich --> hide")
                 d3.selectAll("."+d.data.name).attr("visibility","hidden");
             }else{
                 //unterschiedlich
                 d3.selectAll("."+tog.data()[0].name).attr("visibility","hidden");
                 d3.selectAll("."+d.data.name).attr("visibility","visible")
+                
             }
         }else{
         //nichts ausgewählt
-        d3.selectAll("."+d.data.name).attr("visibility","visible");
+        d3.selectAll("."+d.data.name).attr("visibility","visible")
         }
     }
     
@@ -197,22 +200,11 @@ Index.menu = function (filterSelected) {
 
     function detailDataRequested(event){
         /*
-        let el=d3.select(this);
-        if(el.classed("pieselected")){
-                el.classed("pieselected",false);
-                //Todo zweiten Arc löschen
-        }else{
-            el.classed("pieselected",true);
-            markPie(el);
-        //console.log(event);
+        console.log(event);
         var mainpercentage=parseFloat((event.endAngle - event.startAngle)/(2*Math.PI)).toFixed(4);
         createTextRightCorner(event.data.name,mainpercentage*100+"%");
-        markPie(el);
-        d3.selectAll(".pieselected").classed("pieselected",false)
-        el.classed("pieselected",true);
-        
-        var data =event.data.array;
         */
+        
         var data=event;
         //für jede oberkategorie eigenen chart zeichnen!
         
@@ -221,6 +213,7 @@ Index.menu = function (filterSelected) {
         var outerchart= svg.append('g').attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')').classed("secondarc",true).selectAll('g').data(event).enter().append('g').attr("class",function (d) {
             return (d.name);
         }).attr("visibility","hidden");
+        
         
         
         // arc
@@ -234,14 +227,9 @@ Index.menu = function (filterSelected) {
             })
             .sort(null);
         
-        //var outerchart= svg.append('g').classed("secondarc",true)
-          //  .attr('transform', 'translate(' + (width /2) +
-          //    ',' + (height / 2) + ')')
-            //.append('g').classed(event.name,true);
         
         var path = outerchart.selectAll('path')
-            //.data(pie(data))
-            .data(function(d) { 
+            .data(function(d) {
                 return pie(d.array);})
             .enter()
             .append('path')
@@ -254,8 +242,8 @@ Index.menu = function (filterSelected) {
             .on("mouseover", function (d) {
                 let el=d3.select(this);
                 el.classed("piehover",true);
-                let percentage=parseFloat((d.endAngle - d.startAngle)/(2*Math.PI)*mainpercentage*100).toFixed(2) +" %"
-                createTextCenter(d.data.value,d.data.name,percentage);
+                //let percentage=parseFloat((d.endAngle - d.startAngle)/(2*Math.PI)*mainpercentage*100).toFixed(2) +" %"
+                createTextCenter(d.data.value,d.data.name,"percentage");
             })
             .on("mouseout", function (d) {
                let el=d3.select(this);
@@ -299,24 +287,22 @@ Index.menu = function (filterSelected) {
     
     //main kann sich die filter holen!
     function getSelectedFilters(){
-        
+        //array mit ID der ausgewählten kategorien!!
+        var ids=[];
+        var filters=d3.selectAll(".pieselected").data();
+        //13 is missing others?
+        for(var i=0;i<filters.length;i++){
+            ids.push(filters[i].data.name);
+        }
+        return ids;
     }
     
     function selectionChanged(){
-        //array mit ID der ausgewählten kategorien!!
-        var filters=d3.selectAll(".pieselected");
-        console.log(filters.data());
-        console.log(filters.data().length);
-        for(var i=0;i<filters.data().length;i++){
-            
-        }
+        let ids=getSelectedFilters();
         //callback für main
-       filterSelected(filters);
+       filterSelected(ids);
     }
-    //
-    //
-    /* d3.selectAll(.selected).data() //alle ausgewählten Elemente
-    */
+    
     that.changeData = changeData;
     that.init = init;
     return that;

@@ -56,7 +56,7 @@ Index = (function () {
     }
     
     function filterSelected(filters){
-        //console.log(filters);
+        console.log(filters);
         //var year=timeline.getYear(); alternative?!
         //updateMap(year,filters);
     }
