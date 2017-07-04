@@ -114,15 +114,15 @@ Index.menu = function (filterSelected) {
     //clickLogic
     function showSecondArc(d){
         //console.log(d);
-        var tog=d3.selectAll('g[visibility = visible]');
+        var selected=d3.selectAll('g[visibility = visible]');
         //element schon ausgewählt
-        if(tog.data().length != 0){
+        if(selected.data().length != 0){
             //gleiches element
-            if(tog.data()[0].name==d.data.name){
+            if(selected.data()[0].name==d.data.name){
                 d3.selectAll("."+d.data.name).attr("visibility","hidden");
             }else{
                 //unterschiedlich
-                d3.selectAll("."+tog.data()[0].name).attr("visibility","hidden");
+                d3.selectAll("."+selected.data()[0].name).attr("visibility","hidden");
                 d3.selectAll("."+d.data.name).attr("visibility","visible")
                 
             }
