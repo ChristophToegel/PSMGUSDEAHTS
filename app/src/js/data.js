@@ -9,15 +9,21 @@ Index.data = function (datainitialised) {
     "use strict";
 
     var that = {},
-        rawdata;
+        rawdata,catIdData;
 
     function initData() {
         d3.csv("data/finalData.csv", function (csv) {
             //daten können abgefragt werden!
             rawdata = csv;
             //Callback --> map and timeline
+            
+            d3.csv("data/cat-id.csv", function (csv) {
+            catIdData=csv;
+        });
+            
             datainitialised();
         });
+        
     }
 
     //year is never undefined?!
@@ -31,7 +37,7 @@ Index.data = function (datainitialised) {
             });
         } else if (state == undefined && (filters != undefined && filters.length > 0)) {
             filtered = rawdata.filter(function (row) {
-                return row['year'] <= year[1] & row['year'] >= year[0] & filters.indexOf(row['cause_short']) > -1;
+                return row['year'] <= year[1] & row['year'] >= year[0] & filters.indexOf(row['id']) > -1;
             });
 
         } else if (state == undefined && (filters == undefined || filters.length === 0)) {
@@ -55,13 +61,30 @@ Index.data = function (datainitialised) {
     //data for the Infobox
     //for every cause the num of deaths
     function getInfoBoxData(year, state) {
-
+        
         var yearCause = filterData(year, undefined, state);
         //alle in detailkategorien
-        var causeDetail = sumData(yearCause, "id");//"cause_short"
-        causeDetail = transformObjectToArray(causeDetail);
-        //console.log(causeDetail);
-        
+        var totaldeaths= yearCause.length;
+        var causeDetail = sumData(yearCause, "id");
+        //transform for Cause
+        var transform = [];
+        for (var key in causeDetail) {
+            var name;
+            catIdData.forEach(function(line){
+                if(key==line.id){
+                    name=line.cause_short;
+                }
+            });
+            var entry = {
+                id: key,
+                value: causeDetail[key],
+                name: name,
+                percentage: Math.round(causeDetail[key]/totaldeaths*10000)/100
+            };
+            transform.push(entry);
+        }
+        causeDetail=transform;
+    
         var illness = ["10", "11", "27","35"];
         var accidents = ["08", "16", "17", "20", "22", "23", "24", "25", "26", "29", "32", "33"];
         var naturalCauses = ["04", "05", "06", "07", "09", "12", "14", "15", "21", "36"];
@@ -69,69 +92,31 @@ Index.data = function (datainitialised) {
         var suspectknown =["01", "02", "03", "18", "19", "30", "31", "34"];
         
         var mainArray = [
-            {name: "natural", array: naturalCauses},
-            {name: "accidents", array: accidents},
-            {name: "suspectknown", array: suspectknown},
-            {name: "illness", array: illness},
-            {name: "others", array: others}
+            {name: "natural", array: naturalCauses, id: naturalCauses},
+            {name: "accidents", array: accidents, id: accidents},
+            {name: "suspectknown", array: suspectknown, id: suspectknown},
+            {name: "illness", array: illness, id: illness},
+            {name: "others", array: others, id: others}
         ];
         
         mainArray.forEach(function (element) {
-            //console.log(element)
             var total=0;
             var newArray=[];
-            element["array"].forEach(function (cat,index) {
+            element["array"].forEach(function (cat) {
                 causeDetail.forEach(function (cat2) {
-                if(cat==cat2["name"]){
-                    //console.log(cat);
-                    //console.log(cat2);
-                    //element["array"][index]=cat2;
+                if(cat==cat2["id"]){
+                    cat2.oberkategorie=element.name;
                     newArray.push(cat2);
-                    //console.log(element["array"].cat)
                     total=total+cat2["value"]
                     } 
                 });
             });
                 element["array"] = newArray;
-                element.value=total;
+                element.value=total
+                element.percentage=Math.round(total/totaldeaths*10000)/100;
         });
-        
-        console.log(mainArray);
+        //console.log(mainArray);
         return mainArray;
-        //sumCategory=transformObjectToArray(sumCategory);
-        //TODO fest einteilen
-        /*var naturalCauses = ["Fall", "Drowned", "Structure collapse", "Fire", "Animal related", "Weather/Natural disaster", "Exposure", "Heat exhaustion", "Explosion", "Asphyxiation"];
-        var accidents = ["Gunfire(Accident)", "Struck by streetcar", "Struck by train", "Train accident", "Electrocuted", "Boating accident", "Bicycle accident", "Struck by vehicle", "Automobile accident", "Motorcycle accident", "Training accident", "Aircraft accident"];
-        var suspectknown = ["Gunfire", "Stabbed", "Assault", "Bomb", "Poisoned", "Vehicle pursuit", "Vehicular assault", "Terrorist attack"];
-        var illness = ["Duty related illness", "Heart Attack", "Exposure to toxins",
-        "9/11 related illness"];
-        //TODO detail for others herausfinden
-        var others = [""];
-        var mainArray = {
-            natural: naturalCauses,
-            accidents: accidents,
-            suspectknown: suspectknown,
-            illness: illness
-        };
-        var sumCategory = {};
-        var total = 0;
-        causeDetail.forEach(function (i) {
-            for (var category in mainArray) {
-                if (mainArray[category].indexOf(i.name) > -1) {
-                    sumCategory[category] = (sumCategory[category] || 0) + i.value;
-                }
-            }
-            total += i.value;
-        });
-
-        sumCategory = transformObjectToArray(sumCategory);
-        //TODO 3.Array welche daten werden noch gebraucht?!
-        var response = [sumCategory, causeDetail, {
-            total: total
-        }];
-        //console.log(response);
-        //Array 0 mit Hauptkategorien Array 1 mit detailkat.
-        return response;*/
     }
 
     //data for timelineGraph
