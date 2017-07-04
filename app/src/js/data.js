@@ -64,6 +64,7 @@ Index.data = function (datainitialised) {
         
         var yearCause = filterData(year, undefined, state);
         //alle in detailkategorien
+        var totaldeaths= yearCause.length;
         var causeDetail = sumData(yearCause, "id");
         //transform for Cause
         var transform = [];
@@ -77,12 +78,13 @@ Index.data = function (datainitialised) {
             var entry = {
                 id: key,
                 value: causeDetail[key],
-                name: name
+                name: name,
+                percentage: Math.round(causeDetail[key]/totaldeaths*10000)/100
             };
             transform.push(entry);
         }
         causeDetail=transform;
-            
+    
         var illness = ["10", "11", "27","35"];
         var accidents = ["08", "16", "17", "20", "22", "23", "24", "25", "26", "29", "32", "33"];
         var naturalCauses = ["04", "05", "06", "07", "09", "12", "14", "15", "21", "36"];
@@ -103,14 +105,17 @@ Index.data = function (datainitialised) {
             element["array"].forEach(function (cat) {
                 causeDetail.forEach(function (cat2) {
                 if(cat==cat2["id"]){
+                    cat2.oberkategorie=element.name;
                     newArray.push(cat2);
                     total=total+cat2["value"]
                     } 
                 });
             });
                 element["array"] = newArray;
-                element.value=total;
+                element.value=total
+                element.percentage=Math.round(total/totaldeaths*10000)/100;
         });
+        //console.log(mainArray);
         return mainArray;
     }
 

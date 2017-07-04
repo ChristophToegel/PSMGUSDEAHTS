@@ -44,9 +44,7 @@ Index = (function () {
     //year wurde von timeline ausgewählt
     function yearSelected(curyear) {
         year=curyear;
-        //TODO Filter aus menu holen
-        //updateMap(year, menu.getCheckedCats());
-        updateMap(year);
+        updateMap(year,menu.getSelectedFilters());
     }
     
     //staat wurde geclicked

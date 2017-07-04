@@ -23,7 +23,11 @@ Index.menu = function (filterSelected) {
         svg = d3.select('#chart')
             .append('svg')
             .attr('width', width)
-            .attr('height', height);
+            .attr('height', height)
+        //pattern test
+        //Pattern injection ???
+        svg.html('<defs><pattern id="crosshatch" patternUnits="userSpaceOnUse" width="8" height="8"><image xlink:href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><path fill="#fff" d="M0 0h8v8h-8z"/><path d="M0 0l8 8zm8 0l-8 8z" stroke-width=".5" stroke="#aaa"/></svg>"x="0" y="0" width="8" height="8"></image></pattern></defs>');
+
     }
     
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
@@ -58,14 +62,17 @@ Index.menu = function (filterSelected) {
             .enter()
             .append('path')
             .attr('d', arc)
-            //.classed("pieselected",true)
+        
             .attr('fill', function (d) {
                 return color(d.data.name);
             })
+        
+            .attr('id', function (d) {
+                return d.data.name;
+            })
             .on("mouseover", function (d) {
                 let el=d3.select(this);
-                let percentage=parseFloat((d.endAngle - d.startAngle)/(2*Math.PI)*100).toFixed(2) +" %"
-                createTextCenter(d.data.value,d.data.name,percentage);
+                createTextCenter(d.data.value,d.data.name, d.data.percentage);
                 el.classed("piehover",true);
             })
             .on("mouseout", function (d) {
@@ -75,7 +82,7 @@ Index.menu = function (filterSelected) {
             .on("click", showSecondArc)
             .transition()
             .ease(d3.easeLinear)
-            .duration(200)
+            .duration(800)
             .attrTween("d", function(d){
                 d.innerRadius=0;
                 var i= d3.interpolate({startAngle:0, endAngle:0},d);
@@ -83,7 +90,7 @@ Index.menu = function (filterSelected) {
             });
         
         //draw all unterkat charts
-            detailDataRequested(data);
+            drawSencondArcs(data);
         
       /*//add textLabel 
        var labelArc = d3.arc()
@@ -141,7 +148,7 @@ Index.menu = function (filterSelected) {
         var textfield= svg.append('g').classed("text",true)
             .attr('transform', 'translate(185, 200 )');
         
-        textfield.append("text").selectAll("text").data([name,value,percentage])
+        textfield.append("text").selectAll("text").data([name,value,percentage+"%"])
                         .enter()
                         .append("tspan")
                         .text(function (d) {
@@ -196,14 +203,9 @@ Index.menu = function (filterSelected) {
     }
 
 
-    function detailDataRequested(event){
-        /*
-        console.log(event);
-        var mainpercentage=parseFloat((event.endAngle - event.startAngle)/(2*Math.PI)).toFixed(4);
-        createTextRightCorner(event.data.name,mainpercentage*100+"%");
-        */
-        
+    function drawSencondArcs(event){
         var data=event;
+        
         //für jede oberkategorie eigenen chart zeichnen!
         
         var radius = Math.min(width, height) / 2;
@@ -211,7 +213,6 @@ Index.menu = function (filterSelected) {
         var outerchart= svg.append('g').attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')').classed("secondarc",true).selectAll('g').data(event).enter().append('g').attr("class",function (d) {
             return (d.name);
         }).attr("visibility","hidden");
-        
         
         
         // arc
@@ -237,11 +238,10 @@ Index.menu = function (filterSelected) {
             .attr('fill', function (d) {
                 return color(d.data.name);
             })
-            .on("mouseover", function (d) {
+            .on("mouseover", function (d,i) {
                 let el=d3.select(this);
                 el.classed("piehover",true);
-                //let percentage=parseFloat((d.endAngle - d.startAngle)/(2*Math.PI)*mainpercentage*100).toFixed(2) +" %"
-                createTextCenter(d.data.value,d.data.name,"percentage");
+                createTextCenter(d.data.value,d.data.name,d.data.percentage);
             })
             .on("mouseout", function (d) {
                let el=d3.select(this);
@@ -254,6 +254,7 @@ Index.menu = function (filterSelected) {
                 }else{
                     el.classed("pieselected",true);
                 }
+                checkAllSelected(d.data.oberkategorie);
                 markPie(el);
                 selectionChanged();
             })
@@ -267,10 +268,21 @@ Index.menu = function (filterSelected) {
                 return function(t){return outerArc(i(t));};
             });
             */
-            selectionChanged();
         //}
         
         
+    }
+    
+    //wenn unterpunkte ausgewählt dann TODO pattern und nicht heller
+    function checkAllSelected(oberkategorie){
+        var maincat= d3.select("#"+oberkategorie);
+        var maincatnum = maincat.data()[0].data.array.length;
+        var selnum = d3.selectAll("."+oberkategorie).selectAll(".pieselected").size()
+        if(selnum==maincatnum){
+            maincat.attr("opacity", 1);
+        }else{
+            maincat.attr("opacity", 0.3);
+        }
     }
     
     //muss arc bekommen 
@@ -289,6 +301,7 @@ Index.menu = function (filterSelected) {
         var ids=[];
         var filters=d3.selectAll(".pieselected").data();
         //13 is missing others?
+        //console.log(filters);
         for(var i=0;i<filters.length;i++){
             ids.push(filters[i].data.id);
         }
@@ -300,7 +313,7 @@ Index.menu = function (filterSelected) {
         //callback für main
        filterSelected(ids);
     }
-    
+    that.getSelectedFilters= getSelectedFilters;
     that.changeData = changeData;
     that.init = init;
     return that;
