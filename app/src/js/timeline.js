@@ -47,9 +47,9 @@ Index.timeline = function (yearSelected) {
         x.domain(d3.extent(timelineData, function (d) {
             return d.name;
         }));
-        y.domain([0, d3.max(timelineData, function (d) {
+        y.domain([ d3.max(timelineData, function (d) {
             return d.value;
-        })]);
+        }),0]);
 
         svg2.append("path")
             .data([timelineData])
@@ -58,9 +58,9 @@ Index.timeline = function (yearSelected) {
 
 
         // Add the X Axis
-        svg2.append("g")
+       /* svg2.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+            .call(d3.axisBottom(x)); */
 
         // Add the Y Axis
         //svg.append("g")
@@ -102,7 +102,7 @@ Index.timeline = function (yearSelected) {
             .x(function (d) {
                 return x(d.name);
             })
-            .y0(height)
+            .y0(0)
             .y1(function (d) {
                 return y(d.value);
             });
@@ -232,21 +232,6 @@ Index.timeline = function (yearSelected) {
         od1.update(date[0]);
         od2.update(date[1]);
 
-        // yearSel1.innerHTML = date[0];
-        // yearSel2.innerHTML = date[1];
-
-
-
-
-        /* fade 
-        $yearInfoEl1.fadeOut(0, function () {
-            $(this).text(date[0]).fadeIn(0);
-        })
-        
-        $yearInfoEl2.fadeOut(0, function () {
-            $(this).text(date[1]).fadeIn(0);
-        })
-        */
     }
     
   

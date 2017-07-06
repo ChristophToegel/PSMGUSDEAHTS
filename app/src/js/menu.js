@@ -1,5 +1,8 @@
 /* eslint-env browser  */
 
+
+//Menu removed, Code disabled in main.js
+
 var Index = Index || {};
 Index.menu = function (filterSelected) {
     "use strict";
