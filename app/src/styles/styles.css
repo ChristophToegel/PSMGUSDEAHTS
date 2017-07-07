@@ -126,24 +126,27 @@ circle.active {
     width: 100%;
 }
 
-.line {
+/*.line {
     fill: none;
     stroke: black;
     stroke-width: 3px;
     shape-rendering: crispEdges;
-}
+}*/
 
 .area {
     fill: #ff1919;
     stroke-width: 0;
 }
 
+<<<<<<< Updated upstream
 .area2 {
     fill: #ff4d4d;
     stroke-width: 0;
 }
 
 
+=======
+>>>>>>> Stashed changes
 /*Dropdownmenu */
 
 #menu {
