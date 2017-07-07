@@ -26,7 +26,6 @@ h1 {
     position: absolute;
     height: 100%;
     width: 73%;
-    padding-right: 1%;
     margin-top: 0;
 }
 
@@ -43,9 +42,8 @@ h1 {
 }
 
 #graph {
-    padding-top: 55px;
-    margin: 0 auto;
-    width: 100%;
+    margin-left: 2%;
+    display: inline-block;
 }
 
 /*brush*/
@@ -125,7 +123,7 @@ circle.active {
 }
 
 .timeGraph {
-    display: block;
+    display: inline-block;
     margin: auto;
     width: 100%;
 }
@@ -251,11 +249,14 @@ circle.active {
     height: 100%;
 }
 
+#topContent{
+    position: relative;
+}
+
 #rightContent {
     float: right;
     width: 28%;
     margin-top: 0.5%;
-
 }
 
 #deathInfoBox {
@@ -314,7 +315,6 @@ circle.active {
     white-space: normal;
     text-align: center;
     color: #f2f2f2;
-    
 }
 
 #year_selection {
@@ -325,6 +325,8 @@ circle.active {
     white-space: nowrap;
     text-align: center;
     margin-bottom: 2%; 
+
+
 }
 
 .hidden {
