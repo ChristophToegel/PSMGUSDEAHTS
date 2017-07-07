@@ -3,37 +3,20 @@
 var Index = Index || {};
 Index.menu = function (filterSelected) {
     "use strict";
- 
     console.log($("#chart").width());
+    
     const width = $("#chart").width(),
-            height = width,
-            thickness= 40,
-            categorical = [
-              { "name" : "schemeAccent", "n": 8},
-              { "name" : "schemeDark2", "n": 8},
-              { "name" : "schemePastel2", "n": 8},
-              { "name" : "schemeSet2", "n": 8},
-              { "name" : "schemeSet1", "n": 9},
-              { "name" : "schemePastel1", "n": 9},
-              { "name" : "schemeCategory10", "n" : 10},
-              { "name" : "schemeSet3", "n" : 12 },
-              { "name" : "schemePaired", "n": 12},
-              { "name" : "schemeCategory20", "n" : 20 },
-              { "name" : "schemeCategory20b", "n" : 20},
-              { "name" : "schemeCategory20c", "n" : 20 }
-            ],
-            color = d3.scaleOrdinal()
-                .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]),
-            colorSub = d3.scaleOrdinal()
-                .range(["rgb(216, 216, 255)","rgb(193, 193, 255)","rgb(158, 158, 255)", "rgb(113, 113, 255)","rgb(75, 75, 255)","rgb(33, 33, 255)"]),
-            colorScale = d3.scaleOrdinal(d3[categorical[0].name]);
-                
-    var that = {}, svg;
+        height = width,
+          thickness=50,
+          color = d3.scaleOrdinal()
+                .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
+    var that = {},svg;
 
 
     function init() {
         console.log("init menu");
-        createSvg(); 
+        createSvg();
+        
     }
 
     function createSvg(){
@@ -65,15 +48,15 @@ Index.menu = function (filterSelected) {
             })
             .sort(null);
 
-        var innerChart= svg.append('g')
+        var innerchart= svg.append('g')
             .attr('transform', 'translate(' + (width / 2)  +
               ',' + (height / 2) + ')');
 
         var arc = d3.arc()
-            .innerRadius(width-7 * thickness)
-            .outerRadius(width-6 * thickness);
+            .innerRadius(width-7*thickness)
+            .outerRadius(width-6*thickness);
       
-        var path = innerChart.selectAll('path')
+        var path = innerchart.selectAll('path')
             .append("g")
             .data(pie(data))
             .enter()
@@ -88,7 +71,7 @@ Index.menu = function (filterSelected) {
                 return d.data.name;
             })
             .on("mouseover", function (d) {
-                let el = d3.select(this);
+                let el=d3.select(this);
                 createTextCenter(d.data.value,d.data.name, d.data.percentage);
                 el.classed("piehover",true);
             })
@@ -107,7 +90,7 @@ Index.menu = function (filterSelected) {
             });
         
         //draw all unterkat charts
-            drawSecondArcs(data);
+            drawSencondArcs(data);
         
       /*//add textLabel 
        var labelArc = d3.arc()
@@ -131,12 +114,12 @@ Index.menu = function (filterSelected) {
     //clickLogic
     function showSecondArc(d){
         //console.log(d);
-        var selected = d3.selectAll('g[visibility = visible]');
+        var selected=d3.selectAll('g[visibility = visible]');
         //element schon ausgewählt
         if(selected.data().length != 0){
             //gleiches element
-            if(selected.data()[0].name == d.data.name){
-                d3.selectAll("." + d.data.name).attr("visibility","hidden");
+            if(selected.data()[0].name==d.data.name){
+                d3.selectAll("."+d.data.name).attr("visibility","hidden");
             }else{
                 //unterschiedlich
                 d3.selectAll("."+selected.data()[0].name).attr("visibility","hidden");
@@ -161,12 +144,11 @@ Index.menu = function (filterSelected) {
     
     function createTextCenter(name, value, percentage){
         svg.select(".text").remove();
-        //TODO Startposition des Textfeldes über g bestimmen!!
+        //TODO startposition des Textfeldes über g bestimmen!!
         var textfield= svg.append('g').classed("text",true)
             .attr('transform', 'translate(185, 200 )');
         
-        textfield.append("text").selectAll("text")
-                        .data([name,value,percentage+"%"])
+        textfield.append("text").selectAll("text").data([name,value,percentage+"%"])
                         .enter()
                         .append("tspan")
                         .text(function (d) {
@@ -182,12 +164,11 @@ Index.menu = function (filterSelected) {
     
     function createTextRightCorner(name, percentage){
         svg.select(".textselected").remove();
-        //TODO Startposition des Textfeldes über g bestimmen!!
+        //TODO startposition des Textfeldes über g bestimmen!!
         var textfield= svg.append('g').classed("textselected",true)
             .attr('transform', 'translate(335, 20 )');
         
-        textfield.append("text").selectAll("text")
-                        .data([name,percentage])
+        textfield.append("text").selectAll("text").data([name,percentage])
                         .enter()
                         .append("tspan")
                         .text(function (d) {
@@ -203,12 +184,11 @@ Index.menu = function (filterSelected) {
     
     function createTextLeftCorner(state){
         svg.select(".textstate").remove();
-        //TODO Startposition des Textfeldes über g bestimmen!!
+        //TODO startposition des Textfeldes über g bestimmen!!
         var textfield= svg.append('g').classed("textstate",true)
             .attr('transform', 'translate(50, 20 )');
         
-        textfield.append("text").selectAll("text")
-                        .data([state])
+        textfield.append("text").selectAll("text").data([state])
                         .enter()
                         .append("tspan")
                         .text(function (d) {
@@ -223,28 +203,22 @@ Index.menu = function (filterSelected) {
     }
 
 
-    function drawSecondArcs(event){
-        var data = event;
+    function drawSencondArcs(event){
+        var data=event;
         
         //für jede oberkategorie eigenen chart zeichnen!
         
         var radius = Math.min(width, height) / 2;
         
-        var outerChart= svg.append('g')
-        .attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')')
-        .classed("secondarc",true)
-        .selectAll('g').data(event)
-        .enter().append('g')
-        .attr("class",function (d) {
+        var outerchart= svg.append('g').attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')').classed("secondarc",true).selectAll('g').data(event).enter().append('g').attr("class",function (d) {
             return (d.name);
-        })
-        .attr("visibility","hidden");
+        }).attr("visibility","hidden");
         
         
         // arc
         var outerArc = d3.arc()
-            .innerRadius(width-6 * thickness+2)
-            .outerRadius(width-5 * thickness+2);
+            .innerRadius(width-6*thickness+2)
+            .outerRadius(width-5*thickness+2);
 
         var pie = d3.pie()
             .value(function (d) {
@@ -253,7 +227,7 @@ Index.menu = function (filterSelected) {
             .sort(null);
         
         
-        var path = outerChart.selectAll('path')
+        var path = outerchart.selectAll('path')
             .data(function(d) {
                 return pie(d.array);})
             .enter()
@@ -262,13 +236,12 @@ Index.menu = function (filterSelected) {
             //zu beginn alle der unterkategorie ausgewählt
             .classed("pieselected",true)
             .attr('fill', function (d) {
-                return colorSub(d.data.name);
+                return color(d.data.name);
             })
             .on("mouseover", function (d,i) {
                 let el=d3.select(this);
                 el.classed("piehover",true);
-            createTextCenter(d.data.value,d.data.name,
-                             d.data.percentage);
+                createTextCenter(d.data.value,d.data.name,d.data.percentage);
             })
             .on("mouseout", function (d) {
                let el=d3.select(this);
@@ -302,10 +275,10 @@ Index.menu = function (filterSelected) {
     
     //wenn unterpunkte ausgewählt dann TODO pattern und nicht heller
     function checkAllSelected(oberkategorie){
-        var maincat = d3.select("#"+oberkategorie);
+        var maincat= d3.select("#"+oberkategorie);
         var maincatnum = maincat.data()[0].data.array.length;
         var selnum = d3.selectAll("."+oberkategorie).selectAll(".pieselected").size()
-        if(selnum == maincatnum){
+        if(selnum==maincatnum){
             maincat.attr("opacity", 1);
         }else{
             maincat.attr("opacity", 0.3);
@@ -317,8 +290,8 @@ Index.menu = function (filterSelected) {
         //var arc = d3.arc()
         //    .innerRadius(width-6*thickness+2)
         //    .outerRadius(width-5*thickness+2);
-        d.innerRadius = 0;
-        var i = d3.interpolate({startAngle:0, endAngle:0},d);
+        d.innerRadius=0;
+        var i= d3.interpolate({startAngle:0, endAngle:0},d);
         return function(t){return arc(i(t));};
     }
     
@@ -326,21 +299,21 @@ Index.menu = function (filterSelected) {
     function getSelectedFilters(){
         //array mit ID der ausgewählten kategorien!!
         var ids=[];
-        var filters = d3.selectAll(".pieselected").data();
+        var filters=d3.selectAll(".pieselected").data();
         //13 is missing others?
         //console.log(filters);
-        for(var i = 0;i<filters.length;i++){
+        for(var i=0;i<filters.length;i++){
             ids.push(filters[i].data.id);
         }
         return ids;
     }
     
     function selectionChanged(){
-        let ids = getSelectedFilters();
+        let ids=getSelectedFilters();
         //callback für main
        filterSelected(ids);
     }
-    that.getSelectedFilters = getSelectedFilters;
+    that.getSelectedFilters= getSelectedFilters;
     that.changeData = changeData;
     that.init = init;
     return that;

@@ -3,7 +3,7 @@
     margin: 0;
     /*border: 1px solid #000;*/ 
     font-family: "Helvetica", sans-serif;
-    color: #fff;
+    color: #FFF;
 }
 
 body {
@@ -14,8 +14,7 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 35px;
-    color: gray;
+    font-size: 75px;
 }
 
 #slidemenu {
@@ -32,13 +31,11 @@ h1 {
 
 #mapsvg {
     display: block;
-    
+    margin: 0 auto;
     /*width: 95%;*/
     float: left;
-    margin-left: 10px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 0px;
+    margin:10px;
+    border-radius: 25px;
     border: 1px solid rgba(0,0,0,0);
 }
 
@@ -84,21 +81,20 @@ circle.active {
 }
 
 .selectedState {
-    stroke-width: 1px !important;
-    stroke: #6f727a;
+    stroke-width: 1.5px !important;
 }
 
 .zoomed {
-    stroke-width: 0.10px
+    stroke-width: 0.20px
 }
 
 .hoverState{
-    stroke-width: 1.5px; !important;
+    stroke-width: 2.5px; !important;
 }
 
 .pieselected{
-    stroke: white;
-    stroke-width: 2px;
+    stroke: #000000;
+    stroke-width: 3px;
 }
 
 .piehover{
@@ -132,18 +128,18 @@ circle.active {
 
 .line {
     fill: none;
-    stroke: grey;
-    stroke-width: 0px;
+    stroke: black;
+    stroke-width: 3px;
     shape-rendering: crispEdges;
 }
 
 .area {
-    fill: #5d5dff; /*#ff1919*/
+    fill: #ff1919;
     stroke-width: 0;
 }
 
 .area2 {
-    fill: #c1c1ff/*#ff4d4d*/;
+    fill: #ff4d4d;
     stroke-width: 0;
 }
 
@@ -179,7 +175,7 @@ circle.active {
 }
 
 .master_label {
-    font-size: 18px;
+    font-size: 25px;
 }
 .master_label div {
     margin-right: 2%; 
@@ -225,7 +221,7 @@ circle.active {
 }
 
 #checkboxes div label {
-    font-size: 13px;
+    font-size: 15px;
     text-align: left;
     display: inline-block;
 }
@@ -241,9 +237,8 @@ circle.active {
 
 #menu, #deathInfoBox, #year_selection{
         border-radius: 15px; 
-        border: solid 4px #cccccc;
+        border: solid 6px #cccccc;
         background: grey;
-    
 }
 
 #contentContainer{
@@ -253,14 +248,14 @@ circle.active {
 
 #rightContent {
     float: right;
-    width: 28%;
-    margin-top: 0.5%;
+    width: 29%;
+    margin-top: 1%;
 
 }
 
 #deathInfoBox {
-    width: 95%;
-    height: 240px;
+    width: 93%;
+    height: 250px;
     overflow: scroll;
     display: block;
     color: white;
@@ -270,7 +265,7 @@ circle.active {
 .deathInfoHeading{
     color: white;
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1.4em;
     margin-top: 0px;
 }
 
@@ -292,12 +287,12 @@ circle.active {
     padding-top: 3px;
     padding-bottom: 3px;
     font-family: 'BenchNine', sans-serif;
-    font-size: 1.0em;
+    font-size: 1.1em;
 }
 
 .deathEntryVictim{
     text-align: center;
-    font-size: 1em;
+    font-size: 1.2em;
     white-space: normal;
     color: white;
     
@@ -320,11 +315,11 @@ circle.active {
 #year_selection {
     font-family: 'BenchNine', sans-serif;
     font-weight: bold;
-    width: 95%;
-    font-size: 2.5em;
+    width: 93%;
+    font-size: 4em;
     white-space: nowrap;
     text-align: center;
-    margin-bottom: 2%; 
+    margin-bottom: 3%; 
 }
 
 .hidden {
@@ -332,22 +327,10 @@ circle.active {
 }
 
 #chart {
-    margin-left: 2.5%;
+    margin-right: 30%;
     width: 93%;
     display: block;
     stroke: lightgray;
     stroke-width: 1px;
-}
-
-#mapsymbology {
-    
-}
-
-#rectangle {
-    width: 50px;
-    height: 50px;
-    color: indianred;
-    stroke: 1px;
-    right: 50%;
 }
 
