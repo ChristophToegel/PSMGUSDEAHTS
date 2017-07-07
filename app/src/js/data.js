@@ -8,8 +8,7 @@ var Index = Index || {};
 Index.data = function (datainitialised) {
     "use strict";
 
-    var that = {},
-        rawdata,catIdData;
+    var that = {}, rawdata, catIdData;
 
     function initData() {
         d3.csv("data/finalData.csv", function (csv) {
@@ -71,7 +70,7 @@ Index.data = function (datainitialised) {
         for (var key in causeDetail) {
             var name;
             catIdData.forEach(function(line){
-                if(key==line.id){
+                if (key==line.id){
                     name=line.cause_short;
                 }
             });
@@ -100,20 +99,20 @@ Index.data = function (datainitialised) {
         ];
         
         mainArray.forEach(function (element) {
-            var total=0;
-            var newArray=[];
+            var total = 0;
+            var newArray = [];
             element["array"].forEach(function (cat) {
                 causeDetail.forEach(function (cat2) {
-                if(cat==cat2["id"]){
-                    cat2.oberkategorie=element.name;
+                if(cat == cat2["id"]){
+                    cat2.oberkategorie = element.name;
                     newArray.push(cat2);
-                    total=total+cat2["value"]
+                    total = total+cat2["value"]
                     } 
                 });
             });
                 element["array"] = newArray;
-                element.value=total
-                element.percentage=Math.round(total/totaldeaths*10000)/100;
+                element.value = total
+                element.percentage = Math.round(total/totaldeaths*10000)/100;
         });
         //console.log(mainArray);
         return mainArray;

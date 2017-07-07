@@ -21,10 +21,12 @@ Index = (function () {
         //TODO infobox bekommt aus daten übergeben und nicht data.
         //infobox = new Index.infobox(data);
         timeline = new Index.timeline(yearSelected);
+ 
         
     }
     
     // Daten würden eingelesen
+
     function datainitialised() {
         console.log("data ready");
         map.initMap(data.getMapDrawData(map.mapdatareceived));

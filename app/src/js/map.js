@@ -7,7 +7,7 @@ Index.map = function (mapisready, stateSelected) {
     "use strict";
 
     const width = 1000,
-        height = 700;
+        height = 580;
     var that = {},
         path, svg, projection, zoom, g, selectedState;
 
@@ -139,8 +139,7 @@ Index.map = function (mapisready, stateSelected) {
     function ChoroplethColor(data) {
         clearMapColor();
         var color = d3.scaleQuantile()
-            .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)",
-                     "rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
+            .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)","rgb(255, 77, 77)", "rgb(255, 51, 51)","rgb(255, 40, 40)"]);
 
         color.domain([
                 d3.min(data, function (d) {
