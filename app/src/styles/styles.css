@@ -3,18 +3,22 @@
     margin: 0;
     /*border: 1px solid #000;*/ 
     font-family: "Helvetica", sans-serif;
-    color: #FFF;
+    color: #fff;
 }
 
 body {
-    background: #fff;
+    background: white;
     background-repeat: no-repeat;
     color: #ffe6e6;
 }
 
 h1 {
-    text-align: center;
-    font-size: 75px;
+    text-align: left;
+    font-size: 35px;
+    color: #4e4e5e;
+    margin-bottom: 0.5%;
+    margin-top: 1%;
+    margin-left: 2%;
 }
 
 #slidemenu {
@@ -25,24 +29,24 @@ h1 {
     position: absolute;
     height: 100%;
     width: 73%;
-    padding-right: 1%;
     margin-top: 0;
 }
 
 #mapsvg {
     display: block;
-    margin: 0 auto;
+    
     /*width: 95%;*/
     float: left;
-    margin:10px;
-    border-radius: 25px;
+    margin-left: 10px;
+    margin-top: 5em;
+    margin-bottom: 5px;
+    border-radius: 0px;
     border: 1px solid rgba(0,0,0,0);
 }
 
 #graph {
-    padding-top: 55px;
-    margin: 0 auto;
-    width: 100%;
+    margin-left: 2%;
+    display: inline-block;
 }
 
 /*brush*/
@@ -73,7 +77,8 @@ circle.active {
 .clearState {
     fill: #ffe6e6;
     stroke: grey;
-    stroke-width: 1px; 
+    stroke-width: 0px;
+
 }
 
 .text{
@@ -81,20 +86,22 @@ circle.active {
 }
 
 .selectedState {
-    stroke-width: 1.5px !important;
+    stroke-width: 0px !important;
+    stroke: #6f727a;
+    
 }
 
 .zoomed {
-    stroke-width: 0.20px
+    stroke-width: 0.10px
 }
 
 .hoverState{
-    stroke-width: 2.5px; !important;
+    stroke-width: 1.5px; !important;
 }
 
 .pieselected{
-    stroke: #000000;
-    stroke-width: 3px;
+    stroke: #4e4e5e;
+    stroke-width: 2px;
 }
 
 .piehover{
@@ -117,36 +124,33 @@ circle.active {
 .focus line {
     fill: none;
     stroke: black;
-    color: white;
+    color: #4e4e5e;
 }
 
 .timeGraph {
-    display: block;
+    display: inline-block;
     margin: auto;
     width: 100%;
 }
 
-/*.line {
+.line {
     fill: none;
-    stroke: black;
-    stroke-width: 3px;
+    stroke: grey;
+    stroke-width: 0px;
     shape-rendering: crispEdges;
-}*/
+}
 
 .area {
-    fill: #ff1919;
+    fill: #5d5dff; /*#ff1919*/
     stroke-width: 0;
 }
 
-<<<<<<< Updated upstream
 .area2 {
-    fill: #ff4d4d;
+    fill: #c1c1ff/*#ff4d4d*/;
     stroke-width: 0;
 }
 
 
-=======
->>>>>>> Stashed changes
 /*Dropdownmenu */
 
 #menu {
@@ -178,7 +182,7 @@ circle.active {
 }
 
 .master_label {
-    font-size: 25px;
+    font-size: 18px;
 }
 .master_label div {
     margin-right: 2%; 
@@ -224,7 +228,7 @@ circle.active {
 }
 
 #checkboxes div label {
-    font-size: 15px;
+    font-size: 13px;
     text-align: left;
     display: inline-block;
 }
@@ -240,8 +244,9 @@ circle.active {
 
 #menu, #deathInfoBox, #year_selection{
         border-radius: 15px; 
-        border: solid 6px #cccccc;
+        border: solid 4px #cccccc;
         background: grey;
+    
 }
 
 #contentContainer{
@@ -249,16 +254,22 @@ circle.active {
     height: 100%;
 }
 
+#topContent{
+    position: absolute;
+
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 #rightContent {
     float: right;
-    width: 29%;
-    margin-top: 1%;
-
+    width: 28%;
+    margin-top: 0.5%;
 }
 
 #deathInfoBox {
-    width: 93%;
-    height: 250px;
+    width: 95%;
+    height: 240px;
     overflow: scroll;
     display: block;
     color: white;
@@ -268,7 +279,7 @@ circle.active {
 .deathInfoHeading{
     color: white;
     text-align: center;
-    font-size: 1.4em;
+    font-size: 1.1em;
     margin-top: 0px;
 }
 
@@ -290,12 +301,12 @@ circle.active {
     padding-top: 3px;
     padding-bottom: 3px;
     font-family: 'BenchNine', sans-serif;
-    font-size: 1.1em;
+    font-size: 1.0em;
 }
 
 .deathEntryVictim{
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
     white-space: normal;
     color: white;
     
@@ -312,17 +323,18 @@ circle.active {
     white-space: normal;
     text-align: center;
     color: #f2f2f2;
-    
 }
 
 #year_selection {
     font-family: 'BenchNine', sans-serif;
     font-weight: bold;
-    width: 93%;
-    font-size: 4em;
+    width: 95%;
+    font-size: 2.5em;
     white-space: nowrap;
     text-align: center;
-    margin-bottom: 3%; 
+    margin-bottom: 2%; 
+
+
 }
 
 .hidden {
@@ -330,10 +342,22 @@ circle.active {
 }
 
 #chart {
-    margin-right: 30%;
+    margin-left: 2.5%;
     width: 93%;
     display: block;
     stroke: lightgray;
     stroke-width: 1px;
+}
+
+#mapsymbology {
+    
+}
+
+#rectangle {
+    width: 50px;
+    height: 50px;
+    color: indianred;
+    stroke: 1px;
+    right: 50%;
 }
 

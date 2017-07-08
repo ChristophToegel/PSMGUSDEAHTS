@@ -9,7 +9,10 @@ Index.menu = function (filterSelected) {
         height = width,
           thickness=50,
           color = d3.scaleOrdinal()
-                .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
+                .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]),
+          colorSub = d3.scaleOrdinal()
+                .range(["rgb(33, 33, 255)", "rgb(63, 63, 255)", "rgb(93, 93, 255)", "rgb(123, 123, 255)", "rgb(153, 153, 255)", "rgb(183, 183, 255)", "rgb(213, 213, 230)"]);
+
     var that = {},svg;
 
 
@@ -236,7 +239,7 @@ Index.menu = function (filterSelected) {
             //zu beginn alle der unterkategorie ausgewählt
             .classed("pieselected",true)
             .attr('fill', function (d) {
-                return color(d.data.name);
+                return colorSub(d.data.name);
             })
             .on("mouseover", function (d,i) {
                 let el=d3.select(this);

@@ -14,13 +14,14 @@ Index.timeline = function (yearSelected) {
         }).left;
 
         var margin = {
-                top: 30,
-                right: 40,
-                bottom: 30,
-                left: 30
+                top: 20,
+                right: 0,
+                bottom: 20,
+                left: 0
             },
-            width = $("#map").width()-margin.left-margin.right,
-            height = 210 - margin.top - margin.bottom;
+            /*width = $("#map").width()-margin.left-margin.right,*/
+            width = $("#map").width()-margin.left-margin.right-100,
+            height = 80 - margin.top - margin.bottom;
 
 
         var x = d3.scaleLinear().range([0, width]);
