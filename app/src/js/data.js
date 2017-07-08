@@ -160,7 +160,8 @@ Index.data = function (datainitialised) {
                 states.forEach(function (state) {
                     for (var i = 0; i < statenames.length; i++) {
                         if (statenames[i].id == state.id) {
-                            state.statename = statenames[i].code;
+                            state.statenameshort = statenames[i].code;
+                            state.statename = statenames[i].name;
                         }
                     }
                 });

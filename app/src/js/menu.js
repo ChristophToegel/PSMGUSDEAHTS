@@ -24,10 +24,7 @@ Index.menu = function (filterSelected) {
             .append('svg')
             .attr('width', width)
             .attr('height', height)
-        //pattern test
-        //Pattern injection ???
-        svg.html('<defs><pattern id="crosshatch" patternUnits="userSpaceOnUse" width="8" height="8"><image xlink:href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><path fill="#fff" d="M0 0h8v8h-8z"/><path d="M0 0l8 8zm8 0l-8 8z" stroke-width=".5" stroke="#aaa"/></svg>"x="0" y="0" width="8" height="8"></image></pattern></defs>');
-
+        svg.append('defs');
     }
     
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
@@ -37,9 +34,7 @@ Index.menu = function (filterSelected) {
         createTextLeftCorner(state);
     }
 
-    function createArc(data) {
-        //console.log(data);
-        
+    function createArc(data) {  
         var radius = Math.min(width, height) / 2;            
        
          var pie = d3.pie()
@@ -62,11 +57,11 @@ Index.menu = function (filterSelected) {
             .enter()
             .append('path')
             .attr('d', arc)
-        
             .attr('fill', function (d) {
+                d.data.color=color(d.data.name);
+                createPattern(d.data);
                 return color(d.data.name);
             })
-        
             .attr('id', function (d) {
                 return d.data.name;
             })
@@ -124,7 +119,6 @@ Index.menu = function (filterSelected) {
                 //unterschiedlich
                 d3.selectAll("."+selected.data()[0].name).attr("visibility","hidden");
                 d3.selectAll("."+d.data.name).attr("visibility","visible")
-                
             }
         }else{
         //nichts ausgewählt
@@ -141,6 +135,8 @@ Index.menu = function (filterSelected) {
         };
         el.moveToFront()
     }
+    
+    
     
     function createTextCenter(name, value, percentage){
         svg.select(".text").remove();
@@ -183,16 +179,16 @@ Index.menu = function (filterSelected) {
     }
     
     function createTextLeftCorner(state){
+        var state=d3.select("#"+state).data();
         svg.select(".textstate").remove();
         //TODO startposition des Textfeldes über g bestimmen!!
         var textfield= svg.append('g').classed("textstate",true)
             .attr('transform', 'translate(50, 20 )');
-        
-        textfield.append("text").selectAll("text").data([state])
+        textfield.append("text").selectAll("text").data(state)
                         .enter()
                         .append("tspan")
                         .text(function (d) {
-                        return d;
+                        return d.statename;
                         })
                         .attr("x",function (d,i) {
                             return 0;
@@ -203,14 +199,12 @@ Index.menu = function (filterSelected) {
     }
 
 
-    function drawSencondArcs(event){
-        var data=event;
-        
+    function drawSencondArcs(data){
         //für jede oberkategorie eigenen chart zeichnen!
         
         var radius = Math.min(width, height) / 2;
         
-        var outerchart= svg.append('g').attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')').classed("secondarc",true).selectAll('g').data(event).enter().append('g').attr("class",function (d) {
+        var outerchart= svg.append('g').attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')').classed("secondarc",true).selectAll('g').data(data).enter().append('g').attr("class",function (d) {
             return (d.name);
         }).attr("visibility","hidden");
         
@@ -224,7 +218,7 @@ Index.menu = function (filterSelected) {
             .value(function (d) {
                 return d.value;
             })
-            .sort(null);
+            .sort(d3.descending);
         
         
         var path = outerchart.selectAll('path')
@@ -236,6 +230,7 @@ Index.menu = function (filterSelected) {
             //zu beginn alle der unterkategorie ausgewählt
             .classed("pieselected",true)
             .attr('fill', function (d) {
+                d.data.color=color(d.data.name);
                 return color(d.data.name);
             })
             .on("mouseover", function (d,i) {
@@ -257,8 +252,7 @@ Index.menu = function (filterSelected) {
                 checkAllSelected(d.data.oberkategorie);
                 markPie(el);
                 selectionChanged();
-            })
-        
+            });
             /*.transition()
             .ease(d3.easeLinear)
             .duration(200)
@@ -269,8 +263,23 @@ Index.menu = function (filterSelected) {
             });
             */
         //}
-        
-        
+    }
+    
+    function createPattern(data){
+        var allpatterns= d3.select('defs').append('pattern')
+                .attr('id', "pattern-" +data.name)
+                .attr('width', 12)
+                .attr('height', 12)
+                .attr('patternUnits', 'userSpaceOnUse');
+        allpatterns.append('rect')
+                .attr('width', 12)
+                .attr('stroke', "none")
+                .attr('height', 12)
+                .attr('fill', data.color)
+        allpatterns.append('image')
+                .attr('width', 12)
+                .attr('height', 12)
+                .attr('xlink:href', "https://www.transparenttextures.com/patterns/black-twill.png")
     }
     
     //wenn unterpunkte ausgewählt dann TODO pattern und nicht heller
@@ -280,8 +289,10 @@ Index.menu = function (filterSelected) {
         var selnum = d3.selectAll("."+oberkategorie).selectAll(".pieselected").size()
         if(selnum==maincatnum){
             maincat.attr("opacity", 1);
+            maincat.attr("fill", maincat.data()[0].data.color)
         }else{
-            maincat.attr("opacity", 0.3);
+            var color=maincat.attr("fill");
+            maincat.attr("fill","url(#pattern-"+maincat.data()[0].data.name+")")
         }
     }
     
