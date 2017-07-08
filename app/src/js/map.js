@@ -9,7 +9,7 @@ Index.map = function (mapisready, stateSelected) {
     const width = 1000,
         height = 700;
     var that = {},
-        path, svg, projection, zoom, g, selectedState;
+        path, svg, projection, g, selectedState, zoom,transformation;
 
 
     function initMap() {
@@ -42,6 +42,8 @@ Index.map = function (mapisready, stateSelected) {
         //verschiebt map
         //g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
         g.attr("transform", d3.event.transform);
+        transformation = d3.event.transform;
+        console.log(d3.event.transform);
     }
 
     //zeichnet die Staaten
@@ -111,13 +113,13 @@ Index.map = function (mapisready, stateSelected) {
         //Todo border soll mit zoom verknüpf sein/via css
         g.classed("zoomed",true);
         //Infobox nur bei zoom?
-        document.querySelector("#deathInfoBox").classList.remove("hidden");
+        //document.querySelector("#deathInfoBox").classList.remove("hidden");
 
     }
 
     function zoomOut() {
         //Infobox nur bei zoom?
-        document.querySelector("#deathInfoBox").classList.add("hidden");
+        //document.querySelector("#deathInfoBox").classList.add("hidden");
         svg.transition()
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
@@ -221,6 +223,10 @@ Index.map = function (mapisready, stateSelected) {
         places.exit().remove();
         //wenn mehr dann hinzufügen
         places=places.enter().insert("circle")
+        //wenn zoom dann noch transformieren!
+        if(g.classed("zoomed")){
+            places.attr("transform", transformation);
+           }
         addpointAttributes(places,color);
     }
     
@@ -250,8 +256,8 @@ Index.map = function (mapisready, stateSelected) {
                     .duration(200)
                     .style("opacity", .9);
                 tooltip.html(d.name + " <br/>" + "Anzahl der Todesfälle: " + d.value.length)
-                    .style("left", d3.event.pageX + "px")
-                    .style("top", d3.event.pageY - 172 + "px");
+                    .style("left", d3.event.layerX +5+ "px")
+                    .style("top", d3.event.layerY +5+ "px");
             })
             .on("mouseout", function (d) {
                 var tooltip = d3.selectAll(".tooltip");
