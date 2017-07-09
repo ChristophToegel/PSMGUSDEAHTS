@@ -43,7 +43,6 @@ Index.map = function (mapisready, stateSelected) {
         //g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
         g.attr("transform", d3.event.transform);
         transformation = d3.event.transform;
-        console.log(d3.event.transform);
     }
 
     //zeichnet die Staaten
@@ -57,7 +56,7 @@ Index.map = function (mapisready, stateSelected) {
             .attr("d", path)
             .classed("clearState", true)
             .attr("id", function (i) {
-                return i.statename
+                return i.statenameshort
             })
             .on("click", clickedState)
             //callback für main wenn map fertig gezeichnet(-->Dateneintragen möglich)
@@ -67,18 +66,18 @@ Index.map = function (mapisready, stateSelected) {
 
 
     function clickedState(event) {
-        if (selectedState != event.statename) {
+        if (selectedState != event.statenameshort) {
             zoomIn(event);
             //callback für main 1 staat ausgewählt
-            stateSelected(event.statename);
-            selectedState = event.statename;
+            stateSelected(event.statenameshort);
+            selectedState = event.statenameshort;
             let state=d3.select(this);
             state.classed("selectedState",true);
             markState(state);
             
         } else {
             zoomOut();
-            let state=d3.select("#"+event.statename);
+            let state=d3.select("#"+event.statenameshort);
             state.classed("selectedState",false);
             //callback für main kein staat ausgewählt
             stateSelected();
