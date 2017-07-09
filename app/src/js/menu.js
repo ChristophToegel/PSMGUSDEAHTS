@@ -7,7 +7,7 @@ Index.menu = function (filterSelected) {
     
     const width = $("#chart").width(),
         height = width,
-          thickness=50,
+          thickness=0.105*width,
           color = d3.scaleOrdinal()
                 .range(["rgb(255, 77, 77)", "rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
     var that = {},svg;
@@ -44,8 +44,8 @@ Index.menu = function (filterSelected) {
             .sort(null);
 
         var innerchart= svg.append('g')
-            .attr('transform', 'translate(' + (width / 2)  +
-              ',' + (height / 2) + ')');
+            .attr('transform', 'translate(' + (width / 2)  + ',' + (height / 2) + ')')
+            .classed("firstarc",true);
 
         var arc = d3.arc()
             .innerRadius(width-7*thickness)
@@ -141,8 +141,8 @@ Index.menu = function (filterSelected) {
     function createTextCenter(name, value, percentage){
         svg.select(".text").remove();
         //TODO startposition des Textfeldes über g bestimmen!!
-        var textfield= svg.append('g').classed("text",true)
-            .attr('transform', 'translate(185, 200 )');
+        var textfield= svg.append('g')
+            .classed("text",true)
         
         textfield.append("text").selectAll("text").data([name,value,percentage+"%"])
                         .enter()
@@ -150,12 +150,12 @@ Index.menu = function (filterSelected) {
                         .text(function (d) {
                         return d;
                         })
-                        .attr("x",function (d,i) {
-                            return 0;
+                        .attr("x","50%")
+                        .attr("y","45%")
+                        .attr("dy",function (d,i) {
+                            return  i*20;
                             })
-                        .attr("y",function (d,i) {
-                            return i*20;
-                            });
+                        .attr("text-anchor","middle")
     }
     
     function createTextRightCorner(name, percentage){
@@ -204,7 +204,14 @@ Index.menu = function (filterSelected) {
         
         var radius = Math.min(width, height) / 2;
         
-        var outerchart= svg.append('g').attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')').classed("secondarc",true).selectAll('g').data(data).enter().append('g').attr("class",function (d) {
+        var outerchart= svg.append('g')
+        .attr('transform', 'translate(' + (width /2) +',' + (height / 2) + ')')
+        .classed("secondarc",true)
+        .selectAll('g')
+        .data(data)
+        .enter()
+        .append('g')
+        .attr("class",function (d) {
             return (d.name);
         }).attr("visibility","hidden");
         

@@ -19,7 +19,7 @@ Index.timeline = function (yearSelected) {
                 bottom: 30,
                 left: 30
             },
-            width = $("#map").width()-margin.left-margin.right,
+            width = $("#map").width() - margin.left - margin.right,
             height = 210 - margin.top - margin.bottom;
 
 
@@ -63,8 +63,8 @@ Index.timeline = function (yearSelected) {
             .call(d3.axisBottom(x));
 
         // Add the Y Axis
-        //svg.append("g")
-        //  .call(d3.axisLeft(y));
+        /*svg.append("g")
+          .call(d3.axisLeft(y)); */
 
 
         //Adding brush --extent defines area, -5 to cover whole graph
@@ -74,7 +74,60 @@ Index.timeline = function (yearSelected) {
         var brush = d3.brushX()
             .extent([[0, -5], [width, height]])
             .on("brush", brushed);
-
+        
+        /*
+        //Tastaturkontrolle über Brush
+        brush("#brushTime").addEventListener("keydown", function(){
+            var selection = d3.event.selection;
+            switch (event.key){
+                case "ArrowLeft":
+                    console.log("Links")
+                    brush.extent = [[brushScale(selection[0]-1),height], [brushScale(selection[1]),height]];
+                    break;
+                    
+                case "ArrowRight":
+                    console.log("Rechts")
+                    brush.extent = [[brushScale(selection[0]+1),height], [brushScale(selection[1]),height]];
+                    break;
+                    
+                case "ArrowUp":
+                    console.log("Hoch")
+                    brush.extent = [[brushScale(selection[0]),height], [brushScale(selection[1]+1),height]];
+                    break;
+                    
+                case "ArrowDown":
+                    console.log("Runter")
+                    brush.extent = [[brushScale(selection[0]),height], [brushScale(selection[1]-1),height]];
+                    break;
+                    
+                default:
+                    return;  
+            }
+        })
+        
+        
+        // Optische Erscheinung des Brush
+        var handle = brush.selectAll(".handle--custom")
+            .data([{
+                type: "w"
+            }, {
+                type: "e"
+            }])
+            .enter().append("path")
+            .attr("class", "handle--custom")
+            .attr("fill", "#666")
+            .attr("fill-opacity", 0.8)
+            .attr("stroke", "#000")
+            .attr("stroke-width", 1.5)
+            .attr("cursor", "ew-resize")
+            .attr("d", d3.arc()
+                .innerRadius(0)
+                .outerRadius(height / 2)
+                .startAngle(0)
+                .endAngle(function (d, i) {
+                    return i ? Math.PI : -Math.PI;
+                }));
+            */
 
         //transform brush to graph-area and not svg-area
         d3.select(".timeGraph")
@@ -83,7 +136,7 @@ Index.timeline = function (yearSelected) {
             .attr("class", "brush")
             .call(brush)
             .call(brush.move, x.range());
-
+        
 
         function brushed() {
             var selection = d3.event.selection;
@@ -146,30 +199,29 @@ Index.timeline = function (yearSelected) {
             */
 
 
-
-
-
+        /* ALT 
         function mouseclick() {
             var x0 = x.invert(d3.mouse(this)[0]),
                 i = bisectDate(transform, x0, 1),
                 d0 = timelineData[i - 1],
                 d1 = timelineData[i],
                 d = x0 - d0.name > d1.name - x0 ? d1 : d0;
-            //d.name=year
-
+            //d.name=year 
+            
             
             //slection marker wieder aktiviere
             /*svg2.append("path")
                 .datum(transform.slice(0, i))
                 .attr("class", "area2")
                 .attr("d", area2);
-
-*/          //never called?
+                //never called?
             //yearSelected(d.name);
             updateDateInfo(d.name);
-
         }
+        */
 
+        //alt anzeige des aktuell ausgewählten
+        //Vllt umbauen 
         function mousemove() {
             var x0 = x.invert(d3.mouse(this)[0]),
                 i = bisectDate(timelineData, x0, 1),
@@ -192,25 +244,8 @@ Index.timeline = function (yearSelected) {
         let $yearInfoEl1 = $("#yearSel1");
         let $yearInfoEl2 = $("#yearSel2");
 
-        // Test für passende Schriftart 
-        /*
-        if (date < 1849) {
-            $yearInfoEl.css("font-family", "'Fredericka the Great', cursive");
-        } else if (date < 1889) {
-            $yearInfoEl.css("font-family", "Calligraffitti, cursive");
-        } else if (date < 1989) {
-            $yearInfoEl.css("font-family", "Space Mono, monospace");
-            //$yearInfoEl.setAttribute("font-size-adjust",0.5);
-        } else {
-            $yearInfoEl.css("font-family", "Abel, sans-serif");
-            //$yearInfoEl.setAttribute("font-size-adjust",0.5);
-
-        }
-        */
-
         var yearSel1 = document.getElementById('yearSel1');
         var yearSel2 = document.getElementById('yearSel2');
-
 
         window.odometerOptions = {
             auto: false, // Don't automatically initialize everything with class 'odometer'
@@ -231,25 +266,9 @@ Index.timeline = function (yearSelected) {
 
         od1.update(date[0]);
         od2.update(date[1]);
-
-        // yearSel1.innerHTML = date[0];
-        // yearSel2.innerHTML = date[1];
-
-
-
-
-        /* fade 
-        $yearInfoEl1.fadeOut(0, function () {
-            $(this).text(date[0]).fadeIn(0);
-        })
-        
-        $yearInfoEl2.fadeOut(0, function () {
-            $(this).text(date[1]).fadeIn(0);
-        })
-        */
     }
-    
-  
+
+
     that.drawTimeGraph = drawTimeGraph;
     return that;
 };
