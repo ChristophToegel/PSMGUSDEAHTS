@@ -7,15 +7,14 @@ Index = (function () {
     "use strict";
 
     var that = {},
-        map, data, menu,timeline, deathInfo,
-        year;//oder mit getYear immer aus timeline.js abfragen
+        map, data, menu,timeline, deathInfo, year;
+        //oder mit getYear immer aus timeline.js abfragen
 
     function init() {
         console.log("init main");
         //daten einlesen
         data = new Index.data(datainitialised);
         data.initData();
-        
         menu = new Index.menu(filterSelected);
         map = new Index.map(mapisready,stateSelected);
         //TODO infobox bekommt aus daten übergeben und nicht data.
@@ -36,20 +35,20 @@ Index = (function () {
         //jetzt timeline aktivieren
         timeline.drawTimeGraph(data.getdataTimeline());
         //piechart alle staaten
-        let boxdata=data.getInfoBoxData(year,undefined);
+        let boxdata = data.getInfoBoxData(year,undefined);
         menu.changeData(undefined,boxdata);
         
     }
     
     //year wurde von timeline ausgewählt
     function yearSelected(curyear) {
-        year=curyear;
+        year = curyear;
         updateMap(year,menu.getSelectedFilters());
     }
     
     //staat wurde geclicked
     function stateSelected(state){
-        let boxdata=data.getInfoBoxData(year,state);
+        let boxdata = data.getInfoBoxData(year,state);
         menu.changeData(state,boxdata);
     }
     
@@ -60,7 +59,7 @@ Index = (function () {
     }
     
     function updateMap(year, filters){
-        var selectedData=data.getMapData(year,filters);
+        var selectedData = data.getMapData(year,filters);
         map.ChoroplethColor(selectedData); data.getMapPointData(map.pointsready,year,filters);
     }
     

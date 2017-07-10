@@ -17,12 +17,12 @@ Index.timeline = function (yearSelected) {
                 top: 20,
                 right: 0,
                 bottom: 20,
-                left: 0
+                left: 5
             },
 
             /*width = $("#map").width()-margin.left-margin.right,*/
-            width = $("#map").width()-margin.left-margin.right-100,
-            height = 80 - margin.top - margin.bottom;
+            width = 1000,
+            height = 85 - margin.top - margin.bottom;
 
 
         var x = d3.scaleLinear().range([0, width]);
@@ -44,7 +44,8 @@ Index.timeline = function (yearSelected) {
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + margin.left + "," +       
+                margin.top + ")");
 
         x.domain(d3.extent(timelineData, function (d) {
             return d.name;
@@ -71,7 +72,9 @@ Index.timeline = function (yearSelected) {
 
         //Adding brush --extent defines area, -5 to cover whole graph
         //http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c
-        var brushScale = d3.scaleLinear().domain([0, width]).range([1792, 2016]);
+        var brushScale = d3.scaleLinear()
+            .domain([0, width])
+            .range([1792, 2016]);
 
         var brush = d3.brushX()
             .extent([[0, -5], [width, height]])
@@ -134,7 +137,8 @@ Index.timeline = function (yearSelected) {
         //transform brush to graph-area and not svg-area
         d3.select(".timeGraph")
             .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+            .attr("transform", "translate(" + margin.left + "," +   
+                margin.top + ")")
             .attr("class", "brush")
             .call(brush)
             .call(brush.move, x.range());

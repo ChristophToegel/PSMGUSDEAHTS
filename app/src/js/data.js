@@ -18,7 +18,7 @@ Index.data = function (datainitialised) {
             //Callback --> map and timeline
             
             d3.csv("data/cat-id.csv", function (csv) {
-            catIdData=csv;
+            catIdData = csv;
         });
             
             datainitialised();
@@ -64,15 +64,15 @@ Index.data = function (datainitialised) {
         
         var yearCause = filterData(year, undefined, state);
         //alle in detailkategorien
-        var totaldeaths= yearCause.length;
+        var totaldeaths = yearCause.length;
         var causeDetail = sumData(yearCause, "id");
         //transform for Cause
         var transform = [];
         for (var key in causeDetail) {
             var name;
             catIdData.forEach(function(line){
-                if(key==line.id){
-                    name=line.cause_short;
+                if(key == line.id){
+                    name = line.cause_short;
                 }
             });
             var entry = {
@@ -83,7 +83,7 @@ Index.data = function (datainitialised) {
             };
             transform.push(entry);
         }
-        causeDetail=transform;
+        causeDetail = transform;
     
         var illness = ["10", "11", "27","35"];
         var accidents = ["08", "16", "17", "20", "22", "23", "24", "25", "26", "29", "32", "33"];
@@ -94,26 +94,27 @@ Index.data = function (datainitialised) {
         var mainArray = [
             {name: "natural", array: naturalCauses, id: naturalCauses},
             {name: "accidents", array: accidents, id: accidents},
-            {name: "suspectknown", array: suspectknown, id: suspectknown},
+            {name: "suspectknown", array: suspectknown, id:     
+                suspectknown},
             {name: "illness", array: illness, id: illness},
             {name: "others", array: others, id: others}
         ];
         
         mainArray.forEach(function (element) {
-            var total=0;
-            var newArray=[];
+            var total = 0;
+            var newArray = [];
             element["array"].forEach(function (cat) {
                 causeDetail.forEach(function (cat2) {
-                if(cat==cat2["id"]){
-                    cat2.oberkategorie=element.name;
+                if(cat == cat2["id"]){
+                    cat2.oberkategorie = element.name;
                     newArray.push(cat2);
-                    total=total+cat2["value"]
+                    total = total+cat2["value"]
                     } 
                 });
             });
                 element["array"] = newArray;
-                element.value=total
-                element.percentage=Math.round(total/totaldeaths*10000)/100;
+                element.value = total
+                element.percentage = Math.round(total/totaldeaths*10000)/100;
         });
         //console.log(mainArray);
         return mainArray;
@@ -183,7 +184,7 @@ Index.data = function (datainitialised) {
     function getMapPointData(callback, year, causeArray) {
         var filtered = filterData(year, causeArray, undefined);
         var testData = groupBy(filtered, 'dept_name');
-        var finaldata= transformObjectToArray(testData);
+        var finaldata = transformObjectToArray(testData);
         callback(finaldata);
     }
 

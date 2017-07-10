@@ -7,7 +7,7 @@ Index.map = function (mapisready, stateSelected) {
     "use strict";
 
     const width = 1000,
-        height = 700;
+          height = 700;
     var that = {},
         path, svg, projection, g, selectedState, zoom,transformation;
 
@@ -22,7 +22,8 @@ Index.map = function (mapisready, stateSelected) {
             .on("zoom", zoomed);
 
         //set projection for mapping coordinates
-        projection = d3.geoAlbersUsa().translate([(width / 2), height / 2])
+        projection = d3.geoAlbersUsa()
+            .translate([(width / 2), height / 2])
             .scale(1300);
 
         path = d3.geoPath()
@@ -140,8 +141,7 @@ Index.map = function (mapisready, stateSelected) {
     function ChoroplethColor(data) {
         clearMapColor();
         var color = d3.scaleQuantile()
-            .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)",
-                     "rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
+            .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)","rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
 
         color.domain([
                 d3.min(data, function (d) {
@@ -175,13 +175,11 @@ Index.map = function (mapisready, stateSelected) {
 
     //
     function createtooltip(data) {
-        if(d3.select(".tooltip").empty()){
+        if (d3.select(".tooltip").empty()){
             var tooltip=d3.select("#content").append("div").attr("class", "tooltip")
             .selectAll("div")
             .data([data]).enter().append("div")
-        }
-        else
-        {
+        } else {
            var tooltip=d3.selectAll(".tooltip")
             .data([data])
         }
@@ -209,9 +207,8 @@ Index.map = function (mapisready, stateSelected) {
             .selectAll("circle")
             .data(data).enter().insert("circle");
             
-        }else
-        //update
-        {
+        } else {
+            //Update
             var places = d3.select(".places")
             .selectAll("circle")
             .data(data)
@@ -221,15 +218,15 @@ Index.map = function (mapisready, stateSelected) {
         //wenn weniger dann löschen
         places.exit().remove();
         //wenn mehr dann hinzufügen
-        places=places.enter().insert("circle")
+        places = places.enter().insert("circle")
         //wenn zoom dann noch transformieren!
-        if(g.classed("zoomed")){
+        if (g.classed("zoomed")){
             places.attr("transform", transformation);
            }
         addpointAttributes(places,color);
     }
     
-    function addpointAttributes(places,color){
+    function addpointAttributes(places,color) {
         places.attr("cx", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[0];
@@ -287,17 +284,24 @@ Index.map = function (mapisready, stateSelected) {
         deathInfoBox.append("div")
             .attr("id", "deathInfoEntries");
 
-        let entry = d3.select("#deathInfoEntries").selectAll("div").data(data.value).enter().append("div").attr("class", "deathInfoEntry");
+        let entry = d3.select("#deathInfoEntries")
+            .selectAll("div")
+            .data(data.value)
+            .enter().append("div")
+            .attr("class", "deathInfoEntry");
+        
         entry.append("p")
             .text(function (d) {
                 return d.person;
             })
             .attr("class", "deathEntryVictim");
+        
         entry.append("p")
             .text(function (d) {
                 return d.eow;
             })
             .attr("class", "deathEntryEOW");
+        
         entry.append("p")
             .text(function (d) {
                 return d.cause_short;
