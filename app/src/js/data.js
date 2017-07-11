@@ -9,7 +9,7 @@ Index.data = function (datainitialised) {
     "use strict";
 
     var that = {},
-        rawdata,catIdData;
+        rawdata, catIdData;
 
     function initData() {
         d3.csv("data/finalData.csv", function (csv) {
