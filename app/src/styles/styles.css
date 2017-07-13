@@ -147,7 +147,6 @@ circle.active {
     stroke-width: 0;
 }
 
-<<<<<<< HEAD
 
 /*Dropdownmenu */
 
@@ -244,13 +243,6 @@ circle.active {
     border-radius: 15px; 
     border: solid 4px #cccccc;
     background: grey;
-=======
-#menu, #deathInfoBox, #year_selection{
-        border-radius: 15px; 
-        border: solid 4px #cccccc;
-        background: grey;
-    
->>>>>>> origin/master
 }
 
 
