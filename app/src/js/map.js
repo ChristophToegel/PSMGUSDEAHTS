@@ -142,14 +142,8 @@ Index.map = function (mapisready, stateSelected,pointClicked) {
     function ChoroplethColor(data) {
         clearMapColor();
         var color = d3.scaleQuantile()
-<<<<<<< HEAD
-            .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)","rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
-
-=======
             .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)",
                      "rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
-        
->>>>>>> origin/master
         color.domain([
                 d3.min(data, function (d) {
                 return d.value;
@@ -270,54 +264,6 @@ Index.map = function (mapisready, stateSelected,pointClicked) {
             .on("click", pointClicked);
     }
     
-<<<<<<< HEAD
-    //auslagern?
-    function pointClicked(data) {
-        //TODOno remove update
-        var deathInfoBox = d3.select("#deathInfoBox");
-        deathInfoBox.selectAll("*").remove();
-
-        deathInfoBox.append("p")
-            .text(data.name)
-            .attr("class", "deathInfoHeading")
-        deathInfoBox
-            .append("p").text(function () {
-                if (data.value.length == 1) {
-                    return "1 Death"
-                } else {
-                    return data.value.length + " Deaths"
-                }
-            }).attr("class","deathNumber");
-        deathInfoBox.append("div")
-            .attr("id", "deathInfoEntries");
-
-        let entry = d3.select("#deathInfoEntries")
-            .selectAll("div")
-            .data(data.value)
-            .enter().append("div")
-            .attr("class", "deathInfoEntry");
-        
-        entry.append("p")
-            .text(function (d) {
-                return d.person;
-            })
-            .attr("class", "deathEntryVictim");
-        
-        entry.append("p")
-            .text(function (d) {
-                return d.eow;
-            })
-            .attr("class", "deathEntryEOW");
-        
-        entry.append("p")
-            .text(function (d) {
-                return d.cause_short;
-            })
-            .attr("class", "deathEntryCause");
-    }
-
-=======
->>>>>>> origin/master
     that.pointsready = pointsready;
     that.mapdatareceived = mapdatareceived;
     that.ChoroplethColor = ChoroplethColor;

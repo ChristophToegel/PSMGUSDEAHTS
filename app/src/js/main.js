@@ -7,13 +7,7 @@ Index = (function () {
     "use strict";
 
     var that = {},
-<<<<<<< HEAD
-        map, data, menu,timeline, deathInfo, year;
-        //oder mit getYear immer aus timeline.js abfragen
-=======
         map, data, menu, timeline, infobox,odometer;
-        //year;//oder mit getYear immer aus timeline.js abfragen
->>>>>>> origin/master
 
     function init() {
         console.log("init main");
@@ -40,17 +34,6 @@ Index = (function () {
     function mapisready(){
         //jetzt timeline aktivieren
         timeline.drawTimeGraph(data.getdataTimeline());
-<<<<<<< HEAD
-        //piechart alle staaten
-        let boxdata = data.getInfoBoxData(year,undefined);
-        menu.changeData(undefined,boxdata);
-        
-    }
-    
-    //year wurde von timeline ausgewählt
-    function yearSelected(curyear) {
-        year = curyear;
-=======
     }
     
     //year wurde von timeline ausgewählt
@@ -58,18 +41,13 @@ Index = (function () {
         let boxdata=data.getInfoBoxData(year,undefined);
         menu.changeData(undefined,boxdata);
         odometer.updateDateInfo(year);
->>>>>>> origin/master
         updateMap(year,menu.getSelectedFilters());
     }
     
     //staat wurde geclicked
     function stateSelected(state){
-<<<<<<< HEAD
-        let boxdata = data.getInfoBoxData(year,state);
-=======
         let year=timeline.getYear();
         let boxdata=data.getInfoBoxData(year,state);
->>>>>>> origin/master
         menu.changeData(state,boxdata);
     }
     
@@ -81,10 +59,6 @@ Index = (function () {
     }
     
     function updateMap(year, filters){
-<<<<<<< HEAD
-        var selectedData = data.getMapData(year,filters);
-        map.ChoroplethColor(selectedData); data.getMapPointData(map.pointsready,year,filters);
-=======
        // console.log(filters);
         var selectedData=data.getMapData(year,filters);
         map.ChoroplethColor(selectedData);
@@ -94,7 +68,6 @@ Index = (function () {
     //mapPointClicked--> infobox showdata
     function pointsClicked(data){
         infobox.mapPointClicked(data);
->>>>>>> origin/master
     }
     
     init();

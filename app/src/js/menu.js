@@ -12,15 +12,8 @@ Index.menu = function (filterSelected) {
           color = d3.scaleOrdinal()
                 .range(["rgb(255, 62, 62)","rgb(255, 82, 82)","rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", ]),
           colorSub = d3.scaleOrdinal()
-<<<<<<< HEAD
-                .range([ "rgb(255, 153, 153)", "rgb(255, 179, 179)", "rgb(255, 204, 204)", "rgb(255, 230, 230)"]);
-          //colorSub = d3.scaleOrdinal()
-                //.range([  "rgb(123, 123, 255)", "rgb(153, 153, 255)", "rgb(183, 183, 255)", "rgb(193, 193, 230)"]);
-    var that = {}, svg;
-=======
                 .range(["rgb(33, 33, 255)", "rgb(63, 63, 255)", "rgb(93, 93, 255)", "rgb(123, 123, 255)", "rgb(153, 153, 255)", "rgb(183, 183, 255)", "rgb(213, 213, 230)"]);
     var that = {},svg,filters=[],filterdata;
->>>>>>> origin/master
 
 
     function init(filterdataraw) {
@@ -44,8 +37,6 @@ Index.menu = function (filterSelected) {
         svg.append('defs');
     }
     
-<<<<<<< HEAD
-=======
     function createButtons(){
         //Button: SelectAll mit rect umrandung
         //Button: RemoveAll mit image 
@@ -91,7 +82,6 @@ Index.menu = function (filterSelected) {
         updateSelection()
         //console.log("select All");
     }
->>>>>>> origin/master
     
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
@@ -137,59 +127,7 @@ Index.menu = function (filterSelected) {
             .innerRadius(width - 7 * thickness)
             .outerRadius(width - 6 * thickness);
       
-<<<<<<< HEAD
         var path = innerChart.selectAll('path')
-                .append("g")
-                .data(pie(data))
-                .enter()
-                .append('path')
-                .attr('d', arc)
-                .attr('fill', function (d) {
-                    d.data.color = color(d.data.name);
-                    createPattern(d.data);
-                    return color(d.data.name);})
-                .attr('id', function (d) {
-                    return d.data.name;})
-                .on("mouseover", function (d) {
-                    let el = d3.select(this);
-                    createTextCenter(d.data.value,d.data.name, d.data.percentage);
-                    el.classed("piehover",true);})
-                .on("mouseout", function (d) {
-                    let el = d3.select(this);
-                    el.classed("piehover",false);})
-                .on("click", showSecondArc)
-                .transition()
-                .ease(d3.easeLinear)
-                .duration(800)
-                .attrTween("d", function(d){
-                    d.innerRadius = 0;
-                    var i = d3.interpolate({startAngle:0, endAngle:0},d);
-                    return function(t){
-                        return arc(i(t));};
-                });
-        
-        //draw all unterkat charts
-            drawSecondArcs(data);
-        
-      /*//add textLabel 
-       var labelArc = d3.arc()
-            .outerRadius(radius-50)
-            .innerRadius(radius-70);
-            
-        svg.selectAll('text')
-            .append("g")
-            .data(pie(dataset))
-            .enter()
-            .append("text")
-            .attr("transform", function (d) {
-                return "translate(" + labelArc.centroid(d) + ")";
-            })
-            .text(function (d) {
-                return d.data.name;
-            });
-            */
-=======
-        var path = innerchart.selectAll('path')
             .append("g")
             .data(pie(data))
             .enter()
@@ -224,8 +162,7 @@ Index.menu = function (filterSelected) {
             });
         updateSelection();
         //draw all unterkat charts
-            drawSencondArcs(data);
->>>>>>> origin/master
+            drawSecondArcs(data);
     }
     
     //clickLogic
@@ -353,13 +290,8 @@ Index.menu = function (filterSelected) {
         
         // arc
         var outerArc = d3.arc()
-<<<<<<< HEAD
-                        .innerRadius(width- 6 * thickness + 2)
-                        .outerRadius(width- 5 * thickness + 2);
-=======
             .innerRadius(width-6*thickness+1)
             .outerRadius(width-5*thickness+1);
->>>>>>> origin/master
 
         var pie = d3.pie()
                         .value(function (d) {
@@ -367,40 +299,7 @@ Index.menu = function (filterSelected) {
                         })
                         .sort(d3.descending);
         
-        
-<<<<<<< HEAD
         var path = outerChart.selectAll('path')
-                .data(function(d) {
-                    return pie(d.array);})
-                .enter()
-                .append('path')
-                .attr('d', outerArc)
-        //zu beginn alle der unterkategorie ausgewählt
-                .classed("pieselected",true)
-                .attr('fill', function (d) {
-                    d.data.color = colorSub(d.data.name);
-                    return colorSub(d.data.name);})
-                .on("mouseover", function (d,i) {
-                    let el = d3.select(this);
-                    el.classed("piehover",true);
-                    createTextCenter(d.data.value,d.data.name,
-                    d.data.percentage);})
-                .on("mouseout", function (d) {
-                    let el=d3.select(this);
-                    el.classed("piehover",false);})
-                .on("click", function(d){
-                    let el=d3.select(this);
-                    if (el.classed("pieselected")){
-                        el.classed("pieselected",false);
-                            } else {
-                                el.classed("pieselected",true);
-                            }
-                    checkAllSelected(d.data.oberkategorie);
-                    markPie(el);
-                    selectionChanged();
-                });
-=======
-        var path = outerchart.selectAll('path')
             .data(function(d) {
                 return pie(d.array);})
             .enter()
@@ -429,7 +328,6 @@ Index.menu = function (filterSelected) {
                 el.classed("piehover",false);
             })
             .on("click", selectUnselect);
->>>>>>> origin/master
             /*.transition()
             .ease(d3.easeLinear)
             .duration(200)
@@ -463,13 +361,8 @@ Index.menu = function (filterSelected) {
     }
     
     function createPattern(data){
-<<<<<<< HEAD
-        var allpatterns = d3.select('defs').append('pattern')
-                .attr('id', "pattern-" +data.name)
-=======
         var allpatterns= d3.select('defs').append('pattern')
                 .attr('id', "pattern-" +data.id)
->>>>>>> origin/master
                 .attr('width', 12)
                 .attr('height', 12)
                 .attr('patternUnits', 'userSpaceOnUse');
@@ -487,16 +380,6 @@ Index.menu = function (filterSelected) {
     function checkAllSelected(oberkategorie){
         var maincat= d3.select("#"+oberkategorie);
         var maincatnum = maincat.data()[0].data.array.length;
-<<<<<<< HEAD
-        var selnum = d3.selectAll("." + oberkategorie)      
-            .selectAll(".pieselected").size()
-        if(selnum == maincatnum) {
-            maincat.attr("opacity", 1);
-            maincat.attr("fill", maincat.data()[0].data.color)
-        } else {
-            var color = maincat.attr("fill");
-            maincat.attr("fill","url(#pattern-" + maincat.data()[0].data.name+")")
-=======
         var ids=maincat.data()[0].data.ids;
         
         let changed=false
@@ -511,7 +394,6 @@ Index.menu = function (filterSelected) {
         if(!changed){
             //maincat.attr("fill", maincat.data()[0].data.color)
             maincat.attr("fill","url(#pattern-"+maincat.data()[0].data.id+")")
->>>>>>> origin/master
         }
     }
     
@@ -526,25 +408,6 @@ Index.menu = function (filterSelected) {
     }
     
     //main kann sich die filter holen!
-<<<<<<< HEAD
-    function getSelectedFilters() {
-        //array mit ID der ausgewählten kategorien!!
-        var ids = [];
-        var filters = d3.selectAll(".pieselected").data();
-        //13 is missing others?
-        //console.log(filters);
-        for(var i = 0; i < filters.length; i++){
-            ids.push(filters[i].data.id);
-        }
-        return ids;
-    }
-    
-    function selectionChanged() {
-        let ids = getSelectedFilters();
-        //callback für main
-       filterSelected(ids);
-    }
-=======
     function getSelectedFilters(){
         return filters;
     }
@@ -566,7 +429,6 @@ Index.menu = function (filterSelected) {
     }
     
     that.getSelectedNames = getSelectedNames;
->>>>>>> origin/master
     that.getSelectedFilters = getSelectedFilters;
     that.changeData = changeData;
     that.init = init;

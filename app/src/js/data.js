@@ -18,15 +18,10 @@ Index.data = function (datainitialised) {
             rawdata = csv;
             
             d3.csv("data/cat-id.csv", function (csv) {
-<<<<<<< HEAD
-            catIdData = csv;
-        });
-=======
             catIdData=csv;
                 datainitialised();
             });
             //Callback für main
->>>>>>> origin/master
             
         });
         
@@ -101,20 +96,11 @@ Index.data = function (datainitialised) {
         var suspectknown =["01", "02", "03", "18", "19", "30", "31", "34"];
         
         var mainArray = [
-<<<<<<< HEAD
-            {name: "natural", array: naturalCauses, id: naturalCauses},
-            {name: "accidents", array: accidents, id: accidents},
-            {name: "suspectknown", array: suspectknown, id:     
-                suspectknown},
-            {name: "illness", array: illness, id: illness},
-            {name: "others", array: others, id: others}
-=======
             {name: "natural", array: naturalCauses, id:100, ids: naturalCauses},
             {name: "accidents", array: accidents, id:101, ids: accidents},
             {name: "suspectknown", array: suspectknown, id:102, ids: suspectknown},
             {name: "illness", array: illness, id:103, ids: illness},
             {name: "others", array: others, id:104, ids: others}
->>>>>>> origin/master
         ];
         
         mainArray.forEach(function (element) {

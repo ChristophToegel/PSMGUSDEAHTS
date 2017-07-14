@@ -22,26 +22,9 @@ Index.timeline = function (yearSelected) {
             return d.name;
         }).left;
 
-<<<<<<< HEAD
-        var margin = {
-                top: 20,
-                right: 0,
-                bottom: 20,
-                left: 5
-            },
 
-            /*width = $("#map").width()-margin.left-margin.right,*/
-            width = 1000,
-            height = 85 - margin.top - margin.bottom;
-
-
-        var x = d3.scaleLinear().range([0, width]);
-        var y = d3.scaleLinear().range([height, 0]);
-=======
         x = d3.scaleLinear().range([0, width]);
         y = d3.scaleLinear().range([height, 0]);
->>>>>>> origin/master
-
 
         var valueline = d3.line()
             .x(function (d) {
@@ -87,13 +70,7 @@ Index.timeline = function (yearSelected) {
     function initBrush(timelineData) {
         //Adding brush --extent defines area, -5 to cover whole graph
         //http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c
-<<<<<<< HEAD
-        var brushScale = d3.scaleLinear()
-            .domain([0, width])
-            .range([1792, 2016]);
-=======
         brushScale = d3.scaleLinear().domain([0, width]).range([1792, 2016]);
->>>>>>> origin/master
 
         var brush = d3.brushX()
             .extent([[0, -5], [width, height]])
@@ -228,79 +205,12 @@ Index.timeline = function (yearSelected) {
                 }));
             */
 
-<<<<<<< HEAD
-        //transform brush to graph-area and not svg-area
-        d3.select(".timeGraph")
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," +   
-                margin.top + ")")
-            .attr("class", "brush")
-            .call(brush)
-            .call(brush.move, x.range());
-        
-
-        function brushed() {
-            var selection = d3.event.selection;
-            let date = [parseInt(brushScale(selection[0])), parseInt(brushScale(selection[1]))];
-            updateDateInfo(date);
-
-            //callback für main
-            yearSelected(date);
-
-
-        }
-
-
-        // Area of the graph under line
-        var area = d3.area()
-            .x(function (d) {
-                return x(d.name);
-            })
-            .y0(height)
-            .y1(function (d) {
-                return y(d.value);
-            });
-
-
-        svg2.append("path")
-            .datum(timelineData)
-            .attr("class", "area")
-            .attr("d", area);
-
-        //Marker wieder aktivieren
-        /* var focus = svg2.append("g")
-             .attr("class", "focus")
-             .style("display", "none");
-
-         focus.append("line")
-             .attr("y1", 0)
-             .attr("y2", height)
-
-
-         focus.append("text")
-             .attr("x", 9)
-             .attr("dy", ".35em");
-
-         */
-        //Graphfläche
-        svg2.append("rect")
-            .attr("class", "overlay")
-            .attr("width", width)
-            .attr("height", height)
-            /*.on("mouseover", function () {
-                focus.style("display", null);
-            })
-            .on("mouseout", function () {
-                focus.style("display", "none");
-            })
-=======
         /*.on("mouseover", function () {
             focus.style("display", null);
         })
         .on("mouseout", function () {
             focus.style("display", "none");
         })
->>>>>>> origin/master
             
         //Marker wieder aktivieren
         //.on("mousemove", mousemove)
