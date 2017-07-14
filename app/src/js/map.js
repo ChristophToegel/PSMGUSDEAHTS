@@ -1,15 +1,16 @@
 /* eslint-env browser  */
+/* global d3  */
 
 // points: https://stackoverflow.com/questions/29624745/d3-insert-vs-append-in-context-of-creating-nodes-on-mousemove
 // zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
 var Index = Index || {};
-Index.map = function (mapisready, stateSelected) {
+Index.map = function (mapisready, stateSelected,pointClicked) {
     "use strict";
 
     const width = 1000,
-        height = 700;
+          height = 700;
     var that = {},
-        path, svg, projection, zoom, g, selectedState;
+        path, svg, projection, g, selectedState, zoom,transformation;
 
 
     function initMap() {
@@ -22,7 +23,8 @@ Index.map = function (mapisready, stateSelected) {
             .on("zoom", zoomed);
 
         //set projection for mapping coordinates
-        projection = d3.geoAlbersUsa().translate([(width / 2), height / 2])
+        projection = d3.geoAlbersUsa()
+            .translate([(width / 2), height / 2])
             .scale(1300);
 
         path = d3.geoPath()
@@ -42,6 +44,7 @@ Index.map = function (mapisready, stateSelected) {
         //verschiebt map
         //g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
         g.attr("transform", d3.event.transform);
+        transformation = d3.event.transform;
     }
 
     //zeichnet die Staaten
@@ -55,7 +58,7 @@ Index.map = function (mapisready, stateSelected) {
             .attr("d", path)
             .classed("clearState", true)
             .attr("id", function (i) {
-                return i.statename
+                return i.statenameshort
             })
             .on("click", clickedState)
             //callback für main wenn map fertig gezeichnet(-->Dateneintragen möglich)
@@ -65,18 +68,18 @@ Index.map = function (mapisready, stateSelected) {
 
 
     function clickedState(event) {
-        if (selectedState != event.statename) {
+        if (selectedState != event.statenameshort) {
             zoomIn(event);
             //callback für main 1 staat ausgewählt
-            stateSelected(event.statename);
-            selectedState = event.statename;
+            stateSelected(event.statenameshort);
+            selectedState = event.statenameshort;
             let state=d3.select(this);
             state.classed("selectedState",true);
             markState(state);
             
         } else {
             zoomOut();
-            let state=d3.select("#"+event.statename);
+            let state=d3.select("#"+event.statenameshort);
             state.classed("selectedState",false);
             //callback für main kein staat ausgewählt
             stateSelected();
@@ -111,13 +114,13 @@ Index.map = function (mapisready, stateSelected) {
         //Todo border soll mit zoom verknüpf sein/via css
         g.classed("zoomed",true);
         //Infobox nur bei zoom?
-        document.querySelector("#deathInfoBox").classList.remove("hidden");
+        //document.querySelector("#deathInfoBox").classList.remove("hidden");
 
     }
 
     function zoomOut() {
         //Infobox nur bei zoom?
-        document.querySelector("#deathInfoBox").classList.add("hidden");
+        //document.querySelector("#deathInfoBox").classList.add("hidden");
         svg.transition()
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
@@ -128,7 +131,7 @@ Index.map = function (mapisready, stateSelected) {
 
     //removes the color for every state
     function clearMapColor() {
-        let states = document.querySelectorAll("map>path");
+        let states = document.querySelectorAll(".states>path");
         states.forEach(function (state) {
             state.removeAttribute("style");
             state.classList.add("clearState");
@@ -141,7 +144,6 @@ Index.map = function (mapisready, stateSelected) {
         var color = d3.scaleQuantile()
             .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)",
                      "rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
-
         color.domain([
                 d3.min(data, function (d) {
                 return d.value;
@@ -169,18 +171,14 @@ Index.map = function (mapisready, stateSelected) {
                 stateEl.classed("hoverState",false);
             })
         });
-
     }
 
-    //
     function createtooltip(data) {
-        if(d3.select(".tooltip").empty()){
+        if (d3.select(".tooltip").empty()){
             var tooltip=d3.select("#content").append("div").attr("class", "tooltip")
             .selectAll("div")
             .data([data]).enter().append("div")
-        }
-        else
-        {
+        } else {
            var tooltip=d3.selectAll(".tooltip")
             .data([data])
         }
@@ -208,9 +206,8 @@ Index.map = function (mapisready, stateSelected) {
             .selectAll("circle")
             .data(data).enter().insert("circle");
             
-        }else
-        //update
-        {
+        } else {
+            //Update
             var places = d3.select(".places")
             .selectAll("circle")
             .data(data)
@@ -220,11 +217,15 @@ Index.map = function (mapisready, stateSelected) {
         //wenn weniger dann löschen
         places.exit().remove();
         //wenn mehr dann hinzufügen
-        places=places.enter().insert("circle")
+        places = places.enter().insert("circle")
+        //wenn zoom dann noch transformieren!
+        if (g.classed("zoomed")){
+            places.attr("transform", transformation);
+           }
         addpointAttributes(places,color);
     }
     
-    function addpointAttributes(places,color){
+    function addpointAttributes(places,color) {
         places.attr("cx", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[0];
@@ -250,8 +251,8 @@ Index.map = function (mapisready, stateSelected) {
                     .duration(200)
                     .style("opacity", .9);
                 tooltip.html(d.name + " <br/>" + "Anzahl der Todesfälle: " + d.value.length)
-                    .style("left", d3.event.pageX + "px")
-                    .style("top", d3.event.pageY - 172 + "px");
+                    .style("left", d3.event.layerX +5+ "px")
+                    .style("top", d3.event.layerY +5+ "px");
             })
             .on("mouseout", function (d) {
                 var tooltip = d3.selectAll(".tooltip");
@@ -259,47 +260,10 @@ Index.map = function (mapisready, stateSelected) {
                     .duration(500)
                     .style("opacity", 0);
             })
+            //pointClick callback
             .on("click", pointClicked);
     }
     
-    //auslagern?
-    function pointClicked(data) {
-        //TODOno remove update
-        var deathInfoBox = d3.select("#deathInfoBox");
-        deathInfoBox.selectAll("*").remove();
-
-        deathInfoBox.append("p")
-            .text(data.name)
-            .attr("class", "deathInfoHeading")
-        deathInfoBox
-            .append("p").text(function () {
-                if (data.value.length == 1) {
-                    return "1 Death"
-                } else {
-                    return data.value.length + " Deaths"
-                }
-            }).attr("class","deathNumber");
-        deathInfoBox.append("div")
-            .attr("id", "deathInfoEntries");
-
-        let entry = d3.select("#deathInfoEntries").selectAll("div").data(data.value).enter().append("div").attr("class", "deathInfoEntry");
-        entry.append("p")
-            .text(function (d) {
-                return d.person;
-            })
-            .attr("class", "deathEntryVictim");
-        entry.append("p")
-            .text(function (d) {
-                return d.eow;
-            })
-            .attr("class", "deathEntryEOW");
-        entry.append("p")
-            .text(function (d) {
-                return d.cause_short;
-            })
-            .attr("class", "deathEntryCause");
-    }
-
     that.pointsready = pointsready;
     that.mapdatareceived = mapdatareceived;
     that.ChoroplethColor = ChoroplethColor;
