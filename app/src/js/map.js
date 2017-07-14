@@ -1,9 +1,10 @@
 /* eslint-env browser  */
+/* global d3  */
 
 // points: https://stackoverflow.com/questions/29624745/d3-insert-vs-append-in-context-of-creating-nodes-on-mousemove
 // zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
 var Index = Index || {};
-Index.map = function (mapisready, stateSelected) {
+Index.map = function (mapisready, stateSelected,pointClicked) {
     "use strict";
 
     const width = 1000,
@@ -130,7 +131,7 @@ Index.map = function (mapisready, stateSelected) {
 
     //removes the color for every state
     function clearMapColor() {
-        let states = document.querySelectorAll("map>path");
+        let states = document.querySelectorAll(".states>path");
         states.forEach(function (state) {
             state.removeAttribute("style");
             state.classList.add("clearState");
@@ -141,8 +142,14 @@ Index.map = function (mapisready, stateSelected) {
     function ChoroplethColor(data) {
         clearMapColor();
         var color = d3.scaleQuantile()
+<<<<<<< HEAD
             .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)","rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
 
+=======
+            .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)",
+                     "rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
+        
+>>>>>>> origin/master
         color.domain([
                 d3.min(data, function (d) {
                 return d.value;
@@ -170,10 +177,8 @@ Index.map = function (mapisready, stateSelected) {
                 stateEl.classed("hoverState",false);
             })
         });
-
     }
 
-    //
     function createtooltip(data) {
         if (d3.select(".tooltip").empty()){
             var tooltip=d3.select("#content").append("div").attr("class", "tooltip")
@@ -261,9 +266,11 @@ Index.map = function (mapisready, stateSelected) {
                     .duration(500)
                     .style("opacity", 0);
             })
+            //pointClick callback
             .on("click", pointClicked);
     }
     
+<<<<<<< HEAD
     //auslagern?
     function pointClicked(data) {
         //TODOno remove update
@@ -309,6 +316,8 @@ Index.map = function (mapisready, stateSelected) {
             .attr("class", "deathEntryCause");
     }
 
+=======
+>>>>>>> origin/master
     that.pointsready = pointsready;
     that.mapdatareceived = mapdatareceived;
     that.ChoroplethColor = ChoroplethColor;
