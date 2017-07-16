@@ -121,24 +121,30 @@ Index.menuModel = function () {
             })
         }
     }
-
+    
     //return id Selected Categorie +Oberkategorie
     function getSelectedCat() {
         var selectedOberkategorien = [];
+        var selectedPartsOberkategorien = [];
         mainArray.forEach(function (oberkategorie) {
             let ids = oberkategorie.ids;
             var selected = true;
+            var partsSelected=false;
             ids.forEach(function (id) {
                 if (filters.indexOf(id) == -1) {
                     selected = false;
+                }else{
+                    partsSelected=true;
                 }
             })
             if (selected) {
                 selectedOberkategorien.push(oberkategorie.id);
             }
-
+            if(partsSelected){
+                selectedPartsOberkategorien.push(oberkategorie.id);
+            }
         })
-        return selectedOberkategorien;
+        return [selectedOberkategorien,selectedPartsOberkategorien];
     }
 
     initModel();

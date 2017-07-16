@@ -113,7 +113,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
             })
             .transition()
             .ease(d3.easeLinear)
-            .duration(800)
+            .duration(600)
             .attrTween("d", function(d){
                 d.innerRadius=0;
                 var i= d3.interpolate({startAngle:0, endAngle:0},d);
@@ -311,15 +311,21 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         return function(t){return arc(i(t));};
     }
     
-    function updateViewSelection(oberkategorien,categories){
+    function updateViewSelection(oberkategorien,categories,partsOberkategorein){
         //alle oberkateogrien
         var allOberkat=d3.selectAll(".firstarc > path").data()
         allOberkat.forEach(function(d){
             //console.log(d.data.id);
             var el=d3.select("#o"+d.data.id);
             if(oberkategorien.indexOf(d.data.id)!=-1){
+                 el.classed("pieselected",false);
                 el.attr("fill","url(#pattern-"+el.data()[0].data.id+")")
             }else{
+                if(partsOberkategorein.indexOf(d.data.id)!=-1){
+                    el.classed("pieselected",true);
+                }else{
+                    el.classed("pieselected",false);
+                }
                 el.attr("fill", el.data()[0].data.color);
             }
         //console.log(oberkategorien);

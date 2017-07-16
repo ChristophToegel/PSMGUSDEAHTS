@@ -51,29 +51,23 @@ Index = (function () {
         let structure = menuModel.getStructure();
         let boxdata=data.getMenuData(year,state,structure);
         menu.changeData(undefined,boxdata);
+        updateMenuView();
     }
     
     //staat wurde geclicked
     function stateSelected(state){
         let year=timeline.getYear();
-        updateMenu(year,state);
         //menuInputChanged();
+        updateMenu(year,state);
     }
     
     function filterSelected(filterid){
         menuModel.selectUnselect(filterid);
-        let year=timeline.getYear();
-        let filters= menuModel.getSelectedFilters();
         menuInputChanged();
-        //updateMap(year,filters);
     }
     
     function menuInputChanged(){
         let filters= menuModel.getSelectedFilters();
-        let oberkategorien= menuModel.getSelectedCat();
-        //console.log(oberkategorien,filters);
-        //TODO view Pattern
-        menu.updateViewSelection(oberkategorien,filters);
         var names= menuModel.getSelectedNames();
         infobox.updateSelection(names);
         let year=timeline.getYear();
@@ -81,10 +75,16 @@ Index = (function () {
     }
     
     function updateMap(year, filters){
-       // console.log(filters);
         var selectedData=data.getMapData(year,filters);
         map.ChoroplethColor(selectedData);
         data.getMapPointData(map.pointsready,year,filters);
+        updateMenuView();
+    }
+    
+    function updateMenuView(){
+        let filters= menuModel.getSelectedFilters();
+        let oberkategorien= menuModel.getSelectedCat(); 
+        menu.updateViewSelection(oberkategorien[0],filters,oberkategorien[1]);
     }
     
     //mapPointClicked--> infobox showdata
