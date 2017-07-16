@@ -100,7 +100,7 @@ circle.active {
 }
 
 .pieselected {
-    stroke: #4e4e5e;
+    stroke: #000;
     stroke-width: 2px;
 }
 
@@ -147,98 +147,6 @@ circle.active {
     stroke-width: 0;
 }
 
-<<<<<<< HEAD
-
-/*Dropdownmenu */
-
-#menu {
-    overflow: auto;
-    margin: auto;
-    position: relative;
-    z-index: 5;
-    width: 98%;
-}
-
-.notclickabel {
-    pointer-events:none;
-}
-
-#master_cats_menu {
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    text-align: center;
-    margin-bottom: 3px;
-}
-
-#master_cats_menu label * {
-    display: inline-block
-}
-
-#master_cats_menu label {
-    display: block;
-}
-
-.master_label {
-    font-size: 18px;
-}
-.master_label div {
-    margin-right: 2%; 
-}
-
-.master_label.active {
-    /*border-bottom: 2px white solid;*/
-    text-decoration: underline;
-    text-underline-position: below;
-    -moz-text-decoration-color: white;
-    text-decoration-color: white;
-}
-
-
-/*ENDE OBERKATEGORIEN */
-
-#checkboxes {
-    width: 5*1300px;
-    margin-top: 2px;
-    transform: translate3d(0, 0, 0);
-    transition: transform .5s ease-in-out;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-
-#checkboxes label * {
-    display: inline-block;
-}
-
-#checkboxes label {
-    display: inline-block;
-    margin: 2px 0px;
-}
-
-#checkboxes > div {
-    display: inline-block;
-    overflow: hidden;
-    width: 1300px;
-}
-
-.sub_cat {
-    width: 100%;
-}
-
-#checkboxes div label {
-    font-size: 13px;
-    text-align: left;
-    display: inline-block;
-}
-
-#wrapper {
-    margin: auto;
-    width: 1300px;
-    overflow: hidden;
-    border-top: 2px white solid;
-}
-
-/* ENDE KATEGORIEN*/
 
 #menu, #deathInfoBox, #year_selection {
     border-radius: 15px; 
