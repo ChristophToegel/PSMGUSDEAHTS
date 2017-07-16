@@ -70,15 +70,18 @@ Index.menuModel = function () {
 
     //noch in MainArray aufteilen!
     function getSelectedNames() {
-        var names = [];
-        filters.forEach(function (d) {
-            catIdData.forEach(function (e) {
-                if (d == e.id) {
-                    names.push(e.cause_short);
+        var selected=[];
+        mainArray.forEach(function (maincat){
+            var subcats=maincat.array
+            var sel=[];
+            subcats.forEach(function (subcat){
+                if (filters.indexOf(subcat.id)!=-1) {
+                    sel.push(subcat.name);
                 }
             })
+            selected.push({name:maincat.name, selected:sel});
         })
-        return names;
+        return selected;
     }
 
     function selectNoFilter() {
