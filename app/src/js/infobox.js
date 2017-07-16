@@ -12,6 +12,7 @@ Index.infobox = function () {
         console.log("init Infobox");
     }
     
+    //names hat oberkateogorie mit unterkategorien der ausgewählten menupunkte
     function updateSelection(names){
         //ausgewählte menuelemente hier anzeigen
         var deathInfoBox = d3.select("#deathInfoBox");

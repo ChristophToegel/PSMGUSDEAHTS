@@ -64,7 +64,7 @@ Index.data = function (datainitialised) {
 
     //data for the Infobox
     //for every cause the num of deaths
-    function getInfoBoxData(year, state) {
+    function getMenuData(year, state,structure) {
         
         var yearCause = filterData(year, undefined, state);
         //alle in detailkategorien
@@ -88,7 +88,10 @@ Index.data = function (datainitialised) {
             transform.push(entry);
         }
         causeDetail = transform;
-    
+        var mainArray= structure;
+        //console.log(mainArray);
+        /*
+        //daten vom menuModel + name/Id Daten
         var illness = ["10", "11", "27","35"];
         var accidents = ["08", "16", "17", "20", "22", "23", "24", "25", "26", "29", "32", "33"];
         var naturalCauses = ["04", "05", "06", "07", "09", "12", "14", "15", "21", "36"];
@@ -102,11 +105,12 @@ Index.data = function (datainitialised) {
             {name: "illness", array: illness, id:103, ids: illness},
             {name: "others", array: others, id:104, ids: others}
         ];
+        */
         
         mainArray.forEach(function (element) {
             var total = 0;
             var newArray = [];
-            element["array"].forEach(function (cat) {
+            element["ids"].forEach(function (cat) {
                 causeDetail.forEach(function (cat2) {
                 if(cat == cat2["id"]){
                     cat2.oberkategorie = element.name;
@@ -192,7 +196,7 @@ Index.data = function (datainitialised) {
     that.getMapPointData = getMapPointData;
     that.getMapDrawData = getMapDrawData;
     that.getdataTimeline = getdataTimeline;
-    that.getInfoBoxData = getInfoBoxData;
+    that.getMenuData = getMenuData;
     that.getMapData = getMapData;
     that.initData = initData;
     return that;

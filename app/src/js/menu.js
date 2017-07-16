@@ -2,7 +2,7 @@
 /* global d3  */
 
 var Index = Index || {};
-Index.menu = function (filterSelected) {
+Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected) {
     "use strict";
     console.log($("#chart").width());
     
@@ -13,20 +13,11 @@ Index.menu = function (filterSelected) {
                 .range(["rgb(255, 62, 62)","rgb(255, 82, 82)","rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", ]),
           colorSub = d3.scaleOrdinal()
                 .range(["rgb(33, 33, 255)", "rgb(63, 63, 255)", "rgb(93, 93, 255)", "rgb(123, 123, 255)", "rgb(153, 153, 255)", "rgb(183, 183, 255)", "rgb(213, 213, 230)"]);
-    var that = {},svg,filters=[],filterdata;
+    var that = {},svg;
 
-
-    function init(filterdataraw) {
+    function init() {
         console.log("init menu");
         createSvg();
-        //createButtons();
-        initFilters(filterdataraw);
-    }
-
-    function initFilters(filterdataraw){
-        filterdata=filterdataraw;
-        filters=getAllFilterIds();
-        //console.log(filters);
     }
 
     function createSvg(){
@@ -55,7 +46,7 @@ Index.menu = function (filterSelected) {
             .attr('fill','#fff')
             .attr('x','85px')
             .attr('y','-6px')
-        button1.on("click",unSelectAll)
+        button1.on("click",noFilterSelected)
         let button2=button.append("g").attr("id","button2")
         button2.append("text")
             .text("selectAll")
@@ -66,49 +57,15 @@ Index.menu = function (filterSelected) {
             .attr('xlink:href', "https://www.transparenttextures.com/patterns/black-twill.png")
             .attr('x','85px')
             .attr('y','10px')
-        button2.on("click",selectAll)
+        button2.on("click",allFilterSelected)
     }
-    
-    function unSelectAll(){
-        filters=[];
-        selectionChanged();
-        updateSelection();
-        //console.log("unselect All");
-    }
-    
-    function selectAll(){
-        filters=getAllFilterIds();
-        selectionChanged();
-        updateSelection()
-        //console.log("select All");
-    }
-    
+   
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
         d3.select('#chart').selectAll("g").remove();
         createButtons();
         createArc(data);
         createTextLeftCorner(state);
-    }
-    
-    function updateSelection(){
-        var ids=getAllFilterIds();
-        //console.log(filters);
-        ids.forEach(function(d){
-        var selection = d3.select("#u"+d);
-        if(selection.data().length!=0){
-            if(filters.indexOf(d)==-1){
-                selection.attr("fill", selection.data()[0].data.color)
-                }else{
-                selection.attr("fill","url(#pattern-"+selection.data()[0].data.id+")")
-                }
-            }
-        })
-        var oberkat=d3.selectAll(".firstarc > path").data()
-        oberkat.forEach(function(d){
-            checkAllSelected(d.data.name)
-        })
-        
     }
 
     function createArc(data) {
@@ -136,13 +93,13 @@ Index.menu = function (filterSelected) {
             .attr('fill', function (d) {
                 d.data.color=color(d.data.name);
                 createPattern(d.data);
-                //return color(d.data.name);
-                return "url(#pattern-"+d.data.id+")"
+                return color(d.data.name);
             })
             .attr('id', function (d) {
-                return d.data.name;
+                return "o"+d.data.id;
             })
             .on("mouseover", function (d) {
+                showSecondArc(d);
                 let el=d3.select(this);
                 createTextCenter(d.data.value,d.data.name, d.data.percentage);
                 el.classed("piehover",true);
@@ -151,21 +108,22 @@ Index.menu = function (filterSelected) {
                let el=d3.select(this);
                 el.classed("piehover",false);
             })
-            .on("click", showSecondArc)
+            .on("click", function (d){
+              oberkategorieSelected(d.data.id)  
+            })
             .transition()
             .ease(d3.easeLinear)
-            .duration(800)
+            .duration(600)
             .attrTween("d", function(d){
                 d.innerRadius=0;
                 var i= d3.interpolate({startAngle:0, endAngle:0},d);
                 return function(t){return arc(i(t));};
             });
-        updateSelection();
         //draw all unterkat charts
             drawSecondArcs(data);
     }
     
-    //clickLogic
+    //clickLogic 
     function showSecondArc(d){
         //console.log(d);
         var selected = d3.selectAll('g[visibility = visible]');
@@ -173,8 +131,8 @@ Index.menu = function (filterSelected) {
         if (selected.data().length != 0){
             //gleiches element
             if (selected.data()[0].name == d.data.name){
-                d3.selectAll("."+d.data.name)           
-                    .attr("visibility","hidden");
+               // d3.selectAll("."+d.data.name)           
+                //    .attr("visibility","hidden");
             } else {
                 //unterschiedlich
                 d3.selectAll("." + selected.data()[0].name).attr("visibility","hidden");
@@ -194,16 +152,6 @@ Index.menu = function (filterSelected) {
             });
         };
         el.moveToFront()
-    }
-    
-    function getAllFilterIds(){
-        var allIds=[];
-        //console.log(filterdata);
-        for (var i=0;i<filterdata.length;i++) {
-            allIds.push(filterdata[i].id);
-        }
-        //console.log(allIds);
-        return allIds;
     }
     
     function createTextCenter(name, value, percentage){
@@ -286,8 +234,6 @@ Index.menu = function (filterSelected) {
                     return(d.name);})
                 .attr("visibility","hidden");
         
-        
-        
         // arc
         var outerArc = d3.arc()
             .innerRadius(width-6*thickness+1)
@@ -309,11 +255,7 @@ Index.menu = function (filterSelected) {
             .attr('fill', function (d) {
                 d.data.color=colorSub(d.data.name);
                 createPattern(d.data);
-                if(filters.indexOf(d.data.id)==-1){
-                    return colorSub(d.data.name);
-                }else{
-                    return "url(#pattern-"+d.data.id+")";
-                }
+                return colorSub(d.data.name);
             })
             .attr('id', function (d) {
                 return "u"+d.data.id;
@@ -327,7 +269,9 @@ Index.menu = function (filterSelected) {
                let el=d3.select(this);
                 el.classed("piehover",false);
             })
-            .on("click", selectUnselect);
+            .on("click", function (d) {
+               filterSelected(d3.select(this).data()[0].data.id);
+            })
             /*.transition()
             .ease(d3.easeLinear)
             .duration(200)
@@ -338,26 +282,6 @@ Index.menu = function (filterSelected) {
             });
             */
         //}
-    }
-    
-    function selectUnselect(d){
-        let el=d3.select(this);
-        let id=el.data()[0].data.id
-        let index = filters.indexOf(id);
-            if(index==-1){
-                //console.log("anwählen");
-                filters.push(el.data()[0].data.id);
-                //el.classed("pieselected",true);
-                el.attr("fill","url(#pattern-"+el.data()[0].data.id+")")
-            }else{
-                //console.log("abwählen");
-                filters.splice(index, 1);
-                    //el.classed("pieselected",false);
-                el.attr("fill", el.data()[0].data.color)
-            }
-        markPie(el);
-        selectionChanged();
-        checkAllSelected(d.data.oberkategorie);
     }
     
     function createPattern(data){
@@ -377,26 +301,6 @@ Index.menu = function (filterSelected) {
                 .attr('xlink:href', "https://www.transparenttextures.com/patterns/black-twill.png")
     }
     
-    function checkAllSelected(oberkategorie){
-        var maincat= d3.select("#"+oberkategorie);
-        var maincatnum = maincat.data()[0].data.array.length;
-        var ids=maincat.data()[0].data.ids;
-        
-        let changed=false
-        for(var i=0;i<ids.length;i++){
-            if(filters.indexOf(ids[i])==-1){
-                maincat.attr("fill", maincat.data()[0].data.color)
-             //maincat.attr("fill","url(#pattern-"+maincat.data()[0].data.id+")")
-                changed=true;
-                break;
-            }
-        }
-        if(!changed){
-            //maincat.attr("fill", maincat.data()[0].data.color)
-            maincat.attr("fill","url(#pattern-"+maincat.data()[0].data.id+")")
-        }
-    }
-    
     //muss arc bekommen 
     function pieAnimation(d){
         //var arc = d3.arc()
@@ -407,29 +311,41 @@ Index.menu = function (filterSelected) {
         return function(t){return arc(i(t));};
     }
     
-    //main kann sich die filter holen!
-    function getSelectedFilters(){
-        return filters;
-    }
-    
-    function getSelectedNames(){
-        var names=[];
-        filters.forEach(function(d){
-            filterdata.forEach(function(e){
-                if(d==e.id){
-                    names.push(e.cause_short);
+    function updateViewSelection(oberkategorien,categories,partsOberkategorein){
+        //alle oberkateogrien
+        var allOberkat=d3.selectAll(".firstarc > path").data()
+        allOberkat.forEach(function(d){
+            //console.log(d.data.id);
+            var el=d3.select("#o"+d.data.id);
+            if(oberkategorien.indexOf(d.data.id)!=-1){
+                 el.classed("pieselected",false);
+                el.attr("fill","url(#pattern-"+el.data()[0].data.id+")")
+            }else{
+                if(partsOberkategorein.indexOf(d.data.id)!=-1){
+                    el.classed("pieselected",true);
+                }else{
+                    el.classed("pieselected",false);
                 }
-            })
+                el.attr("fill", el.data()[0].data.color);
+            }
+        //console.log(oberkategorien);
+        //alle categorien
+        var allkat=d3.selectAll("."+d.data.name+"> path").data()
+        allkat.forEach(function(d){
+            //console.log(d.data.id);
+            var el=d3.select("#u"+d.data.id);
+            
+            if(categories.indexOf(d.data.id)!=-1){
+                el.attr("fill","url(#pattern-"+el.data()[0].data.id+")")
+            }else{
+                el.attr("fill", el.data()[0].data.color);
+            }
         })
-        return names;
+        })
     }
     
-    function selectionChanged(){
-       filterSelected(filters);
-    }
     
-    that.getSelectedNames = getSelectedNames;
-    that.getSelectedFilters = getSelectedFilters;
+    that.updateViewSelection=updateViewSelection;
     that.changeData = changeData;
     that.init = init;
     return that;

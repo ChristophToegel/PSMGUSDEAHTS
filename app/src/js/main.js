@@ -7,14 +7,17 @@ Index = (function () {
     "use strict";
 
     var that = {},
-        map, data, menu, timeline, infobox,odometer;
+        map, data, menu, timeline, infobox,odometer,menuModel;
 
     function init() {
         console.log("init main");
         //daten einlesen
         data = new Index.data(datainitialised);
         data.initData();
-        menu = new Index.menu(filterSelected);
+        
+        menuModel= new Index.menuModel();
+        
+        menu = new Index.menu(filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected);
         map = new Index.map(mapisready,stateSelected,pointsClicked);
         
         infobox = new Index.infobox();
@@ -26,9 +29,8 @@ Index = (function () {
     // Daten würden eingelesen
     function datainitialised() {
         console.log("data ready");
-        var filterdata=data.getFilterRawData();
         map.initMap(data.getMapDrawData(map.mapdatareceived));
-        menu.init(filterdata);
+        menu.init();
     }
     
     function mapisready(){
@@ -38,36 +40,72 @@ Index = (function () {
     
     //year wurde von timeline ausgewählt
     function yearSelected(year) {
-        let boxdata=data.getInfoBoxData(year,undefined);
-        menu.changeData(undefined,boxdata);
+        updateMenu(year,undefined);
         odometer.updateDateInfo(year);
-        updateMap(year,menu.getSelectedFilters());
+        updateMap(year,menuModel.getSelectedFilters());
+        
+    }
+    
+    //draws the Menu with selected data
+    function updateMenu(year,state){
+        let structure = menuModel.getStructure();
+        let boxdata=data.getMenuData(year,state,structure);
+        menu.changeData(undefined,boxdata);
+        updateMenuView();
     }
     
     //staat wurde geclicked
     function stateSelected(state){
         let year=timeline.getYear();
-        let boxdata=data.getInfoBoxData(year,state);
-        menu.changeData(state,boxdata);
+        //menuInputChanged();
+        updateMenu(year,state);
     }
     
-    function filterSelected(filters){
-        var names= menu.getSelectedNames();
+    function filterSelected(filterid){
+        menuModel.selectUnselect(filterid);
+        menuInputChanged();
+    }
+    
+    function menuInputChanged(){
+        let filters= menuModel.getSelectedFilters();
+        var names= menuModel.getSelectedNames();
         infobox.updateSelection(names);
         let year=timeline.getYear();
         updateMap(year,filters);
     }
     
     function updateMap(year, filters){
-       // console.log(filters);
         var selectedData=data.getMapData(year,filters);
         map.ChoroplethColor(selectedData);
         data.getMapPointData(map.pointsready,year,filters);
+        updateMenuView();
+    }
+    
+    function updateMenuView(){
+        let filters= menuModel.getSelectedFilters();
+        let oberkategorien= menuModel.getSelectedCat(); 
+        menu.updateViewSelection(oberkategorien[0],filters,oberkategorien[1]);
     }
     
     //mapPointClicked--> infobox showdata
     function pointsClicked(data){
         infobox.mapPointClicked(data);
+    }
+    
+    function allFilterSelected(){
+        menuModel.selectAllFilter();
+        menuInputChanged();
+    }
+    
+    function noFilterSelected(){
+        menuModel.selectNoFilter();
+        menuInputChanged();
+    }
+    
+    function oberkategorieSelected(oberkategorie){
+        //console.log(oberkategorie);
+        menuModel.selectOberkategorie(oberkategorie);
+        menuInputChanged();
     }
     
     init();
