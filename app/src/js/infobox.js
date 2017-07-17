@@ -10,22 +10,36 @@ Index.infobox = function () {
     //TODO no remove update instead!
     function initInfobox() {
         console.log("init Infobox");
+        document.getElementById("nav-icon1").addEventListener("click", changeView);
+        var deathInfoBox = d3.select("#textdata");
+        deathInfoBox.append("div").attr("id","menudata").classed("hidden",true);
+        deathInfoBox.append("div").attr("id","deathinfodata")
     }
     
     //names hat oberkateogorie mit unterkategorien der ausgewählten menupunkte
     function updateSelection(names){
         //ausgewählte menuelemente hier anzeigen
-        var deathInfoBox = d3.select("#deathInfoBox");
-        deathInfoBox.selectAll("*").remove();
-        deathInfoBox.selectAll("p").data(names).enter()
-            .append("p").text(function (d) {
-                return d;
-            })
-        
+        var menudata = d3.select("#menudata");
+        menudata.selectAll("*").remove();
+        //TODO oberkategorie(1/5) + aufklappen für die unterkategorien!
+        console.log(names);
+    }
+    
+    function changeView(){
+        console.log("change infobox");
+        var menu=document.getElementById("menudata")
+        var deathinfo=document.getElementById("deathinfodata")
+        if(menu.classList.contains("hidden")){
+            menu.classList.remove("hidden");
+            deathinfo.classList.add("hidden");
+        }else{
+            menu.classList.add("hidden");
+            deathinfo.classList.remove("hidden");
+        }
     }
     
     function mapPointClicked(data){
-        var deathInfoBox = d3.select("#deathInfoBox");
+        var deathInfoBox = d3.select("#deathinfodata");
         deathInfoBox.selectAll("*").remove();
 
         deathInfoBox.append("p")
@@ -60,6 +74,7 @@ Index.infobox = function () {
             .attr("class", "deathEntryCause");
     }
     
+    initInfobox();
     that.updateSelection=updateSelection;
     that.mapPointClicked=mapPointClicked;
     return that;

@@ -237,7 +237,7 @@ circle.active {
 }
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 #chart {
