@@ -252,28 +252,6 @@ circle.active {
     stroke-width: 1px;
 }
 
-#mapsymbology {
-    
-}
-
-#rectangle {
-    margin-left: 2.5%;
-    width: 93%;
-    display: block;
-    stroke: lightgray;
-    stroke-width: 1px;
-}
-
-.hamburger-slim {
-  background: black;
-  /*margin: 60px auto 40px;*/
-  position: relative;
-  height: 30px;
-  width: 50px;
-
-  
-}
-
 #nav-icon1 span {
   display: block;
   position: relative;
@@ -289,11 +267,6 @@ circle.active {
   border-radius: 9px;
   opacity: 1;
   left: 0;
-}
-
-#nav-icon3 {
-    background: black;
-    height: 35px;
 }
 
 #nav-icon1 span:nth-child(1) {

@@ -140,7 +140,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     function ChoroplethColor(data) {
         clearMapColor();
         var color = d3.scaleQuantile()
-            .range(["rgb(255, 213, 213)", "rgb(255, 173, 173)", "rgb(255, 132, 132)", "rgb(255, 92, 92)","rgb(255, 52, 52)",]);
+            .range(["rgb(255, 223, 223)", "rgb(255, 183, 183)", "rgb(255, 132, 132)", "rgb(255, 82, 82)","rgb(255, 62, 62)",]);
         color.domain([
                 d3.min(data, function (d) {
                 return d.value;
@@ -187,20 +187,26 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     function createLegend(colors, values) {
         if (d3.select(".legende").empty()) {
         var legende = d3.selectAll("#map");
-        legende = legende.append("svg").attr("height", "20px").attr("width", width).append("g").classed("legende",true).attr('transform', 'translate(' + 40 + ',' + 15 + ')');
-        }else{
+        legende = legende.append("svg")
+            .attr("height", "20px")
+            .attr("width", width)
+            .append("g")
+            .classed("legende",true)
+            .attr('transform', 'translate(' + 250 + ',' + 15 + ')');
+        } else {
             var legende = d3.selectAll(".legende");
             legende.selectAll("*").remove();
         }
         if (values[0] == undefined) {
             legende.append("text")
-                .text("Keine Daten vorhanden bitte Filter auswählen")
+                .text("Keine Daten vorhanden. Bitte Filter auswählen!")
+                .attr('transform', 'translate(' + 80 + ',' + 0 + ')');
             return;
         }
         var entry = legende.selectAll("g")
             .data(colors).enter().append("g")
             .attr('transform', function (d, i) {
-                return 'translate(' + 90 * i + ',0)'
+                return 'translate(' + 105 * i + ',0)'
             })
         entry.append('rect').attr('width', 12)
             .attr('stroke', "black")
@@ -212,16 +218,16 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         entry.append("text")
             .text(function (d, i) {
                 if (i == 0) {
-                    return "0-" + Math.round(values[i]);
+                    return "0 - " + Math.round(values[i]);
                 } else if (i == values.length) {
-                    return Math.round(values[i - 1]) + "-";
+                    return "> " + Math.round(values[i - 1]);
                 } else {
-                    return Math.round(values[i - 1]) + "-" + Math.round(values[i]);
+                    return Math.round(values[i - 1]) + " - " + Math.round(values[i]);
                 }
 
             })
             .attr("dy", "0px")
-            .attr("dx", "15px")
+            .attr("dx", "18px")
     }
 
     //Callback for points

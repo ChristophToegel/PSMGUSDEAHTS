@@ -12,7 +12,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
           color = d3.scaleOrdinal()
                 .range(["rgb(255, 223, 223)", "rgb(255, 173, 173)", "rgb(255, 122, 122)", "rgb(255, 92, 92)","rgb(255, 52, 52)"]),
           colorSub = d3.scaleOrdinal()
-                .range(["rgb(63, 63, 255)", "rgb(83, 83, 255)", "rgb(103, 103, 255)", "rgb(143, 143, 255)", "rgb(163, 163, 255)", "rgb(183, 183, 255)", "rgb(203, 203, 230)"]);
+                .range(["rgb(103, 103, 255)", "rgb(123, 123, 255)", "rgb(143, 143, 255)", "rgb(163, 163, 255)", "rgb(183, 183, 255)", "rgb(193, 193, 255)", "rgb(213, 213, 230)"]);
     var that = {},svg;
 
     function init() {
@@ -32,25 +32,38 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         //Button: SelectAll mit rect umrandung
         //Button: RemoveAll mit image 
         //TODO schöner!!
-        var button=svg.append('g')
+        var button = svg.append('g')
         .attr('transform', 'translate(' + ((width/2)-40)  + ',' + ((height/2)-70) + ')')
         .classed("button",true)
         .classed("text45",true)
         let button1=button.append("g").attr("id","button1")
         button1.append("text")
             .text("unselectAll")
-            .attr("dy","5px");
+            .attr("dy","5px")
+            .style("fill", "black")
+            .style("stroke-opacity", 0.4)
+            .style("stroke", "black");
         button1.append('rect').attr('width', 12)
             .attr('stroke', "black")
             .attr('height', 12)
             .attr('fill','#fff')
             .attr('x','85px')
             .attr('y','-6px')
+        
         button1.on("click",noFilterSelected)
         let button2=button.append("g").attr("id","button2")
         button2.append("text")
             .text("selectAll")
-            .attr("dy","22px");
+            .attr("dy","22px")
+            .style("fill", "black")
+            .style("stroke-opacity", 0.4)
+            .style("stroke", "black");
+        button2.append('rect').attr('width', 12)
+            .attr('stroke', "black")
+            .attr('height', 12)
+            .attr('fill','#fff')
+            .attr('x','85px')
+            .attr('y','10px')
         button2.append('image').attr('width', 12)
             .attr('stroke', "black")
             .attr('height', 12)
@@ -63,9 +76,10 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
         d3.select('#chart').selectAll("g").remove();
+        createTextLeftCorner(state);
         createButtons();
         createArc(data);
-        createTextLeftCorner(state);
+        
     }
 
     function createArc(data) {
