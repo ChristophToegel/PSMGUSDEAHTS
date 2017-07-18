@@ -10,9 +10,9 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
           height = width,
           thickness = 0.105 * width,
           color = d3.scaleOrdinal()
-                .range(["rgb(255, 62, 62)","rgb(255, 82, 82)","rgb(255, 102, 102)", "rgb(255, 128, 128)", "rgb(255, 153, 153)", ]),
+                .range(["rgb(255, 223, 223)", "rgb(255, 173, 173)", "rgb(255, 122, 122)", "rgb(255, 92, 92)","rgb(255, 52, 52)"]),
           colorSub = d3.scaleOrdinal()
-                .range(["rgb(33, 33, 255)", "rgb(63, 63, 255)", "rgb(93, 93, 255)", "rgb(123, 123, 255)", "rgb(153, 153, 255)", "rgb(183, 183, 255)", "rgb(213, 213, 230)"]);
+                .range(["rgb(63, 63, 255)", "rgb(83, 83, 255)", "rgb(103, 103, 255)", "rgb(143, 143, 255)", "rgb(163, 163, 255)", "rgb(183, 183, 255)", "rgb(203, 203, 230)"]);
     var that = {},svg;
 
     function init() {

@@ -140,8 +140,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     function ChoroplethColor(data) {
         clearMapColor();
         var color = d3.scaleQuantile()
-            .range(["rgb(255, 230, 230)", "rgb(255, 204, 204)", "rgb(255, 179, 179)", "rgb(255, 153, 153)", "rgb(255, 128, 128)", "rgb(255, 102, 102)",
-                     "rgb(255, 77, 77)", "rgb(255, 51, 51)", "rgb(255, 26, 26)"]);
+            .range(["rgb(255, 213, 213)", "rgb(255, 173, 173)", "rgb(255, 132, 132)", "rgb(255, 92, 92)","rgb(255, 52, 52)",]);
         color.domain([
                 d3.min(data, function (d) {
                 return d.value;
