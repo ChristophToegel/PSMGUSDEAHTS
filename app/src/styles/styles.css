@@ -72,7 +72,7 @@ circle.active {
 
 /* brush */
 
-.notclickabel{
+.notclickable {
     pointer-events: none;
 }
 
@@ -175,6 +175,11 @@ circle.active {
     float: right;
     width: 28%;
     margin-top: 0.5%;
+}
+
+#textstate {
+    stroke: 1px;
+    background-color: black;
 }
 
 #deathInfoBox {

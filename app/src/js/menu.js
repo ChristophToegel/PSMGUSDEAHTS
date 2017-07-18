@@ -171,10 +171,11 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     function createTextCenter(name, value, percentage){
         svg.select(".text").remove();
         //TODO startposition des Textfeldes über g bestimmen!!
-        var textfield= svg.append('g')
-                .classed("text",true)
+        var textfield = svg.append('g')
+                .classed("text", true)
         
-        textfield.append("text").selectAll("text")
+        textfield.append("text")
+                .selectAll("text")
                 .data([name,value,percentage+"%"])
                 .enter()
                 .append("tspan")
@@ -213,8 +214,9 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         var state = d3.select("#"+state).data();
         svg.select(".textstate").remove();
         //TODO startposition des Textfeldes über g bestimmen!!
-        var textfield= svg.append('g').classed("textstate",true)
-            .attr('transform', 'translate(50, 20 )');
+        var textfield = svg.append('g')
+                .classed("textstate", true)
+                .attr('transform', 'translate(50, 20 )')
         textfield.append("text")
                 .selectAll("text")
                 .data(state)

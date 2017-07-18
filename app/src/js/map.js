@@ -110,7 +110,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         svg.transition().duration(750)
             .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
 
-        svg.selectAll(".places").classed("notclickabel", false)
+        svg.selectAll(".places").classed("notclickable", false)
         //Todo border soll mit zoom verknüpf sein/via css
         g.classed("zoomed", true);
         //Infobox nur bei zoom?
@@ -123,7 +123,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
 
-        svg.selectAll(".places").classed("notclickabel", true)
+        svg.selectAll(".places").classed("notclickable", true)
         g.classed("zoomed", false);
     }
 
@@ -247,7 +247,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         if (d3.select(".places").empty()) {
             var places = svg.append("g")
                 .attr("class", "places")
-                .classed("notclickabel", true)
+                .classed("notclickable", true)
                 .selectAll("circle")
                 .data(data).enter().insert("circle");
 
