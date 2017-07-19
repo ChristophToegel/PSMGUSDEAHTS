@@ -17,7 +17,7 @@ Index = (function () {
         
         menuModel= new Index.menuModel();
         
-        menu = new Index.menu(filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected);
+        menu = new Index.menu(filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected,subcategorychanged);
         map = new Index.map(mapisready,stateSelected,pointsClicked);
         
         infobox = new Index.infobox();
@@ -106,6 +106,11 @@ Index = (function () {
         //console.log(oberkategorie);
         menuModel.selectOberkategorie(oberkategorie);
         menuInputChanged();
+    }
+    
+    function subcategorychanged(d){
+        var cat = menuModel.getSelectedFilters();
+        menu.updateViewOuterArc(cat);
     }
     
     init();
