@@ -43,14 +43,13 @@ Index = (function () {
         updateMenu(year,undefined);
         odometer.updateDateInfo(year);
         updateMap(year,menuModel.getSelectedFilters());
-        
     }
     
     //draws the Menu with selected data
     function updateMenu(year,state){
         let structure = menuModel.getStructure();
         let boxdata=data.getMenuData(year,state,structure);
-        menu.changeData(undefined,boxdata);
+        menu.changeData(state,boxdata);
         updateMenuView();
     }
     

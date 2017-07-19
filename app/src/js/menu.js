@@ -121,11 +121,10 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     
     //test secondArc animation
     function drawSecondArc(data){
-        //für jede oberkategorie eigenen chart zeichnen!
         var radius = Math.min(width, height) / 2;
         // arc
         var outerArc = d3.arc()
-            .innerRadius(width-6*thickness+1)
+            .innerRadius(width-6*thickness)
             .outerRadius(width-5*thickness+1);
 
         var pie = d3.pie()
@@ -200,16 +199,18 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     }
     
     function createTextCenter(name, value, percentage){
-        svg.select(".text").remove();
-        //TODO startposition des Textfeldes über g bestimmen!!
-        var textfield= svg.append('g')
-                .classed("text",true)
-        
-        textfield.append("text").selectAll("text")
+        if (d3.select(".text").empty()) {
+            var textfield= svg.append('g')
+                .classed("text",true).append("text").selectAll('tspan')
                 .data([name,value,percentage+"%"])
-                .enter()
-                .append("tspan")
-                .text(function (d) {
+                .enter().append("tspan")
+        }else{
+            var textfield=d3.select(".text>text")
+            textfield=textfield.selectAll('tspan')
+            .data([name,value,percentage+"%"])
+        }
+        
+        textfield.text(function (d) {
                     return d;})
                 .attr("x","50%")
                 .attr("y","45%")
@@ -219,25 +220,6 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .style("fill", "black")
                 .style("stroke-opacity", 0.4)
                 .style("stroke", "black");
-    }
-    
-    function createTextRightCorner(name, percentage){
-        svg.select(".textselected").remove();
-        //TODO startposition des Textfeldes über g bestimmen!!
-        var textfield = svg.append('g')
-                .classed("textselected",true)
-                .attr('transform', 'translate(335, 20 )');
-        
-        textfield.append("text").selectAll("text")
-                .data([name,percentage])
-                .enter()
-                .append("tspan")
-                .text(function (d) {
-                    return d;})
-                .attr("x",function (d,i) {
-                    return 0;})
-                .attr("y",function (d,i) {
-                    return i * 20;});
     }
     
     function createTextLeftCorner(state){
@@ -265,6 +247,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
 
 
     function createPattern(data){
+        if(d3.select("#pattern-"+data.id).empty()){
         var allpatterns= d3.select('defs').append('pattern')
                 .attr('id', "pattern-" +data.id)
                 .attr('width', 12)
@@ -280,15 +263,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .attr('height', 12)
                 .attr('xlink:href', "https://www.transparenttextures.com/patterns/black-twill.png")
     }
-    
-    //muss arc bekommen 
-    function pieAnimation(d){
-        //var arc = d3.arc()
-        //    .innerRadius(width-6*thickness+2)
-        //    .outerRadius(width-5*thickness+2);
-        d.innerRadius = 0;
-        var i = d3.interpolate({startAngle:0, endAngle:0},d);
-        return function(t){return arc(i(t));};
+        
     }
     
     function updateViewSelection(oberkategorien,categories,partsOberkategorein){
