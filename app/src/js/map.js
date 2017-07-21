@@ -200,7 +200,10 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         if (values[0] == undefined) {
             legende.append("text")
                 .text("Keine Daten vorhanden. Bitte Filter auswählen!")
-                .attr('transform', 'translate(' + 80 + ',' + 0 + ')');
+                .attr('transform', 'translate(' + 80 + ',' + 0 + ')')
+                .style("fill", "#4e4e5e")
+                .style("stroke-opacity", 0.1)
+                .style("stroke", "black");
             return;
         }
         var entry = legende.selectAll("g")
@@ -228,6 +231,9 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             })
             .attr("dy", "0px")
             .attr("dx", "18px")
+            .style("fill", "#4e4e5e")
+            .style("stroke-opacity", 0.1)
+            .style("stroke", "black");
     }
 
     //Callback for points

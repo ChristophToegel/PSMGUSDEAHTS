@@ -3,13 +3,13 @@
     margin: 0;
     /*border: 1px solid #000;*/ 
     font-family: 'Roboto', sans-serif;
-    color: #fff;
+    color: #4e4e5e;
 }
 
 body {
     background: white;
     background-repeat: no-repeat;
-    color: #ffe6e6;
+    color: #4e4e5e;
 }
 
 h1 {
@@ -39,7 +39,7 @@ h1 {
     /*width: 95%;*/
     float: left;
     margin-left: 10px;
-    margin-top: 0em;
+    margin-top: -0.5em;
     /*margin-bottom: 5px;*/
     border-radius: 0px;
     border: 1px solid rgba(0,0,0,0);
@@ -50,13 +50,14 @@ h1 {
     display: inline-block;
     float: left;
     position: relative;
+    
 }
 
 /*brush*/
 
 .brush {
     fill: lightgray;
-    fill-opacity: .75;
+    fill-opacity: 0.8;
     shape-rendering: crispEdges;
 }
 
@@ -142,7 +143,7 @@ circle.active {
 }
 
 .area {
-    fill: #5d5dff; /*#ff1919*/
+    fill: #7b7bff; /*#ff1919*/
     stroke-width: 0;
 }
 
@@ -154,8 +155,8 @@ circle.active {
 
 #menu, #deathInfoBox, #year_selection {
     border-radius: 15px; 
-    border: solid 4px #cccccc;
-    background: grey;
+    /*border: solid 4px #cccccc;*/
+    background: white;
 }
 
 
@@ -179,28 +180,33 @@ circle.active {
 
 #textstate {
     stroke: 1px;
-    background-color: black;
+    background-color: white;
 }
 
 #deathInfoBox {
-    width: 95%;
+    width: 93%;
     height: 240px;
     overflow: scroll;
     display: block;
-    color: white;
+    color: #4e4e5e;
+    
 }
 
 .deathInfoHeading{
-    color: white;
+    color: #4e4e5e;
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1.0em;
     margin-top: -0.7em;
+    width 80%;
+    word-wrap:break-word;
+    margin-left: 3em;
+    margin-right: 3em;
 }
 
 .deathNumber{
     text-align: center;
-    color: #f2f2f2;
-    font-size: 1em;
+    color: #4e4e5e;
+    font-size: 0.9em;
 }
 
 
@@ -209,36 +215,38 @@ circle.active {
 }
 
 .deathInfoEntry {
-    border-top: 6px solid #cccccc;
+    border-top: 3px solid #cccccc;
     padding-right: 12px;
     padding-left: 12px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    font-size: 1.0em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 0.9em;
+    
 }
 
 .deathEntryVictim {
     text-align: center;
-    font-size: 1em;
+    font-size: 0.9em;
     white-space: normal;
-    color: white;  
+    color: #4e4e5e;  
 }
 
 .deathEntryEOW {
     white-space: normal;
-    color: #f2f2f2; 
+    color: #4e4e5e; 
+    font-size: 0.9em;
 }
 
 .deathEntryCause {
     white-space: normal;
     text-align: center;
-    color: #f2f2f2;
+    color: #4e4e5e;
+    font-size: 0.9em;
 }
 
 #year_selection {
-    font-family: 'BenchNine', sans-serif;
     font-weight: bold;
-    width: 95%;
+    width: 93%;
     font-size: 2.5em;
     white-space: nowrap;
     text-align: center;
@@ -250,10 +258,10 @@ circle.active {
 }
 
 #chart {
-    margin-left: 2.5%;
+    margin-left: 0%;
     width: 93%;
     display: block;
-    stroke: lightgray;
+    stroke: white;
     stroke-width: 1px;
 }
 
@@ -261,14 +269,14 @@ circle.active {
   display: block;
   position: relative;
   
-  left: 200px;
-  height: 3px;
-  width: 10%;
+  left: -1000px;
+  height: 2px;
+  width: 9%;
   
   margin-left: 2%;
   margin-top: 1px;
   padding-bottom: 1px;
-  background: white;
+  background: #4e4e5e;
   border-radius: 9px;
   opacity: 1;
   left: 0;
@@ -276,27 +284,22 @@ circle.active {
 
 #nav-icon1 span:nth-child(1) {
   top: 5px;
+ 
+  
 }
 
 #nav-icon1 span:nth-child(2) {
   top: 10px;
+
+  
 }
 
 #nav-icon1 span:nth-child(3) {
   top: 15px;
+
 }
 
-#nav-icon3 span:nth-child(1) {
-  top: 5px;
-}
 
-#nav-icon3 span:nth-child(2) {
-  top: 10px;
-}
-
-#nav-icon3 span:nth-child(3) {
-  top: 15px;
-}
 
 #nav-icon1.open span:nth-child(1) {
   top: 8px;
@@ -317,6 +320,11 @@ circle.active {
   -moz-transform: rotate(-135deg);
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
+}
+
+.legende {
+    margin-left: (width/2);
+    margin-right: 500px;
 }
 
 

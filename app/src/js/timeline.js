@@ -13,7 +13,7 @@ Index.timeline = function (yearSelected) {
             bottom: 20,
             left: 0
         },
-        width = $("#map").width() - margin.left - margin.right - 100,
+        width = $("#map").width() - margin.left - margin.right - 35,
         height = 80 - margin.top - margin.bottom,
         brushScale, x, y, svg2;
 
@@ -55,12 +55,15 @@ Index.timeline = function (yearSelected) {
             .data([timelineData])
             .attr("class", "line")
             .attr("d", valueline);
+            
 
 
         // Add the X Axis
         svg2.append("g")
             .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+            .call(d3.axisBottom(x))
+            .style("stroke-opacity", 0.1)
+            .style("stroke", "black");
 
         // Add the Y Axis
         /*svg.append("g")
@@ -99,6 +102,7 @@ Index.timeline = function (yearSelected) {
             .datum(timelineData)
             .attr("class", "area")
             .attr("d", area);
+            
 
         //Marker wieder aktivieren
         /* var focus = svg2.append("g")

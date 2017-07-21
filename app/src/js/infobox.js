@@ -21,6 +21,7 @@ Index.infobox = function () {
         //ausgewählte menuelemente hier anzeigen
         var menudata = d3.select("#menudata");
         menudata.selectAll("*").remove();
+         
         //TODO oberkategorie(1/5) + aufklappen für die unterkategorien!
         console.log(names);
     }

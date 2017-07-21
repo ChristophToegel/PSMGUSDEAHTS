@@ -33,15 +33,15 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         //Button: RemoveAll mit image 
         //TODO schöner!!
         var button = svg.append('g')
-        .attr('transform', 'translate(' + ((width/2)-40)  + ',' + ((height/2)-70) + ')')
+        .attr('transform', 'translate(' + ((width/2)-46)  + ',' + ((height/2)-70) + ')')
         .classed("button",true)
         .classed("text45",true)
         let button1=button.append("g").attr("id","button1")
         button1.append("text")
             .text("unselectAll")
             .attr("dy","5px")
-            .style("fill", "black")
-            .style("stroke-opacity", 0.4)
+            .style("fill", "#4e4e5e")
+            .style("stroke-opacity", 0.1)
             .style("stroke", "black");
         button1.append('rect').attr('width', 12)
             .attr('stroke', "black")
@@ -49,23 +49,27 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
             .attr('fill','#fff')
             .attr('x','85px')
             .attr('y','-6px')
-        
         button1.on("click",noFilterSelected)
+        
         let button2=button.append("g").attr("id","button2")
         button2.append("text")
+            .attr('transform', 'translate(' + 0 + ',' + ((height/2)-70) + ')')
             .text("selectAll")
             .attr("dy","22px")
-            .style("fill", "black")
-            .style("stroke-opacity", 0.4)
+            .style("fill", "#4e4e5e")
+            .style("stroke-opacity", 0.1)
             .style("stroke", "black");
         button2.append('rect').attr('width', 12)
+            .attr('transform', 'translate(' + 0 + ',' + ((height/2)-70) + ')')
             .attr('stroke', "black")
             .attr('height', 12)
             .attr('fill','#fff')
             .attr('x','85px')
-            .attr('y','10px')
+            .attr('y','9px')
         button2.append('image').attr('width', 12)
+            .attr('transform', 'translate(' + 0 + ',' + ((height/2)-70) + ')')
             .attr('stroke', "black")
+            .attr('width', 12)
             .attr('height', 12)
             .attr('xlink:href', "https://www.transparenttextures.com/patterns/black-twill.png")
             .attr('x','85px')
@@ -186,8 +190,9 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .attr("dy",function (d,i) {
                     return  i * 20;})
                 .attr("text-anchor","middle")
-                .style("fill", "black")
-                .style("stroke-opacity", 0.4)
+                
+                .style("fill", "#4e4e5e")
+                .style("stroke-opacity", 0.1)
                 .style("stroke", "black");
     }
     
@@ -207,7 +212,10 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .attr("x",function (d,i) {
                     return 0;})
                 .attr("y",function (d,i) {
-                    return i * 20;});
+                    return i * 20;})
+                .style("fill", "#4e4e5e")
+                .style("stroke-opacity", 0.1)
+                .style("stroke", "black");
     }
     
     function createTextLeftCorner(state){
@@ -228,8 +236,8 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                     return - 50;})
                 .attr("y",function (d,i) {
                             return 0;})
-                .style("fill", "black")
-                .style("stroke-opacity", 0.5)
+                .style("fill", "#4e4e5e")
+                .style("stroke-opacity", 0.1)
                 .style("stroke", "black");
                    
     }
