@@ -15,7 +15,7 @@ Index.timeline = function (yearSelected) {
         },
         width = $("#map").width() - margin.left - margin.right - 35,
         height = 80 - margin.top - margin.bottom,
-        brushScale, x, y, svg2;
+        brushScale, x, y, svg2, brushTime;
 
     function initGraph(timelineData) {
         var bisectDate = d3.bisector(function (d) {
@@ -41,7 +41,7 @@ Index.timeline = function (yearSelected) {
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
-            .attr("transform", "translate(" + margin.left + "," +       
+            .attr("transform", "translate(" + margin.left + "," +
                 margin.top + ")");
 
         x.domain(d3.extent(timelineData, function (d) {
@@ -73,19 +73,19 @@ Index.timeline = function (yearSelected) {
     function initBrush(timelineData) {
         //Adding brush --extent defines area, -5 to cover whole graph
         //http://bl.ocks.org/rajvansia/ce6903fad978d20773c41ee34bf6735c
-        brushScale = d3.scaleLinear().domain([0, width]).range([1792, 2016]);
+        brushScale = d3.scaleLinear().domain([0, width]).range([1791, 2016]);
 
-        var brush = d3.brushX()
+        brushTime = d3.brushX()
             .extent([[0, -5], [width, height]])
             .on("brush", brushed);
+
         //transform brush to graph-area and not svg-area
         d3.select(".timeGraph")
             .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             .attr("class", "brush")
-            .call(brush)
-            .call(brush.move, x.range());
-
+            .call(brushTime)
+            .call(brushTime.move, x.range());
 
         // Area of the graph under line
         var area = d3.area()
@@ -148,102 +148,107 @@ Index.timeline = function (yearSelected) {
         yearSelected(date);
     }
 
-
     function drawTimeGraph(timelineData) {
         console.log("init Timeline");
-
         initGraph(timelineData);
         initBrush(timelineData);
+        initPlayer();
 
-        /*
-        //Tastaturkontrolle über Brush
-        brush("#brushTime").addEventListener("keydown", function(){
-            var selection = d3.event.selection;
-            switch (event.key){
-                case "ArrowLeft":
-                    console.log("Links")
-                    brush.extent = [[brushScale(selection[0]-1),height], [brushScale(selection[1]),height]];
-                    break;
-                    
-                case "ArrowRight":
-                    console.log("Rechts")
-                    brush.extent = [[brushScale(selection[0]+1),height], [brushScale(selection[1]),height]];
-                    break;
-                    
-                case "ArrowUp":
-                    console.log("Hoch")
-                    brush.extent = [[brushScale(selection[0]),height], [brushScale(selection[1]+1),height]];
-                    break;
-                    
-                case "ArrowDown":
-                    console.log("Runter")
-                    brush.extent = [[brushScale(selection[0]),height], [brushScale(selection[1]-1),height]];
-                    break;
-                    
-                default:
-                    return;  
-            }
-        })
-        
-        
-        // Optische Erscheinung des Brush
-        var handle = brush.selectAll(".handle--custom")
-            .data([{
-                type: "w"
-            }, {
-                type: "e"
-            }])
-            .enter().append("path")
-            .attr("class", "handle--custom")
-            .attr("fill", "#666")
-            .attr("fill-opacity", 0.8)
-            .attr("stroke", "#000")
-            .attr("stroke-width", 1.5)
-            .attr("cursor", "ew-resize")
-            .attr("d", d3.arc()
-                .innerRadius(0)
-                .outerRadius(height / 2)
-                .startAngle(0)
-                .endAngle(function (d, i) {
-                    return i ? Math.PI : -Math.PI;
-                }));
-            */
-
-        /*.on("mouseover", function () {
-            focus.style("display", null);
-        })
-        .on("mouseout", function () {
-            focus.style("display", "none");
-        })
-            
-        //Marker wieder aktivieren
-        //.on("mousemove", mousemove)
-        //.on("click", mouseclick);
-        */
-
-
-        /* ALT 
-        function mouseclick() {
-            var x0 = x.invert(d3.mouse(this)[0]),
-                i = bisectDate(transform, x0, 1),
-                d0 = timelineData[i - 1],
-                d1 = timelineData[i],
-                d = x0 - d0.name > d1.name - x0 ? d1 : d0;
-            //d.name=year 
-            
-            
-            //slection marker wieder aktiviere
-            /*svg2.append("path")
-                .datum(transform.slice(0, i))
-                .attr("class", "area2")
-                .attr("d", area2);
-                //never called?
-            //yearSelected(d.name);
-        }
-        */
-
-        //});
     }
+
+    /*PLAYBACK
+    function initPlayer() {
+        var header = $("h1");
+        console.log(header);
+        header.click(tooglePlayback);
+    }
+
+
+    function nextPlaybackSet() {
+        console.log(brushTime)
+        let selection = brushTime.selection;
+        console.log(selection);
+       
+        let handleW = d3.select(".handle--w");
+        let handleE = d3.select(".handle--e");
+        
+        
+        let brushEl = d3.selectAll(".brush");
+        console.log(brushEl);
+        
+        let upperDate = parseInt(brushScale(handleE.attr("x")));
+        
+        var yearScale = d3.scaleLinear().domain([1791, 2016]).range([0, width]);
+        //next Year Addition
+        let nextDate = upperDate + 1;
+        
+        console.log([handleW.attr("x") ,nextDate])
+        
+        brushTime.move([parseInt(handleW.attr("x")) ,nextDate]);
+    }
+
+    function startTimePlayback() {
+        var playbackIntervall = setInterval(nextPlaybackSet, 800);
+    }
+
+    function stopTimePlayback() {
+        clearInterval(playbackIntervall);
+    }
+
+    function tooglePlayback() {
+        var played = false;
+        if (played) {
+            console.log("falsch")
+            played = false;
+            stopTimePlayback();
+        } else {
+            console.log("true");
+            played = true;
+            startTimePlayback();
+
+        }
+    }
+
+    var header = $(".h1");
+    console.log()
+    header.click(tooglePlayback);
+    */
+
+    /*.on("mouseover", function () {
+        focus.style("display", null);
+    })
+    .on("mouseout", function () {
+        focus.style("display", "none");
+    })
+        
+    //Marker wieder aktivieren
+    //.on("mousemove", mousemove)
+    //.on("click", mouseclick);
+    */
+
+
+    /* ALT 
+    function mouseclick() {
+        var x0 = x.invert(d3.mouse(this)[0]),
+            i = bisectDate(transform, x0, 1),
+            d0 = timelineData[i - 1],
+            d1 = timelineData[i],
+            d = x0 - d0.name > d1.name - x0 ? d1 : d0;
+        //d.name=year 
+        
+        
+        //slection marker wieder aktiviere
+        /*svg2.append("path")
+            .datum(transform.slice(0, i))
+            .attr("class", "area2")
+            .attr("d", area2);
+            //never called?
+        //yearSelected(d.name);
+    }
+    */
+
+    //});
+
 
 
     function getYear() {
