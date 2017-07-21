@@ -59,12 +59,7 @@ Index.timeline = function (yearSelected) {
 
 
         // Add the X Axis
-        svg2.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x))
-            .style("stroke-opacity", 0.1)
-            .style("stroke", "black");
-
+ 
         // Add the Y Axis
         /*svg.append("g")
           .call(d3.axisLeft(y)); */
