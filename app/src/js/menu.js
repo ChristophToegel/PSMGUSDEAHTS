@@ -2,7 +2,7 @@
 /* global d3  */
 
 var Index = Index || {};
-Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected) {
+Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected,subcategorychanged) {
     "use strict";
     console.log($("#chart").width());
     
@@ -26,6 +26,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
             .attr('width', width)
             .attr('height', height)
         svg.append('defs');
+        createButtons();
     }
     
     function createButtons(){
@@ -79,10 +80,8 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
    
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
-        d3.select('#chart').selectAll("g").remove();
-        createTextLeftCorner(state);
-        createButtons();
         createArc(data);
+        createTextLeftCorner(state);
         
     }
 
@@ -94,20 +93,26 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 return d.value;})
             .sort(null);
 
-        var innerChart= svg.append('g')
+        if (d3.select(".firstarc").empty()) {
+            var innerChart = svg.append('g')
             .attr('transform', 'translate(' + (width / 2)  + ',' + (height / 2) + ')')
             .classed("firstarc",true);
+            var path = innerChart.selectAll('path')
+            .append("g")
+            .data(pie(data))
+            .enter()
+            .append('path')
+        }else{
+            var innerChart=d3.select(".firstarc")
+            var path=innerChart.selectAll('path')
+                .data(pie(data))
+        }
 
         var arc = d3.arc()
             .innerRadius(width - 7 * thickness)
             .outerRadius(width - 6 * thickness);
       
-        var path = innerChart.selectAll('path')
-            .append("g")
-            .data(pie(data))
-            .enter()
-            .append('path')
-            .attr('d', arc)
+            path.attr('d', arc)
             .attr('fill', function (d) {
                 d.data.color=color(d.data.name);
                 createPattern(d.data);
@@ -117,7 +122,8 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 return "o"+d.data.id;
             })
             .on("mouseover", function (d) {
-                showSecondArc(d);
+                drawSecondArc(d.data.array)
+                subcategorychanged(d.data);
                 let el=d3.select(this);
                 createTextCenter(d.data.value,d.data.name, d.data.percentage);
                 el.classed("piehover",true);
@@ -129,38 +135,76 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
             .on("click", function (d){
               oberkategorieSelected(d.data.id)  
             })
+    }
+    
+    //test secondArc animation
+    function drawSecondArc(data){
+        var radius = Math.min(width, height) / 2;
+        // arc
+        var outerArc = d3.arc()
+            .innerRadius(width-6*thickness)
+            .outerRadius(width-5*thickness+1);
+
+        var pie = d3.pie()
+                        .value(function (d) {
+                            return d.value;
+                        })
+                        .sort(d3.descending);
+        
+        
+        if (d3.select(".secondarc").empty()) {
+            var outerChart= svg.append('g')
+                .attr('transform', 'translate(' + (width / 2) + ',' +         (height / 2) + ')')
+                .classed("secondarc",true);
+            var path=outerChart.selectAll('path')
+                .data(pie(data))
+                .enter()
+                .append('path')
+        }else{
+            var outerChart=d3.select(".secondarc")
+            var path=outerChart.selectAll('path')
+                .data(pie(data))
+        }
+        createOuterArcProp(path,outerArc);
+            path.exit().remove();
+            //wenn mehr dann hinzufügen
+            path = path.enter().insert("path")
+            createOuterArcProp(path,outerArc)
+    }
+    //test secondArc animation
+    function createOuterArcProp(path,outerArc){
+        path.attr('d', outerArc)
+            //zu beginn alle der unterkategorie ausgewählt
+            .attr('fill', function (d) {
+                d.data.color=colorSub(d.data.name);
+                createPattern(d.data);
+                return colorSub(d.data.name);
+            })
+            .attr('id', function (d) {
+                return "u"+d.data.id;
+            })
+            .on("mouseover", function (d,i) {
+                let el=d3.select(this);
+                el.classed("piehover",true);
+                createTextCenter(d.data.value,d.data.name,d.data.percentage);
+            })
+            .on("mouseout", function (d) {
+               let el=d3.select(this);
+                el.classed("piehover",false);
+            })
+            .on("click", function (d) {
+               filterSelected(d3.select(this).data()[0].data.id);
+            })
             .transition()
             .ease(d3.easeLinear)
-            .duration(600)
+            .duration(500)
             .attrTween("d", function(d){
                 d.innerRadius=0;
                 var i= d3.interpolate({startAngle:0, endAngle:0},d);
-                return function(t){return arc(i(t));};
+                return function(t){return outerArc(i(t));};
             });
-        //draw all unterkat charts
-            drawSecondArcs(data);
     }
     
-    //clickLogic 
-    function showSecondArc(d){
-        //console.log(d);
-        var selected = d3.selectAll('g[visibility = visible]');
-        //element schon ausgewählt
-        if (selected.data().length != 0){
-            //gleiches element
-            if (selected.data()[0].name == d.data.name){
-               // d3.selectAll("."+d.data.name)           
-                //    .attr("visibility","hidden");
-            } else {
-                //unterschiedlich
-                d3.selectAll("." + selected.data()[0].name).attr("visibility","hidden");
-                d3.selectAll("." + d.data.name).attr("visibility","visible")
-            }
-        } else {
-        //nichts ausgewählt
-        d3.selectAll("." + d.data.name).attr("visibility","visible")
-        }
-    }
     
     //http://stackoverflow.com/questions/14167863/how-can-i-bring-a-circle-to-the-front-with-d3
     function markPie(el) {
@@ -173,17 +217,18 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     }
     
     function createTextCenter(name, value, percentage){
-        svg.select(".text").remove();
-        //TODO startposition des Textfeldes über g bestimmen!!
-        var textfield = svg.append('g')
-                .classed("text", true)
-        
-        textfield.append("text")
-                .selectAll("text")
+        if (d3.select(".text").empty()) {
+            var textfield= svg.append('g')
+                .classed("text",true).append("text").selectAll('tspan')
                 .data([name,value,percentage+"%"])
-                .enter()
-                .append("tspan")
-                .text(function (d) {
+                .enter().append("tspan")
+        }else{
+            var textfield=d3.select(".text>text")
+            textfield=textfield.selectAll('tspan')
+            .data([name,value,percentage+"%"])
+        }
+        
+        textfield.text(function (d) {
                     return d;})
                 .attr("x","50%")
                 .attr("y","45%")
@@ -191,28 +236,6 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                     return  i * 20;})
                 .attr("text-anchor","middle")
                 
-                .style("fill", "#4e4e5e")
-                .style("stroke-opacity", 0.1)
-                .style("stroke", "black");
-    }
-    
-    function createTextRightCorner(name, percentage){
-        svg.select(".textselected").remove();
-        //TODO startposition des Textfeldes über g bestimmen!!
-        var textfield = svg.append('g')
-                .classed("textselected",true)
-                .attr('transform', 'translate(335, 20 )');
-        
-        textfield.append("text").selectAll("text")
-                .data([name,percentage])
-                .enter()
-                .append("tspan")
-                .text(function (d) {
-                    return d;})
-                .attr("x",function (d,i) {
-                    return 0;})
-                .attr("y",function (d,i) {
-                    return i * 20;})
                 .style("fill", "#4e4e5e")
                 .style("stroke-opacity", 0.1)
                 .style("stroke", "black");
@@ -243,72 +266,8 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     }
 
 
-    function drawSecondArcs(data){
-        //für jede oberkategorie eigenen chart zeichnen!
-        var radius = Math.min(width, height) / 2;
-        
-        var outerChart= svg.append('g')
-                .attr('transform', 'translate(' + (width / 2) + ',' +         (height / 2) + ')')
-                .classed("secondarc",true)
-                .selectAll('g')
-                .data(data)
-                .enter()
-                .append('g')
-                .attr("class",function (d) {
-                    return(d.name);})
-                .attr("visibility","hidden");
-        
-        // arc
-        var outerArc = d3.arc()
-            .innerRadius(width-6*thickness+1)
-            .outerRadius(width-5*thickness+1);
-
-        var pie = d3.pie()
-                        .value(function (d) {
-                            return d.value;
-                        })
-                        .sort(d3.descending);
-        
-        var path = outerChart.selectAll('path')
-            .data(function(d) {
-                return pie(d.array);})
-            .enter()
-            .append('path')
-            .attr('d', outerArc)
-            //zu beginn alle der unterkategorie ausgewählt
-            .attr('fill', function (d) {
-                d.data.color=colorSub(d.data.name);
-                createPattern(d.data);
-                return colorSub(d.data.name);
-            })
-            .attr('id', function (d) {
-                return "u"+d.data.id;
-            })
-            .on("mouseover", function (d,i) {
-                let el=d3.select(this);
-                el.classed("piehover",true);
-                createTextCenter(d.data.value,d.data.name,d.data.percentage);
-            })
-            .on("mouseout", function (d) {
-               let el=d3.select(this);
-                el.classed("piehover",false);
-            })
-            .on("click", function (d) {
-               filterSelected(d3.select(this).data()[0].data.id);
-            })
-            /*.transition()
-            .ease(d3.easeLinear)
-            .duration(200)
-            .attrTween("d", function(d){
-                d.innerRadius=0;
-                var i= d3.interpolate({startAngle:0, endAngle:0},d);
-                return function(t){return outerArc(i(t));};
-            });
-            */
-        //}
-    }
-    
     function createPattern(data){
+        if(d3.select("#pattern-"+data.id).empty()){
         var allpatterns= d3.select('defs').append('pattern')
                 .attr('id', "pattern-" +data.id)
                 .attr('width', 12)
@@ -324,15 +283,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .attr('height', 12)
                 .attr('xlink:href', "https://www.transparenttextures.com/patterns/black-twill.png")
     }
-    
-    //muss arc bekommen 
-    function pieAnimation(d){
-        //var arc = d3.arc()
-        //    .innerRadius(width-6*thickness+2)
-        //    .outerRadius(width-5*thickness+2);
-        d.innerRadius = 0;
-        var i = d3.interpolate({startAngle:0, endAngle:0},d);
-        return function(t){return arc(i(t));};
+        
     }
     
     function updateViewSelection(oberkategorien,categories,partsOberkategorein){
@@ -352,24 +303,24 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 }
                 el.attr("fill", el.data()[0].data.color);
             }
-        //console.log(oberkategorien);
-        //alle categorien
-        var allkat=d3.selectAll("."+d.data.name+"> path").data()
-        allkat.forEach(function(d){
-            //console.log(d.data.id);
+        })
+        updateViewOuterArc(categories);
+    }
+    
+    function updateViewOuterArc(categories){
+        var subCat=d3.selectAll(".secondarc > path").data()
+        subCat.forEach(function(d){
             var el=d3.select("#u"+d.data.id);
-            
             if(categories.indexOf(d.data.id)!=-1){
                 el.attr("fill","url(#pattern-"+el.data()[0].data.id+")")
             }else{
                 el.attr("fill", el.data()[0].data.color);
             }
         })
-        })
     }
     
-    
-    that.updateViewSelection=updateViewSelection;
+    that.updateViewOuterArc = updateViewOuterArc;
+    that.updateViewSelection = updateViewSelection;
     that.changeData = changeData;
     that.init = init;
     return that;

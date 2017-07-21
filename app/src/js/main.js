@@ -17,7 +17,7 @@ Index = (function () {
         
         menuModel= new Index.menuModel();
         
-        menu = new Index.menu(filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected);
+        menu = new Index.menu(filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected,subcategorychanged);
         map = new Index.map(mapisready,stateSelected,pointsClicked);
         
         infobox = new Index.infobox();
@@ -43,14 +43,13 @@ Index = (function () {
         updateMenu(year,undefined);
         odometer.updateDateInfo(year);
         updateMap(year,menuModel.getSelectedFilters());
-        
     }
     
     //draws the Menu with selected data
     function updateMenu(year,state){
         let structure = menuModel.getStructure();
         let boxdata=data.getMenuData(year,state,structure);
-        menu.changeData(undefined,boxdata);
+        menu.changeData(state,boxdata);
         updateMenuView();
     }
     
@@ -106,6 +105,11 @@ Index = (function () {
         //console.log(oberkategorie);
         menuModel.selectOberkategorie(oberkategorie);
         menuInputChanged();
+    }
+    
+    function subcategorychanged(d){
+        var cat = menuModel.getSelectedFilters();
+        menu.updateViewOuterArc(cat);
     }
     
     init();

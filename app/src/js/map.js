@@ -35,6 +35,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .attr("height", height)
             .attr("width", width)
             .attr("id", "mapsvg")
+        
     }
 
     //zooming
