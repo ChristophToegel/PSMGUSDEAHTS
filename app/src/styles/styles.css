@@ -50,7 +50,6 @@ h1 {
     display: inline-block;
     float: left;
     position: relative;
-    
 }
 
 /*brush*/
@@ -73,7 +72,7 @@ circle.active {
 
 /* brush */
 
-.notclickable {
+.notclickabel{
     pointer-events: none;
 }
 
@@ -155,7 +154,7 @@ circle.active {
 
 #menu, #deathInfoBox, #year_selection {
     border-radius: 15px; 
-    /*border: solid 4px #cccccc;*/
+    border: solid 0px #cccccc;
     background: white;
 }
 
@@ -178,34 +177,27 @@ circle.active {
     margin-top: 0.5%;
 }
 
-#textstate {
-    stroke: 1px;
-    background-color: white;
-}
-
 #deathInfoBox {
     width: 93%;
     height: 240px;
     overflow: scroll;
     display: block;
-    color: #4e4e5e;
-    
+    color: #4e4e5e;;
 }
 
 .deathInfoHeading{
-    color: #4e4e5e;
+    color: #4e4e5e;;
     text-align: center;
     font-size: 1.0em;
     margin-top: -0.7em;
-    width 80%;
-    word-wrap:break-word;
+    width: 80%;
     margin-left: 3em;
     margin-right: 3em;
 }
 
 .deathNumber{
     text-align: center;
-    color: #4e4e5e;
+    color: #4e4e5e;;
     font-size: 0.9em;
 }
 
@@ -221,7 +213,6 @@ circle.active {
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 0.9em;
-    
 }
 
 .deathEntryVictim {
@@ -233,7 +224,7 @@ circle.active {
 
 .deathEntryEOW {
     white-space: normal;
-    color: #4e4e5e; 
+    color: #4e4e5e;
     font-size: 0.9em;
 }
 
@@ -265,41 +256,53 @@ circle.active {
     stroke-width: 1px;
 }
 
+
+
 #nav-icon1 span {
   display: block;
   position: relative;
   
-  left: -1000px;
-  height: 2px;
-  width: 9%;
+  left: 200px;
+  height: 3px;
+  width: 10%;
   
   margin-left: 2%;
   margin-top: 1px;
   padding-bottom: 1px;
-  background: #4e4e5e;
+  background: #4e4e5e;;
   border-radius: 9px;
   opacity: 1;
   left: 0;
 }
 
+#nav-icon3 {
+    background: black;
+    height: 35px;
+}
+
 #nav-icon1 span:nth-child(1) {
   top: 5px;
- 
-  
 }
 
 #nav-icon1 span:nth-child(2) {
   top: 10px;
-
-  
 }
 
 #nav-icon1 span:nth-child(3) {
   top: 15px;
-
 }
 
+#nav-icon3 span:nth-child(1) {
+  top: 5px;
+}
 
+#nav-icon3 span:nth-child(2) {
+  top: 10px;
+}
+
+#nav-icon3 span:nth-child(3) {
+  top: 15px;
+}
 
 #nav-icon1.open span:nth-child(1) {
   top: 8px;
@@ -320,11 +323,6 @@ circle.active {
   -moz-transform: rotate(-135deg);
   -o-transform: rotate(-135deg);
   transform: rotate(-135deg);
-}
-
-.legende {
-    margin-left: (width/2);
-    margin-right: 500px;
 }
 
 
