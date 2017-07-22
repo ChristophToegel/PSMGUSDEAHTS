@@ -98,7 +98,7 @@ circle.active {
 }
 
 .selectedState {
-    stroke-width: 0px !important;
+    stroke-width: 1px !important;
 }
 
 .zoomed {
