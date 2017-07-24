@@ -313,7 +313,15 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                     .style("opacity", 0);
             })
             //pointClick callback
-            .on("click", pointClicked);
+            .on("click", pointSelected);
+    }
+    
+    function pointSelected(event){
+        let prevPoint = d3.selectAll(".selectedPoint");
+        prevPoint.classed("selectedPoint",false);
+        let point = d3.select(this);
+        point.classed("selectedPoint", true);
+        pointClicked(event);
     }
 
 

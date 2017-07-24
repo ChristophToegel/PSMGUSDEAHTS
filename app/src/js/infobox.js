@@ -12,37 +12,36 @@ Index.infobox = function () {
         console.log("init Infobox");
         document.getElementById("nav-icon1").addEventListener("click", changeView);
         var deathInfoBox = d3.select("#textdata");
-        deathInfoBox.append("div").attr("id","menudata").classed("hidden",true);
-        deathInfoBox.append("div").attr("id","deathinfodata")
+        deathInfoBox.append("div").attr("id", "menudata").classed("hidden", true);
+        deathInfoBox.append("div").attr("id", "deathinfodata")
     }
-    
+
     //names hat oberkateogorie mit unterkategorien der ausgewählten menupunkte
-    function updateSelection(names){
+    function updateSelection(names) {
         //ausgewählte menuelemente hier anzeigen
         var menudata = d3.select("#menudata");
         menudata.selectAll("*").remove();
-         
+
         //TODO oberkategorie(1/5) + aufklappen für die unterkategorien!
         console.log(names);
     }
-    
-    function changeView(){
+
+    function changeView() {
         console.log("change infobox");
-        var menu=document.getElementById("menudata")
-        var deathinfo=document.getElementById("deathinfodata")
-        if(menu.classList.contains("hidden")){
+        var menu = document.getElementById("menudata")
+        var deathinfo = document.getElementById("deathinfodata")
+        if (menu.classList.contains("hidden")) {
             menu.classList.remove("hidden");
             deathinfo.classList.add("hidden");
-        }else{
+        } else {
             menu.classList.add("hidden");
             deathinfo.classList.remove("hidden");
         }
     }
-    
-    function mapPointClicked(data){
+
+    function mapPointClicked(data) {
         var deathInfoBox = d3.select("#deathinfodata");
         deathInfoBox.selectAll("*").remove();
-
         deathInfoBox.append("p")
             .text(data.name)
             .attr("class", "deathInfoHeading")
@@ -53,7 +52,7 @@ Index.infobox = function () {
                 } else {
                     return data.value.length + " Deaths"
                 }
-            }).attr("class","deathNumber");
+            }).attr("class", "deathNumber");
         deathInfoBox.append("div")
             .attr("id", "deathInfoEntries");
 
@@ -74,9 +73,9 @@ Index.infobox = function () {
             })
             .attr("class", "deathEntryCause");
     }
-    
+
     initInfobox();
-    that.updateSelection=updateSelection;
-    that.mapPointClicked=mapPointClicked;
+    that.updateSelection = updateSelection;
+    that.mapPointClicked = mapPointClicked;
     return that;
 };

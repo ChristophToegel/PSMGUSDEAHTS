@@ -60,6 +60,12 @@ h1 {
     shape-rendering: crispEdges;
 }
 
+.selectedPoint{
+    stroke: yellow;
+    stroke-width: 1px;
+    stroke-linecap: round;
+}
+
 circle {
     fill-opacity: 0.2;
     transition: fill-opacity 250ms linear;
@@ -180,9 +186,13 @@ circle.active {
 #deathInfoBox {
     width: 93%;
     height: 240px;
-    overflow: scroll;
     display: block;
     color: #4e4e5e;;
+}
+
+#deathInfoEntries{
+    overflow: scroll;
+    height: 240px;
 }
 
 .deathInfoHeading{
@@ -193,6 +203,7 @@ circle.active {
     width: 80%;
     margin-left: 3em;
     margin-right: 3em;
+    height: 30px;
 }
 
 .deathNumber{
