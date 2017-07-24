@@ -41,6 +41,7 @@ Index = (function () {
     //year wurde von timeline ausgewählt
     function yearSelected(year) {
         updateMenu(year,undefined);
+        menu.hideSecondArc();
         odometer.updateDateInfo(year);
         updateMap(year,menuModel.getSelectedFilters());
     }
@@ -56,7 +57,7 @@ Index = (function () {
     //staat wurde geclicked
     function stateSelected(state){
         let year=timeline.getYear();
-        //menuInputChanged();
+        menu.hideSecondArc();
         updateMenu(year,state);
     }
     
@@ -75,7 +76,8 @@ Index = (function () {
     
     function updateMap(year, filters){
         var selectedData=data.getMapData(year,filters);
-        map.ChoroplethColor(selectedData);
+        //console.log(selectedData[1]); Anzahl der GesamtTodesfälle
+        map.ChoroplethColor(selectedData[0]);
         data.getMapPointData(map.pointsready,year,filters);
         updateMenuView();
     }

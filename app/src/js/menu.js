@@ -125,7 +125,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 drawSecondArc(d.data.array)
                 subcategorychanged(d.data);
                 let el=d3.select(this);
-                createTextCenter(d.data.value,d.data.name, d.data.percentage);
+                createTextCenter(d.data);
                 el.classed("piehover",true);
             })
             .on("mouseout", function (d) {
@@ -136,7 +136,9 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
               oberkategorieSelected(d.data.id)  
             })
     }
-    
+    function hideSecondArc(){
+        drawSecondArc([]);
+    }
     //test secondArc animation
     function drawSecondArc(data){
         var radius = Math.min(width, height) / 2;
@@ -186,7 +188,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
             .on("mouseover", function (d,i) {
                 let el=d3.select(this);
                 el.classed("piehover",true);
-                createTextCenter(d.data.value,d.data.name,d.data.percentage);
+                createTextCenter(d.data);
             })
             .on("mouseout", function (d) {
                let el=d3.select(this);
@@ -216,16 +218,17 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         el.moveToFront()
     }
     
-    function createTextCenter(name, value, percentage){
+    function createTextCenter(data){
+        var dataArray=[data.name,data.value+" cases",data.percentage+" %"];
         if (d3.select(".text").empty()) {
             var textfield= svg.append('g')
                 .classed("text",true).append("text").selectAll('tspan')
-                .data([name,value,percentage+"%"])
+                .data(dataArray)
                 .enter().append("tspan")
         }else{
             var textfield=d3.select(".text>text")
             textfield=textfield.selectAll('tspan')
-            .data([name,value,percentage+"%"])
+            .data(dataArray)
         }
         
         textfield.text(function (d) {
@@ -319,6 +322,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         })
     }
     
+    that.hideSecondArc=hideSecondArc;
     that.updateViewOuterArc = updateViewOuterArc;
     that.updateViewSelection = updateViewSelection;
     that.changeData = changeData;

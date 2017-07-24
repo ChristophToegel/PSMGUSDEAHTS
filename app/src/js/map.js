@@ -114,16 +114,12 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         svg.selectAll(".places").classed("notclickable", false)
         //Todo border soll mit zoom verknüpf sein/via css
         g.classed("zoomed", true);
-        //Infobox nur bei zoom?
     }
 
     function zoomOut() {
-        //Infobox nur bei zoom?
-        //document.querySelector("#deathInfoBox").classList.add("hidden");
         svg.transition()
             .duration(750)
             .call(zoom.transform, d3.zoomIdentity);
-
         svg.selectAll(".places").classed("notclickable", true)
         g.classed("zoomed", false);
     }
@@ -193,11 +189,12 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .attr("width", width)
             .append("g")
             .classed("legende",true)
-            .attr('transform', 'translate(' + 250 + ',' + 15 + ')');
+            .attr('transform','translate(' + 250 + ',' + 15 + ')');
         } else {
             var legende = d3.selectAll(".legende");
             legende.selectAll("*").remove();
         }
+        
         if (values[0] == undefined) {
             legende.append("text")
                 .text("Keine Daten vorhanden. Bitte Filter auswählen!")
@@ -210,6 +207,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         var entry = legende.selectAll("g")
             .data(colors).enter().append("g")
             .attr('transform', function (d, i) {
+                //TODO abstand anpassen
                 return 'translate(' + 105 * i + ',0)'
             })
         entry.append('rect').attr('width', 12)

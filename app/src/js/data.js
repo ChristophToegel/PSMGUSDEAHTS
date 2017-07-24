@@ -53,12 +53,14 @@ Index.data = function (datainitialised) {
     }
 
     //data for the map
-    //for every state the number of deaths
+    //for every state the number of deaths + totalnumber
     function getMapData(year, filters) {
         var stateYear = filterData(year, filters, undefined);
+        var totaldeaths=stateYear.length;
+        
         var sumStates = sumData(stateYear, "state");
         //--> { NY: 4,  US: 3,  SC: 1,  NC: 1,  KY: 1, …}
-        return transformObjectToArray(sumStates)
+        return [transformObjectToArray(sumStates),totaldeaths]
     }
 
 
@@ -89,23 +91,6 @@ Index.data = function (datainitialised) {
         }
         causeDetail = transform;
         var mainArray= structure;
-        //console.log(mainArray);
-        /*
-        //daten vom menuModel + name/Id Daten
-        var illness = ["10", "11", "27","35"];
-        var accidents = ["08", "16", "17", "20", "22", "23", "24", "25", "26", "29", "32", "33"];
-        var naturalCauses = ["04", "05", "06", "07", "09", "12", "14", "15", "21", "36"];
-        var others = ["28"];
-        var suspectknown =["01", "02", "03", "18", "19", "30", "31", "34"];
-        
-        var mainArray = [
-            {name: "natural", array: naturalCauses, id:100, ids: naturalCauses},
-            {name: "accidents", array: accidents, id:101, ids: accidents},
-            {name: "suspectknown", array: suspectknown, id:102, ids: suspectknown},
-            {name: "illness", array: illness, id:103, ids: illness},
-            {name: "others", array: others, id:104, ids: others}
-        ];
-        */
         
         mainArray.forEach(function (element) {
             var total = 0;

@@ -4,49 +4,40 @@
 var Index = Index || {};
 Index.menuModel = function () {
     "use strict";
-
+    //28 others unused
     const illness = ["10", "11", "27", "35"],
         accidents = ["08", "16", "17", "20", "22", "23", "24", "25", "26", "29", "32", "33"],
         naturalCauses = ["04", "05", "06", "07", "09", "12", "14", "15", "21", "36"],
-        others = ["28"],
         suspectknown = ["01", "02", "03", "18", "19", "30", "31", "34"],
         mainArray = [
             {
-                name: "natural",
+                name: "Natural",
                 id: 100,
                 ids: naturalCauses
             },
             {
-                name: "accidents",
+                name: "Accidents",
                 id: 101,
                 ids: accidents
             },
             {
-                name: "suspectknown",
+                name: "Suspect known",
                 id: 102,
                 ids: suspectknown
             },
             {
-                name: "illness",
+                name: "Illness",
                 id: 103,
                 ids: illness
             },
-            {
-                name: "others",
-                id: 104,
-                ids: others
-            }
         ];
     var that = {},
         catIdData, filters = [];
 
-    //TODO no remove update instead!
     function initModel() {
         console.log("init Menu model");
         d3.csv("data/cat-id.csv", function (csv) {
             catIdData = csv;
-            //main Callback menu ready
-            //menuinitialised();
         });
     }
 
