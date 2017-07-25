@@ -190,7 +190,7 @@ circle.active {
 
 #deathInfoEntries{
     overflow: scroll;
-    height: 14em;
+    height: 12em;
 }
 
 .deathInfoHeading{
@@ -259,7 +259,7 @@ circle.active {
 
 #menudataEntries {
     overflow: scroll;
-    height: 15em;
+    height: 13em;
     font-size: 0.9em;
     border-top: 0.2em solid #cccccc;
     padding-left: 0em;

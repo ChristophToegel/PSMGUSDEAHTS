@@ -8,7 +8,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     "use strict";
 
     const width = 1000,
-        height = 635;
+        height = 600;
     var that = {},
         path, svg, projection, g, selectedState, zoom, transformation;
 
