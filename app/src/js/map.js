@@ -8,7 +8,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     "use strict";
 
     const width = 1000,
-        height = 700;
+        height = 635;
     var that = {},
         path, svg, projection, g, selectedState, zoom, transformation;
 
@@ -189,7 +189,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .attr("width", width)
             .append("g")
             .classed("legende",true)
-            .attr('transform','translate(' + 250 + ',' + 15 + ')');
+            .attr('transform','translate(' + 250 + ',' + 19 + ')');
         } else {
             var legende = d3.selectAll(".legende");
             legende.selectAll("*").remove();

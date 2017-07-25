@@ -1,7 +1,6 @@
 * {
     padding: 0;
     margin: 0;
-    /*border: 1px solid #000;*/ 
     font-family: 'Roboto', sans-serif;
     color: #4e4e5e;
 }
@@ -14,7 +13,7 @@ body {
 
 h1 {
     text-align: left;
-    font-size: 35px;
+    font-size: 2em;
     color: #4e4e5e;
     margin-bottom: 0%;
     margin-top: 1%;
@@ -24,6 +23,8 @@ h1 {
 #slidemenu {
     position: relative;
 }
+
+/* Map and Timeline */
 
 #content {
     position: absolute;
@@ -35,15 +36,14 @@ h1 {
 
 #mapsvg {
     display: block;
-    
-    /*width: 95%;*/
     float: left;
-    margin-left: 10px;
-    margin-top: -0.5em;
-    /*margin-bottom: 5px;*/
-    border-radius: 0px;
-    border: 1px solid rgba(0,0,0,0);
+    margin-left: 0.5em;
+    margin-top: -2em;
+    border-radius: 0em;
+    border: 0em solid rgba(0,0,0,0);
 }
+
+/* Timeline */
 
 #graph {
     margin-left: 2%;
@@ -52,7 +52,7 @@ h1 {
     position: relative;
 }
 
-/*brush*/
+/* Brush */
 
 .brush {
     fill: lightgray;
@@ -62,7 +62,7 @@ h1 {
 
 .selectedPoint{
     stroke: yellow;
-    stroke-width: 1px;
+    stroke-width: 0.1em;
     stroke-linecap: round;
 }
 
@@ -76,21 +76,16 @@ circle.active {
 }
 
 
-/* brush */
+/* Mouseclicks */
 
 .notclickabel{
     pointer-events: none;
 }
 
-.button {
-    background-color: darkslategray;
-    border: rgb(241, 241, 241);
-}
-
 .clearState {
     fill: #ffe6e6;
     stroke: grey;
-    stroke-width: 0px; 
+    stroke-width: 0em; 
 }
 
 .text {
@@ -98,20 +93,20 @@ circle.active {
 }
 
 .selectedState {
-    stroke-width: 1px !important;
+    stroke-width: 0.1em !important;
 }
 
 .zoomed {
-    stroke-width: 0.10px
+    stroke-width: 0.01em
 }
 
 .hoverState {
-    stroke-width: 1.5px; !important;
+    stroke-width: 0.1em; !important;
 }
 
 .pieselected {
     stroke: #000;
-    stroke-width: 2px;
+    stroke-width: 0.1em;
 }
 
 .piehover {
@@ -121,8 +116,8 @@ circle.active {
 .tooltip {
     position: absolute;
     color: black;
-    border: 1px solid #000;
-    padding: 3px;
+    border: 0.01em solid #000;
+    padding: 0.3em;
     background-color:snow;
 }
 
@@ -148,19 +143,18 @@ circle.active {
 }
 
 .area {
-    fill: #7b7bff; /*#ff1919*/
+    fill: #7b7bff; 
     stroke-width: 0;
 }
 
 .area2 {
-    fill: #c1c1ff/*#ff4d4d*/;
+    fill: #c1c1ff;
     stroke-width: 0;
 }
 
+/* Right Content */
 
 #menu, #deathInfoBox, #year_selection {
-    border-radius: 15px; 
-    border: solid 0px #cccccc;
     background: white;
 }
 
@@ -181,18 +175,22 @@ circle.active {
     float: right;
     width: 28%;
     margin-top: 0.5%;
+    height: 80%;
 }
+
+/* Infobox */
+
+/* DeathInfo */
 
 #deathInfoBox {
     width: 93%;
-    height: 240px;
     display: block;
     color: #4e4e5e;;
 }
 
 #deathInfoEntries{
     overflow: scroll;
-    height: 240px;
+    height: 14em;
 }
 
 .deathInfoHeading{
@@ -204,7 +202,6 @@ circle.active {
     margin-left: 4em;
     margin-right: 4em;
     margin-bottom: 0em;
-    
 }
 
 .deathNumber{
@@ -222,10 +219,10 @@ circle.active {
 
 .deathInfoEntry {
     border-bottom: 0.1em solid #cccccc;
-    padding-right: 12px;
-    padding-left: 12px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-right: 2em;
+    padding-left: 2em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
     font-size: 0.9em;
 }
 
@@ -237,20 +234,20 @@ circle.active {
 }
 
 .deathEntryEOW {
-    white-space: normal;
     color: #4e4e5e;
     font-size: 0.9em;
 }
 
 .deathEntryCause {
-    white-space: normal;
     text-align: center;
     color: #4e4e5e;
     font-size: 0.9em;
 }
 
+/* CategoriesInfoBox */
+
 .menudataHeading{
-    color: #4e4e5e;;
+    color: #4e4e5e;
     text-align: center;
     font-size: 0.9em;
     font-weight: bold;
@@ -258,39 +255,35 @@ circle.active {
     margin-bottom: 1.1em;
     margin-left: 3em;
     margin-right: 3em;
-    
-    
 }
 
 #menudataEntries {
-  
     overflow: scroll;
-    height: 240px;
+    height: 15em;
     font-size: 0.9em;
     border-top: 0.2em solid #cccccc;
-    padding-top: 0.1em;
-    padding-left: 5px;
+    padding-left: 0em;
 }
+
 .mainCategorieEntry {
-    padding-right: 12px;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
     font-size: 0.9em;
     border-bottom: 0.1em solid #cccccc;
     background: lightgray;
-    
 }
 
 .subCategorieEntry {
-    padding-right: 12px;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     font-size: 0.9em;
     border-bottom: 0.1em solid #cccccc;
-    
 }
+
 
 #year_selection {
     font-weight: bold;
@@ -306,84 +299,50 @@ circle.active {
 }
 
 #totalDeaths {
+    margin-top: -0.5em;
     text-align: center;
 }
 
 #chart {
     margin-left: 0%;
-    margin-top: 10%;
+    margin-top: 0%;
     width: 93%;
     display: block;
     stroke: white;
-    stroke-width: 1px;
+    stroke-width: 0.01em;
 }
 
-
+/* Burger Button */
 
 #nav-icon1 span {
   display: block;
   position: relative;
-  left: 200px;
-  height: 3px;
-  width: 10%;
-  margin-left: 2%;
-  margin-top: 1px;
-  padding-bottom: 1px;
+  left: 1em;
+  height: 0.2em;
+  width: 2.5em;
+  margin-left: 0.3em;
+  margin-top: 0.05em;
+  padding-bottom: 0.05em;
   background: #4e4e5e;;
-  border-radius: 9px;
+  border-radius: 1em;
   opacity: 1;
   left: 0;
 }
 
-#nav-icon3 {
-    background: black;
-    height: 35px;
-}
 
 #nav-icon1 span:nth-child(1) {
-  top: 5px;
+  top: 0.3em;
 }
 
 #nav-icon1 span:nth-child(2) {
-  top: 10px;
+  top: 0.6em;
 }
 
 #nav-icon1 span:nth-child(3) {
-  top: 15px;
+  top: 0.9em;
 }
 
-#nav-icon3 span:nth-child(1) {
-  top: 5px;
-}
 
-#nav-icon3 span:nth-child(2) {
-  top: 10px;
-}
-
-#nav-icon3 span:nth-child(3) {
-  top: 15px;
-}
-
-#nav-icon1.open span:nth-child(1) {
-  top: 8px;
-  -webkit-transform: rotate(135deg);
-  -moz-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  transform: rotate(135deg);
-}
-
-#nav-icon1.open span:nth-child(2) {
-  opacity: 0;
-  left: -60px;
-}
-
-#nav-icon1.open span:nth-child(3) {
-  top: 18px;
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-}
 
 
 
