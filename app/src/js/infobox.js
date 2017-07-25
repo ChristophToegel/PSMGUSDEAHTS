@@ -12,8 +12,9 @@ Index.infobox = function () {
         console.log("init Infobox");
         document.getElementById("nav-icon1").addEventListener("click", changeView);
         var deathInfoBox = d3.select("#textdata");
-        deathInfoBox.append("div").attr("id", "menudata").classed("hidden", true);
+        deathInfoBox.append("div").attr("id", "menudata")
         deathInfoBox.append("div").attr("id", "deathinfodata")
+            .classed("hidden", true);
     }
 
     //names hat oberkateogorie mit unterkategorien der ausgewählten menupunkte
@@ -40,7 +41,7 @@ Index.infobox = function () {
                 return d.name + " deaths (" + d.selected.length
                 + ")"
         })
-        .attr("class", "menudataEntry");
+        .attr("class", "mainCategorieEntry");
         
         categorieEntry.append("p")
             .text(function (d) {
@@ -50,7 +51,7 @@ Index.infobox = function () {
                 return d.selected 
                 }
         })
-        .attr("class", "menudataEntry");
+        .attr("class", "subCategorieEntry");
 
         //TODO oberkategorie(1/5) + aufklappen für die unterkategorien!
         console.log(names);
@@ -60,12 +61,12 @@ Index.infobox = function () {
         console.log("change infobox");
         var menu = document.getElementById("menudata")
         var deathinfo = document.getElementById("deathinfodata")
-        if (menu.classList.contains("hidden")) {
-            menu.classList.remove("hidden");
-            deathinfo.classList.add("hidden");
-        } else {
-            menu.classList.add("hidden");
+        if (deathinfo.classList.contains("hidden")) {
             deathinfo.classList.remove("hidden");
+            menu.classList.add("hidden");
+        } else {
+            deathinfo.classList.add("hidden");
+            menu.classList.remove("hidden");
         }
     }
 
