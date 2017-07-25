@@ -309,7 +309,7 @@ circle.active {
     width: 93%;
     display: block;
     stroke: white;
-    stroke-width: 0.01em;
+    stroke-width: 0.1em;
 }
 
 /* Burger Button */
