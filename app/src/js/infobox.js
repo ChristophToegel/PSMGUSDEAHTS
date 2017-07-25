@@ -17,10 +17,40 @@ Index.infobox = function () {
     }
 
     //names hat oberkateogorie mit unterkategorien der ausgewählten menupunkte
-    function updateSelection(names) {
+    function updateSelection(names){
         //ausgewählte menuelemente hier anzeigen
         var menudata = d3.select("#menudata");
         menudata.selectAll("*").remove();
+
+        menudata.append("p")
+            .text("Categories selected")
+            .attr("class", "menudataHeading")
+        
+        menudata.append("div")
+            .attr("id", "menudataEntries");
+     
+        let categorieEntry = d3.select("#menudataEntries")
+            .selectAll("div")
+            .data(names)
+            .enter()
+            .append("div");
+ 
+        categorieEntry.append("p")
+            .text(function (d) {
+                return d.name + " deaths (" + d.selected.length
+                + ")"
+        })
+        .attr("class", "menudataEntry");
+        
+        categorieEntry.append("p")
+            .text(function (d) {
+                if (d.selected.length == 0) {
+                    return "No subcategories selected"
+                } else {
+                return d.selected 
+                }
+        })
+        .attr("class", "menudataEntry");
 
         //TODO oberkategorie(1/5) + aufklappen für die unterkategorien!
         console.log(names);

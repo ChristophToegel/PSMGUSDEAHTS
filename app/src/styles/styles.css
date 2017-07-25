@@ -196,20 +196,23 @@ circle.active {
 }
 
 .deathInfoHeading{
-    color: #4e4e5e;;
+    color: #4e4e5e;
     text-align: center;
-    font-size: 1.0em;
-    margin-top: -0.7em;
-    width: 80%;
-    margin-left: 3em;
-    margin-right: 3em;
-    height: 30px;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: -0.5em;
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-bottom: 0em;
+    
 }
 
 .deathNumber{
     text-align: center;
-    color: #4e4e5e;;
-    font-size: 0.9em;
+    color: #4e4e5e;
+    margin-top: 0.1em;
+    font-size: 0.8em;
+    border-bottom: 0.2em solid #cccccc;
 }
 
 
@@ -218,7 +221,7 @@ circle.active {
 }
 
 .deathInfoEntry {
-    border-top: 3px solid #cccccc;
+    border-bottom: 0.1em solid #cccccc;
     padding-right: 12px;
     padding-left: 12px;
     padding-top: 5px;
@@ -246,6 +249,38 @@ circle.active {
     font-size: 0.9em;
 }
 
+.menudataHeading{
+    color: #4e4e5e;;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-top: -0.5em;
+    margin-bottom: 1.1em;
+    margin-left: 3em;
+    margin-right: 3em;
+    
+    
+}
+
+#menudataEntries {
+  
+    overflow: scroll;
+    height: 240px;
+    font-size: 0.9em;
+    border-top: 0.2em solid #cccccc;
+    padding-top: 0.1em;
+    padding-left: 5px;
+}
+.menudataEntry {
+    padding-right: 12px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 0.9em;
+    border-bottom: 0.1em solid #cccccc;
+    
+}
+
 #year_selection {
     font-weight: bold;
     width: 93%;
@@ -259,8 +294,13 @@ circle.active {
     display: none;
 }
 
+#totalDeaths {
+    text-align: center;
+}
+
 #chart {
     margin-left: 0%;
+    margin-top: 10%;
     width: 93%;
     display: block;
     stroke: white;
@@ -272,11 +312,9 @@ circle.active {
 #nav-icon1 span {
   display: block;
   position: relative;
-  
   left: 200px;
   height: 3px;
   width: 10%;
-  
   margin-left: 2%;
   margin-top: 1px;
   padding-bottom: 1px;
