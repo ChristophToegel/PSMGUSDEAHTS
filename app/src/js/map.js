@@ -208,7 +208,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .data(colors).enter().append("g")
             .attr('transform', function (d, i) {
                 //TODO abstand anpassen
-                return 'translate(' + 105 * i + ',0)'
+                return 'translate(' + 115 * i + ',0)'
             })
         entry.append('rect').attr('width', 12)
             .attr('stroke', "black")
