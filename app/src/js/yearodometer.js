@@ -5,7 +5,7 @@ var Index = Index || {};
 Index.yearodometer = function () {
     "use strict";
 
-    var that = {},od1,od2;
+    var that = {},od1,od2,counter;
     
     function initOdometer(){
         //TODO Methode
@@ -30,12 +30,22 @@ Index.yearodometer = function () {
         });
     }
     
+    function initCounter(){
+        counter=document.getElementById("totalCount");
+    }
+    
     function updateOdometerDate(date){
         od1.update(date[0]);
         od2.update(date[1]);
     }
     
+    function updateCounter(sumDeath){
+        counter.innerHTML=sumDeath;
+    }
+    
+    initCounter();
     initOdometer();
+    that.updateCounter=updateCounter;
     that.updateOdometerDate=updateOdometerDate;
     return that;
 };

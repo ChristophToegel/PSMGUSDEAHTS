@@ -42,7 +42,6 @@ Index = (function () {
         updateMenu(year,undefined);
         menu.hideSecondArc();
         odometer.updateOdometerDate(year);
-        //odometer.updateDateInfo(year);
         updateMap(year,menuModel.getSelectedFilters());
     }
     
@@ -76,7 +75,7 @@ Index = (function () {
     
     function updateMap(year, filters){
         var selectedData=data.getMapData(year,filters);
-        //console.log(selectedData[1]); Anzahl der GesamtTodesfälle
+        odometer.updateCounter(selectedData[1]);
         map.ChoroplethColor(selectedData[0]);
         data.getMapPointData(map.pointsready,year,filters);
         updateMenuView();
