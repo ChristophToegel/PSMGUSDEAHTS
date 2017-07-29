@@ -147,7 +147,7 @@ Index.timeline = function (yearSelected) {
 
     function brushed() {
         var selection = d3.event.selection;
-        console.log(selection);
+        //console.log(selection);
         let date = [parseInt(brushScale(selection[0])), parseInt(brushScale(selection[1]))];
         //callback für main
         yearSelected(date);
@@ -165,20 +165,21 @@ Index.timeline = function (yearSelected) {
     function nextPlaybackSet() {
         let handleW = d3.select(".handle--w");
         let handleE = d3.select(".handle--e");
-        let upperDate = parseInt(brushScale(handleE.attr("x")));
-        let lowerDate = parseInt(brushScale(handleW.attr("x")));
-        if(upperDate>=2016){
+        //let upperDate = parseInt(brushScale(handleE.attr("x")));
+        //let lowerDate = parseInt(brushScale(handleW.attr("x")))+1;
+        let date=getYear();
+        //console.log(date);
+        if(date[1]>=2016){
            tooglePlayback();
         }
-        var yearScale = d3.scaleLinear().domain([1791, 2016]).range([0, width]);
         //next Year Addition
-        let nextDate = upperDate + 1;
+        let nextDate = date[1] //+ 1;
         //move right end update selection
-        let brushend = yearScale(nextDate);
+        let brushend = brushScale.invert(nextDate);
         let brush=d3.select(".selection");
         handleE.attr("x",brushend);
-        d3.select(".selection").attr("width",brushend+2);
-        yearSelected([lowerDate+1,upperDate]);
+        d3.select(".selection").attr("width",brushend);
+        yearSelected([date[0],date[1]]);
         //d3.event.selection=[handleW.attr("x"),brushend]
     }
 

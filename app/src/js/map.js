@@ -42,6 +42,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     function zoomed() {
         //verschiebt Coordinaten
         svg.selectAll("circle").attr("transform", d3.event.transform);
+        svg.selectAll("rect").attr("transform", d3.event.transform);
         //svg.selectAll("g").attr("transform", d3.event.transform);
         //verschiebt map
         //g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
@@ -239,7 +240,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     //Callback for points
     function pointsready(data) {
         //TODO color anpassen: https://bl.ocks.org/pstuffa/d5934843ee3a7d2cc8406de64e6e4ea5 ??
-        var color = d3.scaleQuantize().range(["rgb(0, 0, 255)", "rgb(0, 0, 0)", "rgb(0, 255, 0", "rgb(255,255,255)"]);
+        var color = d3.scaleQuantile().range(["normal", "normal", "extrem", "extrem"]);
         color.domain([
                 d3.min(data, function (d) {
                 return d.value.length;
@@ -248,27 +249,44 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                 return d.value.length;
             })
         ]);
-
+        var extreme=[];
+        var normal=[];
+        data.forEach(function(d){
+            //console.log(color.quantiles()[color.quantiles().length-1]);
+              if(d.value.length>=color.quantiles()[color.quantiles().length-2]){
+                  extreme.push(d);
+              }else{
+                  normal.push(d);
+              }       
+        })
+        console.log(extreme);
+        //console.log(color.quantiles());
+        createNormalPoints(normal);
+        createExtremePoints(extreme);
+    }
+    
+    function createNormalPoints(normal){
         //wenn noch keine points vorhanden sind elementstruktur erstellen
-        if (d3.select(".places").empty()) {
+        if (d3.select("#normal").empty()) {
             var places = svg.append("g")
                 .attr("class", "places")
+                .attr("id","normal")
                 .classed("notclickable", true)
                 .selectAll("circle")
                 //.selectAll("g")
-                .data(data).enter().
+                .data(normal).enter().
                 insert("circle");
                 //append("g").insert("circle");
 
         } else {
             //Update
-            var places = d3.select(".places")
+            var places = d3.select("#normal")
                 .selectAll("circle")
                 //.selectAll("g")
-                .data(data)
+                .data(normal)
         }
 
-        addpointAttributes(places, color);
+        addpointAttributes(places);
         //wenn weniger dann löschen
         places.exit().remove();
         //wenn mehr dann hinzufügen
@@ -279,10 +297,87 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         if (g.classed("zoomed")) {
             places.attr("transform", transformation);
         }
-        addpointAttributes(places, color);
+        addpointAttributes(places);
+    }
+    
+    function createExtremePoints(extreme){
+        if (d3.select("#extreme").empty()) {
+            var places = svg.append("g")
+                .attr("class", "places")
+                .attr("id","extreme")
+                .classed("notclickable", true)
+                .selectAll("rect")
+                //.selectAll("g")
+                .data(extreme).enter().
+                insert("rect");
+                //append("g").insert("circle");
+
+        } else {
+            //Update
+            var places = d3.select("#extreme")
+                .selectAll("rect")
+                //.selectAll("g")
+                .data(extreme)
+        }
+
+        addrectAttributes(places);
+        //wenn weniger dann löschen
+        places.exit().remove();
+        //wenn mehr dann hinzufügen
+        places = places.enter().
+        insert("rect")
+        //append("g").insert("circle");
+        //wenn zoom dann noch transformieren!
+        if (g.classed("zoomed")) {
+            places.attr("transform", transformation);
+        }
+        addrectAttributes(places);
+    }
+    
+    function addrectAttributes(places) {
+        //places
+        places
+            .attr("x", function (d) {
+                if (projection([d.value[0].lng, d.value[0].lat]) != null) {
+                    return projection([d.value[0].lng, d.value[0].lat])[0]-10;
+                } else {
+                    return 0;
+                }
+            })
+            .attr("y", function (d) {
+                //console.log(d.value[0].lat);
+                if (projection([d.value[0].lng, d.value[0].lat]) != null) {
+                    return projection([d.value[0].lng, d.value[0].lat])[1]-10;
+                } else { //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");console.log(d);
+                    return 0;
+                }
+            })
+            .attr("width", "4px")
+            .attr("height", "4px")
+            .attr("fill", function (d) {
+                return "rgb(0,0,0)" //color(d.value.length);
+            })
+            //.attr("style","stroke-width:1px; stroke:black")
+            .on("mouseover", function (d) {
+                var tooltip = createtooltip(d);
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html(d.name + " <br/>" + "Anzahl der Todesfälle: " + d.value.length)
+                    .style("left", d3.event.layerX + 5 + "px")
+                    .style("top", d3.event.layerY + 5 + "px");
+            })
+            .on("mouseout", function (d) {
+                var tooltip = d3.selectAll(".tooltip");
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+            //pointClick callback
+            .on("click", pointSelected);
     }
 
-    function addpointAttributes(places, color) {
+    function addpointAttributes(places) {
         //places
         places
                 .attr("cx", function (d) {
@@ -302,7 +397,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             })
             .attr("r", "2px")
             .attr("fill", function (d) {
-                return color(d.value.length);
+                return "rgb(0,0,255)" //color(d.value.length);
             })
             .on("mouseover", function (d) {
                 var tooltip = createtooltip(d);
