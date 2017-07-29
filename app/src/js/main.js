@@ -23,7 +23,6 @@ Index = (function () {
         infobox = new Index.infobox();
         odometer = new Index.yearodometer();
         timeline = new Index.timeline(yearSelected);
-        
     }
     
     // Daten würden eingelesen
@@ -42,7 +41,8 @@ Index = (function () {
     function yearSelected(year) {
         updateMenu(year,undefined);
         menu.hideSecondArc();
-        odometer.updateDateInfo(year);
+        odometer.updateOdometerDate(year);
+        //odometer.updateDateInfo(year);
         updateMap(year,menuModel.getSelectedFilters());
     }
     

@@ -15,8 +15,16 @@ Index.timeline = function (yearSelected) {
         },
         width = $("#map").width() - margin.left - margin.right - 35,
         height = 80 - margin.top - margin.bottom,
-        brushScale, x, y, svg2, brushTime;
+        brushScale, x, y, svg2, brushTime,played,playbackIntervall;
 
+    function drawTimeGraph(timelineData) {
+        console.log("init Timeline");
+        initGraph(timelineData);
+        initBrush(timelineData);
+        initPlayer();
+
+    }
+    
     function initGraph(timelineData) {
         var bisectDate = d3.bisector(function (d) {
             return d.name;
@@ -123,6 +131,7 @@ Index.timeline = function (yearSelected) {
 
     //alt anzeige des aktuell ausgewählten
     //Vllt umbauen
+    /*
     function mousemove() {
         var x0 = x.invert(d3.mouse(this)[0]),
             i = bisectDate(timelineData, x0, 1),
@@ -134,80 +143,55 @@ Index.timeline = function (yearSelected) {
         focus.attr("x1", x0).attr("x2", x0);
         focus.attr("transform", "translate(" + x(d.name) + "," + "0" + ")");
         focus.select("text").text((d.name)).attr("transform", "translate(0,-10)");
-    }
+    }*/
 
     function brushed() {
         var selection = d3.event.selection;
+        console.log(selection);
         let date = [parseInt(brushScale(selection[0])), parseInt(brushScale(selection[1]))];
         //callback für main
         yearSelected(date);
     }
 
-    function drawTimeGraph(timelineData) {
-        console.log("init Timeline");
-        initGraph(timelineData);
-        initBrush(timelineData);
-        initPlayer();
-
-    }
-
-    /*PLAYBACK
+    //Test play pause
     function initPlayer() {
         var header = $("h1");
-        console.log(header);
+        //console.log(header);
         header.click(tooglePlayback);
     }
 
 
+    //TODO spring bei click wieder zurück!
     function nextPlaybackSet() {
-        console.log(brushTime)
-        let selection = brushTime.selection;
-        console.log(selection);
-       
         let handleW = d3.select(".handle--w");
         let handleE = d3.select(".handle--e");
-        
-        
-        let brushEl = d3.selectAll(".brush");
-        console.log(brushEl);
-        
         let upperDate = parseInt(brushScale(handleE.attr("x")));
-        
+        let lowerDate = parseInt(brushScale(handleW.attr("x")));
+        if(upperDate>=2016){
+           tooglePlayback();
+        }
         var yearScale = d3.scaleLinear().domain([1791, 2016]).range([0, width]);
         //next Year Addition
         let nextDate = upperDate + 1;
-        
-        console.log([handleW.attr("x") ,nextDate])
-        
-        brushTime.move([parseInt(handleW.attr("x")) ,nextDate]);
-    }
-
-    function startTimePlayback() {
-        var playbackIntervall = setInterval(nextPlaybackSet, 800);
-    }
-
-    function stopTimePlayback() {
-        clearInterval(playbackIntervall);
+        //move right end update selection
+        let brushend = yearScale(nextDate);
+        let brush=d3.select(".selection");
+        handleE.attr("x",brushend);
+        d3.select(".selection").attr("width",brushend+2);
+        yearSelected([lowerDate+1,upperDate]);
+        //d3.event.selection=[handleW.attr("x"),brushend]
     }
 
     function tooglePlayback() {
-        var played = false;
-        if (played) {
-            console.log("falsch")
-            played = false;
-            stopTimePlayback();
-        } else {
-            console.log("true");
+        if (!played) {
             played = true;
-            startTimePlayback();
-
+            playbackIntervall = setInterval(nextPlaybackSet, 1000);
+        } else {
+            played = false;
+            clearInterval(playbackIntervall);
         }
     }
-
-    var header = $(".h1");
-    console.log()
-    header.click(tooglePlayback);
-    */
+    
 
     /*.on("mouseover", function () {
         focus.style("display", null);

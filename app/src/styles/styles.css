@@ -78,7 +78,7 @@ circle.active {
 
 /* Mouseclicks */
 
-.notclickabel{
+.notclickable{
     pointer-events: none;
 }
 
@@ -314,6 +314,9 @@ circle.active {
 
 /* Burger Button */
 
+#nav-icon1 {
+    cursor:pointer;
+}
 #nav-icon1 span {
   display: block;
   position: relative;

@@ -42,6 +42,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     function zoomed() {
         //verschiebt Coordinaten
         svg.selectAll("circle").attr("transform", d3.event.transform);
+        //svg.selectAll("g").attr("transform", d3.event.transform);
         //verschiebt map
         //g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
         g.attr("transform", d3.event.transform);
@@ -254,12 +255,16 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                 .attr("class", "places")
                 .classed("notclickable", true)
                 .selectAll("circle")
-                .data(data).enter().insert("circle");
+                //.selectAll("g")
+                .data(data).enter().
+                insert("circle");
+                //append("g").insert("circle");
 
         } else {
             //Update
             var places = d3.select(".places")
                 .selectAll("circle")
+                //.selectAll("g")
                 .data(data)
         }
 
@@ -267,7 +272,9 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         //wenn weniger dann löschen
         places.exit().remove();
         //wenn mehr dann hinzufügen
-        places = places.enter().insert("circle")
+        places = places.enter().
+        insert("circle")
+        //append("g").insert("circle");
         //wenn zoom dann noch transformieren!
         if (g.classed("zoomed")) {
             places.attr("transform", transformation);
@@ -276,7 +283,9 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     }
 
     function addpointAttributes(places, color) {
-        places.attr("cx", function (d) {
+        //places
+        places
+                .attr("cx", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[0];
                 } else {
