@@ -7,7 +7,7 @@ Index.menuModel = function () {
     //28 others unused
     const illness = ["10", "11", "27", "35"],
         accidents = ["08", "16", "17", "20", "22", "23", "24", "25", "26", "29", "32", "33","13"],
-        naturalCauses = ["04", "05", "06", "07", "09", "12", "14", "15", "21", "36"],
+        naturalCauses = ["04", "05", "06", "07", "09", "12", "14", "15", "21"],//, "36"
         suspectknown = ["01", "02", "03", "18", "19", "30", "31", "34"],
         mainArray = [
             {
@@ -128,6 +128,7 @@ Index.menuModel = function () {
                 if (filters.indexOf(id) == -1) {
                     selected = false;
                 }else{
+                    console.log(filters);
                     partsSelected=true;
                 }
             })

@@ -1,0 +1,35 @@
+dept_name;state;notFound;notMatched
+Hampshire County Sheriff's Office;VA;False;True
+Kokomo Police Department;CO;False;True
+Jefferson Township Constable's Office;IN;False;True
+Ellis County Poor Farm;TX;True;False
+Reading Coal and Iron Police Department;PA;True;False
+Eugene Town Marshal's Office;IN;False;True
+Maryland Board of Public Works - State Fishery Force;MD;True;False
+South Carolina State Dispensary Commission;SC;True;False
+Vina Township Constable's Office;CA;True;False
+Diamond Town Marshal's Office;IN;True;True
+Charleston County Chain Gang;SC;True;False
+Jefferson County Convict Camp;TX;True;False
+Harris County Convict Camp;TX;True;True
+DuPont Police Department;VA;False;True
+West Virginia Department of Prohibition;WV;True;False
+Fresno County Constable's Office - Kingsburg Judicial District;CA;True;False
+Jellico Police Department;KY;False;True
+Seven Mile Village Prohibition Enforcement;OH;True;False
+Reagan County Constable's Office - Precinct 5;TX;True;False
+Florida State Road Department - State Convict Road Force;FL;True;False
+Wolf Township Constable's Office;OK;True;True
+Wisconsin Department of the Treasury - Beverage Tax Division;WI;True;False
+Washington Department of Fisheries;WA;False;True
+Liberty Township Constable's Office;CA;False;True
+Washington Department of Wildlife;WA;False;True
+Tennessee Department of Finance and Taxation - Alcohol Tax Unit;TN;True;False
+Fresno County Constable's Office - Selma Judicial District;CA;True;False
+Port Authority of New York and New Jersey Police Department;NY;False;True
+Palisades Interstate Park Police Department - New York Section;NY;True;True
+Mississippi River Bridge Authority Police Department;LA;True;False
+Tennessee Commercial Vehicle Enforcement Division;TN;True;False
+Texas Judicial District Narcotics Task Force;TX;True;False
+New York State Office of Tax Enforcement - Petroleum, Alcohol and Tobacco Bureau;NY;True;False
+Kentucky Office of Charitable Gaming;KY;True;False

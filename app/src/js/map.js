@@ -240,6 +240,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     //Callback for points
     function pointsready(data) {
         //TODO color anpassen: https://bl.ocks.org/pstuffa/d5934843ee3a7d2cc8406de64e6e4ea5 ??
+        //TODO in data auslagern
         var color = d3.scaleQuantile().range(["normal", "normal", "extrem", "extrem"]);
         color.domain([
                 d3.min(data, function (d) {
@@ -259,7 +260,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                   normal.push(d);
               }       
         })
-        console.log(extreme);
+        //console.log(extreme);
         //console.log(color.quantiles());
         createNormalPoints(normal);
         createExtremePoints(extreme);
@@ -358,7 +359,12 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                 return "rgb(0,0,0)" //color(d.value.length);
             })
             //.attr("style","stroke-width:1px; stroke:black")
-            .on("mouseover", function (d) {
+            mousefunctions(places);
+        
+    }
+    
+    function mousefunctions(place){
+        place.on("mouseover", function (d) {
                 var tooltip = createtooltip(d);
                 tooltip.transition()
                     .duration(200)
@@ -399,23 +405,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .attr("fill", function (d) {
                 return "rgb(0,0,255)" //color(d.value.length);
             })
-            .on("mouseover", function (d) {
-                var tooltip = createtooltip(d);
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html(d.name + " <br/>" + "Anzahl der Todesfälle: " + d.value.length)
-                    .style("left", d3.event.layerX + 5 + "px")
-                    .style("top", d3.event.layerY + 5 + "px");
-            })
-            .on("mouseout", function (d) {
-                var tooltip = d3.selectAll(".tooltip");
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            })
-            //pointClick callback
-            .on("click", pointSelected);
+            mousefunctions(places);
     }
     
     function pointSelected(event){

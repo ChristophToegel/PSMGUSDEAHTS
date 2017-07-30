@@ -67,7 +67,7 @@ h1 {
 }
 
 circle {
-    fill-opacity: 0.2;
+    fill-opacity: 0.25;
     transition: fill-opacity 250ms linear;
 }
 

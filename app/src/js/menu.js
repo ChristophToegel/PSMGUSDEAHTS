@@ -296,12 +296,14 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         var allOberkat=d3.selectAll(".firstarc > path").data()
         allOberkat.forEach(function(d){
             //console.log(d.data.id);
+            
             var el=d3.select("#o"+d.data.id);
             if(oberkategorien.indexOf(d.data.id)!=-1){
                  el.classed("pieselected",false);
                 el.attr("fill","url(#pattern-"+el.data()[0].data.id+")")
             }else{
                 if(partsOberkategorein.indexOf(d.data.id)!=-1){
+                    console.log(partsOberkategorein+" "+d.data.id);
                     el.classed("pieselected",true);
                 }else{
                     el.classed("pieselected",false);
