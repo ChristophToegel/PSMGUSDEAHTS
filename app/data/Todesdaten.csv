@@ -73,7 +73,7 @@ Undersheriff Osman N. Steele;Delaware County Sheriff's Office, NY;EOW: Thursday,
 Constable John Holton;Augusta Police Department, KY;EOW: Monday, November 24, 1845;Stabbed;1845-11-24;1845.0;Augusta Police Department;KY;38.7717376;-84.0057628;2
 Sheriff Lansford Stallings;Cherokee County Sheriff's Office, AL;EOW: Thursday, December 4, 1845;Gunfire;1845-12-04;1845.0;Cherokee County Sheriff's Office;AL;34.1665322;-85.684578;1
 Sheriff Samuel Grimmett;Montgomery County Sheriff's Office, TX;EOW: Sunday, April 11, 1847;Gunfire;1847-04-11;1847.0;Montgomery County Sheriff's Office;TX;30.3213482;-95.4777811;1
-Deputy Sheriff William Armstrong;Hampshire County Sheriff's Office, VA;EOW: Friday, June 25, 1847;Gunfire;1847-06-25;1847.0;Hampshire County Sheriff's Office;VA;39,334719;-78,609468;1
+Deputy Sheriff William Armstrong;Hampshire County Sheriff's Office, VA;EOW: Friday, June 25, 1847;Gunfire;1847-06-25;1847.0;Hampshire County Sheriff's Office;VA;39.334.719;-78.609.468;1
 Sheriff Enoch B. Morelock;Sullivan County Sheriff's Office, MO;EOW: Sunday, December 19, 1847;Gunfire;1847-12-19;1847.0;Sullivan County Sheriff's Office;MO;40.1836505;-93.17796589999999;1
 Watchman David Estes;Boston Watch, MA;EOW: Thursday, April 27, 1848;Gunfire;1848-04-27;1848.0;Boston Watch;MA;42.3496497;-71.0814589;1
 Watchman John Brasher;Cincinnati Police Department, OH;EOW: Sunday, May 6, 1849;Gunfire;1849-05-06;1849.0;Cincinnati Police Department;OH;39.1094993;-84.5210884;1
@@ -669,7 +669,7 @@ Policeman Jose Antonio Griego;Santa Fe Police Department, NM;EOW: Thursday, July
 Chief Marshal John M. Cone;Canfield Police Department, OH;EOW: Saturday, July 17, 1880;Gunfire;1880-07-17;1880.0;Canfield Police Department;OH;41.023576;-80.7636969;1
 Police Officer John Carville;Leadville Police Department, CO;EOW: Sunday, July 18, 1880;Gunfire;1880-07-18;1880.0;Leadville Police Department;CO;39.2508229;-106.2925238;1
 Sergeant Lauriston Stewart;Leadville Police Department, CO;EOW: Thursday, July 22, 1880;Gunfire;1880-07-22;1880.0;Leadville Police Department;CO;39.2508229;-106.2925238;1
-Night Policeman Michael O'Neal;Kokomo Police Department, CO;EOW: Thursday, July 22, 1880;Gunfire;1880-07-22;1880.0;Kokomo Police Department;CO;39,498134;-106,169354;1
+Night Policeman Michael O'Neal;Kokomo Police Department, CO;EOW: Thursday, July 22, 1880;Gunfire;1880-07-22;1880.0;Kokomo Police Department;CO;39.498.134;-106.169.354;1
 Deputy Sheriff William B. Weaver;Elko County Sheriff's Office, NV;EOW: Thursday, August 5, 1880;Gunfire;1880-08-05;1880.0;Elko County Sheriff's Office;NV;40.824669;-115.7724044;1
 City Marshal Joseph C.R. Bullard;Ennis Police Department, TX;EOW: Thursday, August 19, 1880;Gunfire;1880-08-19;1880.0;Ennis Police Department;TX;32.3293111;-96.6252679;1
 Sheriff Thomas Smith McMullin;St. Francois County Sheriff's Office, MO;EOW: Wednesday, September 1, 1880;Gunfire;1880-09-01;1880.0;St. Francois County Sheriff's Office;MO;37.7642915;-90.4376659;1
@@ -956,7 +956,7 @@ Deputy Sheriff James J. 'Bud' Elder;Karnes County Sheriff's Department, TX;EOW: 
 Deputy Sheriff John M. Bailey;Karnes County Sheriff's Department, TX;EOW: Tuesday, September 7, 1886;Gunfire;1886-09-07;1886.0;Karnes County Sheriff's Department;TX;28.9089085;-97.87216;1
 Officer Ephriam John Hubbard;Spokane Police Department, WA;EOW: Tuesday, September 7, 1886;Gunfire;1886-09-07;1886.0;Spokane Police Department;WA;47.6587802;-117.4260466;1
 City Marshal George Tabler;Longview Police Department, TX;EOW: Friday, September 24, 1886;Gunfire;1886-09-24;1886.0;Longview Police Department;TX;32.4951732;-94.7464943;1
-Constable Thomas Cummins;Jefferson Township Constable's Office, IN;EOW: Monday, September 27, 1886;Gunfire;1886-09-27;1886.0;Jefferson Township Constable's Office;IN;41,652311;-85,832933;1
+Constable Thomas Cummins;Jefferson Township Constable's Office, IN;EOW: Monday, September 27, 1886;Gunfire;1886-09-27;1886.0;Jefferson Township Constable's Office;IN;41.652.311;-85.832.933;1
 Police Officer John R. Pugh;Montgomery Police Department, AL;EOW: Friday, October 1, 1886;Gunfire;1886-10-01;1886.0;Montgomery Police Department;AL;32.3817778;-86.2976613;1
 Constable John R. Agnew;Fannin County Constable's Office - Precinct 1, TX;EOW: Saturday, October 2, 1886;Gunfire;1886-10-02;1886.0;Fannin County Constable's Office - Precinct 1;TX;33.5899959;-96.33347260000001;1
 Deputy Sheriff Samuel E. Lindsey;Rains County Sheriff's Department, TX;EOW: Wednesday, November 3, 1886;Gunfire;1886-11-03;1886.0;Rains County Sheriff's Department;TX;32.8756738;-95.76667959999999;1
@@ -1194,7 +1194,7 @@ Special Officer Edward H. 'Elijah' Wishart;Des Moines Police Department, IA;EOW:
 Constable John L. Powers;Kern County Sheriff's Department, CA;EOW: Friday, July 3, 1891;Gunfire;1891-07-03;1891.0;Kern County Sheriff's Department;CA;35.4118904;-118.9642357;1
 Deputized Civilian Oliver McCoy;Kern County Sheriff's Department, CA;EOW: Friday, July 3, 1891;Gunfire;1891-07-03;1891.0;Kern County Sheriff's Department;CA;35.4118904;-118.9642357;1
 City Marshal Richard M. Cloy;McComb Police Department, MS;EOW: Wednesday, July 8, 1891;Gunfire;1891-07-08;1891.0;McComb Police Department;MS;31.2437872;-90.4531535;1
-Guard Charlie D. Cain;Ellis County Poor Farm, TX;EOW: Thursday, July 9, 1891;Gunfire (Accidental);1891-07-09;1891.0;Ellis County Poor Farm;TX;32,323661;-96,802555;8
+Guard Charlie D. Cain;Ellis County Poor Farm, TX;EOW: Thursday, July 9, 1891;Gunfire (Accidental);1891-07-09;1891.0;Ellis County Poor Farm;TX;32.323.661;-96.802.555;8
 Police Officer Jacob Zapp;Baltimore City Police Department, MD;EOW: Wednesday, July 15, 1891;Struck by train;1891-07-15;1891.0;Baltimore City Police Department;MD;39.2903848;-76.6121893;17
 Police Officer Jacob Zapp;Baltimore City Police Department, MD;EOW: Wednesday, July 15, 1891;Struck by train;1891-07-15;1891.0;Baltimore City Police Department;MD;39.2903848;-76.6121893;17
 Jailer Patrick Kelly;Galveston County Sheriff's Office, TX;EOW: Monday, July 20, 1891;Assault;1891-07-20;1891.0;Galveston County Sheriff's Office;TX;29.37634989999999;-94.8520636;3
@@ -1229,7 +1229,7 @@ Deputy Sheriff William Sadler;Whitley County Sheriff's Department, KY;EOW: Monda
 City Marshal William Sprinkle;Dexter Police Department, MO;EOW: Monday, February 29, 1892;Gunfire;1892-02-29;1892.0;Dexter Police Department;MO;36.7965759;-89.9661399;1
 Deputy Sheriff William Lafayette Nettles;Bowie County Sheriff's Department, TX;EOW: Tuesday, March 1, 1892;Gunfire;1892-03-01;1892.0;Bowie County Sheriff's Department;TX;33.4473287;-94.479976;1
 Deputy Sheriff George Williams;Taney County Sheriff's Office, MO;EOW: Saturday, March 12, 1892;Gunfire;1892-03-12;1892.0;Taney County Sheriff's Office;MO;36.6576378;-93.0175712;1
-Policeman John Merget;Reading Coal and Iron Police Department, PA;EOW: Wednesday, March 16, 1892;Gunfire;1892-03-16;1892.0;Reading Coal and Iron Police Department;PA;40,700933;-76,218112;1
+Policeman John Merget;Reading Coal and Iron Police Department, PA;EOW: Wednesday, March 16, 1892;Gunfire;1892-03-16;1892.0;Reading Coal and Iron Police Department;PA;40.700.933;-76.218.112;1
 Private Robert E. Doaty;Texas Rangers, TX;EOW: Tuesday, March 22, 1892;Gunfire;1892-03-22;1892.0;Texas Rangers;TX;32.7581143;-97.08379749999999;1
 Private Robert E. Doaty;Texas Rangers, TX;EOW: Tuesday, March 22, 1892;Gunfire;1892-03-22;1892.0;Texas Rangers;TX;32.7552692;-97.3318596;1
 Overseer James A. Bloomer;Pennsylvania Department of Corrections, PA;EOW: Friday, March 25, 1892;Stabbed;1892-03-25;1892.0;Pennsylvania Department of Corrections;PA;40.2767648;-76.9843896;2
@@ -1266,7 +1266,7 @@ Jailer Kavanaugh Tipton;Montgomery County Regional Jail, KY;EOW: Tuesday, July 2
 Officer Minor Cudihee;Tacoma Police Department, WA;EOW: Saturday, July 30, 1892;Stabbed;1892-07-30;1892.0;Tacoma Police Department;WA;47.2528768;-122.4442906;2
 Deputy Sheriff Oscar A. Beaver;Tulare County Sheriff's Office, CA;EOW: Saturday, August 6, 1892;Gunfire;1892-08-06;1892.0;Tulare County Sheriff's Office;CA;36.1341739;-118.8596804;1
 Constable Hugh J. Coyle;McDonald Borough Police Department, PA;EOW: Saturday, August 6, 1892;Gunfire;1892-08-06;1892.0;McDonald Borough Police Department;PA;40.3707563;-80.2347018;1
-Marshal Abraham Conrad;Eugene Town Marshal's Office, IN;EOW: Wednesday, August 10, 1892;Stabbed;1892-08-10;1892.0;Eugene Town Marshal's Office;IN;39,96531; -87.472680;2
+Marshal Abraham Conrad;Eugene Town Marshal's Office, IN;EOW: Wednesday, August 10, 1892;Stabbed;1892-08-10;1892.0;Eugene Town Marshal's Office;IN;3.996.531; -87.472680;2
 Corporal Thomas Fitzgerald;New Orleans Police Department, LA;EOW: Wednesday, August 10, 1892;Gunfire;1892-08-10;1892.0;New Orleans Police Department;LA;29.95106579999999;-90.0715323;1
 Sheriff Santiago A. Brito;Cameron County Sheriff's Office, TX;EOW: Sunday, August 21, 1892;Gunfire;1892-08-21;1892.0;Cameron County Sheriff's Office;TX;26.1284971;-97.5247243;1
 Police Officer John Isaac Fulton;Winfield Police Department, KS;EOW: Friday, September 2, 1892;Gunfire;1892-09-02;1892.0;Winfield Police Department;KS;37.2397486;-96.9955918;1
@@ -1329,7 +1329,7 @@ Officer Evan Paulson;Mayville Police Department, ND;EOW: Sunday, September 3, 18
 Patrolman Thomas Gleason;New York Police Department, NY;EOW: Tuesday, September 5, 1893;Animal related;1893-09-05;1893.0;New York Police Department;NY;40.7127837;-74.0059413;9
 Officer R. H. West;Hopkinsville Police Department, KY;EOW: Wednesday, September 6, 1893;Gunfire;1893-09-06;1893.0;Hopkinsville Police Department;KY;36.8656008;-87.4886186;1
 Officer John Springer;Lafayette Police Department, IN;EOW: Saturday, September 9, 1893;Fall;1893-09-09;1893.0;Lafayette Police Department;IN;40.4178308;-86.8909798;4
-Captain Joshua Bromwell;Maryland Board of Public Works - State Fishery Force, MD;EOW: Sunday, September 17, 1893;Drowned;1893-09-17;1893.0;Maryland Board of Public Works - State Fishery Force;MD;39,19508;-76,2377;5
+Captain Joshua Bromwell;Maryland Board of Public Works - State Fishery Force, MD;EOW: Sunday, September 17, 1893;Drowned;1893-09-17;1893.0;Maryland Board of Public Works - State Fishery Force;MD;3.919.508;-762.377;5
 Policeman Cal Smith;Paducah Police Department, KY;EOW: Tuesday, October 3, 1893;Gunfire;1893-10-03;1893.0;Paducah Police Department;KY;37.0833893;-88.6000478;1
 Patrolman John Pettaway;New Orleans Police Department, LA;EOW: Tuesday, October 10, 1893;Gunfire;1893-10-10;1893.0;New Orleans Police Department;LA;29.95106579999999;-90.0715323;1
 Patrolman Daniel Hartman;Crestline Police Department, OH;EOW: Monday, October 16, 1893;Gunfire;1893-10-16;1893.0;Crestline Police Department;OH;40.784819;-82.7370679;1
@@ -1745,7 +1745,7 @@ Constable William L. Smith;New Haven Township Police Department, OH;EOW: Monday,
 Town Sergeant Henry Milton Seaton;Middleburg Police Department, VA;EOW: Saturday, December 2, 1899;Stabbed;1899-12-02;1899.0;Middleburg Police Department;VA;38.9670178;-77.73714050000001;2
 Deputy Sheriff Tom Walsh;Union County Sheriff's Department, IA;EOW: Monday, December 4, 1899;Gunfire;1899-12-04;1899.0;Union County Sheriff's Department;IA;41.0006855;-94.27436279999999;1
 Merchant Policeman George W. Lee;Alexandria Police Department, IN;EOW: Thursday, December 7, 1899;Gunfire;1899-12-07;1899.0;Alexandria Police Department;IN;40.2628184;-85.675809;1
-Dispensary Constable John Bennett Cornwell;South Carolina State Dispensary Commission, SC;EOW: Thursday, December 7, 1899;Gunfire;1899-12-07;1899.0;South Carolina State Dispensary Commission;SC;34,057932;-80,738843;1
+Dispensary Constable John Bennett Cornwell;South Carolina State Dispensary Commission, SC;EOW: Thursday, December 7, 1899;Gunfire;1899-12-07;1899.0;South Carolina State Dispensary Commission;SC;34.057.932;-80.738.843;1
 Town Marshal Henry Hartford;Corbin Police Department, KY;EOW: Saturday, December 9, 1899;Gunfire;1899-12-09;1899.0;Corbin Police Department;KY;36.9486986;-84.0968761;1
 Town Marshal T. Edgar Park;Irvine Police Department, KY;EOW: Tuesday, December 12, 1899;Gunfire;1899-12-12;1899.0;Irvine Police Department;KY;37.700638;-83.97381299999999;1
 Deputy Sheriff James McIntosh McMullen;Citrus County Sheriff's Office, FL;EOW: Tuesday, December 26, 1899;Gunfire;1899-12-26;1899.0;Citrus County Sheriff's Office;FL;28.8848842;-82.5185837;1
@@ -1953,7 +1953,7 @@ Deputy Game Warden Gasper Ratto;Illinois Department of Conservation - Division o
 Deputy Sheriff Charles Cecil;Bell County Sheriff's Department, KY;EOW: Monday, February 17, 1902;Gunfire;37304;1902.0;Bell County Sheriff's Department;KY;36.741122;-83.63484299999999;1
 Posseman John Doyle;Bell County Sheriff's Department, KY;EOW: Monday, February 17, 1902;Gunfire;37304;1902.0;Bell County Sheriff's Department;KY;36.741122;-83.63484299999999;1
 Deputy Sheriff J. S. Smith;Russell County Sheriff's Office, VA;EOW: Saturday, February 22, 1902;Gunfire;37309;1902.0;Russell County Sheriff's Office;VA;36.9904385;-82.08429009999999;1
-Constable James Henan DeLaney;Vina Township Constable's Office, CA;EOW: Monday, February 24, 1902;Gunfire;37311;1902.0;Vina Township Constable's Office;CA;39,933611;-122,0525;1
+Constable James Henan DeLaney;Vina Township Constable's Office, CA;EOW: Monday, February 24, 1902;Gunfire;37311;1902.0;Vina Township Constable's Office;CA;39.933.611;-1.220.525;1
 Police Officer Thomas Keefe;Everett Police Department, MA;EOW: Friday, February 28, 1902;Gunfire;37315;1902.0;Everett Police Department;MA;42.40843;-71.0536625;1
 Deputy Sheriff Thomas J. Thompson;Talbot County Sheriff's Office, MD;EOW: Saturday, March 1, 1902;Gunfire;37316;1902.0;Talbot County Sheriff's Office;MD;38.77483;-76.0790246;1
 Police Officer William P. Walton;Birmingham Police Department, AL;EOW: Tuesday, March 18, 1902;Gunfire;37333;1902.0;Birmingham Police Department;AL;33.5913863;-86.7002239;1
@@ -2278,7 +2278,7 @@ Deputy Sheriff L. C. Hilton;Polk County Sheriff's Office, NC;EOW: Sunday, March 
 Officer Henry A. Stotko;Spokane Police Department, WA;EOW: Tuesday, April 4, 1905;Gunfire;38446;1905.0;Spokane Police Department;WA;47.6587802;-117.4260466;1
 Deputy Sheriff Harry Mannon;Nye County Sheriff's Office, NV;EOW: Wednesday, April 5, 1905;Gunfire;38447;1905.0;Nye County Sheriff's Office;NV;36.2207775;-115.9862464;1
 Deputy Sheriff George A. Malcolm;Fairfax County Sheriff's Office, VA;EOW: Friday, April 7, 1905;Gunfire;38449;1905.0;Fairfax County Sheriff's Office;VA;38.9085472;-77.2405153;1
-Town Marshal Albert Byers;Diamond Town Marshal's Office, IN;EOW: Sunday, April 9, 1905;Gunfire;38451;1905.0;Diamond Town Marshal's Office;IN;39,611032;-87,166712;1
+Town Marshal Albert Byers;Diamond Town Marshal's Office, IN;EOW: Sunday, April 9, 1905;Gunfire;38451;1905.0;Diamond Town Marshal's Office;IN;39.611.032;-87.166.712;1
 Sheriff John Macon Poag;Tate County Sheriff's Office, MS;EOW: Wednesday, April 12, 1905;Gunfire;38454;1905.0;Tate County Sheriff's Office;MS;34.6413971;-89.9626799;1
 Town Marshal John Manier;Pretoria Marshal's Office, GA;EOW: Saturday, April 15, 1905;Gunfire;38457;1905.0;Pretoria Marshal's Office;GA;31.1614324;-81.395592;1
 Sanitary Officer W. L. Steele;Decatur Police Department, AL;EOW: Friday, April 28, 1905;Gunfire;38470;1905.0;Decatur Police Department;AL;34.6059253;-86.9833417;1
@@ -2405,7 +2405,7 @@ Patrolman William J. Hedeman;New York City Police Department, NY;EOW: Sunday, Ju
 Officer William E. Shellman;Pueblo Police Department, CO;EOW: Monday, August 6, 1906;Weather/Natural disaster;38935;1906.0;Pueblo Police Department;CO;38.262966;-104.6129197;12
 Deputy Sheriff George A. Stillwell;Suffolk County Sheriff's Office, NY;EOW: Friday, August 10, 1906;Gunfire;38939;1906.0;Suffolk County Sheriff's Office;NY;40.9848784;-72.61511689999999;1
 Reserve Policeman William Henry Furdon;Newton Police Department, MA;EOW: Sunday, August 12, 1906;Electrocuted;38941;1906.0;Newton Police Department;MA;42.3370413;-71.20922139999999;22
-Captain Herman G. Stello;Charleston County Chain Gang, SC;EOW: Thursday, August 16, 1906;Stabbed;38945;1906.0;Charleston County Chain Gang;SC;33,0979469;-79,4928426;2
+Captain Herman G. Stello;Charleston County Chain Gang, SC;EOW: Thursday, August 16, 1906;Stabbed;38945;1906.0;Charleston County Chain Gang;SC;330.979.469;-794.928.426;2
 Policeman Hemon Myron Personius;Valley City Police Department, ND;EOW: Tuesday, August 28, 1906;Gunfire;38957;1906.0;Valley City Police Department;ND;46.9233129;-98.0031547;1
 Private John F. Henry;Pennsylvania State Police, PA;EOW: Sunday, September 2, 1906;Gunfire;38962;1906.0;Pennsylvania State Police;PA;41.2635936;-80.1733296;1
 Private Francis A. Zehringer;Pennsylvania State Police, PA;EOW: Sunday, September 2, 1906;Gunfire;38962;1906.0;Pennsylvania State Police;PA;41.2635936;-80.1733296;1
@@ -2433,7 +2433,7 @@ Marshal Michael D. Glover;Kennewick Police Department, WA;EOW: Wednesday, Octobe
 Policeman Roscoe Flanary;Coeburn Police Department, VA;EOW: Thursday, November 1, 1906;Gunfire;39022;1906.0;Coeburn Police Department;VA;36.9439917;-82.46404009999999;1
 Officer Joseph Holzhey;Kennewick Police Department, WA;EOW: Thursday, November 1, 1906;Gunfire;39022;1906.0;Kennewick Police Department;WA;46.2021559;-119.1208556;1
 Deputy Marshal Forest Perry;Kennewick Police Department, WA;EOW: Thursday, November 1, 1906;Gunfire (Accidental);39022;1906.0;Kennewick Police Department;WA;46.2021559;-119.1208556;8
-Guard W. F. Carr;Jefferson County Convict Camp, TX;EOW: Saturday, November 3, 1906;Gunfire;39024;1906.0;Jefferson County Convict Camp;TX;29,905117;-94,155046;1
+Guard W. F. Carr;Jefferson County Convict Camp, TX;EOW: Saturday, November 3, 1906;Gunfire;39024;1906.0;Jefferson County Convict Camp;TX;29.905.117;-94.155.046;1
 Officer Charles Robert Blackstock;Asheville Police Department, NC;EOW: Tuesday, November 13, 1906;Gunfire;39034;1906.0;Asheville Police Department;NC;35.5950581;-82.5514869;1
 Officer James William Bailey;Asheville Police Department, NC;EOW: Tuesday, November 13, 1906;Gunfire;39034;1906.0;Asheville Police Department;NC;35.5950581;-82.5514869;1
 City Marshal Milton Harvey Galloway;Spring City Police Department, TN;EOW: Tuesday, November 13, 1906;Gunfire;39034;1906.0;Spring City Police Department;TN;35.691828;-84.86245699999999;1
@@ -2768,9 +2768,9 @@ Patrolman John P. Kearney;Chicago Police Department, IL;EOW: Friday, July 2, 190
 Deputy James I. Kent;Union County Sheriff's Department, NM;EOW: Friday, July 2, 1909;Gunfire;39996;1909.0;Union County Sheriff's Department;NM;36.37243340000001;-103.3587288;1
 Police Officer Peter Gauer;Milwaukee Police Department, WI;EOW: Saturday, July 3, 1909;Electrocuted;39997;1909.0;Milwaukee Police Department;WI;43.0389025;-87.9064736;22
 City Marshal Charles T. Farrow;Okemah Police Department, OK;EOW: Sunday, July 4, 1909;Gunfire;39998;1909.0;Okemah Police Department;OK;35.43175370000001;-96.30627729999999;1
-Constable Cotesworth Pinckney Fishburne;South Carolina State Dispensary Commission, SC;EOW: Tuesday, July 6, 1909;Gunfire;40000;1909.0;South Carolina State Dispensary Commission;SC;34,057932;-80,738843;1
+Constable Cotesworth Pinckney Fishburne;South Carolina State Dispensary Commission, SC;EOW: Tuesday, July 6, 1909;Gunfire;40000;1909.0;South Carolina State Dispensary Commission;SC;34.057.932;-80.738.843;1
 Policeman J. Willett Miller;Blowing Rock Police Department, NC;EOW: Friday, July 9, 1909;Gunfire;40003;1909.0;Blowing Rock Police Department;NC;36.135129;-81.6776059;1
-Deputy Dispensary Constable John Dozier Altman;South Carolina State Dispensary Commission, SC;EOW: Friday, July 9, 1909;Gunfire;40003;1909.0;South Carolina State Dispensary Commission;SC;34,057932;-80,738843;1
+Deputy Dispensary Constable John Dozier Altman;South Carolina State Dispensary Commission, SC;EOW: Friday, July 9, 1909;Gunfire;40003;1909.0;South Carolina State Dispensary Commission;SC;34.057.932;-80.738.843;1
 City Marshal Henry R. Rickey;Clarence Police Department, MO;EOW: Saturday, July 10, 1909;Gunfire;40004;1909.0;Clarence Police Department;MO;39.7419808;-92.25851519999999;1
 Detective Sergeant John Dunleavy;Pueblo Police Department, CO;EOW: Wednesday, July 21, 1909;Gunfire;40015;1909.0;Pueblo Police Department;CO;38.262966;-104.6129197;1
 Officer Rufus A. Hobbs;Norfolk Police Department, VA;EOW: Friday, July 23, 1909;Animal related;40017;1909.0;Norfolk Police Department;VA;36.8544122;-76.236415;9
@@ -3225,7 +3225,7 @@ Captain Allen D. McGown;Findlay Police Department, OH;EOW: Wednesday, March 26, 
 Patrol Officer Thomas Thomas;New Castle Police Department, PA;EOW: Thursday, March 27, 1913;Drowned;41360;1913.0;New Castle Police Department;PA;41.0036719;-80.34700900000001;5
 Private Robert V. Myers;Pennsylvania State Police, PA;EOW: Friday, March 28, 1913;Gunfire (Accidental);41361;1913.0;Pennsylvania State Police;PA;41.2635936;-80.1733296;8
 Officer John Robert Estridge;Charlotte Police Department, NC;EOW: Saturday, March 29, 1913;Gunfire;41362;1913.0;Charlotte Police Department;NC;35.2270869;-80.8431267;1
-Dispensary Constable J. Rollin Cooler;South Carolina State Dispensary Commission, SC;EOW: Sunday, March 30, 1913;Gunfire;41363;1913.0;South Carolina State Dispensary Commission;SC;34,057932;-80,738843;1
+Dispensary Constable J. Rollin Cooler;South Carolina State Dispensary Commission, SC;EOW: Sunday, March 30, 1913;Gunfire;41363;1913.0;South Carolina State Dispensary Commission;SC;34.057.932;-80.738.843;1
 Policeman Charles D. Artzt;San Antonio Police Department, TX;EOW: Sunday, March 30, 1913;Gunfire;41363;1913.0;San Antonio Police Department;TX;29.4241219;-98.49362819999999;1
 Sheriff Tom A. Courtney;Sheridan County Sheriff's Department, MT;EOW: Friday, April 4, 1913;Gunfire;41368;1913.0;Sheridan County Sheriff's Department;MT;48.701151;-104.4278092;1
 Undersheriff Richard Burmeister;Sheridan County Sheriff's Department, MT;EOW: Friday, April 4, 1913;Gunfire;41368;1913.0;Sheridan County Sheriff's Department;MT;48.701151;-104.4278092;1
@@ -3359,8 +3359,8 @@ Sheriff Lem E. Mitchell;Pontotoc County Sheriff's Office, OK;EOW: Tuesday, Febru
 City Marshal William Easley Blakemore;Humboldt Police Department, TN;EOW: Tuesday, February 10, 1914;Gunfire;41680;1914.0;Humboldt Police Department;TN;35.8197917;-88.9158953;1
 Marshal James C. Jacoby;Carthage Police Department, IL;EOW: Wednesday, February 11, 1914;Gunfire;41681;1914.0;Carthage Police Department;IL;40.416433;-91.1362537;1
 Marshal August Kokko;Nashwauk Police Department, MN;EOW: Thursday, February 12, 1914;Gunfire;41682;1914.0;Nashwauk Police Department;MN;47.38194439999999;-93.16555559999999;1
-Guard Leroy Bailey;Harris County Convict Camp, TX;EOW: Wednesday, February 18, 1914;Drowned;41688;1914.0;Harris County Convict Camp;TX;29,811795;-95,473157;5
-Guard William Isham Taylor;Harris County Convict Camp, TX;EOW: Wednesday, February 18, 1914;Drowned;41688;1914.0;Harris County Convict Camp;TX;29,811795;-95,473157;5
+Guard Leroy Bailey;Harris County Convict Camp, TX;EOW: Wednesday, February 18, 1914;Drowned;41688;1914.0;Harris County Convict Camp;TX;29.811.795;-95.473.157;5
+Guard William Isham Taylor;Harris County Convict Camp, TX;EOW: Wednesday, February 18, 1914;Drowned;41688;1914.0;Harris County Convict Camp;TX;29.811.795;-95.473.157;5
 Town Marshal Sam Renaldi;Rocklin Police Department, CA;EOW: Thursday, February 19, 1914;Gunfire;41689;1914.0;Rocklin Police Department;CA;38.7907339;-121.2357828;1
 Patrolman Francis J. O'Grady;Belmont Police Department, MA;EOW: Tuesday, February 24, 1914;Struck by train;41694;1914.0;Belmont Police Department;MA;42.3961507;-71.1777141;17
 Patrolman Michael Grab;Pittsburgh Police Department, PA;EOW: Tuesday, March 3, 1914;Struck by streetcar;41701;1914.0;Pittsburgh Police Department;PA;40.456967;-80.01594999999999;16
@@ -3552,7 +3552,7 @@ Private Eugene B. Hulen;Texas Rangers, TX;EOW: Monday, May 24, 1915;Gunfire;4214
 Chief of Police James Earl Holcombe;Greenville Police Department, SC;EOW: Sunday, May 30, 1915;Gunfire;42154;1915.0;Greenville Police Department;SC;34.8540575;-82.38832409999999;1
 Deputy Sheriff Wilber W. Hendrickson;Dade County Sheriff's Department, FL;EOW: Wednesday, June 2, 1915;Gunfire;42157;1915.0;Dade County Sheriff's Department;FL;25.5516034;-80.6326916;1
 Officer John Rhinehart 'Bob' Riblet;Miami Police Department, FL;EOW: Wednesday, June 2, 1915;Gunfire;42157;1915.0;Miami Police Department;FL;25.7782306;-80.198315;1
-Policeman Raymond Earl Hacker;DuPont Police Department, VA;EOW: Thursday, June 3, 1915;Gunfire;42158;1915.0;DuPont Police Department;VA;37,293494;-77,296277;1
+Policeman Raymond Earl Hacker;DuPont Police Department, VA;EOW: Thursday, June 3, 1915;Gunfire;42158;1915.0;DuPont Police Department;VA;37.293.494;-77.296.277;1
 Police Chief Henry Reese;Dickson City Police Department, PA;EOW: Sunday, June 6, 1915;Struck by vehicle;42161;1915.0;Dickson City Police Department;PA;41.467642;-75.61877659999999;25
 Private Robert Lee Burdett;Texas Rangers, TX;EOW: Monday, June 7, 1915;Gunfire;42162;1915.0;Texas Rangers;TX;32.7581143;-97.08379749999999;1
 Private Robert Lee Burdett;Texas Rangers, TX;EOW: Monday, June 7, 1915;Gunfire;42162;1915.0;Texas Rangers;TX;32.7552692;-97.3318596;1
@@ -4337,7 +4337,7 @@ Detective Paul Gottfried;St. Paul Police Department, MN;EOW: Sunday, August 3, 1
 Deputy Sheriff Robert Lloyd Cloaninger;Iredell County Sheriff's Office, NC;EOW: Sunday, August 3, 1919;Gunfire;43680;1919.0;Iredell County Sheriff's Office;NC;35.8310501;-80.89865019999999;1
 Chief Game Protector Joseph H. Kalbfus;Pennsylvania Game Commission, PA;EOW: Sunday, August 10, 1919;Struck by train;43687;1919.0;Pennsylvania Game Commission;PA;40.2953397;-80.4835653;17
 Field Superintendent Elias W. 'Woody' Kelly;Pennsylvania Game Commission, PA;EOW: Sunday, August 10, 1919;Struck by train;43687;1919.0;Pennsylvania Game Commission;PA;40.2953397;-80.4835653;17
-Prohibition Officer Will Farley;West Virginia Department of Prohibition, WV;EOW: Monday, August 11, 1919;Gunfire;43688;1919.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer Will Farley;West Virginia Department of Prohibition, WV;EOW: Monday, August 11, 1919;Gunfire;43688;1919.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Police Officer Louis H. Niederschulte;St. Louis Metropolitan Police Department, MO;EOW: Tuesday, August 12, 1919;Gunfire;43689;1919.0;St. Louis Metropolitan Police Department;MO;38.5576118;-90.27507899999999;1
 Police Officer Louis H. Niederschulte;St. Louis Metropolitan Police Department, MO;EOW: Tuesday, August 12, 1919;Gunfire;43689;1919.0;St. Louis Metropolitan Police Department;MO;38.5576118;-90.27507899999999;1
 Special Deputy William H. Engel;Vanderburgh County Sheriff's Department, IN;EOW: Wednesday, August 13, 1919;Gunfire;43690;1919.0;Vanderburgh County Sheriff's Department;IN;38.0806099;-87.5791287;1
@@ -4943,7 +4943,7 @@ Sheriff Cameron Mason Thomas;Albemarle County Sheriff's Office, VA;EOW: Tuesday,
 Patrolman Herbert Long;Terre Haute Police Department, IN;EOW: Thursday, February 9, 1922;Gunfire;44601;1922.0;Terre Haute Police Department;IN;39.4667034;-87.41390919999999;1
 Officer James E. Scott;Omaha Police Department, NE;EOW: Friday, February 10, 1922;Gunfire;44602;1922.0;Omaha Police Department;NE;41.2523634;-95.99798829999999;1
 Patrolman Timothy Lynch, Jr.;New Orleans Police Department, LA;EOW: Saturday, February 11, 1922;Electrocuted;44603;1922.0;New Orleans Police Department;LA;29.95106579999999;-90.0715323;22
-Prohibition Officer William Meade;West Virginia Department of Prohibition, WV;EOW: Sunday, February 12, 1922;Gunfire;44604;1922.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer William Meade;West Virginia Department of Prohibition, WV;EOW: Sunday, February 12, 1922;Gunfire;44604;1922.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Patrolman Emery McCreight;Wilmington Police Department, OH;EOW: Wednesday, February 15, 1922;Gunfire;44607;1922.0;Wilmington Police Department;OH;39.4453393;-83.8285375;1
 Deputy Sheriff Jesse G. Thomas;Jefferson County Sheriff's Office, AL;EOW: Monday, February 20, 1922;Gunfire;44612;1922.0;Jefferson County Sheriff's Office;AL;33.4914122;-86.9824288;1
 Patrolman Jesse P. Wooten;Memphis Police Department, TN;EOW: Tuesday, February 21, 1922;Struck by streetcar;44613;1922.0;Memphis Police Department;TN;35.1495343;-90.0489801;16
@@ -5028,7 +5028,7 @@ Police Officer Bernard T. Cook;St. Louis Metropolitan Police Department, MO;EOW:
 Sheriff George James White;Santa Cruz County Sheriff's Office, AZ;EOW: Thursday, July 13, 1922;Automobile accident;44755;1922.0;Santa Cruz County Sheriff's Office;AZ;31.5986127;-110.8076084;26
 Officer Clifford Hall;Fayette County Police Department, KY;EOW: Thursday, July 13, 1922;Motorcycle accident;44755;1922.0;Fayette County Police Department;KY;38.06064780000001;-84.4802606;29
 Patrolman Frank S. Mundo;New York City Police Department, NY;EOW: Friday, July 14, 1922;Vehicle pursuit;44756;1922.0;New York City Police Department;NY;40.7127837;-74.0059413;30
-Prohibition Officer Lew Matty;West Virginia Department of Prohibition, WV;EOW: Saturday, July 15, 1922;Gunfire;44757;1922.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer Lew Matty;West Virginia Department of Prohibition, WV;EOW: Saturday, July 15, 1922;Gunfire;44757;1922.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Policeman James A. Lambert;Philadelphia Police Department, PA;EOW: Sunday, July 16, 1922;Gunfire;44758;1922.0;Philadelphia Police Department;PA;39.9525839;-75.1652215;1
 Policeman James A. Lambert;Philadelphia Police Department, PA;EOW: Sunday, July 16, 1922;Gunfire;44758;1922.0;Philadelphia Police Department;PA;39.9525839;-75.1652215;1
 Deputy Leonard A. Smith;Santa Cruz County Sheriff's Office, AZ;EOW: Monday, July 17, 1922;Automobile accident;44759;1922.0;Santa Cruz County Sheriff's Office;AZ;31.5986127;-110.8076084;26
@@ -5184,7 +5184,7 @@ Lieutenant Homer Allen Lee;Americus Police Department, GA;EOW: Tuesday, February
 Policeman William Miles;Philadelphia Police Department, PA;EOW: Wednesday, February 21, 1923;Assault;44978;1923.0;Philadelphia Police Department;PA;39.9525839;-75.1652215;3
 Policeman William Miles;Philadelphia Police Department, PA;EOW: Wednesday, February 21, 1923;Assault;44978;1923.0;Philadelphia Police Department;PA;39.9525839;-75.1652215;3
 Special Deputy Sheriff William C. Callahan;Cumberland County Sheriff's Office, NC;EOW: Saturday, February 24, 1923;Gunfire;44981;1923.0;Cumberland County Sheriff's Office;NC;35.0504391;-78.8769171;1
-Deputy Commissioner Thomas E. Rutherford;West Virginia Department of Prohibition, WV;EOW: Sunday, February 25, 1923;Gunfire;44982;1923.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Deputy Commissioner Thomas E. Rutherford;West Virginia Department of Prohibition, WV;EOW: Sunday, February 25, 1923;Gunfire;44982;1923.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Officer Frederick G. Stange;Metropolitan Police Department, DC;EOW: Wednesday, February 28, 1923;Gunfire (Accidental);44985;1923.0;Metropolitan Police Department;DC;38.9400853;-77.0238432;8
 Deputy Sheriff Robert Wesley Crain;Washington Parish Sheriff's Office, LA;EOW: Saturday, March 3, 1923;Gunfire;44988;1923.0;Washington Parish Sheriff's Office;LA;30.80392599999999;-90.0746767;1
 Deputy Sheriff Wiley Pierce;Washington Parish Sheriff's Office, LA;EOW: Saturday, March 3, 1923;Gunfire;44988;1923.0;Washington Parish Sheriff's Office;LA;30.80392599999999;-90.0746767;1
@@ -5326,7 +5326,7 @@ Corporal Benjamin F. 'Ben' McEvoy;Pennsylvania State Police, PA;EOW: Friday, Sep
 Patrolman Robert Kucken;East Chicago Police Department, IN;EOW: Saturday, September 22, 1923;Gunfire;45191;1923.0;East Chicago Police Department;IN;41.638056;-87.44360379999999;1
 Patrolman Thomas M. Mitchell;East Chicago Police Department, IN;EOW: Sunday, September 23, 1923;Gunfire;45192;1923.0;East Chicago Police Department;IN;41.638056;-87.44360379999999;1
 Police Officer Stephen Villaire;Detroit Police Department, MI;EOW: Sunday, September 23, 1923;Gunfire;45192;1923.0;Detroit Police Department;MI;42.371682;-83.226579;1
-Prohibition Officer Mose Elswick;West Virginia Department of Prohibition, WV;EOW: Sunday, September 23, 1923;Gunfire;45192;1923.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer Mose Elswick;West Virginia Department of Prohibition, WV;EOW: Sunday, September 23, 1923;Gunfire;45192;1923.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Sheriff A. Cary Ellis;Escambia County Sheriff's Office, FL;EOW: Tuesday, September 25, 1923;Gunfire;45194;1923.0;Escambia County Sheriff's Office;FL;30.4417522;-87.23488309999999;1
 Deputy Willis Glover Champion;Dallas County Sheriff's Department, TX;EOW: Wednesday, September 26, 1923;Gunfire;45195;1923.0;Dallas County Sheriff's Department;TX;32.8024682;-96.83509989999999;1
 Patrolman Anthony Charles Hellis;Muncie Police Department, IN;EOW: Sunday, September 30, 1923;Gunfire;45199;1923.0;Muncie Police Department;IN;40.1933767;-85.3863599;1
@@ -5348,7 +5348,7 @@ Private William J. Omlor;Pennsylvania State Police, PA;EOW: Thursday, October 25
 Patrolman Lawrence C. Hartnett;Chicago Police Department, IL;EOW: Saturday, October 27, 1923;Gunfire;45226;1923.0;Chicago Police Department;IL;41.779162;-87.708877;1
 Deputy Sheriff George Hall;Claiborne County Sheriff's Office, TN;EOW: Saturday, October 27, 1923;Gunfire;45226;1923.0;Claiborne County Sheriff's Office;TN;36.4830423;-83.63484299999999;1
 Officer David Mahukona;Honolulu Police Department, HI;EOW: Sunday, October 28, 1923;Motorcycle accident;45227;1923.0;Honolulu Police Department;HI;21.3069444;-157.8583333;29
-Prohibition Officer Walter E. Blake;West Virginia Department of Prohibition, WV;EOW: Sunday, October 28, 1923;Gunfire;45227;1923.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer Walter E. Blake;West Virginia Department of Prohibition, WV;EOW: Sunday, October 28, 1923;Gunfire;45227;1923.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Patrolman William Bailey;Merchantville Police Department, NJ;EOW: Monday, October 29, 1923;Gunfire;45228;1923.0;Merchantville Police Department;NJ;39.9506837;-75.0491242;1
 Patrolman Ale Swider;New York City Police Department, NY;EOW: Thursday, November 1, 1923;Motorcycle accident;45231;1923.0;New York City Police Department;NY;40.7127837;-74.0059413;29
 Policeman Charlie Luther Johnson;Aiken Department of Public Safety, SC;EOW: Thursday, November 1, 1923;Gunfire;45231;1923.0;Aiken Department of Public Safety;SC;33.5653867;-81.7215182;1
@@ -5646,8 +5646,8 @@ Sergeant Robert E. Woody;St. Louis Metropolitan Police Department, MO;EOW: Monda
 Sergeant Robert E. Woody;St. Louis Metropolitan Police Department, MO;EOW: Monday, November 10, 1924;Gunfire;45606;1924.0;St. Louis Metropolitan Police Department;MO;38.5576118;-90.27507899999999;1
 Sergeant Archie B. Wood;Nashville City Police Department, TN;EOW: Wednesday, November 12, 1924;Gunfire;45608;1924.0;Nashville City Police Department;TN;36.1886319;-86.8193955;1
 Trooper Alexander E. Boehm;New York State Police, NY;EOW: Thursday, November 13, 1924;Animal related;45609;1924.0;New York State Police;NY;43.0301255;-78.186905;9
-Deputy Prohibition Officer Leander M. Cook;West Virginia Department of Prohibition, WV;EOW: Saturday, November 15, 1924;Gunfire;45611;1924.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
-Constable George W. Boyle;Fresno County Constable's Office - Kingsburg Judicial District, CA;EOW: Tuesday, November 18, 1924;Gunfire;45614;1924.0;Fresno County Constable's Office - Kingsburg Judicial District;CA;36,519002;-119,55452;1
+Deputy Prohibition Officer Leander M. Cook;West Virginia Department of Prohibition, WV;EOW: Saturday, November 15, 1924;Gunfire;45611;1924.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
+Constable George W. Boyle;Fresno County Constable's Office - Kingsburg Judicial District, CA;EOW: Tuesday, November 18, 1924;Gunfire;45614;1924.0;Fresno County Constable's Office - Kingsburg Judicial District;CA;36.519.002;-11.955.452;1
 Policeman Fred John Koerber;Arlington Heights Police Department, IL;EOW: Saturday, November 22, 1924;Motorcycle accident;45618;1924.0;Arlington Heights Police Department;IL;42.0883603;-87.98062650000001;29
 Marshal Dale A. Perry;St. Helens Police Department, OR;EOW: Saturday, November 22, 1924;Motorcycle accident;45618;1924.0;St. Helens Police Department;OR;45.8605801;-122.8102147;29
 Officer Harry Borum;Terre Haute Police Department, IN;EOW: Sunday, November 23, 1924;Assault;45619;1924.0;Terre Haute Police Department;IN;39.4667034;-87.41390919999999;3
@@ -5738,7 +5738,7 @@ Patrolman Charles Wilson Hanson;Braddock Borough Police Department, PA;EOW: Thur
 Patrolman Edward F. Hall;Wichita Police Department, KS;EOW: Friday, April 10, 1925;Gunfire;45757;1925.0;Wichita Police Department;KS;37.68717609999999;-97.33005299999999;1
 Policeman Ralph Miover;Los Angeles Police Department, CA;EOW: Saturday, April 11, 1925;Motorcycle accident;45758;1925.0;Los Angeles Police Department;CA;34.0522342;-118.2436849;29
 Officer George Campbell;San Francisco Police Department, CA;EOW: Saturday, April 11, 1925;Gunfire;45758;1925.0;San Francisco Police Department;CA;37.7749295;-122.4194155;1
-Chief of Police Thomas Bowlin;Jellico Police Department, KY;EOW: Monday, April 13, 1925;Gunfire;45760;1925.0;Jellico Police Department;KY;36,740246;-84,166312;1
+Chief of Police Thomas Bowlin;Jellico Police Department, KY;EOW: Monday, April 13, 1925;Gunfire;45760;1925.0;Jellico Police Department;KY;36.740.246;-84.166.312;1
 Patrolman John F. Smith;Kingsport Police Department, TN;EOW: Monday, April 13, 1925;Gunfire;45760;1925.0;Kingsport Police Department;TN;36.548434;-82.5618186;1
 Deputy Sheriff Hubert Webb;Sullivan County Sheriff's Department, TN;EOW: Monday, April 13, 1925;Gunfire;45760;1925.0;Sullivan County Sheriff's Department;TN;36.5364243;-82.3204937;1
 Patrolman Lawrence Sullivan;Chicago Police Department, IL;EOW: Tuesday, April 14, 1925;Gunfire;45761;1925.0;Chicago Police Department;IL;41.779162;-87.708877;1
@@ -5788,13 +5788,13 @@ Police Officer Casimir B. Kaliszewski;Detroit Police Department, MI;EOW: Saturda
 Marshal James Milton Burns;Castle Gate Marshal's Office, UT;EOW: Tuesday, June 16, 1925;Gunfire;45824;1925.0;Castle Gate Marshal's Office;UT;39.7355919;-110.872704;1
 Trooper John Weber;Rhode Island State Police, RI;EOW: Wednesday, June 17, 1925;Motorcycle accident;45825;1925.0;Rhode Island State Police;RI;41.5800945;-71.4774291;29
 Police Officer Fred G. Claywell;High Point Police Department, NC;EOW: Thursday, June 18, 1925;Gunfire;45826;1925.0;High Point Police Department;NC;35.959893;-79.993485;1
-Prohibition Officer David 'George' Ball;West Virginia Department of Prohibition, WV;EOW: Saturday, June 20, 1925;Gunfire (Accidental);45828;1925.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;8
+Prohibition Officer David 'George' Ball;West Virginia Department of Prohibition, WV;EOW: Saturday, June 20, 1925;Gunfire (Accidental);45828;1925.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;8
 Jailer William Sickler;South Gate Police Department, CA;EOW: Sunday, June 21, 1925;Vehicular assault;45829;1925.0;South Gate Police Department;CA;33.9567318;-118.2051943;31
 Officer Charles S. Swinney;Dallas Police Department, TX;EOW: Sunday, June 21, 1925;Gunfire;45829;1925.0;Dallas Police Department;TX;32.7678292;-96.79457579999999;1
 Patrolman Patrick J. McGovern;Chicago Police Department, IL;EOW: Monday, June 22, 1925;Gunfire;45830;1925.0;Chicago Police Department;IL;41.779162;-87.708877;1
 Park Policeman William J. Allison;South Park District Police Department, IL;EOW: Tuesday, June 23, 1925;Motorcycle accident;45831;1925.0;South Park District Police Department;IL;41.735585;-88.3036815;29
 Deputy Sheriff Thomas Hunter Rollins;Greene County Sheriff's Department, TN;EOW: Wednesday, June 24, 1925;Gunfire;45832;1925.0;Greene County Sheriff's Department;TN;36.1347943;-82.82097399999999;1
-Prohibition Officer Wilbur F. Jacobs;Seven Mile Village Prohibition Enforcement, OH;EOW: Thursday, June 25, 1925;Gunfire;45833;1925.0;Seven Mile Village Prohibition Enforcement;OH;39,485465;-84,553732;1
+Prohibition Officer Wilbur F. Jacobs;Seven Mile Village Prohibition Enforcement, OH;EOW: Thursday, June 25, 1925;Gunfire;45833;1925.0;Seven Mile Village Prohibition Enforcement;OH;39.485.465;-84.553.732;1
 City Marshal Charles Isaac Epperson;Boynton Police Department, OK;EOW: Thursday, June 25, 1925;Gunfire;45833;1925.0;Boynton Police Department;OK;35.6487119;-95.6560949;1
 City Marshal Stephen Mann;Medford Police Department, OK;EOW: Sunday, June 28, 1925;Gunfire;45836;1925.0;Medford Police Department;OK;36.8069729;-97.73366360000001;1
 Deputy Sheriff John E. Hutcheson;Jefferson County Sheriff's Department, TX;EOW: Sunday, June 28, 1925;Gunfire;45836;1925.0;Jefferson County Sheriff's Department;TX;29.8165398;-94.15137639999999;1
@@ -5915,7 +5915,7 @@ Patrolman George W. Thompson;Chicago Police Department, IL;EOW: Saturday, Novemb
 Sheriff Joe Morgan;Leslie County Sheriff's Office, KY;EOW: Saturday, November 14, 1925;Gunfire;45975;1925.0;Leslie County Sheriff's Office;KY;37.0698286;-83.3789389;1
 Officer George F. Radden;Casper Police Department, WY;EOW: Wednesday, November 18, 1925;Motorcycle accident;45979;1925.0;Casper Police Department;WY;42.8513895;-106.3264346;29
 Deputy Sheriff Will Pace;Harlan County Sheriff's Department, KY;EOW: Friday, November 20, 1925;Gunfire;45981;1925.0;Harlan County Sheriff's Department;KY;36.8890304;-83.2077645;1
-Prohibition Officer Robert Oliver Gary;Seven Mile Village Prohibition Enforcement, OH;EOW: Saturday, November 21, 1925;Gunfire;45982;1925.0;Seven Mile Village Prohibition Enforcement;OH;39,485465;-84,553732;1
+Prohibition Officer Robert Oliver Gary;Seven Mile Village Prohibition Enforcement, OH;EOW: Saturday, November 21, 1925;Gunfire;45982;1925.0;Seven Mile Village Prohibition Enforcement;OH;39.485.465;-84.553.732;1
 County Policeman James Edwin McNair;Butts County Police Department, GA;EOW: Monday, November 23, 1925;Gunfire;45984;1925.0;Butts County Police Department;GA;33.2691443;-83.9532571;1
 Night Watchman Chas H. Fudge;Nashville City Police Department, TN;EOW: Thursday, November 26, 1925;Gunfire;45987;1925.0;Nashville City Police Department;TN;36.1886319;-86.8193955;1
 Patrolman Robert Black;Andover Police Department, MA;EOW: Friday, November 27, 1925;Gunfire;45988;1925.0;Andover Police Department;MA;42.6579661;-71.142771;1
@@ -6023,7 +6023,7 @@ Deputy Warden Peter N. Klein;Illinois Department of Corrections, IL;EOW: Wednesd
 Police Officer William P. Staples;Everett Police Department, MA;EOW: Wednesday, May 5, 1926;Gunfire;46147;1926.0;Everett Police Department;MA;42.40843;-71.0536625;1
 Trooper Herman Gloor, Jr.;New Jersey State Police, NJ;EOW: Sunday, May 9, 1926;Motorcycle accident;46151;1926.0;New Jersey State Police;NJ;39.6490521;-74.2966272;29
 Police Officer John J. Lonergan;Everett Police Department, MA;EOW: Monday, May 10, 1926;Gunfire;46152;1926.0;Everett Police Department;MA;42.40843;-71.0536625;1
-Chief of Police George S. Smiddy;Jellico Police Department, KY;EOW: Thursday, May 13, 1926;Gunfire;46155;1926.0;Jellico Police Department;KY;36,740246;-84,166312;1
+Chief of Police George S. Smiddy;Jellico Police Department, KY;EOW: Thursday, May 13, 1926;Gunfire;46155;1926.0;Jellico Police Department;KY;36.740.246;-84.166.312;1
 Policeman Arthur L. Davenport;Los Angeles Police Department, CA;EOW: Sunday, May 16, 1926;Vehicular assault;46158;1926.0;Los Angeles Police Department;CA;34.0522342;-118.2436849;31
 Patrolman John V. Kincaid;Kansas City Police Department, MO;EOW: Sunday, May 16, 1926;Vehicle pursuit;46158;1926.0;Kansas City Police Department;MO;39.0997265;-94.5785667;30
 Patrolman Jim Kenney;Wellsville Police Department, OH;EOW: Monday, May 17, 1926;Gunfire;46159;1926.0;Wellsville Police Department;OH;40.6007416;-80.6517238;1
@@ -6154,7 +6154,7 @@ Deputy Sheriff William Madison Goff;Hempstead County Sheriff's Office, AR;EOW: F
 Town Marshal Jack O'Leary;Rapid City Police Department, SD;EOW: Saturday, November 6, 1926;Struck by vehicle;46332;1926.0;Rapid City Police Department;SD;44.0783645;-103.2218691;25
 Patrolman Owen Burns;Steubenville Police Department, OH;EOW: Sunday, November 7, 1926;Gunfire;46333;1926.0;Steubenville Police Department;OH;40.35877139999999;-80.6144356;1
 Deputy Sheriff Joseph Carter;Elliott County Sheriff's Department, KY;EOW: Tuesday, November 9, 1926;Gunfire;46335;1926.0;Elliott County Sheriff's Department;KY;38.1575088;-83.12200740000002;1
-Constable George A. Hays;Reagan County Constable's Office - Precinct 5, TX;EOW: Friday, November 12, 1926;Gunfire;46338;1926.0;Reagan County Constable's Office - Precinct 5;TX;31,20783;-101,425554;1
+Constable George A. Hays;Reagan County Constable's Office - Precinct 5, TX;EOW: Friday, November 12, 1926;Gunfire;46338;1926.0;Reagan County Constable's Office - Precinct 5;TX;3.120.783;-101.425.554;1
 Police Officer Valentine M. Lukowiak;Detroit Police Department, MI;EOW: Sunday, November 14, 1926;Gunfire;46340;1926.0;Detroit Police Department;MI;42.371682;-83.226579;1
 Deputy Sheriff James Robert Lindsey;Pottawatomie County Sheriff's Office, OK;EOW: Sunday, November 14, 1926;Gunfire (Accidental);46340;1926.0;Pottawatomie County Sheriff's Office;OK;35.275439;-97.0068393;8
 City Marshal Charlie Wright;Burnside Police Department, KY;EOW: Monday, November 15, 1926;Gunfire;46341;1926.0;Burnside Police Department;KY;36.990019;-84.601333;1
@@ -6321,7 +6321,7 @@ Deputy Sheriff Clint McConnell;Decatur County Sheriff's Department, IA;EOW: Frid
 Clerk Alfred H. Walker;Maryland Division of Correction, MD;EOW: Friday, July 8, 1927;Gunfire;46576;1927.0;Maryland Division of Correction;MD;39.3578426;-76.7077131;1
 Deputy Sheriff Samuel A. Brown;Alleghany County Sheriff's Office, VA;EOW: Friday, July 8, 1927;Gunfire;46576;1927.0;Alleghany County Sheriff's Office;VA;37.8531975;-80.0534923;1
 Deputy Sheriff Willie Stutes;Lafayette Parish Sheriff's Office, LA;EOW: Sunday, July 10, 1927;Gunfire;46578;1927.0;Lafayette Parish Sheriff's Office;LA;30.2231107;-92.02156289999999;1
-Prohibition Officer Gustavus James Simmons;West Virginia Department of Prohibition, WV;EOW: Monday, July 11, 1927;Gunfire;46579;1927.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer Gustavus James Simmons;West Virginia Department of Prohibition, WV;EOW: Monday, July 11, 1927;Gunfire;46579;1927.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Trooper Harry J. Wheeler;New York State Police, NY;EOW: Friday, July 15, 1927;Motorcycle accident;46583;1927.0;New York State Police;NY;43.0301255;-78.186905;29
 Deputy Sheriff Patrick Hagans Bates;Letcher County Sheriff's Department, KY;EOW: Saturday, July 16, 1927;Gunfire;46584;1927.0;Letcher County Sheriff's Department;KY;37.12535099999999;-82.8640623;1
 Police Officer Merlin Ray;Detroit Police Department, MI;EOW: Sunday, July 17, 1927;Gunfire;46585;1927.0;Detroit Police Department;MI;42.371682;-83.226579;1
@@ -6330,7 +6330,7 @@ Police Officer Albert Edward Matthies;Arcadia Police Department, CA;EOW: Tuesday
 Constable Donald Francis Adams;Chelmsford Police Department, MA;EOW: Tuesday, July 19, 1927;Gunfire;46587;1927.0;Chelmsford Police Department;MA;42.6201494;-71.3676854;1
 Officer Samson Paele;Honolulu Police Department, HI;EOW: Sunday, July 24, 1927;Gunfire;46592;1927.0;Honolulu Police Department;HI;21.3069444;-157.8583333;1
 Patrolman Michael Hanly;Belleville Police Department, NJ;EOW: Sunday, July 24, 1927;Vehicle pursuit;46592;1927.0;Belleville Police Department;NJ;40.7936744;-74.15004689999999;30
-Prohibition Officer Everett Adams;West Virginia Department of Prohibition, WV;EOW: Wednesday, July 27, 1927;Gunfire;46595;1927.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer Everett Adams;West Virginia Department of Prohibition, WV;EOW: Wednesday, July 27, 1927;Gunfire;46595;1927.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Detective Ambrose M. Smith;Roanoke City Police Department, VA;EOW: Thursday, July 28, 1927;Gunfire;46596;1927.0;Roanoke City Police Department;VA;37.27112899999999;-79.947645;1
 Police Officer Harry Everett Shore, Sr.;Ocean City Police Department, NJ;EOW: Friday, July 29, 1927;Motorcycle accident;46597;1927.0;Ocean City Police Department;NJ;39.2785606;-74.5747336;29
 Officer R. Q. Wells;Houston Police Department, TX;EOW: Saturday, July 30, 1927;Automobile accident;46598;1927.0;Houston Police Department;TX;29.7557338;-95.3675184;26
@@ -6355,7 +6355,7 @@ Officer Lewell S. Henderson;DeKalb County Police Department, GA;EOW: Friday, Aug
 Deputy Sheriff Edwin B. Conoley;Pinal County Sheriff's Office, AZ;EOW: Saturday, August 13, 1927;Gunfire;46612;1927.0;Pinal County Sheriff's Office;AZ;33.0412433;-111.3760711;1
 Patrolman T. G. Anderson;Winston-Salem Police Department, NC;EOW: Monday, August 15, 1927;Motorcycle accident;46614;1927.0;Winston-Salem Police Department;NC;36.10413;-80.2480808;29
 Deputy Sheriff Frank Hill;Sedgwick County Sheriff's Office, KS;EOW: Tuesday, August 16, 1927;Gunfire;46615;1927.0;Sedgwick County Sheriff's Office;KS;37.6947347;-97.33999089999999;1
-Prohibition Officer Edward Hensley;West Virginia Department of Prohibition, WV;EOW: Tuesday, August 16, 1927;Gunfire;46615;1927.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer Edward Hensley;West Virginia Department of Prohibition, WV;EOW: Tuesday, August 16, 1927;Gunfire;46615;1927.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Patrolman William Harvey McGuire;Williamson Police Department, WV;EOW: Friday, August 19, 1927;Gunfire;46618;1927.0;Williamson Police Department;WV;37.6742682;-82.2773629;1
 Patrolman David W. Deerfield;Williamson Police Department, WV;EOW: Friday, August 19, 1927;Gunfire;46618;1927.0;Williamson Police Department;WV;37.6742682;-82.2773629;1
 Game Warden James Hiram Waller;Georgia Department of Natural Resources, GA;EOW: Saturday, August 20, 1927;Gunfire;46619;1927.0;Georgia Department of Natural Resources;GA;33.7498967;-84.3860529;1
@@ -6650,7 +6650,7 @@ Game Warden George Thompson;California Department of Fish and Wildlife, CA;EOW: 
 Deputy Sheriff Joner Cornett;Letcher County Sheriff's Department, KY;EOW: Sunday, September 2, 1928;Gunfire;46998;1928.0;Letcher County Sheriff's Department;KY;37.12535099999999;-82.8640623;1
 Patrolman Leonard T. Jagla;Chicago Police Department, IL;EOW: Tuesday, September 4, 1928;Gunfire;47000;1928.0;Chicago Police Department;IL;41.779162;-87.708877;1
 Deputy Sheriff Richard Dallin Westwood;Grand County Sheriff's Department, UT;EOW: Wednesday, September 5, 1928;Gunfire;47001;1928.0;Grand County Sheriff's Department;UT;39.0086287;-109.5613343;1
-Captain Ike Steele;Florida State Road Department - State Convict Road Force, FL;EOW: Thursday, September 6, 1928;Stabbed;47002;1928.0;Florida State Road Department - State Convict Road Force;FL;30,449771;-84,273644;2
+Captain Ike Steele;Florida State Road Department - State Convict Road Force, FL;EOW: Thursday, September 6, 1928;Stabbed;47002;1928.0;Florida State Road Department - State Convict Road Force;FL;30.449.771;-84.273.644;2
 Trooper Carl T. Wilder;New York State Police, NY;EOW: Friday, September 7, 1928;Gunfire;47003;1928.0;New York State Police;NY;43.0301255;-78.186905;1
 Constable James Arthur 'Jack' Boling;Ohio County Constable's Office, KY;EOW: Saturday, September 8, 1928;Gunfire;47004;1928.0;Ohio County Constable's Office;KY;37.5108523;-86.8220341;1
 Police Officer Lyle F. Tracy;Seattle Police Department, WA;EOW: Saturday, September 8, 1928;Gunfire (Accidental);47004;1928.0;Seattle Police Department;WA;47.6062095;-122.3320708;8
@@ -6985,7 +6985,7 @@ Patrolman William Hicks;Kansas City Police Department, KS;EOW: Sunday, December 
 Officer Ross H. Kaylor;Metropolitan Police Department, DC;EOW: Tuesday, December 10, 1929;Struck by streetcar;47462;1929.0;Metropolitan Police Department;DC;38.9400853;-77.0238432;16
 Patrolman Philip F. Morrissey;New York City Police Department, NY;EOW: Wednesday, December 11, 1929;Automobile accident;47463;1929.0;New York City Police Department;NY;40.7127837;-74.0059413;26
 Principal Keeper George A. Durnford;New York State Department of Correctional Services, NY;EOW: Wednesday, December 11, 1929;Gunfire;47463;1929.0;New York State Department of Correctional Services;NY;42.679274;-73.811009;1
-Constable David Samuel 'Sam' Robertson;Wolf Township Constable's Office, OK;EOW: Wednesday, December 11, 1929;Gunfire;47463;1929.0;Wolf Township Constable's Office;OK;35,118409;-96,698074;1
+Constable David Samuel 'Sam' Robertson;Wolf Township Constable's Office, OK;EOW: Wednesday, December 11, 1929;Gunfire;47463;1929.0;Wolf Township Constable's Office;OK;35.118.409;-96.698.074;1
 Patrolman Charles H. Skalay;St. Joseph Police Department, MI;EOW: Saturday, December 14, 1929;Gunfire;47466;1929.0;St. Joseph Police Department;MI;42.0938577;-86.4895463;1
 Special Constable James Leon Broome;Dallas County Constable's Office - Precinct 7, TX;EOW: Sunday, December 15, 1929;Assault;47467;1929.0;Dallas County Constable's Office - Precinct 7;TX;32.7474036;-97.0047685;3
 Marshal Edward Luton;Hamilton Marshal's Office, WA;EOW: Sunday, December 15, 1929;Assault;47467;1929.0;Hamilton Marshal's Office;WA;48.5214995;-121.9893146;3
@@ -7718,7 +7718,7 @@ Guard Leo George Nicholas;Cook County Sheriff's Office - Department of Correctio
 Policeman Earl F. Sturtevant;Shannon Police Department, IL;EOW: Thursday, June 23, 1932;Gunfire;11863;1932.0;Shannon Police Department;IL;42.1547457;-89.7398389;1
 Patrolman Nolan Eugene Tipton;Philadelphia Police Department, PA;EOW: Saturday, June 25, 1932;Motorcycle accident;11865;1932.0;Philadelphia Police Department;PA;39.9525839;-75.1652215;29
 Patrolman Nolan Eugene Tipton;Philadelphia Police Department, PA;EOW: Saturday, June 25, 1932;Motorcycle accident;11865;1932.0;Philadelphia Police Department;PA;39.9525839;-75.1652215;29
-Prohibition Officer Ell Watkins;West Virginia Department of Prohibition, WV;EOW: Monday, June 27, 1932;Gunfire;11867;1932.0;West Virginia Department of Prohibition;WV;38,779107;-80,821345;1
+Prohibition Officer Ell Watkins;West Virginia Department of Prohibition, WV;EOW: Monday, June 27, 1932;Gunfire;11867;1932.0;West Virginia Department of Prohibition;WV;38.779.107;-80.821.345;1
 Sheriff William S. 'Buck' Jones;Lee County Sheriff's Office, AL;EOW: Wednesday, June 29, 1932;Gunfire;11869;1932.0;Lee County Sheriff's Office;AL;32.5888702;-85.39627689999999;1
 Trooper James Grady Sutton;Illinois State Police, IL;EOW: Thursday, June 30, 1932;Gunfire;11870;1932.0;Illinois State Police;IL;40.6331249;-89.3985283;1
 Patrolman Charles A. Holt;Springfield Police Department, OH;EOW: Thursday, June 30, 1932;Gunfire;11870;1932.0;Springfield Police Department;OH;39.9242266;-83.8088171;1
@@ -8301,7 +8301,7 @@ Special Policeman Joseph Antone Sigler;Bulpitt Police Department, IL;EOW: Friday
 Lieutenant James F. Day;Chicago Police Department, IL;EOW: Wednesday, September 19, 1934;Heart attack;12681;1934.0;Chicago Police Department;IL;41.779162;-87.708877;11
 Patrolman Louis F. Furst;Chicago Police Department, IL;EOW: Saturday, September 22, 1934;Gunfire;12684;1934.0;Chicago Police Department;IL;41.779162;-87.708877;1
 Patrolman Thomas E. Torpy;Chicago Police Department, IL;EOW: Saturday, September 22, 1934;Gunfire;12684;1934.0;Chicago Police Department;IL;41.779162;-87.708877;1
-Special Agent Mathias 'Matt' Schumacher;Wisconsin Department of the Treasury - Beverage Tax Division, WI;EOW: Saturday, September 22, 1934;Gunfire;12684;1934.0;Wisconsin Department of the Treasury - Beverage Tax Division;WI;43,075438;-89,382536;1
+Special Agent Mathias 'Matt' Schumacher;Wisconsin Department of the Treasury - Beverage Tax Division, WI;EOW: Saturday, September 22, 1934;Gunfire;12684;1934.0;Wisconsin Department of the Treasury - Beverage Tax Division;WI;43.075.438;-89.382.536;1
 Sheriff John C. 'Johnnie' Morris;Jackson County Sheriff's Department, KY;EOW: Sunday, September 23, 1934;Gunfire;12685;1934.0;Jackson County Sheriff's Department;KY;37.4023274;-84.01674229999999;1
 Deputy Sheriff Milton Otis Loftis;Putnam County Sheriff's Department, TN;EOW: Sunday, September 23, 1934;Gunfire;12685;1934.0;Putnam County Sheriff's Department;TN;36.134602;-85.47880649999999;1
 Deputy Sheriff Otis J. Gross;Franklin County Sheriff's Department, VT;EOW: Monday, September 24, 1934;Gunfire;12686;1934.0;Franklin County Sheriff's Department;VT;44.8429222;-72.9340443;1
@@ -8735,7 +8735,7 @@ Officer Robert V. Cummins;Tucson Police Department, AZ;EOW: Monday, September 7,
 Police Officer Donnie Landry Ousse, Sr.;Rayne Police Department, LA;EOW: Monday, September 14, 1936;Stabbed;13407;1936.0;Rayne Police Department;LA;30.247981;-92.2700754;2
 Constable James A. Rawleigh;Manteca Police Department, CA;EOW: Thursday, September 17, 1936;Struck by vehicle;13410;1936.0;Manteca Police Department;CA;37.80031719999999;-121.2321959;25
 Patrolman R. W. Arnold;North Carolina Highway Patrol, NC;EOW: Thursday, September 17, 1936;Motorcycle accident;13410;1936.0;North Carolina Highway Patrol;NC;35.786975;-78.638785;29
-Inspector Frank Liedloff;Washington Department of Fisheries, WA;EOW: Monday, September 21, 1936;Drowned;13414;1936.0;Washington Department of Fisheries;WA;47,037087;-122,897427;5
+Inspector Frank Liedloff;Washington Department of Fisheries, WA;EOW: Monday, September 21, 1936;Drowned;13414;1936.0;Washington Department of Fisheries;WA;47.037.087;-122.897.427;5
 Police Officer Millard Williams;Tiptonville Police Department, TN;EOW: Saturday, September 26, 1936;Gunfire;13419;1936.0;Tiptonville Police Department;TN;36.3783984;-89.47201930000001;1
 Patrolman Thomas I. Hairston;Fort Smith Police Department, AR;EOW: Sunday, September 27, 1936;Heart attack;13420;1936.0;Fort Smith Police Department;AR;35.382836;-94.423778;11
 Deputy Sheriff Samuel Rotello;Winnebago County Sheriff's Office, IL;EOW: Sunday, September 27, 1936;Struck by vehicle;13420;1936.0;Winnebago County Sheriff's Office;IL;42.272633;-89.0997943;25
@@ -8800,7 +8800,7 @@ Sergeant Sidney Thomas Sullivan;Chicago Police Department, IL;EOW: Sunday, Janua
 Police Officer Andrew W. Wolfrom;Syracuse Police Department, NY;EOW: Monday, February 1, 1937;Assault;13547;1937.0;Syracuse Police Department;NY;43.0481221;-76.14742439999999;3
 Detective Sergeant James Mobrak;St. Louis Metropolitan Police Department, MO;EOW: Wednesday, February 3, 1937;Gunfire;13549;1937.0;St. Louis Metropolitan Police Department;MO;38.5576118;-90.27507899999999;1
 Detective Sergeant James Mobrak;St. Louis Metropolitan Police Department, MO;EOW: Wednesday, February 3, 1937;Gunfire;13549;1937.0;St. Louis Metropolitan Police Department;MO;38.5576118;-90.27507899999999;1
-Constable James Washington Irey;Liberty Township Constable's Office, CA;EOW: Friday, February 5, 1937;Gunfire;13551;1937.0;Liberty Township Constable's Office;CA;38,233963;-121,279139;1
+Constable James Washington Irey;Liberty Township Constable's Office, CA;EOW: Friday, February 5, 1937;Gunfire;13551;1937.0;Liberty Township Constable's Office;CA;38.233.963;-121.279.139;1
 Constable John Loyd Dalton;Madison County Fifth District Constable's Office, TN;EOW: Friday, February 5, 1937;Assault;13551;1937.0;Madison County Fifth District Constable's Office;TN;35.6462118;-88.85260149999999;3
 Patrolman William F. Snead;Richmond Police Department, VA;EOW: Friday, February 5, 1937;Assault;13551;1937.0;Richmond Police Department;VA;37.5407246;-77.4360481;3
 Police Officer Ora E. Stoner;Aberdeen Police Department, WA;EOW: Sunday, February 7, 1937;Vehicle pursuit;13553;1937.0;Aberdeen Police Department;WA;46.9753708;-123.8157218;30
@@ -9106,7 +9106,7 @@ Marshal Charles Harrison Wolfe;Orleans Police Department, IN;EOW: Monday, July 1
 Patrolman Angelo E. Favata;New York City Police Department, NY;EOW: Monday, July 11, 1938;Automobile accident;14072;1938.0;New York City Police Department;NY;40.7127837;-74.0059413;26
 Patrolman L.  Lawson Rhodes;South Carolina Highway Patrol, SC;EOW: Friday, July 15, 1938;Motorcycle accident;14076;1938.0;South Carolina Highway Patrol;SC;34.8602462;-82.3550283;29
 Patrolman Louis Mlakar;Cleveland Police Department, OH;EOW: Wednesday, July 20, 1938;Automobile accident;14081;1938.0;Cleveland Police Department;OH;41.49932;-81.6943605;26
-Guard Rufus William Walters;Florida State Road Department - State Convict Road Force, FL;EOW: Friday, July 22, 1938;Gunfire;14083;1938.0;Florida State Road Department - State Convict Road Force;FL;30,449771;-84,273644;1
+Guard Rufus William Walters;Florida State Road Department - State Convict Road Force, FL;EOW: Friday, July 22, 1938;Gunfire;14083;1938.0;Florida State Road Department - State Convict Road Force;FL;30.449.771;-84.273.644;1
 Patrolman Joseph W. Kelly;Massachusetts State Police, MA;EOW: Saturday, July 23, 1938;Automobile accident;14084;1938.0;Massachusetts State Police;MA;42.4072107;-71.3824374;26
 Officer Cody Bettis;Mobile Police Department, AL;EOW: Wednesday, August 3, 1938;Motorcycle accident;14095;1938.0;Mobile Police Department;AL;30.6953657;-88.0398912;29
 Constable Thomas Page Godfrey, Jr.;Ellis County Constable's Office - Precinct 1, TX;EOW: Wednesday, August 3, 1938;Struck by vehicle;14095;1938.0;Ellis County Constable's Office - Precinct 1;TX;32.401513;-96.8713307;25
@@ -9774,7 +9774,7 @@ Deputy Sheriff John Middleton;Harlan County Sheriff's Department, KY;EOW: Monday
 Patrolman William Preston Bryant;Louisville Police Department, KY;EOW: Tuesday, August 17, 1943;Gunfire;15935;1943.0;Louisville Police Department;KY;38.254756;-85.761781;1
 Deputy Sheriff Rueben Fox;Anderson County Sheriff's Department, TN;EOW: Friday, August 20, 1943;Gunfire;15938;1943.0;Anderson County Sheriff's Department;TN;36.0809574;-84.2278796;1
 Captain George B. Dooley;Cincinnati Police Department, OH;EOW: Saturday, August 21, 1943;Gunfire;15939;1943.0;Cincinnati Police Department;OH;39.1094993;-84.5210884;1
-Game Warden Sherman J. Handron;Washington Department of Wildlife, WA;EOW: Sunday, August 29, 1943;Gunfire;15947;1943.0;Washington Department of Wildlife;WA;47,036418;-122,896665;1
+Game Warden Sherman J. Handron;Washington Department of Wildlife, WA;EOW: Sunday, August 29, 1943;Gunfire;15947;1943.0;Washington Department of Wildlife;WA;47.036.418;-122.896.665;1
 Deputy Sheriff Milton F. Ferguson;Jefferson County Sheriff's Office, AL;EOW: Wednesday, September 1, 1943;Explosion;15950;1943.0;Jefferson County Sheriff's Office;AL;33.4914122;-86.9824288;21
 Constable Abraham Obadiah Hamon, Jr.;Gonzales County Constable's Office - Precinct 7, TX;EOW: Tuesday, September 7, 1943;Gunfire;15956;1943.0;Gonzales County Constable's Office - Precinct 7;TX;29.5010447;-97.45220719999999;1
 Patrolman Claude Thomas Parks;Newport News Police Department, VA;EOW: Friday, September 10, 1943;Motorcycle accident;15959;1943.0;Newport News Police Department;VA;37.029868;-76.44972539999999;29
@@ -9965,7 +9965,7 @@ Patrolman Howard H. Hegerich;New York City Police Department, NY;EOW: Monday, Ju
 Policeman Everett Luke Dutcher;Cedar Falls Police Department, IA;EOW: Tuesday, July 31, 1945;Struck by train;16649;1945.0;Cedar Falls Police Department;IA;42.5363677;-92.44775519999999;17
 Deputy Sheriff Raymond Wenner;Brown County Sheriff's Office, WI;EOW: Wednesday, August 1, 1945;Motorcycle accident;16650;1945.0;Brown County Sheriff's Office;WI;44.45616740000001;-87.9334803;29
 Officer Dominick DiGuglielmo;Pleasantville Police Department, NY;EOW: Saturday, August 18, 1945;Motorcycle accident;16667;1945.0;Pleasantville Police Department;NY;41.1333371;-73.7924152;29
-Guard William Henry Hunt;Florida State Road Department - State Convict Road Force, FL;EOW: Tuesday, August 28, 1945;Gunfire;16677;1945.0;Florida State Road Department - State Convict Road Force;FL;30,449771;-84,273644;1
+Guard William Henry Hunt;Florida State Road Department - State Convict Road Force, FL;EOW: Tuesday, August 28, 1945;Gunfire;16677;1945.0;Florida State Road Department - State Convict Road Force;FL;30.449.771;-84.273.644;1
 Chief of Police Elisha A. Wilson;Eastover Police Department, SC;EOW: Thursday, August 30, 1945;Gunfire;16679;1945.0;Eastover Police Department;SC;33.876821;-80.6928654;1
 Patrolman George H. Helstern;Chicago Police Department, IL;EOW: Sunday, September 2, 1945;Gunfire;16682;1945.0;Chicago Police Department;IL;41.779162;-87.708877;1
 Patrolman Charles A. Brady;Chicago Police Department, IL;EOW: Monday, September 3, 1945;Gunfire;16683;1945.0;Chicago Police Department;IL;41.779162;-87.708877;1
@@ -10364,7 +10364,7 @@ Sheriff Sidney Francis Edge;Kendall County Sheriff's Department, TX;EOW: Saturda
 Deputy Sheriff John D. Anderson;Pima County Sheriff's Department, AZ;EOW: Monday, August 9, 1948;Fall;17754;1948.0;Pima County Sheriff's Department;AZ;32.057499;-111.6660725;4
 Inspector Frank J. Mascari;Mount Vernon Police Department, NY;EOW: Wednesday, August 11, 1948;Gunfire (Accidental);17756;1948.0;Mount Vernon Police Department;NY;40.9125992;-73.8370786;8
 Officer Rubert W. Franks;El Centro Police Department, CA;EOW: Thursday, August 12, 1948;Motorcycle accident;17757;1948.0;El Centro Police Department;CA;32.7933234;-115.5644261;29
-Guard W. R. Brannon;Florida State Road Department - State Convict Road Force, FL;EOW: Friday, August 20, 1948;Gunfire;17765;1948.0;Florida State Road Department - State Convict Road Force;FL;30,449771;-84,273644;1
+Guard W. R. Brannon;Florida State Road Department - State Convict Road Force, FL;EOW: Friday, August 20, 1948;Gunfire;17765;1948.0;Florida State Road Department - State Convict Road Force;FL;30.449.771;-84.273.644;1
 Town Marshal Hilton Hirem Morgan;Kentwood Police Department, LA;EOW: Friday, August 20, 1948;Gunfire;17765;1948.0;Kentwood Police Department;LA;30.9382358;-90.5089843;1
 Police Officer Elmer A. Bates;Milwaukee Police Department, WI;EOW: Monday, August 23, 1948;Struck by vehicle;17768;1948.0;Milwaukee Police Department;WI;43.0389025;-87.9064736;25
 Deputy Sheriff William P. Colbert;St. Louis County Sheriff's Office, MO;EOW: Wednesday, August 25, 1948;Automobile accident;17770;1948.0;St. Louis County Sheriff's Office;MO;38.6103023;-90.4125181;26
@@ -10652,7 +10652,7 @@ Deputy Sheriff Burtice W. Wickstrum;Maricopa County Sheriff's Office, AZ;EOW: Mo
 Investigator Otis John Whan;Illinois Department of Conservation - Division of Law Enforcement, IL;EOW: Tuesday, January 16, 1951;Drowned;18644;1951.0;Illinois Department of Conservation - Division of Law Enforcement;IL;39.7929751;-89.6556262;5
 Deputy Sheriff Raymond Leach;Scioto County Sheriff's Office, OH;EOW: Friday, January 26, 1951;Automobile accident;18654;1951.0;Scioto County Sheriff's Office;OH;38.7443432;-82.99175199999999;26
 Police Officer Cleo Chrest;Manhattan Police Department, KS;EOW: Saturday, January 27, 1951;Automobile accident;18655;1951.0;Manhattan Police Department;KS;39.18360819999999;-96.57166939999999;26
-Special Agent Don E. Gresham;Tennessee Department of Finance and Taxation - Alcohol Tax Unit, TN;EOW: Sunday, January 28, 1951;Gunfire;18656;1951.0;Tennessee Department of Finance and Taxation - Alcohol Tax Unit;TN;36,163494;-86,784842;1
+Special Agent Don E. Gresham;Tennessee Department of Finance and Taxation - Alcohol Tax Unit, TN;EOW: Sunday, January 28, 1951;Gunfire;18656;1951.0;Tennessee Department of Finance and Taxation - Alcohol Tax Unit;TN;36.163.494;-86.784.842;1
 Sergeant Wesley Rosette;Colorado State Patrol, CO;EOW: Wednesday, January 31, 1951;Automobile accident;18659;1951.0;Colorado State Patrol;CO;38.788579;-104.799714;26
 Trooper Arthur Paul Goetting;Illinois State Police, IL;EOW: Sunday, February 4, 1951;Struck by train;18663;1951.0;Illinois State Police;IL;40.6331249;-89.3985283;17
 Officer Willis Wood 'Johnny' Sides;Dallas Police Department, TX;EOW: Wednesday, February 7, 1951;Gunfire;18666;1951.0;Dallas Police Department;TX;32.7678292;-96.79457579999999;1
@@ -10899,11 +10899,11 @@ Patrolman Edward T. Burke;St. Louis Metropolitan Police Department, MO;EOW: Satu
 Patrolman Edward T. Burke;St. Louis Metropolitan Police Department, MO;EOW: Saturday, January 3, 1953;Fall;19362;1953.0;St. Louis Metropolitan Police Department;MO;38.5576118;-90.27507899999999;4
 Lieutenant Frank Joseph Cutshall;Richmond Police Department, CA;EOW: Sunday, January 11, 1953;Heart attack;19370;1953.0;Richmond Police Department;CA;37.9357576;-122.3477486;11
 Sheriff Ben K. Perry;Adams County Sheriff's Department, OH;EOW: Monday, January 12, 1953;Gunfire;19371;1953.0;Adams County Sheriff's Department;OH;38.8907822;-83.5070203;1
-Guard Grant R. Dohner;Florida State Road Department - State Convict Road Force, FL;EOW: Thursday, January 15, 1953;Assault;19374;1953.0;Florida State Road Department - State Convict Road Force;FL;30,449771;-84,273644;3
+Guard Grant R. Dohner;Florida State Road Department - State Convict Road Force, FL;EOW: Thursday, January 15, 1953;Assault;19374;1953.0;Florida State Road Department - State Convict Road Force;FL;30.449.771;-84.273.644;3
 Patrolman Thomas Sheehan;New York City Police Department, NY;EOW: Friday, January 16, 1953;Heart attack;19375;1953.0;New York City Police Department;NY;40.7127837;-74.0059413;11
 Police Officer Leonard E. Daniel;Eunice Police Department, NM;EOW: Tuesday, January 27, 1953;Heart attack;19386;1953.0;Eunice Police Department;NM;32.4373434;-103.1590798;11
 Detective Elza  'Tip' O'Dell;Gary Police Department, IN;EOW: Saturday, January 31, 1953;Gunfire;19390;1953.0;Gary Police Department;IN;41.6008407;-87.34923599999999;1
-Guard John F. Gradon;Florida State Road Department - State Convict Road Force, FL;EOW: Sunday, February 1, 1953;Assault;19391;1953.0;Florida State Road Department - State Convict Road Force;FL;30,449771;-84,273644;3
+Guard John F. Gradon;Florida State Road Department - State Convict Road Force, FL;EOW: Sunday, February 1, 1953;Assault;19391;1953.0;Florida State Road Department - State Convict Road Force;FL;30.449.771;-84.273.644;3
 Police Officer Edward Emile Fritz, Jr.;Metro-Dade Police Department, FL;EOW: Tuesday, February 3, 1953;Gunfire;19393;1953.0;Metro-Dade Police Department;FL;25.5516034;-80.6326916;1
 Police Officer James E. Barmore;Santa Paula Police Department, CA;EOW: Saturday, February 7, 1953;Motorcycle accident;19397;1953.0;Santa Paula Police Department;CA;34.351716;-119.0591632;29
 Patrolman William Ross Ewing;Pittsburgh Police Department, PA;EOW: Saturday, February 7, 1953;Motorcycle accident;19397;1953.0;Pittsburgh Police Department;PA;40.456967;-80.01594999999999;29
@@ -12018,7 +12018,7 @@ Deputy Sheriff Roger L. Bauman;Sacramento County Sheriff's Department, CA;EOW: T
 Lieutenant Glynn E. Averette;East Baton Rouge Parish Sheriff's Office, LA;EOW: Tuesday, December 12, 1961;Automobile accident;22627;1961.0;East Baton Rouge Parish Sheriff's Office;LA;30.5693593;-91.09693999999999;26
 Patrolman Anthony Scozzaro;Alabama Department of Public Safety, AL;EOW: Wednesday, December 13, 1961;Automobile accident;22628;1961.0;Alabama Department of Public Safety;AL;32.7972824;-86.5685144;26
 Patrolman Hugh Willoughby;New York City Police Department, NY;EOW: Thursday, December 14, 1961;Gunfire;22629;1961.0;New York City Police Department;NY;40.7127837;-74.0059413;1
-Constable Iver William Johanson;Fresno County Constable's Office - Selma Judicial District, CA;EOW: Friday, December 15, 1961;Heart attack;22630;1961.0;Fresno County Constable's Office - Selma Judicial District;CA;36,575275;-119,614392;11
+Constable Iver William Johanson;Fresno County Constable's Office - Selma Judicial District, CA;EOW: Friday, December 15, 1961;Heart attack;22630;1961.0;Fresno County Constable's Office - Selma Judicial District;CA;36.575.275;-119.614.392;11
 Officer Pearl Martin;Atlanta Police Department, GA;EOW: Friday, December 15, 1961;Motorcycle accident;22630;1961.0;Atlanta Police Department;GA;33.7489954;-84.3879824;29
 Assistant Chief Claude Bishop Evans;Amarillo Police Department, TX;EOW: Monday, December 18, 1961;Automobile accident;22633;1961.0;Amarillo Police Department;TX;35.2219971;-101.8312969;26
 Patrolman Arthur W. Guenther;Cleveland Police Department, OH;EOW: Tuesday, December 19, 1961;Automobile accident;22634;1961.0;Cleveland Police Department;OH;41.49932;-81.6943605;26
@@ -13853,7 +13853,7 @@ Trooper Herman T. Morris;Florida Highway Patrol, FL;EOW: Thursday, March 16, 197
 Detective John M. Gallino;Crestwood Police Department, MO;EOW: Saturday, March 18, 1972;Gunfire;26376;1972.0;Crestwood Police Department;MO;38.558769;-90.3860555;1
 Police Officer Elijah G. Stroud;New York City Police Department, NY;EOW: Saturday, March 18, 1972;Gunfire;26376;1972.0;New York City Police Department;NY;40.7127837;-74.0059413;1
 Patrolman Billy Dan Howry;Texas Department of Public Safety - Texas Highway Patrol, TX;EOW: Saturday, March 18, 1972;Vehicular assault;26376;1972.0;Texas Department of Public Safety - Texas Highway Patrol;TX;33.1886419;-102.8244408;31
-Police Officer Bertram Winkler;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, March 21, 1972;Heart attack;26379;1972.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;11
+Police Officer Bertram Winkler;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, March 21, 1972;Heart attack;26379;1972.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;11
 Patrolman Curtis L. Staton;Columbus Division of Police, OH;EOW: Wednesday, March 22, 1972;Gunfire;26380;1972.0;Columbus Division of Police;OH;39.9814546;-83.0113405;1
 Patrolman Willie Lester Smith;Jacksonville Police Department, AL;EOW: Saturday, March 25, 1972;Automobile accident;26383;1972.0;Jacksonville Police Department;AL;33.8137125;-85.76135359999999;26
 Sheriff Howard M. Shaffer;Jefferson County Sheriff's Office, ID;EOW: Saturday, March 25, 1972;Struck by train;26383;1972.0;Jefferson County Sheriff's Office;ID;43.7640903;-112.2493671;17
@@ -13930,7 +13930,7 @@ Patrolman William F. Holbert, Jr.;Binghamton Police Department, NY;EOW: Monday, 
 Deputy Sheriff Rayburn L. Shipp;Hunt County Sheriff's Office, TX;EOW: Tuesday, July 18, 1972;Gunfire;26498;1972.0;Hunt County Sheriff's Office;TX;33.1967938;-96.15269850000001;1
 Patrolman Leonard Lamatrice;Steubenville Police Department, OH;EOW: Friday, July 21, 1972;Fire;26501;1972.0;Steubenville Police Department;OH;40.35877139999999;-80.6144356;7
 Detective Guy Andrew Mack, Sr.;Canton Police Department, OH;EOW: Saturday, July 22, 1972;Gunfire;26502;1972.0;Canton Police Department;OH;40.79894729999999;-81.378447;1
-Chief Edward R. Gleason;Palisades Interstate Park Police Department - New York Section, NY;EOW: Sunday, July 23, 1972;Heart attack;26503;1972.0;Palisades Interstate Park Police Department - New York Section;NY;40,956323;73,918776;11
+Chief Edward R. Gleason;Palisades Interstate Park Police Department - New York Section, NY;EOW: Sunday, July 23, 1972;Heart attack;26503;1972.0;Palisades Interstate Park Police Department - New York Section;NY;40.956.323;73.918.776;11
 Patrolman John Mueller Sellers;Pinole Police Department, CA;EOW: Monday, July 24, 1972;Gunfire;26504;1972.0;Pinole Police Department;CA;38.0043667;-122.2988587;1
 Police Officer Lorenzo Arnest Gray;Baltimore City Police Department, MD;EOW: Wednesday, July 26, 1972;Gunfire;26506;1972.0;Baltimore City Police Department;MD;39.2903848;-76.6121893;1
 Police Officer Lorenzo Arnest Gray;Baltimore City Police Department, MD;EOW: Wednesday, July 26, 1972;Gunfire;26506;1972.0;Baltimore City Police Department;MD;39.2903848;-76.6121893;1
@@ -14246,7 +14246,7 @@ Trooper James Donald Thornton;Kansas Highway Patrol, KS;EOW: Tuesday, October 2,
 Deputy Sheriff Dalton Burnham;Dodge County Sheriff's Office, GA;EOW: Saturday, October 6, 1973;Gunfire;26943;1973.0;Dodge County Sheriff's Office;GA;32.1287268;-83.2077645;1
 Police Officer Felix Underwood;Birmingham Police Department, AL;EOW: Sunday, October 7, 1973;Gunfire;26944;1973.0;Birmingham Police Department;AL;33.5913863;-86.7002239;1
 Officer Milton Earl Whatley;Dallas Police Department, TX;EOW: Sunday, October 7, 1973;Heart attack;26944;1973.0;Dallas Police Department;TX;32.7678292;-96.79457579999999;11
-Police Officer Arthur M. Ansert;Port Authority of New York and New Jersey Police Department, NY;EOW: Monday, October 8, 1973;Vehicular assault;26945;1973.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;31
+Police Officer Arthur M. Ansert;Port Authority of New York and New Jersey Police Department, NY;EOW: Monday, October 8, 1973;Vehicular assault;26945;1973.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;31
 Police Officer George R. Mead;New York City Police Department, NY;EOW: Wednesday, October 10, 1973;Gunfire;26947;1973.0;New York City Police Department;NY;40.7127837;-74.0059413;1
 Trooper Donald Bert Ziesmer;Minnesota State Patrol, MN;EOW: Monday, October 15, 1973;Gunfire;26952;1973.0;Minnesota State Patrol;MN;46.53482959999999;-93.706651;1
 Patrolman Spiro N. Galanoudis;Monessen City Police Department, PA;EOW: Friday, October 19, 1973;Vehicular assault;26956;1973.0;Monessen City Police Department;PA;40.1608856;-79.88205669999999;31
@@ -15258,7 +15258,7 @@ Patrolman James Ralph Turner;Port Isabel Police Department, TX;EOW: Monday, May 
 Chief of Police Henry Davis, Jr.;Wilmot Police Department, AR;EOW: Tuesday, May 23, 1978;Automobile accident;28633;1978.0;Wilmot Police Department;AR;33.0573469;-91.57345389999999;26
 Sergeant Raymond L. Croxton, Jr.;Ruston Police Department, LA;EOW: Tuesday, May 23, 1978;Vehicle pursuit;28633;1978.0;Ruston Police Department;LA;32.5232053;-92.63792699999999;30
 Trooper Conroy G. O'Brien;Kansas Highway Patrol, KS;EOW: Wednesday, May 24, 1978;Gunfire;28634;1978.0;Kansas Highway Patrol;KS;39.0507594;-95.6749857;1
-Police Officer Henry J. Koebel;Port Authority of New York and New Jersey Police Department, NY;EOW: Friday, May 26, 1978;Gunfire;28636;1978.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;1
+Police Officer Henry J. Koebel;Port Authority of New York and New Jersey Police Department, NY;EOW: Friday, May 26, 1978;Gunfire;28636;1978.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;1
 Second Lieutenant James Pat Grimes;Oklahoma Highway Patrol, OK;EOW: Friday, May 26, 1978;Gunfire;28636;1978.0;Oklahoma Highway Patrol;OK;36.1301001;-95.8745861;1
 Trooper Houston F. 'Pappy' Summers;Oklahoma Highway Patrol, OK;EOW: Friday, May 26, 1978;Gunfire;28636;1978.0;Oklahoma Highway Patrol;OK;36.1301001;-95.8745861;1
 Trooper Billy G. Young;Oklahoma Highway Patrol, OK;EOW: Friday, May 26, 1978;Gunfire;28636;1978.0;Oklahoma Highway Patrol;OK;36.1301001;-95.8745861;1
@@ -15717,7 +15717,7 @@ Police Officer Ralph L. Gardner;Signal Hill Police Department, CA;EOW: Wednesday
 Trooper Michael D. Farber;Nebraska State Patrol, NE;EOW: Sunday, August 24, 1980;Vehicular assault;29457;1980.0;Nebraska State Patrol;NE;40.7714659;-96.6988754;31
 Trooper Edward A. Elliott;Oklahoma Highway Patrol, OK;EOW: Sunday, August 24, 1980;Struck by vehicle;29457;1980.0;Oklahoma Highway Patrol;OK;36.1301001;-95.8745861;25
 Captain Clell Bobbitt Floyd;Lake City Police Department, SC;EOW: Tuesday, August 26, 1980;Aircraft accident;29459;1980.0;Lake City Police Department;SC;33.8709958;-79.7553451;33
-Police Officer Frank J. Donato, Jr.;Palisades Interstate Park Police Department - New York Section, NY;EOW: Thursday, August 28, 1980;Heart attack;29461;1980.0;Palisades Interstate Park Police Department - New York Section;NY;40,956323;73,918776;11
+Police Officer Frank J. Donato, Jr.;Palisades Interstate Park Police Department - New York Section, NY;EOW: Thursday, August 28, 1980;Heart attack;29461;1980.0;Palisades Interstate Park Police Department - New York Section;NY;40.956.323;73.918.776;11
 Officer Perry Michael Messina;Federal Heights Police Department, CO;EOW: Wednesday, September 3, 1980;Automobile accident;29467;1980.0;Federal Heights Police Department;CO;39.8589613;-105.015564;26
 Trooper Frederick Glen Bailey;Arkansas State Police, AR;EOW: Friday, September 5, 1980;Gunfire;29469;1980.0;Arkansas State Police;AR;34.676723;-92.3410265;1
 Police Officer Martin W. Yawarsky;Columbus Division of Police, OH;EOW: Saturday, September 6, 1980;Automobile accident;29470;1980.0;Columbus Division of Police;OH;39.9814546;-83.0113405;26
@@ -15786,7 +15786,7 @@ Constable Jerry L. McCrory;Rankin County Sheriff's Department, MS;EOW: Monday, D
 Sergeant Don L. Byerley;Tulsa Police Department, OK;EOW: Monday, December 15, 1980;Vehicular assault;29570;1980.0;Tulsa Police Department;OK;36.1539816;-95.99277500000001;31
 Correctional Officer Raymond L. Chandler;Oklahoma Department of Corrections, OK;EOW: Thursday, December 18, 1980;Assault;29573;1980.0;Oklahoma Department of Corrections;OK;35.4988276;-97.5348119;3
 Deputy Sheriff Roger Ervin Wrobbel;Wright County Sheriff's Office, MN;EOW: Sunday, December 21, 1980;Heart attack;29576;1980.0;Wright County Sheriff's Office;MN;45.1538202;-94.01909429999999;11
-Police Officer William J. Perry;Port Authority of New York and New Jersey Police Department, NY;EOW: Monday, December 22, 1980;Gunfire;29577;1980.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;1
+Police Officer William J. Perry;Port Authority of New York and New Jersey Police Department, NY;EOW: Monday, December 22, 1980;Gunfire;29577;1980.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;1
 Officer Dennis Frank Webb;San Fernando Police Department, CA;EOW: Wednesday, December 24, 1980;Gunfire;29579;1980.0;San Fernando Police Department;CA;34.2833631;-118.4392213;1
 Officer John Wyndell Robinson;Los Angeles County Safety Police, CA;EOW: Wednesday, December 24, 1980;Stabbed;29579;1980.0;Los Angeles County Safety Police;CA;34.058761;-118.2515765;2
 Corporal James Marion Tarver, Sr.;Spalding County Sheriff's Office, GA;EOW: Wednesday, December 24, 1980;Struck by vehicle;29579;1980.0;Spalding County Sheriff's Office;GA;33.2376735;-84.2926991;25
@@ -16300,7 +16300,7 @@ Officer Lowell Clayton Tribble;Farmers Branch Police Department, TX;EOW: Saturda
 Police Officer Anthony L. Creed;Chicago Police Department, IL;EOW: Tuesday, August 30, 1983;Accidental;30558;1983.0;Chicago Police Department;IL;41.779162;-87.708877;13
 Officer Kenneth Scott Wrede;West Covina Police Department, CA;EOW: Wednesday, August 31, 1983;Gunfire;30559;1983.0;West Covina Police Department;CA;34.0686208;-117.9389526;1
 Deputy Sheriff Ronnal Ralph Stanley;Johnson County Sheriff's Office, TN;EOW: Wednesday, August 31, 1983;Gunfire;30559;1983.0;Johnson County Sheriff's Office;TN;36.4585672;-81.8224362;1
-Police Officer Scott R. Parker;Port Authority of New York and New Jersey Police Department, NY;EOW: Monday, September 5, 1983;Gunfire;30564;1983.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;1
+Police Officer Scott R. Parker;Port Authority of New York and New Jersey Police Department, NY;EOW: Monday, September 5, 1983;Gunfire;30564;1983.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;1
 Corporal Robert S. Grove;Munster Police Department, IN;EOW: Tuesday, September 6, 1983;Motorcycle accident;30565;1983.0;Munster Police Department;IN;41.5622888;-87.5038934;29
 Officer William Moss;Houston Airport Police Department, TX;EOW: Monday, September 12, 1983;Automobile accident;30571;1983.0;Houston Airport Police Department;TX;29.6620596;-95.27633890000001;26
 Patrolman Jimmy Ray McKiven;Gadsden Police Department, AL;EOW: Friday, September 16, 1983;Motorcycle accident;30575;1983.0;Gadsden Police Department;AL;34.009474;-86.000309;29
@@ -16511,7 +16511,7 @@ Officer Bryan Keeney;Fairmont City Police Department, IL;EOW: Sunday, November 4
 Detective Lieutenant Sherman Ray Walker;St. John the Baptist Parish Sheriff's Office, LA;EOW: Tuesday, November 6, 1984;Gunfire;30992;1984.0;St. John the Baptist Parish Sheriff's Office;LA;30.0720685;-90.4996422;1
 Patrolman Donald A. Stillman;Henrico County Police Department, VA;EOW: Thursday, November 8, 1984;Gunfire;30994;1984.0;Henrico County Police Department;VA;37.5059332;-77.3324425;1
 Sergeant Delbert Ray Flowers, Jr.;Manheim Borough Police Department, PA;EOW: Friday, November 9, 1984;Automobile accident;30995;1984.0;Manheim Borough Police Department;PA;40.1639971;-76.3943269;26
-Wildlife Agent Terry L. Hoffer;Washington Department of Wildlife, WA;EOW: Saturday, November 10, 1984;Gunfire;30996;1984.0;Washington Department of Wildlife;WA;47,036418;-122,896665;1
+Wildlife Agent Terry L. Hoffer;Washington Department of Wildlife, WA;EOW: Saturday, November 10, 1984;Gunfire;30996;1984.0;Washington Department of Wildlife;WA;47.036.418;-122.896.665;1
 Police Officer Chesley A. Stephens;Oakland Police Department, CA;EOW: Tuesday, November 13, 1984;Gunfire;30999;1984.0;Oakland Police Department;CA;37.7990911;-122.2749877;1
 Corporal Stacy Milton Fuller;Smyrna Police Department, GA;EOW: Friday, November 16, 1984;Automobile accident;31002;1984.0;Smyrna Police Department;GA;33.8839926;-84.51437609999999;26
 Officer John A. Robertson;Phoenix Police Department, AZ;EOW: Monday, November 19, 1984;Gunfire;31005;1984.0;Phoenix Police Department;AZ;33.4485868;-112.0820005;1
@@ -17067,7 +17067,7 @@ Detective Thomas J. Gill;Boston Police Department, MA;EOW: Wednesday, February 1
 Deputy Sheriff Charles E. Lovett;Baxter County Sheriff's Department, AR;EOW: Friday, February 12, 1988;Heart attack;32185;1988.0;Baxter County Sheriff's Department;AR;36.3261815;-92.38136209999999;11
 Police Officer Julie A. Englehardt;Lansing Police Department, MI;EOW: Friday, February 12, 1988;Gunfire;32185;1988.0;Lansing Police Department;MI;42.732535;-84.5555347;1
 Patrolman Wayne G. Allison;New Mexico State Police, NM;EOW: Saturday, February 13, 1988;Aircraft accident;32186;1988.0;New Mexico State Police;NM;35.5671721;-105.6781108;33
-Police Officer Andre Keith Williams, Sr.;Mississippi River Bridge Authority Police Department, LA;EOW: Tuesday, February 16, 1988;Drowned;32189;1988.0;Mississippi River Bridge Authority Police Department;LA;29,937685;-90,056707;5
+Police Officer Andre Keith Williams, Sr.;Mississippi River Bridge Authority Police Department, LA;EOW: Tuesday, February 16, 1988;Drowned;32189;1988.0;Mississippi River Bridge Authority Police Department;LA;29.937.685;-90.056.707;5
 Chief of Police Jessie William Lundy;Leesville Police Department, SC;EOW: Wednesday, February 17, 1988;Gunfire (Accidental);32190;1988.0;Leesville Police Department;SC;33.9163501;-81.5132276;8
 Detective Sherman C. Griffiths;Boston Police Department, MA;EOW: Thursday, February 18, 1988;Gunfire;32191;1988.0;Boston Police Department;MA;42.3600825;-71.0588801;1
 Officer Andrew Winzer;Houston Police Department, TX;EOW: Thursday, February 18, 1988;Automobile accident;32191;1988.0;Houston Police Department;TX;29.7557338;-95.3675184;26
@@ -17462,7 +17462,7 @@ Game Warden William Barry Decker;Texas Parks and Wildlife Department - Law Enfor
 Police Officer Rodney L. Bennett;Detroit Police Department, MI;EOW: Monday, May 28, 1990;Motorcycle accident;33021;1990.0;Detroit Police Department;MI;42.371682;-83.226579;29
 Deputy Sheriff Willie Ward Christian;Pecos County Sheriff's Department, TX;EOW: Tuesday, May 29, 1990;Automobile accident;33022;1990.0;Pecos County Sheriff's Department;TX;30.8253214;-102.6216211;26
 Lieutenant Troy Duaine Woodall;Alabama Alcoholic Beverage Control Board, AL;EOW: Wednesday, May 30, 1990;Aircraft accident;33023;1990.0;Alabama Alcoholic Beverage Control Board;AL;32.4010344;-86.238423;33
-Special Agent Michael Lloyd Rector;Tennessee Commercial Vehicle Enforcement Division, TN;EOW: Thursday, May 31, 1990;Gunfire;33024;1990.0;Tennessee Commercial Vehicle Enforcement Division;TN;36,134997;-86,740137;1
+Special Agent Michael Lloyd Rector;Tennessee Commercial Vehicle Enforcement Division, TN;EOW: Thursday, May 31, 1990;Gunfire;33024;1990.0;Tennessee Commercial Vehicle Enforcement Division;TN;36.134.997;-86.740.137;1
 Patrolman Glayton Mitchell Parker;Sullivan County Sheriff's Department, TN;EOW: Thursday, May 31, 1990;Gunfire;33024;1990.0;Sullivan County Sheriff's Department;TN;36.5364243;-82.3204937;1
 Deputy Sheriff Donald Hill;Val Verde County Sheriff's Office, TX;EOW: Thursday, May 31, 1990;Automobile accident;33024;1990.0;Val Verde County Sheriff's Office;TX;29.3740415;-100.8466459;26
 Police Officer Winfred S. Hunter;Philadelphia Police Department, PA;EOW: Monday, June 4, 1990;Gunfire;33028;1990.0;Philadelphia Police Department;PA;39.9525839;-75.1652215;1
@@ -17995,7 +17995,7 @@ Police Officer Nicholas R. DeMutiis;New York City Police Department, NY;EOW: Tue
 Deputy Sheriff Ricky A. Yates;Harris County Sheriff's Office, TX;EOW: Tuesday, January 25, 1994;Motorcycle accident;34359;1994.0;Harris County Sheriff's Office;TX;29.7632871;-95.3559952;29
 Deputy Sheriff John Lester Beck;Rowan County Sheriff's Office, NC;EOW: Thursday, January 27, 1994;Heart attack;34361;1994.0;Rowan County Sheriff's Office;NC;35.669276;-80.468017;11
 Deputy Sheriff Ronald L. Coen;Franklin County Sheriff's Office, OH;EOW: Thursday, January 27, 1994;Automobile accident;34361;1994.0;Franklin County Sheriff's Office;OH;39.95365049999999;-82.9995375;26
-Agent Daniel Allen Ross;Texas Judicial District Narcotics Task Force, TX;EOW: Thursday, January 27, 1994;Automobile accident;34361;1994.0;Texas Judicial District Narcotics Task Force;TX;32,376498;-99,761256;26
+Agent Daniel Allen Ross;Texas Judicial District Narcotics Task Force, TX;EOW: Thursday, January 27, 1994;Automobile accident;34361;1994.0;Texas Judicial District Narcotics Task Force;TX;32.376.498;-99.761.256;26
 Police Officer Guy P. Gaddis;Houston Police Department, TX;EOW: Monday, January 31, 1994;Gunfire;34365;1994.0;Houston Police Department;TX;29.7557338;-95.3675184;1
 Chief of Police Robert J. Mortell;Paxton Police Department, MA;EOW: Tuesday, February 1, 1994;Gunfire;34366;1994.0;Paxton Police Department;MA;42.3114889;-71.9278427;1
 Sergeant Steven M. Shaw;Providence Police Department, RI;EOW: Thursday, February 3, 1994;Gunfire;34368;1994.0;Providence Police Department;RI;41.81993180000001;-71.4201867;1
@@ -18752,7 +18752,7 @@ Police Officer Jarvis Darren Crumley;DeKalb County Police Department, GA;EOW: Tu
 Sergeant Michael Dee Pace;Bryan County Sheriff's Office, OK;EOW: Tuesday, December 29, 1998;Automobile accident;36158;1998.0;Bryan County Sheriff's Office;OK;33.902127;-96.3226072;26
 Sergeant Arthur Lee Hershey;Pennsylvania State Police, PA;EOW: Sunday, January 3, 1999;Struck by vehicle;36163;1999.0;Pennsylvania State Police;PA;41.2635936;-80.1733296;25
 Police Officer John C. Knight;Chicago Police Department, IL;EOW: Saturday, January 9, 1999;Gunfire;36169;1999.0;Chicago Police Department;IL;41.779162;-87.708877;1
-Agent Clyde Earl Kincaid;Texas Judicial District Narcotics Task Force, TX;EOW: Saturday, January 9, 1999;Automobile accident;36169;1999.0;Texas Judicial District Narcotics Task Force;TX;32,376498;-99,761256;26
+Agent Clyde Earl Kincaid;Texas Judicial District Narcotics Task Force, TX;EOW: Saturday, January 9, 1999;Automobile accident;36169;1999.0;Texas Judicial District Narcotics Task Force;TX;32.376.498;-99.761.256;26
 Police Officer James Williams, Jr.;Oakland Police Department, CA;EOW: Sunday, January 10, 1999;Gunfire;36170;1999.0;Oakland Police Department;CA;37.7990911;-122.2749877;1
 Senior Trooper Douglas Wayne Bland;West Virginia State Police, WV;EOW: Tuesday, January 19, 1999;Automobile accident;36179;1999.0;West Virginia State Police;WV;39.349376;-77.873938;26
 Captain Robbie Edward Bishop;Villa Rica Police Department, GA;EOW: Wednesday, January 20, 1999;Gunfire;36180;1999.0;Villa Rica Police Department;GA;33.732052;-84.9191081;1
@@ -19153,50 +19153,50 @@ Senior Trooper Maria Mignano;Oregon State Police, OR;EOW: Tuesday, September 4, 
 Deputy Sheriff Donald Kenneth Bond;Hamilton County Sheriff's Department, TN;EOW: Thursday, September 6, 2001;Gunfire;37140;2001.0;Hamilton County Sheriff's Department;TN;35.1618966;-85.14793639999999;1
 Fire Marshal Ronald P. Bucca;New York City Fire Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Fire Department;NY;40.7255619;-74.006935;34
 Assistant Deputy Commissioner William Pohlmann;New York State Office of Tax Enforcement - Revenue Crimes Bureau, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Tax Enforcement - Revenue Crimes Bureau;NY;42.6783182;-73.80892570000002;34
-Bureau Chief Charles Mills;New York State Office of Tax Enforcement - Petroleum, Alcohol and Tobacco Bureau, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Tax Enforcement - Petroleum, Alcohol and Tobacco Bureau;NY;42,649329;-73,759996;34
-Captain Kathy Mazza;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
+Bureau Chief Charles Mills;New York State Office of Tax Enforcement - Petroleum, Alcohol and Tobacco Bureau, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Tax Enforcement - Petroleum, Alcohol and Tobacco Bureau;NY;42.649.329;-73.759.996;34
+Captain Kathy Mazza;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
 Captain William Thompson;New York State Office of Court Administration, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Court Administration;NY;40.7051719;-74.0122435;34
-Chief James Romito;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
+Chief James Romito;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
 Senior Court Officer Thomas Jurgens;New York State Office of Court Administration, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Court Administration;NY;40.7051719;-74.0122435;34
 Senior Court Officer Mitchel Scott Wallace;New York State Office of Court Administration, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Court Administration;NY;40.7051719;-74.0122435;34
 Detective Claude Richards;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
 Detective Joseph Vigiano;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
-Director of Public Safety Fred V. Morrone;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Inspector Anthony Infante;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
+Director of Public Safety Fred V. Morrone;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Inspector Anthony Infante;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
 Investigator Clyde Frazier;New York State Office of Tax Enforcement - Revenue Crimes Bureau, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Tax Enforcement - Revenue Crimes Bureau;NY;42.6783182;-73.80892570000002;34
 Investigator Salvatore Papasso;New York State Office of Tax Enforcement - Revenue Crimes Bureau, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Tax Enforcement - Revenue Crimes Bureau;NY;42.6783182;-73.80892570000002;34
 Investigator Richard Moore;New York State Office of Tax Enforcement - Revenue Crimes Bureau, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York State Office of Tax Enforcement - Revenue Crimes Bureau;NY;42.6783182;-73.80892570000002;34
-Lieutenant Robert Cirri;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer George Howard;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Christopher Amoroso;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Maurice Barry;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Liam Callahan;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Clinton Davis;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Donald Foreman;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Gregg Froehner;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Thomas Gorman;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Uhuru Gonja Houston;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Stephen Huczko, Jr.;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Paul Jurgens;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Paul Laszczynski;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer David P. LeMagne;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer John Lennon;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer John Levi;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer James Lynch;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Donald McIntyre;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Walter McNeil;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Joseph Navas;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer James Nelson;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Alfonse Niedermeyer;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer James Parham;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Bruce Reynolds;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Antonio Rodrigues;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Richard Rodriguez;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer John Skala;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Walwyn Stuart;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Kenneth Tietjen;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Nathaniel Webb;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Police Officer Michael Wholey;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
+Lieutenant Robert Cirri;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer George Howard;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Christopher Amoroso;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Maurice Barry;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Liam Callahan;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Clinton Davis;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Donald Foreman;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Gregg Froehner;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Thomas Gorman;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Uhuru Gonja Houston;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Stephen Huczko, Jr.;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Paul Jurgens;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Paul Laszczynski;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer David P. LeMagne;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer John Lennon;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer John Levi;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer James Lynch;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Donald McIntyre;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Walter McNeil;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Joseph Navas;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer James Nelson;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Alfonse Niedermeyer;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer James Parham;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Bruce Reynolds;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Antonio Rodrigues;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Richard Rodriguez;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer John Skala;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Walwyn Stuart;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Kenneth Tietjen;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Nathaniel Webb;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Police Officer Michael Wholey;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
 Police Officer Glen Pettit;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
 Police Officer Mark Joseph Ellis;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
 Police Officer Ramon Suarez;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
@@ -19214,8 +19214,8 @@ Police Officer Santos Valentin;New York City Police Department, NY;EOW: Tuesday,
 Police Officer Stephen Driscoll;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
 Police Officer Paul Talty;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
 Police Officer Brian McDonnell;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
-Police Officer Dominick Pezzulo;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
-Sergeant Robert Kaulfers;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;34
+Police Officer Dominick Pezzulo;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
+Sergeant Robert Kaulfers;Port Authority of New York and New Jersey Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;34
 Sergeant Rodney Gillis;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
 Sergeant Michael Curtin;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
 Sergeant John Coughlin;New York City Police Department, NY;EOW: Tuesday, September 11, 2001;Terrorist attack;37145;2001.0;New York City Police Department;NY;40.7127837;-74.0059413;34
@@ -19411,7 +19411,7 @@ Deputy Sheriff George Monroe Selby;Shelby County Sheriff's Office, TN;EOW: Wedne
 Corrections Sergeant Shannon Douglas Russell;Pima County Sheriff's Department, AZ;EOW: Thursday, December 5, 2002;Heart attack;37595;2002.0;Pima County Sheriff's Department;AZ;32.057499;-111.6660725;11
 Deputy Jailer Howard E. 'Buck' Callis;Trimble County Jail, KY;EOW: Tuesday, December 10, 2002;Automobile accident;37600;2002.0;Trimble County Jail;KY;38.5956204;-85.2847216;26
 Chief Deputy Sheriff Sharon Joann Barnes;Dent County Sheriff's Department, MO;EOW: Tuesday, December 10, 2002;Gunfire;37600;2002.0;Dent County Sheriff's Department;MO;37.544666;-91.44346900000001;1
-Commissioner Ray B. Franklin;Kentucky Office of Charitable Gaming, KY;EOW: Thursday, December 12, 2002;Automobile accident;37602;2002.0;Kentucky Office of Charitable Gaming;KY;38,195625;-84,827585;26
+Commissioner Ray B. Franklin;Kentucky Office of Charitable Gaming, KY;EOW: Thursday, December 12, 2002;Automobile accident;37602;2002.0;Kentucky Office of Charitable Gaming;KY;38.195.625;-84.827.585;26
 Patrolman Richard Wallace Martin;Howland Police Department, OH;EOW: Saturday, December 14, 2002;Heart attack;37604;2002.0;Howland Police Department;OH;41.2576207;-80.7325287;11
 Park Ranger James Royce Pitney;Muskingum Watershed Conservancy District, OH;EOW: Tuesday, December 17, 2002;Accidental;37607;2002.0;Muskingum Watershed Conservancy District;OH;40.5074711;-81.4502509;13
 Trooper Robert Wayne Ambrose;New York State Police, NY;EOW: Thursday, December 19, 2002;Automobile accident;37609;2002.0;New York State Police;NY;43.0301255;-78.186905;26
@@ -20398,7 +20398,7 @@ Police Officer David Lucious Williams;Flint Police Department, MI;EOW: Tuesday, 
 Correctional Officer Adam Michael Sanderson;Florida Department of Corrections, FL;EOW: Friday, March 6, 2009;Vehicular assault;39878;2009.0;Florida Department of Corrections;FL;30.43725289999999;-84.2788854;31
 Jailer Thomas Carroll;Goodhue County Sheriff's Department, MN;EOW: Tuesday, March 10, 2009;Heart attack;39882;2009.0;Goodhue County Sheriff's Department;MN;44.4430251;-92.6983868;11
 Lieutenant Stuart Jay Alexander;Corpus Christi Police Department, TX;EOW: Wednesday, March 11, 2009;Vehicular assault;39883;2009.0;Corpus Christi Police Department;TX;27.7928991;-97.394614;31
-Police Officer John Mark Cortazzo;Port Authority of New York and New Jersey Police Department, NY;EOW: Saturday, March 14, 2009;9/11 related illness;39886;2009.0;Port Authority of New York and New Jersey Police Department;NY;40,738217;-74,012781;35
+Police Officer John Mark Cortazzo;Port Authority of New York and New Jersey Police Department, NY;EOW: Saturday, March 14, 2009;9/11 related illness;39886;2009.0;Port Authority of New York and New Jersey Police Department;NY;40.738.217;-74.012.781;35
 Deputy Sheriff Chad Lee Mechels;Turner County Sheriff's Department, SD;EOW: Sunday, March 15, 2009;Gunfire;39887;2009.0;Turner County Sheriff's Department;SD;43.3355563;-97.179026;1
 Corrections Officer Mark Lindsey Parker;Orange County Sheriff's Office, FL;EOW: Thursday, March 19, 2009;Gunfire;39891;2009.0;Orange County Sheriff's Office;FL;28.4844995;-81.2518833;1
 Parole Officer Jeffrey Charles Woolson;New York State Division of Parole, NY;EOW: Thursday, March 19, 2009;Automobile accident;39891;2009.0;New York State Division of Parole;NY;40.7562944;-73.99207899999999;26
@@ -21350,7 +21350,7 @@ Sergeant Jorge Ramos;Florida Department of Corrections, FL;EOW: Sunday, May 1, 2
 Investigator Anthony 'TJ' Freeman;Bibb County Sheriff's Office, GA;EOW: Thursday, May 5, 2016;Vehicle pursuit;42495;2016.0;Bibb County Sheriff's Office;GA;32.7865735;-83.7199136;30
 Detective Brad D. Lancaster;Kansas City Police Department, KS;EOW: Monday, May 9, 2016;Gunfire;42499;2016.0;Kansas City Police Department;KS;39.114053;-94.6274636;1
 Police Officer David Van Glasser;Phoenix Police Department, AZ;EOW: Thursday, May 19, 2016;Gunfire;42509;2016.0;Phoenix Police Department;AZ;33.4485868;-112.0820005;1
-Police Officer Sean R. Johnson; Hilliard Division of Police, OH;EOW: Thursday, May 19, 2016;Motorcycle accident;42509;2016.0; Hilliard Division of Police;OH;40,036775;-83,154619;29
+Police Officer Sean R. Johnson; Hilliard Division of Police, OH;EOW: Thursday, May 19, 2016;Motorcycle accident;42509;2016.0; Hilliard Division of Police;OH;40.036.775;-83.154.619;29
 Police Officer Ronald Tarentino, Jr.;Auburn Police Department, MA;EOW: Sunday, May 22, 2016;Gunfire;42512;2016.0;Auburn Police Department;MA;42.1945385;-71.8356271;1
 Deputy Sheriff Michael Arthur Winter;Branch County Sheriff's Office, MI;EOW: Tuesday, May 31, 2016;Animal related;42521;2016.0;Branch County Sheriff's Office;MI;41.9680244;-85.0006748;9
 Sergeant Derrick Mingo;Winnsboro Police Department, LA;EOW: Saturday, June 4, 2016;Automobile accident;42525;2016.0;Winnsboro Police Department;LA;32.1632079;-91.720681;26
