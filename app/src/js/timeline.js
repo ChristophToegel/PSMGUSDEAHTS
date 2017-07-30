@@ -155,9 +155,12 @@ Index.timeline = function (yearSelected) {
 
     //Test play pause
     function initPlayer() {
-        var header = $("h1");
-        //console.log(header);
-        header.click(tooglePlayback);
+         var icon = $('.play');
+            icon.click(function () {
+                icon.toggleClass('active');
+                tooglePlayback();
+                return false;
+            });
     }
 
 
@@ -186,7 +189,7 @@ Index.timeline = function (yearSelected) {
     function tooglePlayback() {
         if (!played) {
             played = true;
-            playbackIntervall = setInterval(nextPlaybackSet, 1000);
+            playbackIntervall = setInterval(nextPlaybackSet, 1500);
         } else {
             played = false;
             clearInterval(playbackIntervall);

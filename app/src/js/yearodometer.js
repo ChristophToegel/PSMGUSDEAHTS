@@ -5,17 +5,18 @@ var Index = Index || {};
 Index.yearodometer = function () {
     "use strict";
 
-    var that = {},od1,od2,counter;
-    
-    function initOdometer(){
+    var that = {},
+        od1, od2, counter;
+
+    function initOdometer() {
         //TODO Methode
         var yearSel1 = document.getElementById('yearSel1');
         var yearSel2 = document.getElementById('yearSel2');
 
-       /* window.odometerOptions = {
-            auto: false, // Don't automatically initialize everything with class 'odometer'
-           format: 'd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
-        };*/
+        /* window.odometerOptions = {
+             auto: false, // Don't automatically initialize everything with class 'odometer'
+            format: 'd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
+         };*/
 
         od1 = new Odometer({
             el: yearSel1,
@@ -28,24 +29,29 @@ Index.yearodometer = function () {
             format: 'd',
             theme: 'minimal'
         });
+
+
+
+
+
     }
-    
-    function initCounter(){
-        counter=document.getElementById("totalCount");
+
+    function initCounter() {
+        counter = document.getElementById("totalCount");
     }
-    
-    function updateOdometerDate(date){
+
+    function updateOdometerDate(date) {
         od1.update(date[0]);
         od2.update(date[1]);
     }
-    
-    function updateCounter(sumDeath){
-        counter.innerHTML=sumDeath;
+
+    function updateCounter(sumDeath) {
+        counter.innerHTML = sumDeath + " displayed Cases";
     }
-    
+
     initCounter();
     initOdometer();
-    that.updateCounter=updateCounter;
-    that.updateOdometerDate=updateOdometerDate;
+    that.updateCounter = updateCounter;
+    that.updateOdometerDate = updateOdometerDate;
     return that;
 };

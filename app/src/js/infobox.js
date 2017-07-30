@@ -18,43 +18,59 @@ Index.infobox = function () {
     }
 
     //names hat oberkateogorie mit unterkategorien der ausgewählten menupunkte
-    function updateSelection(names){
+    function updateSelection(names) {
         //ausgewählte menuelemente hier anzeigen
         var menudata = d3.select("#menudata");
         menudata.selectAll("*").remove();
-
+        
         menudata.append("p")
             .text("Categories selected")
             .attr("class", "menudataHeading")
-        
+
+
         menudata.append("div")
             .attr("id", "menudataEntries");
-     
+
+
         let categorieEntry = d3.select("#menudataEntries")
             .selectAll("div")
             .data(names)
             .enter()
             .append("div");
- 
+
         categorieEntry.append("p")
             .text(function (d) {
-                return d.name + " deaths (" + d.selected.length
-                + ")"
-        })
-        .attr("class", "mainCategorieEntry");
+                return d.name + " deaths (" + d.selected.length + ")"
+            })
+            .attr("class", "mainCategorieEntry");
         
-        categorieEntry.append("p")
+        let subCategoryEntries = categorieEntry.append("div")
+            .attr("class","subCategoryContainer")
+            .selectAll("p")
+            .data(function(d){return d.selected})
+            .enter()
+            .append("p")
+            .text(function(d){return d})
+
+
+        
+        /*categorieEntry.append("p")
             .text(function (d) {
                 if (d.selected.length == 0) {
                     return "No subcategories selected"
                 } else {
-                return d.selected 
+                    return d.selected
                 }
-        })
-        .attr("class", "subCategorieEntry");
-
-        //TODO oberkategorie(1/5) + aufklappen für die unterkategorien!
-        console.log(names);
+            })
+            .attr("class", "subCategorieEntry");
+            */
+        
+        
+        
+        
+        menudata.append("div")
+            .attr("id", "disclaimer")
+            .text("Death incidents are represented by the officers assigned police departement. The acutal place of the incident may vary. Some spots represent no longer existing police departments.")
     }
 
     function changeView() {

@@ -7,14 +7,21 @@ var Index = Index || {};
 Index.map = function (mapisready, stateSelected, pointClicked) {
     "use strict";
 
-    const width = 1000,
-        height = 600;
-    var that = {},
-        path, svg, projection, g, selectedState, zoom, transformation;
 
+    var that = {},
+        path, svg, projection, g, selectedState, zoom, transformation,
+        margin = {
+            top: 20,
+            right: 0,
+            bottom: 20,
+            left: 0
+        };
+    const width = $("#map").width() - margin.left - margin.right - 35,
+        height = 0.6 * width;
 
     function initMap() {
         console.log("init Map");
+        console.log($("#map").width())
 
         //svg in index erstellen lassen!
         //enable map zoom
@@ -35,7 +42,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .attr("height", height)
             .attr("width", width)
             .attr("id", "mapsvg")
-        
+
     }
 
     //zooming
@@ -64,7 +71,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                 return i.statenameshort
             })
             .on("click", clickedState)
-        //callback für main wenn map fertig gezeichnet(-->Dateneintragen möglich)
+            //callback für main wenn map fertig gezeichnet(-->Dateneintragen möglich)
         mapisready();
     }
 
@@ -77,6 +84,8 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             stateSelected(event.statenameshort);
             selectedState = event.statenameshort;
             let state = d3.select(this);
+            let prevSelected = $(".selectedState");
+            prevSelected.removeClass("selectedState");
             state.classed("selectedState", true);
             markState(state);
 
@@ -114,7 +123,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
 
         svg.selectAll(".places").classed("notclickable", false)
-        //Todo border soll mit zoom verknüpf sein/via css
+            //Todo border soll mit zoom verknüpf sein/via css
         g.classed("zoomed", true);
     }
 
@@ -139,7 +148,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     function ChoroplethColor(data) {
         clearMapColor();
         var color = d3.scaleQuantile()
-            .range(["rgb(255, 223, 223)", "rgb(255, 183, 183)", "rgb(255, 132, 132)", "rgb(255, 82, 82)","rgb(255, 62, 62)",]);
+            .range(["rgb(255, 223, 223)", "rgb(255, 172, 172)", "rgb(255, 122, 122)", "rgb(255, 78, 78)", "rgb(255, 32, 32)", ]);
         color.domain([
                 d3.min(data, function (d) {
                 return d.value;
@@ -185,22 +194,22 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
 
     function createLegend(colors, values) {
         if (d3.select(".legende").empty()) {
-        var legende = d3.selectAll("#map");
-        legende = legende.append("svg")
-            .attr("height", "20px")
-            .attr("width", width)
-            .append("g")
-            .classed("legende",true)
-            .attr('transform','translate(' + 250 + ',' + 19 + ')');
+            var legende = d3.selectAll("#map");
+            legende = legende.append("svg")
+                .attr("height", "20px")
+                .attr("width", width)
+                .append("g")
+                .classed("legende", true)
+                .attr('transform', 'translate(' + 250 + ',' + 19 + ')');
         } else {
             var legende = d3.selectAll(".legende");
             legende.selectAll("*").remove();
         }
-        
+
         if (values[0] == undefined) {
             legende.append("text")
-                .text("Keine Daten vorhanden. Bitte Filter auswählen!")
-                .attr('transform', 'translate(' + 80 + ',' + 0 + ')')
+                .text("Please select categories or a timespan to display")
+                .attr('transform', 'translate(' + 80 + ',' + -5 + ')')
                 .style("fill", "#4e4e5e")
                 .style("stroke-opacity", 0.1)
                 .style("stroke", "black");
@@ -250,34 +259,34 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                 return d.value.length;
             })
         ]);
-        var extreme=[];
-        var normal=[];
-        data.forEach(function(d){
+        var extreme = [];
+        var normal = [];
+        data.forEach(function (d) {
             //console.log(color.quantiles()[color.quantiles().length-1]);
-              if(d.value.length>=color.quantiles()[color.quantiles().length-2]){
-                  extreme.push(d);
-              }else{
-                  normal.push(d);
-              }       
+            if (d.value.length >= color.quantiles()[color.quantiles().length - 2]) {
+                extreme.push(d);
+            } else {
+                normal.push(d);
+            }
         })
         //console.log(extreme);
         //console.log(color.quantiles());
         createNormalPoints(normal);
         createExtremePoints(extreme);
     }
-    
-    function createNormalPoints(normal){
+
+    function createNormalPoints(normal) {
         //wenn noch keine points vorhanden sind elementstruktur erstellen
         if (d3.select("#normal").empty()) {
             var places = svg.append("g")
                 .attr("class", "places")
-                .attr("id","normal")
+                .attr("id", "normal")
                 .classed("notclickable", true)
                 .selectAll("circle")
                 //.selectAll("g")
                 .data(normal).enter().
-                insert("circle");
-                //append("g").insert("circle");
+            insert("circle");
+            //append("g").insert("circle");
 
         } else {
             //Update
@@ -293,25 +302,25 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         //wenn mehr dann hinzufügen
         places = places.enter().
         insert("circle")
-        //append("g").insert("circle");
-        //wenn zoom dann noch transformieren!
+            //append("g").insert("circle");
+            //wenn zoom dann noch transformieren!
         if (g.classed("zoomed")) {
             places.attr("transform", transformation);
         }
         addpointAttributes(places);
     }
-    
-    function createExtremePoints(extreme){
+
+    function createExtremePoints(extreme) {
         if (d3.select("#extreme").empty()) {
             var places = svg.append("g")
                 .attr("class", "places")
-                .attr("id","extreme")
+                .attr("id", "extreme")
                 .classed("notclickable", true)
                 .selectAll("rect")
                 //.selectAll("g")
                 .data(extreme).enter().
-                insert("rect");
-                //append("g").insert("circle");
+            insert("rect");
+            //append("g").insert("circle");
 
         } else {
             //Update
@@ -327,20 +336,20 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         //wenn mehr dann hinzufügen
         places = places.enter().
         insert("rect")
-        //append("g").insert("circle");
-        //wenn zoom dann noch transformieren!
+            //append("g").insert("circle");
+            //wenn zoom dann noch transformieren!
         if (g.classed("zoomed")) {
             places.attr("transform", transformation);
         }
         addrectAttributes(places);
     }
-    
+
     function addrectAttributes(places) {
         //places
         places
             .attr("x", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
-                    return projection([d.value[0].lng, d.value[0].lat])[0]-10;
+                    return projection([d.value[0].lng, d.value[0].lat])[0] - 10;
                 } else {
                     return 0;
                 }
@@ -348,7 +357,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             .attr("y", function (d) {
                 //console.log(d.value[0].lat);
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
-                    return projection([d.value[0].lng, d.value[0].lat])[1]-10;
+                    return projection([d.value[0].lng, d.value[0].lat])[1] - 10;
                 } else { //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");console.log(d);
                     return 0;
                 }
@@ -386,7 +395,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     function addpointAttributes(places) {
         //places
         places
-                .attr("cx", function (d) {
+            .attr("cx", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[0];
                 } else {
@@ -407,10 +416,10 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             })
             mousefunctions(places);
     }
-    
-    function pointSelected(event){
+
+    function pointSelected(event) {
         let prevPoint = d3.selectAll(".selectedPoint");
-        prevPoint.classed("selectedPoint",false);
+        prevPoint.classed("selectedPoint", false);
         let point = d3.select(this);
         point.classed("selectedPoint", true);
         pointClicked(event);
