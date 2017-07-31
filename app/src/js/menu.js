@@ -4,7 +4,6 @@
 var Index = Index || {};
 Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected,subcategorychanged) {
     "use strict";
-    console.log($("#chart").width());
     
     const width = $("#chart").width(),
           height = width,
@@ -16,7 +15,6 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     var that = {},svg;
 
     function init() {
-        console.log("init menu");
         createSvg();
     }
 
@@ -30,13 +28,9 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     }
     
     function createButtons(){
-        //Button: SelectAll mit rect umrandung
-        //Button: RemoveAll mit image 
-        //TODO schöner!!
         var button = svg.append('g')
         .attr('transform', 'translate(' + ((width/2)-46)  + ',' + ((height/2)-70) + ')')
         .classed("button",true)
-        .classed("text45",true)
         let buttonNone=button.append("g").attr("id","button1")
         buttonNone.append("text")
             .text("Select None")
@@ -80,7 +74,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         buttonAll.on("click",allFilterSelected)
     }
    
-    //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
+    //new data
     function changeData(state, data) {
         createArc(data);
         createTextRightCorner(state);
@@ -89,7 +83,6 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
 
     function createArc(data) {
         var radius = Math.min(width, height) / 2;            
-       
          var pie = d3.pie()
             .value(function (d) {
                 return d.value;})
@@ -138,13 +131,13 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
               oberkategorieSelected(d.data.id)  
             })
     }
+    
     function hideSecondArc(){
         drawSecondArc([]);
     }
-    //test secondArc animation
+    
     function drawSecondArc(data){
         var radius = Math.min(width, height) / 2;
-        // arc
         var outerArc = d3.arc()
             .innerRadius(width-6*thickness)
             .outerRadius(width-5*thickness+1);
@@ -170,15 +163,13 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .data(pie(data))
         }
         createOuterArcProp(path,outerArc);
-            path.exit().remove();
-            //wenn mehr dann hinzufügen
-            path = path.enter().insert("path")
-            createOuterArcProp(path,outerArc)
+        path.exit().remove();
+        path = path.enter().insert("path")
+        createOuterArcProp(path,outerArc)
     }
-    //test secondArc animation
+    
     function createOuterArcProp(path,outerArc){
         path.attr('d', outerArc)
-            //zu beginn alle der unterkategorie ausgewählt
             .attr('fill', function (d) {
                 d.data.color=colorSub(d.data.name);
                 createPattern(d.data);
@@ -240,16 +231,13 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .attr("dy",function (d,i) {
                     return  i * 20;})
                 .attr("text-anchor","middle")
-                
                 .style("fill", "#4e4e5e")
                 .style("stroke-opacity", 0.1)
                 .style("stroke", "black");
     }
     
     function createTextLeftCorner(state){
-        //console.log(state);
         svg.select(".textstatehover").remove();
-        //TODO startposition des Textfeldes über g bestimmen!!
         var textfield = svg.append('g')
                 .classed("textstatehover", true)
                 .attr('transform', 'translate(30, 20 )')
@@ -265,10 +253,9 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     function createTextRightCorner(state){
         var state = d3.select("#"+state).data();
         svg.select(".textstate").remove();
-        //TODO startposition des Textfeldes über g bestimmen!!
         var textfield = svg.append('g')
                 .classed("textstate", true)
-                .attr('transform', 'translate('+(width-80)+', 15)')
+                .attr('transform', 'translate('+(width-120)+', 15)')
         textfield.append("text")
                 .selectAll("text")
                 .data(state)
@@ -276,10 +263,6 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .append("tspan")
                 .text(function (d) {
                     return d.statename;})
-                .attr("x",function (d,i) {
-                    return - 50;})
-                .attr("y",function (d,i) {
-                            return 0;})
                 .style("fill", "#4e4e5e")
                 .style("stroke-opacity", 0.1)
                 .style("stroke", "black");
@@ -310,15 +293,12 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         //alle oberkateogrien
         var allOberkat=d3.selectAll(".firstarc > path").data()
         allOberkat.forEach(function(d){
-            //console.log(d.data.id);
-            
             var el=d3.select("#o"+d.data.id);
             if(oberkategorien.indexOf(d.data.id)!=-1){
                  el.classed("pieselected",false);
                 el.attr("fill","url(#pattern-"+el.data()[0].data.id+")")
             }else{
                 if(partsOberkategorein.indexOf(d.data.id)!=-1){
-                    //console.log(partsOberkategorein+" "+d.data.id);
                     el.classed("pieselected",true);
                 }else{
                     el.classed("pieselected",false);

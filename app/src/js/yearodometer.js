@@ -9,14 +9,8 @@ Index.yearodometer = function () {
         od1, od2, counter;
 
     function initOdometer() {
-        //TODO Methode
         var yearSel1 = document.getElementById('yearSel1');
         var yearSel2 = document.getElementById('yearSel2');
-
-        /* window.odometerOptions = {
-             auto: false, // Don't automatically initialize everything with class 'odometer'
-            format: 'd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
-         };*/
 
         od1 = new Odometer({
             el: yearSel1,
@@ -29,9 +23,6 @@ Index.yearodometer = function () {
             format: 'd',
             theme: 'minimal'
         });
-
-
-
 
 
     }

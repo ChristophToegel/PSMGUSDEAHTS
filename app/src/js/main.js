@@ -1,8 +1,8 @@
 /* eslint-env browser  */
 
-//var d3 = d3 || {};
+
 var Index = Index || {};
-//d3.main = function () {
+
 Index = (function () {
     "use strict";
 
@@ -10,30 +10,23 @@ Index = (function () {
         map, data, menu, timeline, infobox,odometer,menuModel;
 
     function init() {
-        console.log("init main");
-        //daten einlesen
         data = new Index.data(datainitialised);
         data.initData();
-        
         menuModel= new Index.menuModel();
-        
         menu = new Index.menu(filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected,subcategorychanged);
         map = new Index.map(mapisready,stateSelected,pointsClicked,stateHover);
-        
         infobox = new Index.infobox();
         odometer = new Index.yearodometer();
         timeline = new Index.timeline(yearSelected);
     }
     
-    // Daten würden eingelesen
+    //called by data if csv ready
     function datainitialised() {
-        console.log("data ready");
         map.initMap(data.getMapDrawData(map.mapdatareceived));
         menu.init();
     }
     
     function mapisready(){
-        //jetzt timeline aktivieren
         timeline.drawTimeGraph(data.getdataTimeline());
     }
     
@@ -48,7 +41,8 @@ Index = (function () {
     //draws the Menu with selected data
     function updateMenu(year,state){
         let structure = menuModel.getStructure();
-        let boxdata=data.getMenuData(year,state,structure);
+        let catId= menuModel.getCatId();
+        let boxdata=data.getMenuData(year,state,structure,catId);
         menu.changeData(state,boxdata);
         updateMenuView();
     }
@@ -91,7 +85,6 @@ Index = (function () {
         menu.updateViewSelection(oberkategorien[0],filters,oberkategorien[1]);
     }
     
-    //mapPointClicked--> infobox showdata
     function pointsClicked(data){
         infobox.mapPointClicked(data);
     }
@@ -107,7 +100,6 @@ Index = (function () {
     }
     
     function oberkategorieSelected(oberkategorie){
-        //console.log(oberkategorie);
         menuModel.selectOberkategorie(oberkategorie);
         menuInputChanged();
     }

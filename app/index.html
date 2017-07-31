@@ -5,32 +5,24 @@
     <meta charset="UTF-8">
     <link href="src/styles/styles.css" type=text/css rel="stylesheet" />
     <link href="src/styles/odometer-theme-minimal.css" rel="stylesheet" />
-    <!--FONTS-->
-    <link href="https://fonts.googleapis.com/css?family=BenchNine" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!--FONTS END -->
-    <title>Police Deaths US v0.9</title>
+    <title>Police Deaths US</title>
 </head>
 
 <body>
     <h1>Police Deaths in the US</h1>
-
+    
     <div id="contentContainer">
-
         <div id="topContent">
             <div id="graph">
             </div>
         </div>
-
         <div id="content">
             <div id="map">
             </div>
         </div>
-
+        
         <div id="rightContent">
-
             <div id="yearContainer">
                 <div id="year_selection">
                     <span id="yearSel1" class="odometer"></span> &ndash; <span id="yearSel2" class="odometer"></span>
@@ -40,7 +32,6 @@
                 </div>
             </div>
             <div id="totalCount"></div>
-
             <div id=chart></div>
             <div id="deathInfoBox">
                 <div id="nav-icon1">
@@ -52,7 +43,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </body>
 
@@ -60,7 +50,6 @@
 <script src="src/lib/d3/d3.js"></script>
 <script src="src/lib/odometer.min.js"></script>
 <script src="https://d3js.org/topojson.v2.min.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
 <script src="src/js/yearodometer.js"></script>
@@ -71,5 +60,4 @@
 <script src="src/js/timeline.js"></script>
 <script src="src/js/data.js"></script>
 <script src="src/js/main.js"></script>
-
 </html>

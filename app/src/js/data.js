@@ -1,5 +1,6 @@
 /* eslint-env browser  */
 /* global d3  */
+/* global topojson  */
 //Selects the proper Data from csv and Counts the Deaths for every stats(stored via Object)
 //http://stackoverflow.com/questions/10615290/select-data-from-a-csv-before-loading-it-with-javascript-d3-library
 //https://stackoverflow.com/questions/14446511/what-is-the-most-efficient-method-to-groupby-on-a-javascript-array-of-objects
@@ -9,28 +10,18 @@ Index.data = function (datainitialised) {
     "use strict";
 
     var that = {},
-        rawdata, catIdData;
+        rawdata;
 
-    //csv Dateien einlesen
+    //reads csv Data callback for main if ready
     function initData() {
         d3.csv("data/DeathData.csv", function (csv) {
-            //daten können abgefragt werden!
             rawdata = csv;
-            
-            d3.csv("data/cat-id.csv", function (csv) {
-            catIdData=csv;
-                datainitialised();
-            });
-            //Callback für main
-            
-        });
-        
-    }
-    function getFilterRawData(){
-        return catIdData;
+            //callback for main
+            datainitialised();
+        });   
     }
     
-
+    
     function filterData(year, filters, state) {
         var filtered;
         if (filters == undefined && state != undefined) {
@@ -41,8 +32,7 @@ Index.data = function (datainitialised) {
             filtered = rawdata.filter(function (row) {
                 return row['year'] <= year[1] & row['year'] >= year[0] & filters.indexOf(row['id']) > -1;
             });
-
-        } //else if (state == undefined && (filters == undefined || filters.length === 0)) {
+        }
         else if (state == undefined && filters == undefined) {
             filtered = rawdata.filter(function (row) {
                 return row['year'] <= year[1] & row['year'] >= year[0];
@@ -52,73 +42,74 @@ Index.data = function (datainitialised) {
         return filtered;
     }
 
-    //data for the map
-    //for every state the number of deaths + totalnumber
+    //data for the map for the Choropleth and the sumDeathElement
     function getMapData(year, filters) {
         var stateYear = filterData(year, filters, undefined);
         var totaldeaths=stateYear.length;
-        
         var sumStates = sumData(stateYear, "state");
-        //--> { NY: 4,  US: 3,  SC: 1,  NC: 1,  KY: 1, …}
         return [transformObjectToArray(sumStates),totaldeaths]
     }
 
 
-    //data for the Infobox
-    //for every cause the num of deaths
-    function getMenuData(year, state,structure) {
-        
+    //data for the donut chart menu 
+    function getMenuData(year, state,structure,catId) {
         var yearCause = filterData(year, undefined, state);
-        //alle in detailkategorien
         var totaldeaths = yearCause.length;
-        var causeDetail = sumData(yearCause, "id");
-        //transform for Cause
-        var transform = [];
-        for (var key in causeDetail) {
-            var name;
-            catIdData.forEach(function(line){
-                if(key == line.id){
-                    name = line.cause_short;
-                }
-            });
-            var entry = {
-                id: key,
-                value: causeDetail[key],
-                name: name,
-                percentage: Math.round(causeDetail[key]/totaldeaths*10000)/100
-            };
-            transform.push(entry);
-        }
-        causeDetail = transform;
-        var mainArray= structure;
-        
-        mainArray.forEach(function (element) {
+        var subcategoryData = sumData(yearCause, "id");
+        //join Catname via CatId
+        subcategoryData = addCatName(subcategoryData,catId,totaldeaths);
+        structure=fillStrcture(structure,subcategoryData,totaldeaths);
+        return structure;
+    }
+    
+    //for every Uppercategory join subcategoryData
+    function fillStrcture(structure,subcategoryData,totaldeaths){
+        structure.forEach(function (upperCategory) {
             var total = 0;
             var newArray = [];
-            element["ids"].forEach(function (cat) {
-                causeDetail.forEach(function (cat2) {
+            upperCategory["ids"].forEach(function (cat) {
+                subcategoryData.forEach(function (cat2) {
                 if(cat == cat2["id"]){
-                    cat2.oberkategorie = element.name;
+                    cat2.oberkategorie = upperCategory.name;
                     newArray.push(cat2);
                     total = total+cat2["value"]
                     } 
                 });
             });
-                element["array"] = newArray;
-                element.value = total
-                element.percentage = Math.round(total/totaldeaths*10000)/100;
+                upperCategory["array"] = newArray;
+                upperCategory.value = total
+                upperCategory.percentage = Math.round(total/totaldeaths*10000)/100;
         });
-        //console.log(mainArray);
-        return mainArray;
+        return structure;
+    }
+    
+    function addCatName(subcategoryData,catId,totaldeaths){
+        var result = [];
+        for (var key in subcategoryData) {
+            var name;
+            catId.forEach(function(subcategory){
+                if(key == subcategory.id){
+                    name = subcategory.cause_short;
+                }
+            });
+            var entry = {
+                id: key,
+                value: subcategoryData[key],
+                name: name,
+                percentage: Math.round(subcategoryData[key]/totaldeaths*10000)/100
+            };
+            result.push(entry);
+        }
+        return result;
     }
 
-    //data for timelineGraph
-    //for every year the number of deaths
+    //data in order to for timelineGraph (for every year the number of deaths)
     function getdataTimeline() {
         var sumStates = sumData(rawdata, "year");
         return transformObjectToArray(sumStates);
     }
 
+    //aggregates data
     function sumData(data, column) {
         var sumObject = {};
         data.forEach(function (i) {
@@ -126,7 +117,7 @@ Index.data = function (datainitialised) {
         });
         return sumObject
     }
-
+    
     function transformObjectToArray(object) {
         var transform = [];
         for (var key in object) {
@@ -139,7 +130,6 @@ Index.data = function (datainitialised) {
         return transform;
     }
 
-    
     function getMapDrawData(callback) {
         d3.tsv("data/us-state-names.tsv", function (statenames) {
             //https://gist.github.com/shawnbot/e6a857780ec2fe6002f7
@@ -155,8 +145,6 @@ Index.data = function (datainitialised) {
                         }
                     }
                 });
-                //console.log(states);
-                //{type: "Feature", id: 1, properties: {}, geometry: Object, statename: "AL"}
                 callback(states);
             });
         });
@@ -169,34 +157,37 @@ Index.data = function (datainitialised) {
         }, {});
     }
 
-    //function lat/lng und anzahl der getöteten personen
+    //Data for every dept
     function getMapPointData(callback, year, causeArray) {
-        var filtered = filterData(year, causeArray, undefined);
-        var testData = groupBy(filtered, 'dept_name');
-        var finaldata = transformObjectToArray(testData);
-        
+        var filteredRawData = filterData(year, causeArray, undefined);
+        var deptData = groupBy(filteredRawData, 'dept_name');
+        deptData = transformObjectToArray(deptData);
+        deptData=splitdeptData(deptData);
+        callback(deptData[1],deptData[0]);
+    }
+
+    function splitdeptData(deptData){
         var split = d3.scaleQuantile().range(["normal", "normal", "extrem", "extrem"]);
         split.domain([
-                d3.min(finaldata, function (d) {
+                d3.min(deptData, function (d) {
                 return d.value.length;
             }),
-                d3.max(finaldata, function (d) {
+                d3.max(deptData, function (d) {
                 return d.value.length;
             })
         ]);
         var extreme=[];
         var normal=[];
-        finaldata.forEach(function(d){
+        deptData.forEach(function(d){
               if(d.value.length>=split.quantiles()[split.quantiles().length-2]){
                   extreme.push(d);
               }else{
                   normal.push(d);
               }       
         })
-        callback(extreme,normal);
+        return [normal,extreme];
     }
-
-    that.getFilterRawData = getFilterRawData;
+    
     that.getMapPointData = getMapPointData;
     that.getMapDrawData = getMapDrawData;
     that.getdataTimeline = getdataTimeline;

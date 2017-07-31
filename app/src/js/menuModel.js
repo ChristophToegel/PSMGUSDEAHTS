@@ -35,7 +35,6 @@ Index.menuModel = function () {
         catIdData, filters = [];
 
     function initModel() {
-        console.log("init Menu model");
         d3.csv("data/cat-id.csv", function (csv) {
             catIdData = csv;
         });
@@ -45,7 +44,6 @@ Index.menuModel = function () {
         return mainArray;
     }
 
-    //check ob filter ausgewählt wenn ja dann abwahlen wenn id mit oberkategorie ausgewählt wird dann alle untercategorien auswählen! 
     function selectUnselect(filterid) {
         let index = filters.indexOf(filterid);
         if (index == -1) {
@@ -59,7 +57,6 @@ Index.menuModel = function () {
         return filters;
     }
 
-    //noch in MainArray aufteilen!
     function getSelectedNames() {
         var selected=[];
         mainArray.forEach(function (maincat){
@@ -128,7 +125,6 @@ Index.menuModel = function () {
                 if (filters.indexOf(id) == -1) {
                     selected = false;
                 }else{
-                    //console.log(filters);
                     partsSelected=true;
                 }
             })
@@ -141,8 +137,13 @@ Index.menuModel = function () {
         })
         return [selectedOberkategorien,selectedPartsOberkategorien];
     }
+    
+    function getCatId(){
+        return catIdData;
+    }
 
     initModel();
+    that.getCatId = getCatId;
     that.getSelectedCat = getSelectedCat;
     that.selectUnselect = selectUnselect;
     that.getStructure = getStructure;

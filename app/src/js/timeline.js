@@ -18,7 +18,6 @@ Index.timeline = function (yearSelected) {
         brushScale, x, y, svg2, brushTime,played,playbackIntervall;
 
     function drawTimeGraph(timelineData) {
-        console.log("init Timeline");
         initGraph(timelineData);
         initBrush(timelineData);
         initPlayer();
@@ -29,7 +28,6 @@ Index.timeline = function (yearSelected) {
         var bisectDate = d3.bisector(function (d) {
             return d.name;
         }).left;
-
 
         x = d3.scaleLinear().range([0, width]);
         y = d3.scaleLinear().range([height, 0]);
@@ -106,13 +104,12 @@ Index.timeline = function (yearSelected) {
 
     function brushed() {
         var selection = d3.event.selection;
-        console.log(selection);
         let date = [parseInt(brushScale(selection[0])), parseInt(brushScale(selection[1]))];
         //callback für main
         yearSelected(date);
     }
 
-    //Test play pause
+    //logic play pause
     function initPlayer() {
          var icon = $('.play');
             icon.click(function () {
@@ -132,19 +129,14 @@ Index.timeline = function (yearSelected) {
         }
         //next Year Addition
         let nextDate = date[1]+1
-        console.log("new year: "+ nextDate);
-        //move right end update selection
         let brushend = brushScale.invert(nextDate);
         let brushstart = brushScale.invert(date[0]);
         
-        console.log("new end");//998.91
-        console.log(width);
-        console.log(parseFloat(brushend)-parseFloat(handleE.attr("width"))/2);
         let brush=d3.select(".selection");
         handleE.attr("x",parseFloat(brushend)-parseFloat(handleE.attr("width"))/2);
         
         d3.select(".selection").attr("x",brushstart);
-        d3.select(".selection").attr("width",brushend-brushstart);//ausrechnen
+        d3.select(".selection").attr("width",brushend-brushstart);
         yearSelected([date[0],date[1]]);
     }
 
@@ -166,7 +158,6 @@ Index.timeline = function (yearSelected) {
         })
         selection.sort();
         let date = [parseInt(brushScale(selection[0])), parseInt(brushScale(selection[1]))];
-        console.log(date);
         return date;
     }
 

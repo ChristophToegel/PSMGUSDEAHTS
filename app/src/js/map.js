@@ -7,7 +7,6 @@ var Index = Index || {};
 Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
     "use strict";
 
-
     var that = {},
         path, svg, projection, g, selectedState, zoom, transformation,
         margin = {
@@ -20,11 +19,7 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
         height = 0.6 * width;
 
     function initMap() {
-        console.log("init Map");
-        console.log($("#map").width())
-
-        //svg in index erstellen lassen!
-        //enable map zoom
+        
         zoom = d3.zoom()
             .scaleExtent([1, 1000])
             .on("zoom", zoomed);
@@ -47,16 +42,13 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
 
     //zooming
     function zoomed() {
-        //verschiebt Coordinaten
         svg.selectAll("circle").attr("transform", d3.event.transform);
         svg.selectAll("rect").attr("transform", d3.event.transform);
-        //verschiebt map
-        //g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
         g.attr("transform", d3.event.transform);
         transformation = d3.event.transform;
     }
 
-    //zeichnet die Staaten
+    //draws the map
     function mapdatareceived(states) {
         g = svg.append("g")
             .attr("class", "states")
@@ -74,12 +66,10 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
         mapisready();
     }
 
-
-
     function clickedState(event) {
         if (selectedState != event.statenameshort) {
             zoomIn(event);
-            //callback für main 1 staat ausgewählt
+            //callback
             stateSelected(event.statenameshort);
             selectedState = event.statenameshort;
             let state = d3.select(this);
@@ -87,12 +77,11 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
             prevSelected.removeClass("selectedState");
             state.classed("selectedState", true);
             markState(state);
-
         } else {
             zoomOut();
             let state = d3.select("#" + event.statenameshort);
             state.classed("selectedState", false);
-            //callback für main kein staat ausgewählt
+            //callback
             stateSelected();
             selectedState = undefined;
         }
@@ -120,9 +109,7 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
             translate = [(width / 2 - scale * x), height / 2 - scale * y];
         svg.transition().duration(750)
             .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
-
         svg.selectAll(".places").classed("notclickable", false)
-            //Todo border soll mit zoom verknüpf sein/via css
         g.classed("zoomed", true);
     }
 
@@ -143,7 +130,7 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
         });
     }
 
-    //transformes data from Object to array(Objects) calculates the color and colors the states
+    //colors the map
     function ChoroplethColor(data) {
         clearMapColor();
         var color = d3.scaleQuantile()
@@ -156,10 +143,9 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
                 return d.value;
             })
         ]);
-
+        
         createLegend(color.range(), color.quantiles())
-
-        //liste aller zZ ausgewählten Staaten
+        
         data.forEach(function (state) {
             state.color = color(state.value);
             var stateEl = d3.select("#" + state.name);
@@ -169,11 +155,7 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
                 console.log("unknown SateName: " + key);
             }
             stateEl.on("mouseover", function (d) {
-                    //if(svg.selectAll(".places").classed("notclickable")){
-                        //callback main?
-                        stateHover(d.statename)
-                        //console.log(d.statename);
-                    //}
+                    stateHover(d.statename)
                     let el = d3.select(this);
                     stateEl.classed("hoverState", true);
                     markState(el);
@@ -222,7 +204,6 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
         var entry = legende.selectAll("g")
             .data(colors).enter().append("g")
             .attr('transform', function (d, i) {
-                //TODO abstand anpassen
                 return 'translate(' + 115 * i + ',0)'
             })
         entry.append('rect').attr('width', 12)
@@ -264,27 +245,21 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
                 .attr("id", "normal")
                 .classed("notclickable", true)
                 .selectAll("circle")
-                //.selectAll("g")
                 .data(normal).enter().
             insert("circle");
-            //append("g").insert("circle");
-
         } else {
             //Update
             var places = d3.select("#normal")
                 .selectAll("circle")
-                //.selectAll("g")
                 .data(normal)
         }
-
         addpointAttributes(places);
         //wenn weniger dann löschen
         places.exit().remove();
         //wenn mehr dann hinzufügen
         places = places.enter().
         insert("circle")
-            //append("g").insert("circle");
-            //wenn zoom dann noch transformieren!
+        //wenn zoom dann noch transformieren
         if (g.classed("zoomed")) {
             places.attr("transform", transformation);
         }
@@ -298,16 +273,12 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
                 .attr("id", "extreme")
                 .classed("notclickable", true)
                 .selectAll("rect")
-                //.selectAll("g")
                 .data(extreme).enter().
             insert("rect");
-            //append("g").insert("circle");
-
         } else {
             //Update
             var places = d3.select("#extreme")
                 .selectAll("rect")
-                //.selectAll("g")
                 .data(extreme)
         }
 
@@ -317,8 +288,7 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
         //wenn mehr dann hinzufügen
         places = places.enter().
         insert("rect")
-            //append("g").insert("circle");
-            //wenn zoom dann noch transformieren!
+        //wenn zoom dann noch transformieren!
         if (g.classed("zoomed")) {
             places.attr("transform", transformation);
         }
@@ -326,9 +296,7 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
     }
 
     function addrectAttributes(places) {
-        //places
-        places
-            .attr("x", function (d) {
+       places.attr("x", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[0] - 10;
                 } else {
@@ -338,8 +306,8 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
             .attr("y", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[1] - 10;
-                } else { console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");
-                        console.log(d);
+                } else { 
+                    //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");
                     return 0;
                 }
             })
@@ -369,7 +337,6 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
                     .duration(500)
                     .style("opacity", 0);
             })
-            //pointClick callback
             .on("click", pointSelected);
     }
 
@@ -385,8 +352,8 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[1];
                 } else {
-                    
-                    //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");console.log(d);
+                    //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");
+                    //console.log(d);
                     return 0;
                 }
             })
@@ -402,6 +369,7 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
         prevPoint.classed("selectedPoint", false);
         let point = d3.select(this);
         point.classed("selectedPoint", true);
+        //callback main
         pointClicked(event);
     }
 

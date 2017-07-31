@@ -7,30 +7,25 @@ Index.infobox = function () {
 
     var that = {};
 
-    //TODO no remove update instead!
     function initInfobox() {
-        console.log("init Infobox");
         document.getElementById("nav-icon1").addEventListener("click", changeView);
         var deathInfoBox = d3.select("#textdata");
-        deathInfoBox.append("div").attr("id", "menudata")
+        deathInfoBox.append("div").attr("id", "menudata").classed("hidden", true);
         deathInfoBox.append("div").attr("id", "deathinfodata")
-            .classed("hidden", true);
+        
     }
 
-    //names hat oberkateogorie mit unterkategorien der ausgewählten menupunkte
+    //updates Selected filters
     function updateSelection(names) {
-        //ausgewählte menuelemente hier anzeigen
         var menudata = d3.select("#menudata");
         menudata.selectAll("*").remove();
         
         menudata.append("p")
             .text("Categories selected")
             .attr("class", "menudataHeading")
-
-
+        
         menudata.append("div")
             .attr("id", "menudataEntries");
-
 
         let categorieEntry = d3.select("#menudataEntries")
             .selectAll("div")
@@ -52,29 +47,13 @@ Index.infobox = function () {
             .append("p")
             .text(function(d){return d})
 
-
-        
-        /*categorieEntry.append("p")
-            .text(function (d) {
-                if (d.selected.length == 0) {
-                    return "No subcategories selected"
-                } else {
-                    return d.selected
-                }
-            })
-            .attr("class", "subCategorieEntry");
-            */
-        
-        
-        
-        
         menudata.append("div")
             .attr("id", "disclaimer")
             .text("Death incidents are represented by the officers assigned police departement. The acutal place of the incident may vary. Some spots represent no longer existing police departments.")
     }
 
+    //logic for the infobox
     function changeView() {
-        console.log("change infobox");
         var menu = document.getElementById("menudata")
         var deathinfo = document.getElementById("deathinfodata")
         if (deathinfo.classList.contains("hidden")) {
