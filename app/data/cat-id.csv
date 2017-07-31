@@ -1,13 +1,13 @@
 cause_short,id
-Gunfire,01
-Stabbed,02
-Assault,03
-Fall,04
-Drowned,05
-Structure collapse,06
-Fire,07
-Gunfire (Accidental),08
-Animal related,09
+Gunfire,1
+Stabbed,2
+Assault,3
+Fall,4
+Drowned,5
+Structure collapse,6
+Fire,7
+Gunfire (Accidental),8
+Animal related,9
 Duty related illness,10
 Heart attack,11
 Weather/Natural disaster,12

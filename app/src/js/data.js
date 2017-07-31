@@ -13,7 +13,7 @@ Index.data = function (datainitialised) {
 
     //csv Dateien einlesen
     function initData() {
-        d3.csv("data/finalData.csv", function (csv) {
+        d3.csv("data/DeathData.csv", function (csv) {
             //daten können abgefragt werden!
             rawdata = csv;
             
@@ -174,7 +174,26 @@ Index.data = function (datainitialised) {
         var filtered = filterData(year, causeArray, undefined);
         var testData = groupBy(filtered, 'dept_name');
         var finaldata = transformObjectToArray(testData);
-        callback(finaldata);
+        
+        var split = d3.scaleQuantile().range(["normal", "normal", "extrem", "extrem"]);
+        split.domain([
+                d3.min(finaldata, function (d) {
+                return d.value.length;
+            }),
+                d3.max(finaldata, function (d) {
+                return d.value.length;
+            })
+        ]);
+        var extreme=[];
+        var normal=[];
+        finaldata.forEach(function(d){
+              if(d.value.length>=split.quantiles()[split.quantiles().length-2]){
+                  extreme.push(d);
+              }else{
+                  normal.push(d);
+              }       
+        })
+        callback(extreme,normal);
     }
 
     that.getFilterRawData = getFilterRawData;

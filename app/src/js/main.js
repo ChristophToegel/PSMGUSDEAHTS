@@ -18,7 +18,7 @@ Index = (function () {
         menuModel= new Index.menuModel();
         
         menu = new Index.menu(filterSelected,allFilterSelected,noFilterSelected,oberkategorieSelected,subcategorychanged);
-        map = new Index.map(mapisready,stateSelected,pointsClicked);
+        map = new Index.map(mapisready,stateSelected,pointsClicked,stateHover);
         
         infobox = new Index.infobox();
         odometer = new Index.yearodometer();
@@ -58,6 +58,10 @@ Index = (function () {
         let year=timeline.getYear();
         menu.hideSecondArc();
         updateMenu(year,state);
+    }
+    
+    function stateHover(statename){
+        menu.createTextLeftCorner(statename);
     }
     
     function filterSelected(filterid){

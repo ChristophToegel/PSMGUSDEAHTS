@@ -83,7 +83,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     //wird aufgerufen wenn Staaten ausgewählt werden mit liste der ausgewählten Staaten
     function changeData(state, data) {
         createArc(data);
-        createTextLeftCorner(state);
+        createTextRightCorner(state);
         
     }
 
@@ -247,12 +247,28 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
     }
     
     function createTextLeftCorner(state){
+        //console.log(state);
+        svg.select(".textstatehover").remove();
+        //TODO startposition des Textfeldes über g bestimmen!!
+        var textfield = svg.append('g')
+                .classed("textstatehover", true)
+                .attr('transform', 'translate(30, 20 )')
+        textfield.append("text")
+                .append("tspan")
+                .text(state)
+                .style("fill", "#4e4e5e")
+                .style("stroke-opacity", 0.1)
+                .style("stroke", "black");
+    }
+    
+
+    function createTextRightCorner(state){
         var state = d3.select("#"+state).data();
         svg.select(".textstate").remove();
         //TODO startposition des Textfeldes über g bestimmen!!
         var textfield = svg.append('g')
                 .classed("textstate", true)
-                .attr('transform', 'translate(50, 20 )')
+                .attr('transform', 'translate('+(width-80)+', 15)')
         textfield.append("text")
                 .selectAll("text")
                 .data(state)
@@ -267,7 +283,6 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 .style("fill", "#4e4e5e")
                 .style("stroke-opacity", 0.1)
                 .style("stroke", "black");
-                   
     }
 
 
@@ -303,7 +318,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
                 el.attr("fill","url(#pattern-"+el.data()[0].data.id+")")
             }else{
                 if(partsOberkategorein.indexOf(d.data.id)!=-1){
-                    console.log(partsOberkategorein+" "+d.data.id);
+                    //console.log(partsOberkategorein+" "+d.data.id);
                     el.classed("pieselected",true);
                 }else{
                     el.classed("pieselected",false);
@@ -325,7 +340,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
             }
         })
     }
-    
+    that.createTextLeftCorner=createTextLeftCorner,
     that.hideSecondArc=hideSecondArc;
     that.updateViewOuterArc = updateViewOuterArc;
     that.updateViewSelection = updateViewSelection;

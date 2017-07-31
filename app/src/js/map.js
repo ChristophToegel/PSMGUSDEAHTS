@@ -4,7 +4,7 @@
 // points: https://stackoverflow.com/questions/29624745/d3-insert-vs-append-in-context-of-creating-nodes-on-mousemove
 // zoom: https://bl.ocks.org/iamkevinv/0a24e9126cd2fa6b283c6f2d774b69a2
 var Index = Index || {};
-Index.map = function (mapisready, stateSelected, pointClicked) {
+Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
     "use strict";
 
 
@@ -50,7 +50,6 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
         //verschiebt Coordinaten
         svg.selectAll("circle").attr("transform", d3.event.transform);
         svg.selectAll("rect").attr("transform", d3.event.transform);
-        //svg.selectAll("g").attr("transform", d3.event.transform);
         //verschiebt map
         //g.style("stroke-width", 1.5 / d3.event.transform.k + "px");
         g.attr("transform", d3.event.transform);
@@ -170,6 +169,11 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                 console.log("unknown SateName: " + key);
             }
             stateEl.on("mouseover", function (d) {
+                    //if(svg.selectAll(".places").classed("notclickable")){
+                        //callback main?
+                        stateHover(d.statename)
+                        //console.log(d.statename);
+                    //}
                     let el = d3.select(this);
                     stateEl.classed("hoverState", true);
                     markState(el);
@@ -247,30 +251,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     }
 
     //Callback for points
-    function pointsready(data) {
-        //TODO color anpassen: https://bl.ocks.org/pstuffa/d5934843ee3a7d2cc8406de64e6e4ea5 ??
-        //TODO in data auslagern
-        var color = d3.scaleQuantile().range(["normal", "normal", "extrem", "extrem"]);
-        color.domain([
-                d3.min(data, function (d) {
-                return d.value.length;
-            }),
-                d3.max(data, function (d) {
-                return d.value.length;
-            })
-        ]);
-        var extreme = [];
-        var normal = [];
-        data.forEach(function (d) {
-            //console.log(color.quantiles()[color.quantiles().length-1]);
-            if (d.value.length >= color.quantiles()[color.quantiles().length - 2]) {
-                extreme.push(d);
-            } else {
-                normal.push(d);
-            }
-        })
-        //console.log(extreme);
-        //console.log(color.quantiles());
+    function pointsready(extreme,normal) {
         createNormalPoints(normal);
         createExtremePoints(extreme);
     }
@@ -355,19 +336,18 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                 }
             })
             .attr("y", function (d) {
-                //console.log(d.value[0].lat);
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[1] - 10;
-                } else { //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");console.log(d);
+                } else { console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");
+                        console.log(d);
                     return 0;
                 }
             })
             .attr("width", "4px")
             .attr("height", "4px")
             .attr("fill", function (d) {
-                return "rgb(0,0,0)" //color(d.value.length);
+                return "rgb(0,0,0)";
             })
-            //.attr("style","stroke-width:1px; stroke:black")
             mousefunctions(places);
         
     }
@@ -384,7 +364,8 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
             })
             .on("mouseout", function (d) {
                 var tooltip = d3.selectAll(".tooltip");
-                tooltip.transition()
+                tooltip.classed("notclickable",true)
+                    .transition()
                     .duration(500)
                     .style("opacity", 0);
             })
@@ -393,9 +374,7 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
     }
 
     function addpointAttributes(places) {
-        //places
-        places
-            .attr("cx", function (d) {
+        places.attr("cx", function (d) {
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[0];
                 } else {
@@ -403,16 +382,17 @@ Index.map = function (mapisready, stateSelected, pointClicked) {
                 }
             })
             .attr("cy", function (d) {
-                //console.log(d.value[0].lat);
                 if (projection([d.value[0].lng, d.value[0].lat]) != null) {
                     return projection([d.value[0].lng, d.value[0].lat])[1];
-                } else { //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");console.log(d);
+                } else {
+                    
+                    //console.log("liegt nicht auf karte oder noch keine geodaten verfügber!");console.log(d);
                     return 0;
                 }
             })
             .attr("r", "2px")
             .attr("fill", function (d) {
-                return "rgb(0,0,255)" //color(d.value.length);
+                return "rgb(0,0,255)";
             })
             mousefunctions(places);
     }

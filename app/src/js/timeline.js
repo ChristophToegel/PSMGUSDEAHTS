@@ -63,14 +63,6 @@ Index.timeline = function (yearSelected) {
             .data([timelineData])
             .attr("class", "line")
             .attr("d", valueline);
-            
-
-
-        // Add the X Axis
- 
-        // Add the Y Axis
-        /*svg.append("g")
-          .call(d3.axisLeft(y)); */
     }
 
     function initBrush(timelineData) {
@@ -100,28 +92,11 @@ Index.timeline = function (yearSelected) {
                 return y(d.value);
             });
 
-
         svg2.append("path")
             .datum(timelineData)
             .attr("class", "area")
             .attr("d", area);
-            
-
-        //Marker wieder aktivieren
-        /* var focus = svg2.append("g")
-             .attr("class", "focus")
-             .style("display", "none");
-
-         focus.append("line")
-             .attr("y1", 0)
-             .attr("y2", height)
-
-
-         focus.append("text")
-             .attr("x", 9)
-             .attr("dy", ".35em");
-
-         */
+        
         //Graphfläche
         svg2.append("rect")
             .attr("class", "overlay")
@@ -129,25 +104,9 @@ Index.timeline = function (yearSelected) {
             .attr("height", height)
     }
 
-    //alt anzeige des aktuell ausgewählten
-    //Vllt umbauen
-    /*
-    function mousemove() {
-        var x0 = x.invert(d3.mouse(this)[0]),
-            i = bisectDate(timelineData, x0, 1),
-            d0 = timelineData[i - 1],
-            d1 = timelineData[i],
-            d = x0 - d0.name > d1.name - x0 ? d1 : d0;
-        //console.log("x0 " + x0 + "; i " + i + "; d0 " + d0 + "; d1 " + d1 + "; d " + d);
-        //focus.attr("transform", "translate(" + x(d.name) + "," + y(d.value) + ")");
-        focus.attr("x1", x0).attr("x2", x0);
-        focus.attr("transform", "translate(" + x(d.name) + "," + "0" + ")");
-        focus.select("text").text((d.name)).attr("transform", "translate(0,-10)");
-    }*/
-
     function brushed() {
         var selection = d3.event.selection;
-        //console.log(selection);
+        console.log(selection);
         let date = [parseInt(brushScale(selection[0])), parseInt(brushScale(selection[1]))];
         //callback für main
         yearSelected(date);
@@ -163,27 +122,30 @@ Index.timeline = function (yearSelected) {
             });
     }
 
-
-    //TODO spring bei click wieder zurück!
     function nextPlaybackSet() {
         let handleW = d3.select(".handle--w");
         let handleE = d3.select(".handle--e");
-        //let upperDate = parseInt(brushScale(handleE.attr("x")));
-        //let lowerDate = parseInt(brushScale(handleW.attr("x")))+1;
+        
         let date=getYear();
-        //console.log(date);
         if(date[1]>=2016){
            tooglePlayback();
         }
         //next Year Addition
-        let nextDate = date[1] //+ 1;
+        let nextDate = date[1]+1
+        console.log("new year: "+ nextDate);
         //move right end update selection
         let brushend = brushScale.invert(nextDate);
+        let brushstart = brushScale.invert(date[0]);
+        
+        console.log("new end");//998.91
+        console.log(width);
+        console.log(parseFloat(brushend)-parseFloat(handleE.attr("width"))/2);
         let brush=d3.select(".selection");
-        handleE.attr("x",brushend);
-        d3.select(".selection").attr("width",brushend);
+        handleE.attr("x",parseFloat(brushend)-parseFloat(handleE.attr("width"))/2);
+        
+        d3.select(".selection").attr("x",brushstart);
+        d3.select(".selection").attr("width",brushend-brushstart);//ausrechnen
         yearSelected([date[0],date[1]]);
-        //d3.event.selection=[handleW.attr("x"),brushend]
     }
 
     function tooglePlayback() {
@@ -195,53 +157,16 @@ Index.timeline = function (yearSelected) {
             clearInterval(playbackIntervall);
         }
     }
-    
-
-    /*.on("mouseover", function () {
-        focus.style("display", null);
-    })
-    .on("mouseout", function () {
-        focus.style("display", "none");
-    })
-        
-    //Marker wieder aktivieren
-    //.on("mousemove", mousemove)
-    //.on("click", mouseclick);
-    */
-
-
-    /* ALT 
-    function mouseclick() {
-        var x0 = x.invert(d3.mouse(this)[0]),
-            i = bisectDate(transform, x0, 1),
-            d0 = timelineData[i - 1],
-            d1 = timelineData[i],
-            d = x0 - d0.name > d1.name - x0 ? d1 : d0;
-        //d.name=year 
-        
-        
-        //slection marker wieder aktiviere
-        /*svg2.append("path")
-            .datum(transform.slice(0, i))
-            .attr("class", "area2")
-            .attr("d", area2);
-            //never called?
-        //yearSelected(d.name);
-    }
-    */
-
-    //});
-
-
 
     function getYear() {
         var selection = [];
         let handle = d3.selectAll(".handle");
         handle.each(function (d) {
-            selection.push(d3.select(this).attr("x"));
+            selection.push(parseFloat(d3.select(this).attr("x"))+parseFloat(d3.select(this).attr("width"))/2);
         })
         selection.sort();
-        let date = [parseInt(brushScale(selection[0]) + 1), parseInt(brushScale(selection[1]) + 1)];
+        let date = [parseInt(brushScale(selection[0])), parseInt(brushScale(selection[1]))];
+        console.log(date);
         return date;
     }
 
