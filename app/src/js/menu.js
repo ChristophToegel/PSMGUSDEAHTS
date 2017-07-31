@@ -240,7 +240,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         svg.select(".textstatehover").remove();
         var textfield = svg.append('g')
                 .classed("textstatehover", true)
-                .attr('transform', 'translate(30, 20 )')
+                .attr('transform', 'translate(20, 20 )')
         textfield.append("text")
                 .append("tspan")
                 .text(state)
@@ -255,7 +255,7 @@ Index.menu = function (filterSelected,allFilterSelected,noFilterSelected,oberkat
         svg.select(".textstate").remove();
         var textfield = svg.append('g')
                 .classed("textstate", true)
-                .attr('transform', 'translate('+(width-120)+', 15)')
+                .attr('transform', 'translate('+(width-130)+', 15)')
         textfield.append("text")
                 .selectAll("text")
                 .data(state)

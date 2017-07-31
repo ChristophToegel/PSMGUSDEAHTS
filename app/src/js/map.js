@@ -326,7 +326,7 @@ Index.map = function (mapisready, stateSelected, pointClicked,stateHover) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html(d.name + " <br/>" + "Anzahl der Todesfälle: " + d.value.length)
+                tooltip.html(d.name + " <br/>" + "Cases of death: " + d.value.length)
                     .style("left", d3.event.layerX + 5 + "px")
                     .style("top", d3.event.layerY + 5 + "px");
             })
